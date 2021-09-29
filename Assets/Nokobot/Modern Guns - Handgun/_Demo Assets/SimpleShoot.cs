@@ -43,14 +43,16 @@ public class SimpleShoot : MonoBehaviour
 
     void Start()
     {
+        /*
         if (barrelLocation == null)
             barrelLocation = transform;
-
+        
         if (gunAnimator == null)
             gunAnimator = GetComponentInChildren<Animator>();
 
         socketInteractor.onSelectEntered.AddListener(AddMagazine);
         socketInteractor.onSelectExited.AddListener(RemoveMagazine);
+        */
     }
 
     /*
@@ -66,6 +68,9 @@ public class SimpleShoot : MonoBehaviour
 
     public void pullTheTrigger()
     {
+        //gunAnimator.SetTrigger("Fire");
+        Shoot();
+        /*
         if (magazine && magazine.numberOfBullets > 0)
         {
             gunAnimator.SetTrigger("Fire");
@@ -74,31 +79,30 @@ public class SimpleShoot : MonoBehaviour
         {
             audioSource.PlayOneShot(noAmmo);
         }
+        */
     }
 
 
     //This function creates the bullet behavior
     void Shoot()
     {
-        magazine.numberOfBullets--;
-        audioSource.PlayOneShot(fireSound);
+        //magazine.numberOfBullets--;
+        //audioSource.PlayOneShot(fireSound);
         if (muzzleFlashPrefab)
         {
             //Create the muzzle flash
             GameObject tempFlash;
-            tempFlash = Instantiate(muzzleFlashPrefab, barrelLocation.position, barrelLocation.rotation);
+            //tempFlash = Instantiate(muzzleFlashPrefab, barrelLocation.position, barrelLocation.rotation);
+            tempFlash = Realtime.Instantiate("MuzzleFlashPrefab", barrelLocation.position, barrelLocation.rotation);
 
             //Destroy the muzzle flash effect
             Destroy(tempFlash, destroyTimer);
         }
 
-        //cancels if there's no bullet prefeb
-        if (!bulletPrefab)
-        { return; }
 
         // Create a bullet and add force on it in direction of the barrel
         //Instantiate(bulletPrefab, barrelLocation.position, barrelLocation.rotation).GetComponent<Rigidbody>().AddForce(barrelLocation.forward * shotPower);
-        Realtime.Instantiate("45ACP Bullet_Head", barrelLocation.position, barrelLocation.rotation, preventOwnershipTakeover: true).GetComponent<Rigidbody>().AddForce(barrelLocation.forward * shotPower);
+        Realtime.Instantiate("ProjectileWithTrail", barrelLocation.position, barrelLocation.rotation, preventOwnershipTakeover: true).GetComponent<Rigidbody>().AddForce(barrelLocation.forward * shotPower);
 
         //This function creates a casing at the ejection slot
         void CasingRelease()
