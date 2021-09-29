@@ -2669,3 +2669,4 @@ Received Import Request.
 Start importing Assets/FBX/Characters/TeamColor.mat using Guid(9acdea92070926246816571980b17302) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e8d52d41fbc12153a8621b4363fa74e0') in 0.017012 seconds 
   Import took 0.023676 seconds .
 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
