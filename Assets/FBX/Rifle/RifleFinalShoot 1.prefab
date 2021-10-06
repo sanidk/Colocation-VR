@@ -2404,9 +2404,9 @@ MonoBehaviour:
   shotPower: 500
   ejectPower: 150
   audioSource: {fileID: 0}
-  fireSound: {fileID: 0}
-  reload: {fileID: 0}
-  noAmmo: {fileID: 0}
+  fireSound: {fileID: 8300000, guid: 73c697bb6b6e546b8b6353f8ab4e4920, type: 3}
+  reload: {fileID: 8300000, guid: f15e12c3740a7462783839ebe79c9441, type: 3}
+  noAmmo: {fileID: 8300000, guid: 841197a85068d42bf9c5db364dcc230b, type: 3}
   magazine: {fileID: 0}
   socketInteractor: {fileID: 0}
 --- !u!1 &5301746429250254433
