@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 using Normal.Realtime;
+
 
 [AddComponentMenu("Nokobot/Modern Guns/Simple Shoot")]
 public class SimpleShoot : MonoBehaviour
@@ -23,11 +26,29 @@ public class SimpleShoot : MonoBehaviour
     [Tooltip("Casing Ejection Speed")] [SerializeField] private float ejectPower = 150f;
 
     public AudioSource audioSource;
+    public AudioClip fireSoundSingle;
     public AudioClip fireSound;
     public AudioClip reload;
     public AudioClip noAmmo;
     public Magazine magazine;
     public XRBaseInteractor socketInteractor;
+
+    public bool isShooting = false;
+    float fireSoundStart;
+    public float fireSoundMinimumDuration = .11f;
+
+    float fireTriggerStartTime;
+    float fireSpeedTime = .11f;
+
+    
+    int previousBulletsInMag;
+    public int maxBulletsInMag = 64;
+    public int bulletsInMag;
+
+    public bool isPistol;
+    public bool isRifle;
+
+    TMPro.TextMeshPro bulletsInMagTextMesh;
 
     public void AddMagazine(XRBaseInteractable interactable)
     {
@@ -55,21 +76,111 @@ public class SimpleShoot : MonoBehaviour
         */
     }
 
-    /*
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+        bulletsInMagTextMesh = GetComponentInChildren<TMPro.TextMeshPro>();
+        
+    }
+
+
     void Update()
     {
         //If you want a different input, change it here
+        /*
         if (Input.GetButtonDown("Fire1"))
         {
             //Calls animation on the gun that has the relevant animation events that will fire
             gunAnimator.SetTrigger("Fire");
         }
-    }*/
+        */
+        if (isPistol)
+        {
+            return;
+        }
+
+        if (isShooting & bulletsInMag>0)
+        {
+            if (!audioSource.isPlaying)
+            {
+                audioSource.PlayOneShot(fireSound);
+                fireSoundStart = Time.time;
+            }
+            if (Time.time > fireTriggerStartTime + fireSpeedTime) //.11 seem to work well through testing
+            {
+                Shoot();
+                bulletsInMag--;
+                
+                fireTriggerStartTime = Time.time;
+            }
+            
+
+        } else if (isShooting & bulletsInMag == 0){
+            //play the clipping sound effect
+            if (Time.time > fireTriggerStartTime + fireSpeedTime)
+            {
+                audioSource.Stop();
+                audioSource.PlayOneShot(noAmmo);
+                fireTriggerStartTime = Time.time;
+            }
+            
+        } else
+        {
+            if (audioSource.isPlaying)
+            {
+                if (Time.time > fireSoundStart + fireSoundMinimumDuration)
+                {
+                    audioSource.Stop();
+                }
+                
+
+            }
+        }
+
+        if (bulletsInMag != previousBulletsInMag)
+        {
+            bulletsInMagTextMesh.text = bulletsInMag + "/" + maxBulletsInMag;
+            previousBulletsInMag = bulletsInMag;
+        }
+        
+    }
+
+    public void holdTheTrigger()
+    {
+        isShooting = true;
+        //Shoot();
+        //Shoot();
+        //print("isholding");
+    }
+
+    public void stopTheTrigger()
+    {
+        isShooting = false;
+
+    }
 
     public void pullTheTrigger()
     {
         //gunAnimator.SetTrigger("Fire");
-        Shoot();
+        //audioSource.PlayOneShot(fireSound);
+        isShooting = true;
+        if (isPistol)
+        {
+            if (bulletsInMag > 0)
+            {
+                Shoot();
+                audioSource.PlayOneShot(fireSoundSingle);
+                bulletsInMag--;
+                //
+            } else
+            {
+                audioSource.PlayOneShot(noAmmo);
+            }
+
+        }
+        //Shoot();
+        
+
         /*
         if (magazine && magazine.numberOfBullets > 0)
         {
@@ -88,6 +199,7 @@ public class SimpleShoot : MonoBehaviour
     {
         //magazine.numberOfBullets--;
         //audioSource.PlayOneShot(fireSound);
+        
         if (muzzleFlashPrefab)
         {
             //Create the muzzle flash
