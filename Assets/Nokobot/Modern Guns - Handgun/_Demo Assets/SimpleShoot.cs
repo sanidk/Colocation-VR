@@ -62,6 +62,12 @@ public class SimpleShoot : MonoBehaviour
         audioSource.PlayOneShot(reload);
     }
 
+    IEnumerator VibrationDelay()
+    {
+        yield return new WaitForSeconds(0.15f);
+        OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.Touch);
+    }
+
     void Start()
     {
         /*
@@ -202,6 +208,10 @@ public class SimpleShoot : MonoBehaviour
         
         if (muzzleFlashPrefab)
         {
+            // Make controller vibration
+            OVRInput.SetControllerVibration(1, 1, OVRInput.Controller.Touch);
+            StartCoroutine(VibrationDelay());
+
             //Create the muzzle flash
             GameObject tempFlash;
             //tempFlash = Instantiate(muzzleFlashPrefab, barrelLocation.position, barrelLocation.rotation);
