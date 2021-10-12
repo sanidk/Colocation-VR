@@ -5,6 +5,8 @@ using UnityEngine;
 public class GrenadeBehaviour : MonoBehaviour
 {
 
+    private HPSync _hp;
+
     public GameObject explosionEffect; 
     public AudioSource audioSource;
 
@@ -15,6 +17,9 @@ public class GrenadeBehaviour : MonoBehaviour
     private float explosionDelay = 3f;
     private float radius = 5f;
     private float force = 5000f; 
+    private float proximity;
+    private float effect;
+    private int damage = 75;
 
     float countdown; 
     bool hasExploded = false; 
@@ -23,7 +28,8 @@ public class GrenadeBehaviour : MonoBehaviour
 
     // Start is called before the first frame update
     void Start() {
-        countdown = explosionDelay;    
+        _hp = GetComponent<HPSync>();
+        countdown = explosionDelay;   
     }
 
     // Update is called once per frame
@@ -47,7 +53,18 @@ public class GrenadeBehaviour : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
 
         foreach (Collider nearbyObject in colliders) {
-            Rigidbody rb = nearbyObject.GetComponent<Rigidbody>(); 
+            Rigidbody rb = nearbyObject.GetComponent<Rigidbody>();
+            HPSync enemy = nearbyObject.GetComponent<HPSync>();
+            Transform enemyTransform = nearbyObject.GetComponent<Transform>();
+            Vector3 enemyPos = new Vector3(nearbyObject.transform.position.x, nearbyObject.transform.position.y, nearbyObject.transform.position.z);
+            float proximity = (transform.position - enemyPos).magnitude;
+            float effect = 1 - (proximity / radius);
+            
+            if (enemy != null) {
+                // MULTIPLY BY EFFECT (enemy.GetHp() - damage * effect) WHEN HP IS EXPECTED AS FLOAT
+                enemy.setHp(enemy.GetHp() - damage);
+            }
+            
             if (rb != null) {
                 rb.AddExplosionForce(force, transform.position, radius);
             }
@@ -64,7 +81,7 @@ public class GrenadeBehaviour : MonoBehaviour
     }
 
     void OnCollisionEnter(Collision collision) {
-        if (collision.gameObject.name == "Floor") {
+        if (collision.gameObject.name == "FloorHuge") {
             pinIsPulled = true; 
         }
     }
