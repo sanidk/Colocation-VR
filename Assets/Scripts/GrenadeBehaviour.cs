@@ -5,7 +5,7 @@ using UnityEngine;
 public class GrenadeBehaviour : MonoBehaviour
 {
 
-    private HPSync _hp;
+    private HpFloatSync _hp;
 
     public GameObject explosionEffect; 
     public AudioSource audioSource;
@@ -28,7 +28,6 @@ public class GrenadeBehaviour : MonoBehaviour
 
     // Start is called before the first frame update
     void Start() {
-        _hp = GetComponent<HPSync>();
         countdown = explosionDelay;   
     }
 
@@ -54,7 +53,7 @@ public class GrenadeBehaviour : MonoBehaviour
 
         foreach (Collider nearbyObject in colliders) {
             Rigidbody rb = nearbyObject.GetComponent<Rigidbody>();
-            HPSync enemy = nearbyObject.GetComponent<HPSync>();
+            HpFloatSync enemy = nearbyObject.GetComponent<HpFloatSync>();
             Transform enemyTransform = nearbyObject.GetComponent<Transform>();
             Vector3 enemyPos = new Vector3(nearbyObject.transform.position.x, nearbyObject.transform.position.y, nearbyObject.transform.position.z);
             float proximity = (transform.position - enemyPos).magnitude;
