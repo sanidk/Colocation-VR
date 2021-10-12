@@ -71,13 +71,22 @@ public class Player_Behavior : MonoBehaviour
         }
     }
 
+    private void OnCollisionStay(Collision collision)
+    {
+        if(collision.gameObject.tag == "SpawnArea")
+        {
+            healthRegain();
+        }
+    }
+
 
     private void resetHp()
     {
         currentHp_Local = 100;
         _hp.setHp(currentHp_Local);
         dead = false;
-        _colorSync.SetColor(_color);
+        _colorSync.SetColor(new Color(255,255,255));
+        print("HP has been reset");
     }
 
     private Color updateColor()
@@ -85,5 +94,11 @@ public class Player_Behavior : MonoBehaviour
         _redAmount += 40;
         _color = new Color(_redAmount, 0, 0);
         return _color;
+    }
+
+    private void healthRegain()
+    {
+        currentHp_Local += 1; // *time.deltaTime typecast to int.
+        _hp.setHp(currentHp_Local);
     }
 }
