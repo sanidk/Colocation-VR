@@ -7,11 +7,13 @@ public class Player_Behavior : MonoBehaviour
 {
     private Collider _playerHitbox;
     private Color _color;
-    private int currentHp_Local = 100;
+    //private int currentHp_Local = 100;
     private ColorSync _colorSync;
     private bool dead;
-    private HPSync _hp;
+    //private HPSync _hp;
     private float _redAmount = 0;
+
+    private HpFloatSync _hp; // ADD COMPONENT TO PLAYER
 
     //public GameObject meshObject;
     //public GameObject Hitbox_Head;
@@ -22,7 +24,7 @@ public class Player_Behavior : MonoBehaviour
         _playerHitbox = GetComponent<BoxCollider>();
         _colorSync = GetComponent<ColorSync>();
         _color = new Color(0, 0, 0);
-        _hp = GetComponent<HPSync>();
+        _hp = GetComponent<HpFloatSync>();
     }
 
     void Start()
@@ -38,16 +40,16 @@ public class Player_Behavior : MonoBehaviour
             print("player ded");
             dead = true;
             gameObject.SetActive(false);
-            Destroy(gameObject);
-            Realtime.Destroy(gameObject);
+            //Destroy(gameObject);
+            //Realtime.Destroy(gameObject);
         }
-        else if (_hp.GetHp() < 25 && !dead)
+        else if (_hp.GetHp() <= 25 && !dead)
         {
 
             //meshObject.GetComponent<SkinnedMeshRenderer>().enabled = false;
             _colorSync.SetColor(new Color(255, 0, 0));
         }
-        else if (_hp.GetHp() < 50 && !dead)
+        else if (_hp.GetHp() <= 50 && !dead)
         {
 
             //meshObject.GetComponent<SkinnedMeshRenderer>().enabled = false;
@@ -61,13 +63,14 @@ public class Player_Behavior : MonoBehaviour
     {
         if (collision.collider.CompareTag("Bullet"))
         {
-            currentHp_Local -= 20;
-            _hp.setHp(currentHp_Local);
+            //currentHp_Local -= 20;
+            _hp.setHp(_hp.GetHp() - 20);
             print("HIT! HP: " + _hp.GetHp());
         }
         else if (collision.collider.CompareTag("SpawnArea") && dead) // Create spawn area tag or something else to check on.
         {
             resetHp();
+            print("SpawnArea collider - HP RESET");
         }
     }
 
@@ -76,17 +79,19 @@ public class Player_Behavior : MonoBehaviour
         if(collision.gameObject.tag == "SpawnArea")
         {
             healthRegain();
+            print("SpawnAreaStay method");
         }
     }
 
 
     private void resetHp()
     {
-        currentHp_Local = 100;
-        _hp.setHp(currentHp_Local);
+        //currentHp_Local = 100;
+        _hp.setHp(100);
         dead = false;
         _colorSync.SetColor(new Color(255,255,255));
-        print("HP has been reset");
+        gameObject.SetActive(true);
+        print("Hp reset method called");
     }
 
     private Color updateColor()
@@ -98,7 +103,12 @@ public class Player_Behavior : MonoBehaviour
 
     private void healthRegain()
     {
-        currentHp_Local += 1; // *time.deltaTime typecast to int.
-        _hp.setHp(currentHp_Local);
+        if (_hp.GetHp() <= 100) {
+            //currentHp_Local += 1; // *time.deltaTime typecast to int.
+            _hp.setHp(_hp.GetHp() +1);
+        }else
+        {
+            gameObject.SetActive(true);
+        }
     }
 }
