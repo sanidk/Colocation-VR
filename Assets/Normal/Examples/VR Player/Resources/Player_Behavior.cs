@@ -74,6 +74,8 @@ public class Player_Behavior : MonoBehaviour
         }
     }
 
+
+    /*
     public void OnTriggerEnter(Collider other)
     {
         print("OnTriggerEnter-Method run");
@@ -98,6 +100,7 @@ public class Player_Behavior : MonoBehaviour
             print("SpawnAreaStay method");
         }
     }
+    */
 
 
     public void resetHp()
