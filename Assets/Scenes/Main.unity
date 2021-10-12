@@ -8477,8 +8477,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.099957, y: 0.0078009963, z: 3.099957}
-  m_Center: {x: -0.00000047683716, y: 0.5793048, z: 0.040739536}
+  m_Size: {x: 3.099957, y: 6.585674, z: 3.099957}
+  m_Center: {x: -0.00000042523982, y: 3.7196262, z: 0.04073957}
 --- !u!1001 &646622364
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11140,8 +11140,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.099957, y: 0.0078009963, z: 3.099957}
-  m_Center: {x: -0.00000047683716, y: 0.5793048, z: 0.040739536}
+  m_Size: {x: 3.128324, y: 6.6727843, z: 3.099957}
+  m_Center: {x: -0.014182174, y: 3.6025515, z: 0.04073957}
 --- !u!1 &835964367
 GameObject:
   m_ObjectHideFlags: 0
@@ -23582,7 +23582,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1612657630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23590,7 +23590,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1612657629}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e933e81d3c20c74ea6fdc708a67e3a5, type: 3}
   m_Name: 
@@ -24430,8 +24430,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.099957, y: 5.4919624, z: 3.099957}
-  m_Center: {x: 0.0000006378597, y: 3.3213906, z: 0.040740527}
+  m_Size: {x: 3.099957, y: 6.211727, z: 3.099957}
+  m_Center: {x: 0.0000006378597, y: 3.6812723, z: 0.040740527}
 --- !u!1001 &1684868193
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26102,7 +26102,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1800632950
 Transform:
   m_ObjectHideFlags: 0
@@ -28421,8 +28421,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.099957, y: 0.0078009963, z: 3.099957}
-  m_Center: {x: -0.0000009536743, y: 0.5793048, z: 0.04074049}
+  m_Size: {x: 3.099957, y: 6.5305314, z: 3.099957}
+  m_Center: {x: -0.0000009567896, y: 3.5090544, z: 0.040740527}
 --- !u!1 &1980489266
 GameObject:
   m_ObjectHideFlags: 0
@@ -31393,7 +31393,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2146580138
 Transform:
   m_ObjectHideFlags: 0
