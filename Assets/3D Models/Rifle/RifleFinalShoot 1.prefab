@@ -2294,8 +2294,8 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   fireSoundSingle: {fileID: 0}
   fireSound: {fileID: 8300000, guid: 1ba8288da0e415c448c27732de5e1bcd, type: 3}
-  reload: {fileID: 8300000, guid: 115640821938e4a3db354a401f3c1daa, type: 3}
-  noAmmo: {fileID: 8300000, guid: 76e64360f41b747cba0a3c5164af0ce3, type: 3}
+  reload: {fileID: 8300000, guid: f15e12c3740a7462783839ebe79c9441, type: 3}
+  noAmmo: {fileID: 8300000, guid: 841197a85068d42bf9c5db364dcc230b, type: 3}
   magazine: {fileID: 0}
   socketInteractor: {fileID: 0}
   isShooting: 0

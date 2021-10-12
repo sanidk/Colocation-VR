@@ -25,6 +25,12 @@ public class GrenadeBehaviour : MonoBehaviour
     bool hasExploded = false; 
     public bool pinIsPulled = false;
 
+     // Coroutine Variable for vibration
+    IEnumerator GrenadeVibrationDelay()
+        {
+            yield return new WaitForSeconds(1.5f);
+            OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.Touch);
+        }
 
     // Start is called before the first frame update
     void Start() {
@@ -73,6 +79,11 @@ public class GrenadeBehaviour : MonoBehaviour
             audioSource.PlayOneShot(smokeSound);
         } else if (this.name == "FragGrenade") {
             audioSource.PlayOneShot(explosionSound);
+
+            // Make controller vibration
+            OVRInput.SetControllerVibration(1, 1, OVRInput.Controller.Touch);
+            StartCoroutine(GrenadeVibrationDelay());
+
         } else if (this.name == "Molotov") {
             audioSource.PlayOneShot(molotovSound);
         }

@@ -247,7 +247,7 @@ MonoBehaviour:
   explosionEffect: {fileID: 1337198075554910, guid: 25c7aa9ad705fe143a4d71c1c8deb7d4, type: 3}
   audioSource: {fileID: 7702543285532438543}
   smokeSound: {fileID: 0}
-  explosionSound: {fileID: 0}
+  explosionSound: {fileID: 8300000, guid: 15ecad24067c74908be9d3ac87a7cf2d, type: 3}
   molotovSound: {fileID: 0}
   pinIsPulled: 0
 --- !u!114 &9111716125410945289

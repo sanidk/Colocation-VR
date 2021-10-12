@@ -1999,10 +1999,10 @@ MonoBehaviour:
   shotPower: 10
   ejectPower: 150
   audioSource: {fileID: 0}
-  fireSoundSingle: {fileID: 8300000, guid: 6c3fcd16d31a95e47af2e7be7f4739a3, type: 3}
-  fireSound: {fileID: 0}
-  reload: {fileID: 8300000, guid: 115640821938e4a3db354a401f3c1daa, type: 3}
-  noAmmo: {fileID: 8300000, guid: 76e64360f41b747cba0a3c5164af0ce3, type: 3}
+  fireSoundSingle: {fileID: 8300000, guid: 9e2dbb8a71e9340e2a7c3ddd59c46d28, type: 3}
+  fireSound: {fileID: 8300000, guid: 9e2dbb8a71e9340e2a7c3ddd59c46d28, type: 3}
+  reload: {fileID: 8300000, guid: ca39905c4239a4076b6cbf5036014747, type: 3}
+  noAmmo: {fileID: 8300000, guid: 2fc25c8b903f248249cc181e3bc94491, type: 3}
   magazine: {fileID: 0}
   socketInteractor: {fileID: 0}
   isShooting: 0
