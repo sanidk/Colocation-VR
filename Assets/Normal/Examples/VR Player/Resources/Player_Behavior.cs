@@ -9,7 +9,7 @@ public class Player_Behavior : MonoBehaviour
     public bool isPlayerReady;
     public float hp;
 
-    private int currentHp_Local = 100;
+    private float currentHp_Local;
     private ColorSync _colorSync;
     private bool dead;
     //private HPSync _hp;
@@ -37,19 +37,21 @@ public class Player_Behavior : MonoBehaviour
 
     void Start()
     {
+        currentHp_Local = 100;
         _hp.setHp(currentHp_Local);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (_hp.GetHp() != previousHp_Local)
+        if (currentHp_Local != previousHp_Local)
         {
+            _hp.setHp(currentHp_Local);
             textMesh.text = "Hp: " + _hp.GetHp();
-            previousHp_Local = _hp.GetHp();
+            previousHp_Local = currentHp_Local;
         }
 
-        if (_hp.GetHp() <= 0 && !dead) // can also just use localHP variable?
+        if (currentHp_Local <= 0 && !dead) // can also just use localHP variable?
         {
             print("player ded");
             dead = true;
@@ -59,16 +61,13 @@ public class Player_Behavior : MonoBehaviour
             //Destroy(gameObject);
             //Realtime.Destroy(gameObject);
         }
-        else if (_hp.GetHp() <= 25 && !dead)
+        else if (currentHp_Local <= 25 && !dead)
         {
-
-            //meshObject.GetComponent<SkinnedMeshRenderer>().enabled = false;
             _colorSync.SetColor(new Color(200, 50, 50));
         }
-        else if (_hp.GetHp() <= 50 && !dead)
+        else if (currentHp_Local <= 50 && !dead)
         {
 
-            //meshObject.GetComponent<SkinnedMeshRenderer>().enabled = false;
             _colorSync.SetColor(new Color(255, 255, 0));
         }
 
@@ -88,37 +87,37 @@ public class Player_Behavior : MonoBehaviour
 
         if (cp.thisCollider.name == "HeadCollider" && collision.collider.CompareTag("Bullet"))
         {
-            _hp.setHp(_hp.GetHp() - 50);
+            currentHp_Local -= 50;
             print("Head hit, HP: " + _hp.GetHp());
         }
         if (cp.thisCollider.name == "TorsoCollider" && collision.collider.CompareTag("Bullet"))
         {
-            _hp.setHp(_hp.GetHp() - 35);
+            currentHp_Local -= 35;
             print("Torso hit, HP: " + _hp.GetHp());
         }
         if (cp.thisCollider.name == "RightThighCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftThighCollider"
             && collision.collider.CompareTag("Bullet"))
         {
-            _hp.setHp(_hp.GetHp() - 20);
+            currentHp_Local -= 20;
             print("Thighs hit, HP: " + _hp.GetHp());
         }
         if (cp.thisCollider.name == "RightShinCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftShinCollider"
             && collision.collider.CompareTag("Bullet"))
         {
-            _hp.setHp(_hp.GetHp() - 10);
+            currentHp_Local -= 10;
             print("Shins hit hit, HP: " + _hp.GetHp());
         }
         if (cp.thisCollider.name == "RightUpperArmCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftUpperArmCollider"
             && collision.collider.CompareTag("Bullet"))
         {
-            _hp.setHp(_hp.GetHp() - 15);
+            currentHp_Local -= 15;
             print("UpperArms hit, HP: " + _hp.GetHp());
         }
 
         if (cp.thisCollider.name == "RightLowerArmCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftLowerArmCollider"
             && collision.collider.CompareTag("Bullet"))
         {
-            _hp.setHp(_hp.GetHp() - 7.5f);
+            currentHp_Local -= 7.5f;
             print("LowerArms HP: " + _hp.GetHp());
         }
         /*
@@ -129,6 +128,8 @@ public class Player_Behavior : MonoBehaviour
             print("HIT! HP: " + _hp.GetHp());
         }
         */
+
+        /*
         if (collision.collider.CompareTag("SpawnArea") && dead) // Create spawn area tag or something else to check on.
         {
             resetHp();
@@ -139,6 +140,7 @@ public class Player_Behavior : MonoBehaviour
             resetHp();
             print("Not DEAD SpawnArea collider - HP RESET");
         }
+        */
     }
 
     /*
@@ -164,11 +166,12 @@ public class Player_Behavior : MonoBehaviour
             resetHp();
             print("ONTRIGGERENTER - DEAD SpawnArea collider - HP RESET");
         }
+        /*
         if (other.CompareTag("SpawnArea") && !dead) // Create spawn area tag or something else to check on.
         {
             resetHp();
             print("ONTRIGGERENTER - Not DEAD SpawnArea collider - HP RESET");
-        }
+        }*/
     }
     /*
     private void OnTriggerStay(Collider other)
@@ -218,7 +221,7 @@ public class Player_Behavior : MonoBehaviour
     {
         //currentHp_Local = 100;
         dead = false;
-        _hp.setHp(100);
+        currentHp_Local = 100;
         _colorSync.SetColor(new Color(255,255,255));
         //gameObject.SetActive(true);
         print("Hp reset method called");
