@@ -72,13 +72,13 @@ public class Player_Behavior : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision) // Works. NOtice that the object needs Bullet tag AND collider AND probably both realtimeview and transform.
     {
-        /*
+        
         foreach (ContactPoint contact in collision.contacts) // Use contact.GetContacts() instead, No garbage
         {
             print(contact.thisCollider.name + " hit " + contact.otherCollider.name);
             //Debug.DrawRay(contact.point, contact.normal, Color.white);
         }
-        */
+        
 
         ContactPoint cp = collision.GetContact(0);
 
@@ -125,12 +125,61 @@ public class Player_Behavior : MonoBehaviour
             print("HIT! HP: " + _hp.GetHp());
         }
         */
-        else if (collision.collider.CompareTag("SpawnArea") && dead) // Create spawn area tag or something else to check on.
+        if (collision.collider.CompareTag("SpawnArea") && dead) // Create spawn area tag or something else to check on.
         {
             resetHp();
-            print("SpawnArea collider - HP RESET");
+            print(" DEAD SpawnArea collider - HP RESET");
+        }
+        if (collision.collider.CompareTag("SpawnArea") && !dead) // Create spawn area tag or something else to check on.
+        {
+            resetHp();
+            print("Not DEAD SpawnArea collider - HP RESET");
         }
     }
+
+    /*
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.collider.CompareTag("SpawnArea") && dead) // Create spawn area tag or something else to check on.
+        {
+            resetHp();
+            print("ONCOLLISIONSTAY - DEAD SpawnArea collider - HP RESET");
+        }
+        if (collision.collider.CompareTag("SpawnArea") && !dead) // Create spawn area tag or something else to check on.
+        {
+            resetHp();
+            print("ONCOLLISIONSTAY - Not DEAD SpawnArea collider - HP RESET");
+        }
+    }*/
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("SpawnArea") && dead) // Create spawn area tag or something else to check on.
+        {
+            resetHp();
+            print("ONTRIGGERENTER - DEAD SpawnArea collider - HP RESET");
+        }
+        if (other.CompareTag("SpawnArea") && !dead) // Create spawn area tag or something else to check on.
+        {
+            resetHp();
+            print("ONTRIGGERENTER - Not DEAD SpawnArea collider - HP RESET");
+        }
+    }
+    /*
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("SpawnArea") && dead) // Create spawn area tag or something else to check on.
+        {
+            resetHp();
+            print("ONTRIGGERENTERSTAY - DEAD SpawnArea collider - HP RESET");
+        }
+        if (other.CompareTag("SpawnArea") && !dead) // Create spawn area tag or something else to check on.
+        {
+            resetHp();
+            print("ONTRIGGERENTERSTAY - Not DEAD SpawnArea collider - HP RESET");
+        }
+    }*/
 
 
     /*
