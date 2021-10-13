@@ -5,6 +5,10 @@ using Normal.Realtime;
 
 public class Player_Behavior : MonoBehaviour
 {
+    public int team;
+    public bool isPlayerReady;
+    public float hp;
+
     private int currentHp_Local = 100;
     private ColorSync _colorSync;
     private bool dead;

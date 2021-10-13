@@ -33,13 +33,14 @@ public class ChooseTeam : MonoBehaviour
             {
 
                 isPressed = true;
-                
 
-            } else
+
+            }
+            else
             {
                 isPressed = false;
             }
-            
+
         }
         else if (rightHandDevices.Count > 1)
         {
@@ -52,31 +53,29 @@ public class ChooseTeam : MonoBehaviour
         print(other.gameObject.name);
         if (isPressed)
         {
-            
+
             if (other.gameObject.name == "Team1")
             {
-                team = 1;
                 //playerReference.GetComponent<PlayerBehaviour>().team = 1;
-                gameReference.GetComponent<GameModeLogic>().team1Players.Add(playerReference);
-                
+                team = 1;
+
             }
 
             if (other.gameObject.name == "Team2")
             {
-                team = 2;
                 //playerReference.GetComponent<PlayerBehaviour>().team = 2;
-                gameReference.GetComponent<GameModeLogic>().team2Players.Add(playerReference);
-                
+                team = 2;
+
             }
 
-            if (team!= 0)
+            if (team != 0)
             {
                 Destroy(other.gameObject);
             }
-            
+
         }
-        
-        
+
+
     }
 
 

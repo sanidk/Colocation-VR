@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Normal.Realtime;
 
 public class GameModeLogic : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class GameModeLogic : MonoBehaviour
     //Go back to spawn on death - respawn instantly. Immunity for 5 seconds when spawning? No zone/area immunity
     //Reward for killstreak in own base?
 
-    
+
 
     //Game Mode 2. 2v2 (Last standing)
     //You play best of X(uneven) rounds (roundsTotal)
@@ -24,7 +25,14 @@ public class GameModeLogic : MonoBehaviour
 
     //Go back to spawn on death - respawn at new round.
 
+    public GameObject networkManager;
+    static RealtimeAvatarManager manager;
+    public Dictionary<int, RealtimeAvatar> avatars;
+    public Dictionary<int, RealtimeAvatar> previousAvatars;
 
+
+    bool isPlayersConnectedAndTeamsAssigned;
+    bool isPlayersReadyToStartGame;
     bool isGameStart;
     bool isRoundStarted;
     int gameWinner;
@@ -86,34 +94,75 @@ public class GameModeLogic : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {   
-        if (!isRoundStarted)
+    {
+        //Get list of players connected
+        if (manager == null)
+        {
+            manager = networkManager.GetComponent<RealtimeAvatarManager>();
+        }
+        else
+        {
+            avatars = manager.avatars;
+            print(avatars.Count);
+            //print("updated: " + avatars.Count);
+
+        }
+
+        if (!isPlayersConnectedAndTeamsAssigned)
+        {
+            if (CheckIfPlayersConnectedAndTeamsAssigned())
+            {
+                isPlayersConnectedAndTeamsAssigned = true;
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        if (!isPlayersReadyToStartGame && !isRoundStarted)
         {
             if (CheckIfAllPlayersReady())
             {
+                isPlayersReadyToStartGame = true;
                 roundStartTime = Time.time;
                 isRoundStarted = true;
             }
         }
-        
+
 
         roundElapsedTime = Time.time - roundStartTime;
 
-        if (CheckRoundWinner() == 1)
+        if (isRoundStarted)
         {
-            team1Score++;
-            ResetAndCreateNewRound();
+            if (CheckRoundWinner() == 1)
+            {
+                team1Score++;
+                ResetAndCreateNewRound();
+                isRoundStarted = false;
 
 
-        } else if (CheckRoundWinner() == 2)
-        {
-            team2Score++;
-            ResetAndCreateNewRound();
-            
+            }
+            else if (CheckRoundWinner() == 2)
+            {
+                team2Score++;
+                ResetAndCreateNewRound();
+                isRoundStarted = false;
+
+            }
         }
 
-        gameWinner = CheckGameWinner();
 
+        if (roundCurrent > roundsTotal)
+        {
+            gameWinner = CheckGameWinner();
+        }
+
+
+
+
+
+        //Update UI
         playersConnectedText.GetComponent<TextMesh>().text = team1Players.Count.ToString() + "/" + team2Players.Count.ToString();
         roundText.GetComponent<TextMesh>().text = roundCurrent.ToString();
         scoreText.GetComponent<TextMesh>().text = team1Score.ToString() + "-" + team2Score.ToString();
@@ -122,45 +171,63 @@ public class GameModeLogic : MonoBehaviour
 
     }
 
+    bool CheckIfPlayersConnectedAndTeamsAssigned()
+    {
+        if (avatars.Count != teamSize * 2) return false;
+
+        bool isTeamsSet = true;
+        team1Players.Clear();
+        team2Players.Clear();
+
+        for (int i = 0; i < avatars.Count; i++)
+        {
+            RealtimeAvatar player = avatars[i];
+            int team;
+            team = player.gameObject.GetComponent<Player_Behavior>().team;
+
+            if (team == 0)
+            {
+                isTeamsSet = false;
+                return false;
+            }
+            else if (team == 1)
+            {
+                team1Players.Add(player.gameObject);
+
+            }
+            else if (team == 2)
+            {
+                team2Players.Add(player.gameObject);
+
+            }
+        }
+
+
+
+        return isTeamsSet;
+    }
+
     bool CheckIfAllPlayersReady()
     {
-        if (team1Players.Count != teamSize || team2Players.Count != teamSize) { 
-            return false; 
-        }
-
-        bool isTeam1Ready = true;
-        bool isTeam2Ready = true;
-
-        foreach (GameObject obj in team1Players)
-        {
-            //CREATE IS PLAYER READY VARIABLE IN PLAYER STATS
-            /*
-            if (!obj.GetComponent<PlayerBehaviour>()._isPlayerReady)
-            {
-                isTeam1Ready = false;
-            }
-            */
-        }
-
-        foreach (GameObject obj in team2Players)
-        {
-            //CREATE IS PLAYER READY VARIABLE IN PLAYER STATS
-            /*
-            if (!obj.GetComponent<PlayerBehaviour>()._isPlayerReady)
-            {
-                isTeam2Ready = false;
-            }
-            */
-        }
-
-        if (isTeam1Ready && isTeam2Ready)
-        {
-            return true;
-        }
-        else
+        if (avatars.Count != teamSize * 2)
         {
             return false;
         }
+
+        bool isTeamsReady = true;
+
+        for (int i = 0; i < avatars.Count; i++)
+        {
+            RealtimeAvatar player = avatars[i];
+
+            if (!player.gameObject.GetComponent<Player_Behavior>().isPlayerReady)
+            {
+                isTeamsReady = false;
+            }
+
+        }
+
+        return isTeamsReady;
 
 
     }
@@ -174,7 +241,7 @@ public class GameModeLogic : MonoBehaviour
 
     int CheckRoundWinner()
     {
-        
+
         if (gameMode == 1)
         {
             if (roundElapsedTime > roundTotalTime)
@@ -191,18 +258,21 @@ public class GameModeLogic : MonoBehaviour
                 {
                     return 3;
                 }
-            } else
+            }
+            else
             {
                 return 0;
             }
-            
-        } else if (gameMode == 2)
+
+        }
+        else if (gameMode == 2)
         {
             bool isTeam1Dead = true;
             bool isTeam2Dead = true;
 
-            foreach (GameObject obj in team1Players){
-                if (obj.GetComponent<PlayerStats>()._health > 0)
+            foreach (GameObject obj in team1Players)
+            {
+                if (obj.GetComponent<Player_Behavior>().hp > 0)
                 {
                     isTeam1Dead = false;
                 }
@@ -210,7 +280,7 @@ public class GameModeLogic : MonoBehaviour
 
             foreach (GameObject obj in team1Players)
             {
-                if (obj.GetComponent<PlayerStats>()._health > 0)
+                if (obj.GetComponent<Player_Behavior>().hp > 0)
                 {
                     isTeam2Dead = false;
                 }
@@ -219,23 +289,29 @@ public class GameModeLogic : MonoBehaviour
             if (isTeam1Dead && isTeam2Dead)
             {
                 return 3;
-            } else if (isTeam1Dead)
+            }
+            else if (isTeam1Dead)
             {
                 return 2;
-            } else if (isTeam2Dead)
+            }
+            else if (isTeam2Dead)
             {
                 return 1;
-            } else
+            }
+            else
             {
                 return 0;
             }
 
 
-        } else
+        }
+        else
         {
             return 0;
         }
     }
+
+
 
     int CheckGameWinner()
     {
@@ -244,14 +320,17 @@ public class GameModeLogic : MonoBehaviour
             if (team1Score > team2Score)
             {
                 return 1;
-            } else if (team2Score > team1Score)
+            }
+            else if (team2Score > team1Score)
             {
                 return 2;
-            } else
+            }
+            else
             {
                 return 3;
             }
-        } else
+        }
+        else
         {
             return 0;
         }
