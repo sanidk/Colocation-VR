@@ -17,6 +17,10 @@ public class Player_Behavior : MonoBehaviour
     Collider coll;
     //public GameObject Hitbox_Head;
     //public GameObject Hitbox_Torso;
+    private float previousHp_Local;
+
+    public GameObject textMeshObject;
+    TextMesh textMesh;
 
     private void Awake()
     {
@@ -24,21 +28,29 @@ public class Player_Behavior : MonoBehaviour
         _colorSync = meshObject.GetComponent<ColorSync>();
         _hp = GetComponent<HpFloatSync>();
         //coll = meshObject.GetComponent<CapsuleCollider>();
+        textMesh = textMeshObject.GetComponent<TextMesh>();
     }
 
     void Start()
     {
-        _hp.setHp(currentHp_Local); //
+        _hp.setHp(currentHp_Local);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (_hp.GetHp() != previousHp_Local)
+        {
+            textMesh.text = "Hp: " + _hp.GetHp();
+            previousHp_Local = _hp.GetHp();
+        }
+
         if (_hp.GetHp() <= 0 && !dead) // can also just use localHP variable?
         {
             print("player ded");
             dead = true;
             _colorSync.SetColor(new Color(255,0,0));
+            meshObject.GetComponent<MeshRenderer>().enabled = false;
             //gameObject.SetActive(false);
             //Destroy(gameObject);
             //Realtime.Destroy(gameObject);
@@ -60,13 +72,59 @@ public class Player_Behavior : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision) // Works. NOtice that the object needs Bullet tag AND collider AND probably both realtimeview and transform.
     {
-        print("OnCollisionEnter-Method run");
+        /*
+        foreach (ContactPoint contact in collision.contacts) // Use contact.GetContacts() instead, No garbage
+        {
+            print(contact.thisCollider.name + " hit " + contact.otherCollider.name);
+            //Debug.DrawRay(contact.point, contact.normal, Color.white);
+        }
+        */
+
+        ContactPoint cp = collision.GetContact(0);
+
+        if (cp.thisCollider.name == "HeadCollider" && collision.collider.CompareTag("Bullet"))
+        {
+            _hp.setHp(_hp.GetHp() - 50);
+            print("Head hit, HP: " + _hp.GetHp());
+        }
+        if (cp.thisCollider.name == "TorsoCollider" && collision.collider.CompareTag("Bullet"))
+        {
+            _hp.setHp(_hp.GetHp() - 35);
+            print("Torso hit, HP: " + _hp.GetHp());
+        }
+        if (cp.thisCollider.name == "RightThighCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftThighCollider"
+            && collision.collider.CompareTag("Bullet"))
+        {
+            _hp.setHp(_hp.GetHp() - 20);
+            print("Thighs hit, HP: " + _hp.GetHp());
+        }
+        if (cp.thisCollider.name == "RightShinCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftShinCollider"
+            && collision.collider.CompareTag("Bullet"))
+        {
+            _hp.setHp(_hp.GetHp() - 10);
+            print("Shins hit hit, HP: " + _hp.GetHp());
+        }
+        if (cp.thisCollider.name == "RightUpperArmCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftUpperArmCollider"
+            && collision.collider.CompareTag("Bullet"))
+        {
+            _hp.setHp(_hp.GetHp() - 15);
+            print("UpperArms hit, HP: " + _hp.GetHp());
+        }
+
+        if (cp.thisCollider.name == "RightLowerArmCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftLowerArmCollider"
+            && collision.collider.CompareTag("Bullet"))
+        {
+            _hp.setHp(_hp.GetHp() - 7.5f);
+            print("LowerArms HP: " + _hp.GetHp());
+        }
+        /*
         if (collision.collider.CompareTag("Bullet"))
         {
             //currentHp_Local -= 20;
             _hp.setHp(_hp.GetHp() - 20);
             print("HIT! HP: " + _hp.GetHp());
         }
+        */
         else if (collision.collider.CompareTag("SpawnArea") && dead) // Create spawn area tag or something else to check on.
         {
             resetHp();
@@ -106,11 +164,12 @@ public class Player_Behavior : MonoBehaviour
     public void resetHp()
     {
         //currentHp_Local = 100;
-        _hp.setHp(100);
         dead = false;
+        _hp.setHp(100);
         _colorSync.SetColor(new Color(255,255,255));
         //gameObject.SetActive(true);
         print("Hp reset method called");
+        meshObject.GetComponent<MeshRenderer>().enabled = true;
     }
 
     private Color updateColor()
