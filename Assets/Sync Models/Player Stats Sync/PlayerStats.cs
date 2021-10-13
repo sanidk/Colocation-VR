@@ -16,6 +16,14 @@ public class PlayerStats : MonoBehaviour
     public int _ammo = default;
     public int _previousAmmo = default;
 
+    [SerializeField]
+    public bool _isReady = default;
+    public bool _previousIsReady = default;
+
+    [SerializeField]
+    public int _team = default;
+    public int _previousTeam = default;
+
     public PlayerStatsSync _playerStatsSync;
 
     private void Awake()
@@ -32,5 +40,26 @@ public class PlayerStats : MonoBehaviour
             _playerStatsSync.SetHealth(_health);
             _previousHealth = _health;
         }
+
+        if (_energy != _previousEnergy) {
+            _playerStatsSync.SetEnergy(_energy);
+            _previousEnergy = _energy;
+        }
+
+        if (_ammo != _previousAmmo) {
+            _playerStatsSync.SetAmmo(_ammo);
+            _previousAmmo = _ammo;
+        }
+
+        if (_isReady != _previousIsReady) {
+            _playerStatsSync.SetIsReady(_isReady);
+            _previousIsReady = _isReady;
+        }
+
+        if (_team != _previousTeam) {
+            _playerStatsSync.SetTeam(_team);
+            _previousTeam = _team;
+        }
+
     }
 }
