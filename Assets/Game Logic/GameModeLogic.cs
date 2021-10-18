@@ -278,7 +278,7 @@ public class GameModeLogic : MonoBehaviour
                 }
             }
 
-            foreach (GameObject obj in team1Players)
+            foreach (GameObject obj in team2Players)
             {
                 if (obj.GetComponent<Player_Behavior>().hp > 0)
                 {

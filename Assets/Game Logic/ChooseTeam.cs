@@ -70,7 +70,7 @@ public class ChooseTeam : MonoBehaviour
 
             if (team != 0)
             {
-                Destroy(other.gameObject);
+                //Destroy(other.gameObject);
             }
 
         }
