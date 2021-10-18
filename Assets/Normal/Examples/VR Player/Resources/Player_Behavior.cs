@@ -72,7 +72,7 @@ public class Player_Behavior : MonoBehaviour
         }
 
     }
-
+    
     public void OnCollisionEnter(Collision collision) // Works. NOtice that the object needs Bullet tag AND collider AND probably both realtimeview and transform.
     {
         
@@ -88,29 +88,34 @@ public class Player_Behavior : MonoBehaviour
         if (cp.thisCollider.name == "HeadCollider" && collision.collider.CompareTag("Bullet"))
         {
             currentHp_Local -= 50;
+            _hp.setHp(currentHp_Local);
             print("Head hit, HP: " + _hp.GetHp());
         }
         if (cp.thisCollider.name == "TorsoCollider" && collision.collider.CompareTag("Bullet"))
         {
             currentHp_Local -= 35;
+            _hp.setHp(currentHp_Local);
             print("Torso hit, HP: " + _hp.GetHp());
         }
         if (cp.thisCollider.name == "RightThighCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftThighCollider"
             && collision.collider.CompareTag("Bullet"))
         {
             currentHp_Local -= 20;
+            _hp.setHp(currentHp_Local);
             print("Thighs hit, HP: " + _hp.GetHp());
         }
         if (cp.thisCollider.name == "RightShinCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftShinCollider"
             && collision.collider.CompareTag("Bullet"))
         {
             currentHp_Local -= 10;
+            _hp.setHp(currentHp_Local);
             print("Shins hit hit, HP: " + _hp.GetHp());
         }
         if (cp.thisCollider.name == "RightUpperArmCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftUpperArmCollider"
             && collision.collider.CompareTag("Bullet"))
         {
             currentHp_Local -= 15;
+            _hp.setHp(currentHp_Local);
             print("UpperArms hit, HP: " + _hp.GetHp());
         }
 
@@ -118,6 +123,7 @@ public class Player_Behavior : MonoBehaviour
             && collision.collider.CompareTag("Bullet"))
         {
             currentHp_Local -= 7.5f;
+            _hp.setHp(currentHp_Local);
             print("LowerArms HP: " + _hp.GetHp());
         }
         /*
@@ -166,6 +172,62 @@ public class Player_Behavior : MonoBehaviour
             resetHp();
             print("ONTRIGGERENTER - DEAD SpawnArea collider - HP RESET");
         }
+
+        /*
+        Collision collision = new Collision();
+
+        ContactPoint cp = collision.GetContact(0);
+
+        if (cp.thisCollider.name == "HeadCollider" && other.CompareTag("Bullet"))
+        {
+            currentHp_Local -= 50;
+            _hp.setHp(currentHp_Local);
+            print("Head hit, HP: " + _hp.GetHp());
+        }
+        if (cp.thisCollider.name == "TorsoCollider" && other.CompareTag("Bullet"))
+        {
+            currentHp_Local -= 35;
+            _hp.setHp(currentHp_Local);
+            print("Torso hit, HP: " + _hp.GetHp());
+        }
+        if (cp.thisCollider.name == "RightThighCollider" && other.CompareTag("Bullet") || cp.thisCollider.name == "LeftThighCollider"
+            && other.CompareTag("Bullet"))
+        {
+            currentHp_Local -= 20;
+            _hp.setHp(currentHp_Local);
+            print("Thighs hit, HP: " + _hp.GetHp());
+        }
+        if (cp.thisCollider.name == "RightShinCollider" && other.CompareTag("Bullet") || cp.thisCollider.name == "LeftShinCollider"
+            && other.CompareTag("Bullet"))
+        {
+            currentHp_Local -= 10;
+            _hp.setHp(currentHp_Local);
+            print("Shins hit hit, HP: " + _hp.GetHp());
+        }
+        if (cp.thisCollider.name == "RightUpperArmCollider" && other.CompareTag("Bullet") || cp.thisCollider.name == "LeftUpperArmCollider"
+            && other.CompareTag("Bullet"))
+        {
+            currentHp_Local -= 15;
+            _hp.setHp(currentHp_Local);
+            print("UpperArms hit, HP: " + _hp.GetHp());
+        }
+
+        if (cp.thisCollider.name == "RightLowerArmCollider" && other.CompareTag("Bullet") || cp.thisCollider.name == "LeftLowerArmCollider"
+            && other.CompareTag("Bullet"))
+        {
+            currentHp_Local -= 7.5f;
+            _hp.setHp(currentHp_Local);
+            print("LowerArms HP: " + _hp.GetHp());
+        }
+
+        if (other.CompareTag("Bullet"))
+        {
+            currentHp_Local -= 2;
+            _hp.setHp(currentHp_Local);
+            print("DefaultIstrigger HP: " + _hp.GetHp());
+        }*/
+
+
         /*
         if (other.CompareTag("SpawnArea") && !dead) // Create spawn area tag or something else to check on.
         {
