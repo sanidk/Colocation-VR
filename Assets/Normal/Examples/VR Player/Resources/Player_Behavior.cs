@@ -9,7 +9,7 @@ public class Player_Behavior : MonoBehaviour
     public bool isPlayerReady;
     public float hp;
 
-    private float currentHp_Local;
+    //private float currentHp_Local;
     private ColorSync _colorSync;
     private bool dead;
     //private HPSync _hp;
@@ -37,21 +37,21 @@ public class Player_Behavior : MonoBehaviour
 
     void Start()
     {
-        currentHp_Local = 100;
-        _hp.setHp(currentHp_Local);
+        hp = 100;
+        _hp.setHp(hp);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (currentHp_Local != previousHp_Local)
+        if (hp != previousHp_Local)
         {
-            _hp.setHp(currentHp_Local);
+            _hp.setHp(hp);
             textMesh.text = "Hp: " + _hp.GetHp();
-            previousHp_Local = currentHp_Local;
+            previousHp_Local = hp;
         }
 
-        if (currentHp_Local <= 0 && !dead) // can also just use localHP variable?
+        if (hp <= 0 && !dead) // can also just use localHP variable?
         {
             print("player ded");
             dead = true;
@@ -61,11 +61,11 @@ public class Player_Behavior : MonoBehaviour
             //Destroy(gameObject);
             //Realtime.Destroy(gameObject);
         }
-        else if (currentHp_Local <= 25 && !dead)
+        else if (hp <= 25 && !dead)
         {
             _colorSync.SetColor(new Color(200, 50, 50));
         }
-        else if (currentHp_Local <= 50 && !dead)
+        else if (hp <= 50 && !dead)
         {
 
             _colorSync.SetColor(new Color(255, 255, 0));
@@ -87,43 +87,43 @@ public class Player_Behavior : MonoBehaviour
 
         if (cp.thisCollider.name == "HeadCollider" && collision.collider.CompareTag("Bullet"))
         {
-            currentHp_Local -= 50;
-            _hp.setHp(currentHp_Local);
+            hp -= 50;
+            _hp.setHp(hp);
             print("Head hit, HP: " + _hp.GetHp());
         }
         if (cp.thisCollider.name == "TorsoCollider" && collision.collider.CompareTag("Bullet"))
         {
-            currentHp_Local -= 35;
-            _hp.setHp(currentHp_Local);
+            hp -= 35;
+            _hp.setHp(hp);
             print("Torso hit, HP: " + _hp.GetHp());
         }
         if (cp.thisCollider.name == "RightThighCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftThighCollider"
             && collision.collider.CompareTag("Bullet"))
         {
-            currentHp_Local -= 20;
-            _hp.setHp(currentHp_Local);
+            hp -= 20;
+            _hp.setHp(hp);
             print("Thighs hit, HP: " + _hp.GetHp());
         }
         if (cp.thisCollider.name == "RightShinCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftShinCollider"
             && collision.collider.CompareTag("Bullet"))
         {
-            currentHp_Local -= 10;
-            _hp.setHp(currentHp_Local);
+            hp -= 10;
+            _hp.setHp(hp);
             print("Shins hit hit, HP: " + _hp.GetHp());
         }
         if (cp.thisCollider.name == "RightUpperArmCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftUpperArmCollider"
             && collision.collider.CompareTag("Bullet"))
         {
-            currentHp_Local -= 15;
-            _hp.setHp(currentHp_Local);
+            hp -= 15;
+            _hp.setHp(hp);
             print("UpperArms hit, HP: " + _hp.GetHp());
         }
 
         if (cp.thisCollider.name == "RightLowerArmCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftLowerArmCollider"
             && collision.collider.CompareTag("Bullet"))
         {
-            currentHp_Local -= 7.5f;
-            _hp.setHp(currentHp_Local);
+            hp -= 7.5f;
+            _hp.setHp(hp);
             print("LowerArms HP: " + _hp.GetHp());
         }
         /*
@@ -283,7 +283,7 @@ public class Player_Behavior : MonoBehaviour
     {
         //currentHp_Local = 100;
         dead = false;
-        currentHp_Local = 100;
+        hp = 100;
         _colorSync.SetColor(new Color(255,255,255));
         //gameObject.SetActive(true);
         print("Hp reset method called");
