@@ -572,3 +572,11 @@ Received Import Request.
 Start importing Assets/Resources/VR Player - Speedball.prefab using Guid(ecdc2cf924408504ea3c6df80a8787b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '793ad37d58aa968705fc6cfaf7e04071') in 0.183685 seconds 
   Import took 0.196467 seconds .
 
+========================================================================
+Received Import Request.
+  Time since last request: 129.566106 seconds.
+  path: Assets/Resources/VR Player - Speedball.prefab
+  artifactKey: Guid(ecdc2cf924408504ea3c6df80a8787b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/VR Player - Speedball.prefab using Guid(ecdc2cf924408504ea3c6df80a8787b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '106949f8521fcaafd88f6407c5adfbb3') in 0.205693 seconds 
+  Import took 0.218500 seconds .
+
