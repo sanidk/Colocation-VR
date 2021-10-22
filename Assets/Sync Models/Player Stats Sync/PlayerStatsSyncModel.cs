@@ -16,14 +16,10 @@ public partial class PlayerStatsSyncModel
     [RealtimeProperty(2, false, true)]
     private float _energy;
 
-    //Ammo probably doesnt need to be synced so this can maybe be used for something else I guess.
     [RealtimeProperty(3, false, true)]
-    private int _ammo;
-
-    [RealtimeProperty(4, false, true)]
     private bool _isReady;
 
-    [RealtimeProperty(5, false, true)]
+    [RealtimeProperty(4, false, true)]
     private int _team;
 }
 
@@ -50,18 +46,6 @@ public partial class PlayerStatsSyncModel : RealtimeModel {
             _energyProperty.value = value;
             InvalidateUnreliableLength();
             FireEnergyDidChange(value);
-        }
-    }
-    
-    public int ammo {
-        get {
-            return _ammoProperty.value;
-        }
-        set {
-            if (_ammoProperty.value == value) return;
-            _ammoProperty.value = value;
-            InvalidateUnreliableLength();
-            FireAmmoDidChange(value);
         }
     }
     
@@ -92,16 +76,14 @@ public partial class PlayerStatsSyncModel : RealtimeModel {
     public delegate void PropertyChangedHandler<in T>(PlayerStatsSyncModel model, T value);
     public event PropertyChangedHandler<float> healthDidChange;
     public event PropertyChangedHandler<float> energyDidChange;
-    public event PropertyChangedHandler<int> ammoDidChange;
     public event PropertyChangedHandler<bool> isReadyDidChange;
     public event PropertyChangedHandler<int> teamDidChange;
     
     public enum PropertyID : uint {
         Health = 1,
         Energy = 2,
-        Ammo = 3,
-        IsReady = 4,
-        Team = 5,
+        IsReady = 3,
+        Team = 4,
     }
     
     #region Properties
@@ -109,8 +91,6 @@ public partial class PlayerStatsSyncModel : RealtimeModel {
     private UnreliableProperty<float> _healthProperty;
     
     private UnreliableProperty<float> _energyProperty;
-    
-    private UnreliableProperty<int> _ammoProperty;
     
     private UnreliableProperty<bool> _isReadyProperty;
     
@@ -121,9 +101,8 @@ public partial class PlayerStatsSyncModel : RealtimeModel {
     public PlayerStatsSyncModel() : base(null) {
         _healthProperty = new UnreliableProperty<float>(1, _health);
         _energyProperty = new UnreliableProperty<float>(2, _energy);
-        _ammoProperty = new UnreliableProperty<int>(3, _ammo);
-        _isReadyProperty = new UnreliableProperty<bool>(4, _isReady);
-        _teamProperty = new UnreliableProperty<int>(5, _team);
+        _isReadyProperty = new UnreliableProperty<bool>(3, _isReady);
+        _teamProperty = new UnreliableProperty<int>(4, _team);
     }
     
     private void FireHealthDidChange(float value) {
@@ -137,14 +116,6 @@ public partial class PlayerStatsSyncModel : RealtimeModel {
     private void FireEnergyDidChange(float value) {
         try {
             energyDidChange?.Invoke(this, value);
-        } catch (System.Exception exception) {
-            UnityEngine.Debug.LogException(exception);
-        }
-    }
-    
-    private void FireAmmoDidChange(int value) {
-        try {
-            ammoDidChange?.Invoke(this, value);
         } catch (System.Exception exception) {
             UnityEngine.Debug.LogException(exception);
         }
@@ -170,7 +141,6 @@ public partial class PlayerStatsSyncModel : RealtimeModel {
         var length = 0;
         length += _healthProperty.WriteLength(context);
         length += _energyProperty.WriteLength(context);
-        length += _ammoProperty.WriteLength(context);
         length += _isReadyProperty.WriteLength(context);
         length += _teamProperty.WriteLength(context);
         return length;
@@ -180,7 +150,6 @@ public partial class PlayerStatsSyncModel : RealtimeModel {
         var writes = false;
         writes |= _healthProperty.Write(stream, context);
         writes |= _energyProperty.Write(stream, context);
-        writes |= _ammoProperty.Write(stream, context);
         writes |= _isReadyProperty.Write(stream, context);
         writes |= _teamProperty.Write(stream, context);
         if (writes) InvalidateContextLength(context);
@@ -199,11 +168,6 @@ public partial class PlayerStatsSyncModel : RealtimeModel {
                 case (uint) PropertyID.Energy: {
                     changed = _energyProperty.Read(stream, context);
                     if (changed) FireEnergyDidChange(energy);
-                    break;
-                }
-                case (uint) PropertyID.Ammo: {
-                    changed = _ammoProperty.Read(stream, context);
-                    if (changed) FireAmmoDidChange(ammo);
                     break;
                 }
                 case (uint) PropertyID.IsReady: {
@@ -231,7 +195,6 @@ public partial class PlayerStatsSyncModel : RealtimeModel {
     private void UpdateBackingFields() {
         _health = health;
         _energy = energy;
-        _ammo = ammo;
         _isReady = isReady;
         _team = team;
     }

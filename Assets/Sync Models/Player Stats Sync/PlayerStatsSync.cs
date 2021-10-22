@@ -25,7 +25,6 @@ public class PlayerStatsSync : RealtimeComponent<PlayerStatsSyncModel>
             // Unregister from events
             previousModel.healthDidChange -= HealthDidChange;
             previousModel.energyDidChange -= EnergyDidChange;
-            previousModel.ammoDidChange -= AmmoDidChange;
             previousModel.isReadyDidChange -= IsReadyDidChange;
             previousModel.teamDidChange -= TeamDidChange;
 
@@ -37,7 +36,6 @@ public class PlayerStatsSync : RealtimeComponent<PlayerStatsSyncModel>
             if (currentModel.isFreshModel) {
                 currentModel.health = _playerStats._health;
                 currentModel.energy = _playerStats._energy;
-                currentModel.ammo = _playerStats._ammo;
                 currentModel.isReady = _playerStats._isReady;
                 currentModel.team = _playerStats._team;
                 }
@@ -45,14 +43,12 @@ public class PlayerStatsSync : RealtimeComponent<PlayerStatsSyncModel>
             // Update the mesh render to match the new model
             UpdateHealth();
             UpdateEnergy();
-            UpdateAmmo();
             UpdateIsReady();
             UpdateTeam();
 
             // Register for events so we'll know if the color changes later
             currentModel.healthDidChange += HealthDidChange;
             currentModel.energyDidChange += EnergyDidChange;
-            currentModel.ammoDidChange += AmmoDidChange;
             currentModel.isReadyDidChange += IsReadyDidChange;
             currentModel.teamDidChange += TeamDidChange;
         }
@@ -67,11 +63,6 @@ public class PlayerStatsSync : RealtimeComponent<PlayerStatsSyncModel>
     private void EnergyDidChange(PlayerStatsSyncModel model, float value) 
     {
         UpdateEnergy();
-    }
-
-    private void AmmoDidChange(PlayerStatsSyncModel model, int value) 
-    {
-        UpdateAmmo();
     }
 
     private void IsReadyDidChange(PlayerStatsSyncModel model, bool value) 
@@ -96,10 +87,6 @@ public class PlayerStatsSync : RealtimeComponent<PlayerStatsSyncModel>
         _playerStats._energy = model.energy;
     }
 
-    private void UpdateAmmo() {
-        _playerStats._ammo = model.ammo;
-    }
-
     private void UpdateIsReady() {
         _playerStats._isReady = model.isReady;
     }
@@ -119,10 +106,6 @@ public class PlayerStatsSync : RealtimeComponent<PlayerStatsSyncModel>
 
         model.energy = energy;
 
-    }
-
-    public void SetAmmo(int ammo) {
-        model.ammo = ammo;
     }
 
     public void SetIsReady(bool isReady) {

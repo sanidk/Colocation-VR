@@ -13,10 +13,6 @@ public class PlayerStats : MonoBehaviour
     public float _previousEnergy = default;
 
     [SerializeField]
-    public int _ammo = default;
-    public int _previousAmmo = default;
-
-    [SerializeField]
     public bool _isReady = default;
     public bool _previousIsReady = default;
 
@@ -44,11 +40,6 @@ public class PlayerStats : MonoBehaviour
         if (_energy != _previousEnergy) {
             _playerStatsSync.SetEnergy(_energy);
             _previousEnergy = _energy;
-        }
-
-        if (_ammo != _previousAmmo) {
-            _playerStatsSync.SetAmmo(_ammo);
-            _previousAmmo = _ammo;
         }
 
         if (_isReady != _previousIsReady) {
