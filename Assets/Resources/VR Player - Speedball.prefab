@@ -293,6 +293,7 @@ GameObject:
   - component: {fileID: 6027024882831077591}
   - component: {fileID: 2959350644607061117}
   - component: {fileID: 63484684034565116}
+  - component: {fileID: -3078369984816020322}
   m_Layer: 0
   m_Name: VR Player - Speedball
   m_TagString: Untagged
@@ -445,6 +446,27 @@ MonoBehaviour:
   hp: 0
   meshObject: {fileID: 5368400542620523126}
   textMeshObject: {fileID: 8442229361831297434}
+--- !u!114 &-3078369984816020322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1435502846325602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d59e66db79c4e94dab44300da0d03c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 0
+  _previousHealth: 0
+  _energy: 0
+  _previousEnergy: 0
+  _isReady: 0
+  _previousIsReady: 0
+  _team: 0
+  _previousTeam: 0
+  _playerStatsSync: {fileID: 0}
 --- !u!1 &1573471737031190
 GameObject:
   m_ObjectHideFlags: 0

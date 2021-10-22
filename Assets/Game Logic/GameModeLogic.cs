@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Normal.Realtime;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class GameModeLogic : MonoBehaviour
 {
@@ -72,6 +74,7 @@ public class GameModeLogic : MonoBehaviour
     public GameObject killsText;
     public GameObject timeText;
     public GameObject winnerText;
+    public GameObject debugText;
 
     // Start is called before the first frame update
     void Start()
@@ -95,6 +98,14 @@ public class GameModeLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Update UI
+        playersConnectedText.GetComponent<TextMesh>().text = team1Players.Count.ToString() + "/" + team2Players.Count.ToString();
+        roundText.GetComponent<TextMesh>().text = roundCurrent.ToString();
+        scoreText.GetComponent<TextMesh>().text = team1Score.ToString() + "-" + team2Score.ToString();
+        killsText.GetComponent<TextMesh>().text = team1Kills.ToString() + "-" + team2Kills.ToString();
+        timeText.GetComponent<TextMesh>().text = (roundTotalTime - roundElapsedTime).ToString();
+        debugText.GetComponent<TextMesh>().text = "hello world";//GetComponent<PlayerStats>()._health.ToString();
+
         //Get list of players connected
         if (manager == null)
         {
@@ -162,13 +173,16 @@ public class GameModeLogic : MonoBehaviour
 
 
 
-        //Update UI
-        playersConnectedText.GetComponent<TextMesh>().text = team1Players.Count.ToString() + "/" + team2Players.Count.ToString();
-        roundText.GetComponent<TextMesh>().text = roundCurrent.ToString();
-        scoreText.GetComponent<TextMesh>().text = team1Score.ToString() + "-" + team2Score.ToString();
-        killsText.GetComponent<TextMesh>().text = team1Kills.ToString() + "-" + team2Kills.ToString();
-        timeText.GetComponent<TextMesh>().text = (roundTotalTime - roundElapsedTime).ToString();
-
+        
+        
+        /*
+        playersConnectedText.text = team1Players.Count.ToString() + "/" + team2Players.Count.ToString();
+        roundText.text = roundCurrent.ToString();
+        scoreText.text = team1Score.ToString() + "-" + team2Score.ToString();
+        killsText.text = team1Kills.ToString() + "-" + team2Kills.ToString();
+        timeText.text = (roundTotalTime - roundElapsedTime).ToString();
+        debugText.text = "hello world";//GetComponent<PlayerStats>()._health.ToString();
+        */
     }
 
     bool CheckIfPlayersConnectedAndTeamsAssigned()
@@ -183,7 +197,7 @@ public class GameModeLogic : MonoBehaviour
         {
             RealtimeAvatar player = avatars[i];
             int team;
-            team = player.gameObject.GetComponent<Player_Behavior>().team;
+            team = player.gameObject.GetComponent<PlayerStats>()._team;
 
             if (team == 0)
             {
@@ -220,7 +234,7 @@ public class GameModeLogic : MonoBehaviour
         {
             RealtimeAvatar player = avatars[i];
 
-            if (!player.gameObject.GetComponent<Player_Behavior>().isPlayerReady)
+            if (!player.gameObject.GetComponent<PlayerStats>()._isReady)
             {
                 isTeamsReady = false;
             }
@@ -272,7 +286,7 @@ public class GameModeLogic : MonoBehaviour
 
             foreach (GameObject obj in team1Players)
             {
-                if (obj.GetComponent<Player_Behavior>().hp > 0)
+                if (obj.GetComponent<PlayerStats>()._health > 0)
                 {
                     isTeam1Dead = false;
                 }
@@ -280,7 +294,7 @@ public class GameModeLogic : MonoBehaviour
 
             foreach (GameObject obj in team2Players)
             {
-                if (obj.GetComponent<Player_Behavior>().hp > 0)
+                if (obj.GetComponent<PlayerStats>()._health > 0)
                 {
                     isTeam2Dead = false;
                 }

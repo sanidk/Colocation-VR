@@ -50,7 +50,7 @@ public class ChooseTeam : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        print(other.gameObject.name);
+        //print(other.gameObject.name);
         if (isPressed)
         {
 
