@@ -7,7 +7,7 @@ public class Player_Behavior : MonoBehaviour
 {
     public int team;
     public bool isPlayerReady;
-    public float hp;
+    public float hp = 100;
 
     //private float currentHp_Local;
     private ColorSync _colorSync;
@@ -57,9 +57,6 @@ public class Player_Behavior : MonoBehaviour
             dead = true;
             _colorSync.SetColor(new Color(255,0,0));
             meshObject.GetComponent<MeshRenderer>().enabled = false;
-            //gameObject.SetActive(false);
-            //Destroy(gameObject);
-            //Realtime.Destroy(gameObject);
         }
         else if (hp <= 25 && !dead)
         {
@@ -75,15 +72,16 @@ public class Player_Behavior : MonoBehaviour
     
     public void OnCollisionEnter(Collision collision) // Works. NOtice that the object needs Bullet tag AND collider AND probably both realtimeview and transform.
     {
-        
+        /*
         foreach (ContactPoint contact in collision.contacts) // Use contact.GetContacts() instead, No garbage
         {
             print(contact.thisCollider.name + " hit " + contact.otherCollider.name);
             //Debug.DrawRay(contact.point, contact.normal, Color.white);
         }
+        */
         
 
-        ContactPoint cp = collision.GetContact(0);
+        ContactPoint cp = collision.GetContact(0); // ??
 
         if (cp.thisCollider.name == "HeadCollider" && collision.collider.CompareTag("Bullet"))
         {
@@ -126,27 +124,17 @@ public class Player_Behavior : MonoBehaviour
             _hp.setHp(hp);
             print("LowerArms HP: " + _hp.GetHp());
         }
-        /*
+
         if (collision.collider.CompareTag("Bullet"))
         {
-            //currentHp_Local -= 20;
-            _hp.setHp(_hp.GetHp() - 20);
-            print("HIT! HP: " + _hp.GetHp());
+            collision.gameObject.SetActive(false);
         }
-        */
-
         /*
         if (collision.collider.CompareTag("SpawnArea") && dead) // Create spawn area tag or something else to check on.
         {
             resetHp();
             print(" DEAD SpawnArea collider - HP RESET");
-        }
-        if (collision.collider.CompareTag("SpawnArea") && !dead) // Create spawn area tag or something else to check on.
-        {
-            resetHp();
-            print("Not DEAD SpawnArea collider - HP RESET");
-        }
-        */
+        }*/
     }
 
     /*
@@ -167,10 +155,23 @@ public class Player_Behavior : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("SpawnArea") && dead) // Create spawn area tag or something else to check on.
+        if (other.CompareTag("ReviveCapsule") && dead) // Create spawn area tag or something else to check on.
         {
             resetHp();
-            print("ONTRIGGERENTER - DEAD SpawnArea collider - HP RESET");
+            //print("ONTRIGGERENTER - DEAD SpawnArea collider - HP RESET");
+        }
+
+        if (team == 1 && other.CompareTag("Spawnarea_Blue"))
+        {
+            isPlayerReady = true;
+        }
+        else if (team == 2 && other.CompareTag("Spawnarea_Red"))
+        {
+            isPlayerReady = true;
+        }
+        else
+        {
+            isPlayerReady = false;
         }
 
         /*
@@ -235,49 +236,6 @@ public class Player_Behavior : MonoBehaviour
             print("ONTRIGGERENTER - Not DEAD SpawnArea collider - HP RESET");
         }*/
     }
-    /*
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.CompareTag("SpawnArea") && dead) // Create spawn area tag or something else to check on.
-        {
-            resetHp();
-            print("ONTRIGGERENTERSTAY - DEAD SpawnArea collider - HP RESET");
-        }
-        if (other.CompareTag("SpawnArea") && !dead) // Create spawn area tag or something else to check on.
-        {
-            resetHp();
-            print("ONTRIGGERENTERSTAY - Not DEAD SpawnArea collider - HP RESET");
-        }
-    }*/
-
-
-    /*
-    public void OnTriggerEnter(Collider other)
-    {
-        print("OnTriggerEnter-Method run");
-        if (other.CompareTag("Bullet"))
-        {
-            //currentHp_Local -= 20;
-            _hp.setHp(_hp.GetHp() - 20);
-            print("HIT! HP: " + _hp.GetHp());
-        }
-        else if (other.CompareTag("SpawnArea") && dead) // Create spawn area tag or something else to check on.
-        {
-            resetHp();
-            print("SpawnArea collider - HP RESET");
-        }
-    }
-
-    public void OnCollisionStay(Collision collision)
-    {
-        if(collision.gameObject.tag == "SpawnArea" && !dead)
-        {
-            healthRegain();
-            print("SpawnAreaStay method");
-        }
-    }
-    */
-
 
     public void resetHp()
     {

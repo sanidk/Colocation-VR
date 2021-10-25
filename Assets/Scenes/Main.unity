@@ -1125,7 +1125,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 2d21d8b25041840459b4a45057edc238, type: 2}
     - target: {fileID: 8924464069615281752, guid: 1fee94072334cea4a9f23077c62fc899, type: 3}
       propertyPath: m_TagString
-      value: SpawnArea
+      value: ReviveCapsule
       objectReference: {fileID: 0}
     - target: {fileID: 8924464069615281752, guid: 1fee94072334cea4a9f23077c62fc899, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -2196,6 +2196,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1204202452}
     m_Modifications:
+    - target: {fileID: 3277885095020542566, guid: 348d1abb74a70a74ebe01e2ba034c282, type: 3}
+      propertyPath: ejectPower
+      value: 150
+      objectReference: {fileID: 0}
     - target: {fileID: 5057414536717663595, guid: 348d1abb74a70a74ebe01e2ba034c282, type: 3}
       propertyPath: _realtime
       value: 
@@ -5790,6 +5794,10 @@ PrefabInstance:
     - target: {fileID: 759752109955786381, guid: a347a7d0a66d26f4bb56427a347ee8a3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3790589127572757695, guid: a347a7d0a66d26f4bb56427a347ee8a3, type: 3}
+      propertyPath: shotPower
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 4201340653110119205, guid: a347a7d0a66d26f4bb56427a347ee8a3, type: 3}
       propertyPath: _realtime
@@ -9601,6 +9609,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1204202452}
     m_Modifications:
+    - target: {fileID: 2905195303100497046, guid: 5c5e2aeefe226de458937c70873459fe, type: 3}
+      propertyPath: shotPower
+      value: 150
+      objectReference: {fileID: 0}
     - target: {fileID: 5184156557154769475, guid: 5c5e2aeefe226de458937c70873459fe, type: 3}
       propertyPath: m_Name
       value: RifleFinalShoot 1 (1)
@@ -10224,6 +10236,10 @@ PrefabInstance:
     - target: {fileID: 759752109955786381, guid: a347a7d0a66d26f4bb56427a347ee8a3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3790589127572757695, guid: a347a7d0a66d26f4bb56427a347ee8a3, type: 3}
+      propertyPath: shotPower
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 4201340653110119205, guid: a347a7d0a66d26f4bb56427a347ee8a3, type: 3}
       propertyPath: _realtime
@@ -11118,6 +11134,101 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 780623825}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &783224615
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 783224619}
+  - component: {fileID: 783224618}
+  - component: {fileID: 783224617}
+  - component: {fileID: 783224616}
+  m_Layer: 0
+  m_Name: SpawnAreaRedSide
+  m_TagString: Spawnarea_Red
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &783224616
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 783224615}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &783224617
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 783224615}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &783224618
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 783224615}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &783224619
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 783224615}
+  m_LocalRotation: {x: -0, y: -0.24867146, z: -0, w: 0.96858793}
+  m_LocalPosition: {x: -10.46, y: 0.93, z: -10.84}
+  m_LocalScale: {x: 4.3863287, y: 1.835472, z: 6.7011476}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 24
+  m_LocalEulerAnglesHint: {x: 0, y: -28.798, z: 0}
 --- !u!1001 &786532336
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14611,6 +14722,10 @@ PrefabInstance:
       propertyPath: spreadCustomCurve.m_Curve.Array.data[0].value
       value: 0.08055556
       objectReference: {fileID: 0}
+    - target: {fileID: 2905195303100497046, guid: 5c5e2aeefe226de458937c70873459fe, type: 3}
+      propertyPath: shotPower
+      value: 150
+      objectReference: {fileID: 0}
     - target: {fileID: 5184156557154769475, guid: 5c5e2aeefe226de458937c70873459fe, type: 3}
       propertyPath: m_Name
       value: RifleFinalShoot 1 (4)
@@ -17367,6 +17482,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1204202452}
     m_Modifications:
+    - target: {fileID: 3277885095020542566, guid: 348d1abb74a70a74ebe01e2ba034c282, type: 3}
+      propertyPath: ejectPower
+      value: 150
+      objectReference: {fileID: 0}
     - target: {fileID: 5057414536717663595, guid: 348d1abb74a70a74ebe01e2ba034c282, type: 3}
       propertyPath: _realtime
       value: 
@@ -22989,7 +23108,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 7ea30375af6a625418f8484062f8fd26, type: 2}
     - target: {fileID: 8924464069615281752, guid: 1fee94072334cea4a9f23077c62fc899, type: 3}
       propertyPath: m_TagString
-      value: SpawnArea
+      value: ReviveCapsule
       objectReference: {fileID: 0}
     - target: {fileID: 8924464069615281752, guid: 1fee94072334cea4a9f23077c62fc899, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -29092,6 +29211,101 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &1840367497
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1840367501}
+  - component: {fileID: 1840367500}
+  - component: {fileID: 1840367499}
+  - component: {fileID: 1840367498}
+  m_Layer: 0
+  m_Name: SpawnAreaBlueSide
+  m_TagString: Spawnarea_Blue
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &1840367498
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1840367497}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1840367499
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1840367497}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1840367500
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1840367497}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1840367501
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1840367497}
+  m_LocalRotation: {x: -0, y: -0.707453, z: -0, w: 0.70676047}
+  m_LocalPosition: {x: -0.21, y: 0.93, z: -0.03}
+  m_LocalScale: {x: 3.1764038, y: 2.2446716, z: 6.214577}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 25
+  m_LocalEulerAnglesHint: {x: 0, y: -90.056, z: 0}
 --- !u!1001 &1848917004
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31345,7 +31559,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 2d21d8b25041840459b4a45057edc238, type: 2}
     - target: {fileID: 8924464069615281752, guid: 1fee94072334cea4a9f23077c62fc899, type: 3}
       propertyPath: m_TagString
-      value: SpawnArea
+      value: ReviveCapsule
       objectReference: {fileID: 0}
     - target: {fileID: 8924464069615281752, guid: 1fee94072334cea4a9f23077c62fc899, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -33377,7 +33591,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 7ea30375af6a625418f8484062f8fd26, type: 2}
     - target: {fileID: 8924464069615281752, guid: 1fee94072334cea4a9f23077c62fc899, type: 3}
       propertyPath: m_TagString
-      value: SpawnArea
+      value: ReviveCapsule
       objectReference: {fileID: 0}
     - target: {fileID: 8924464069615281752, guid: 1fee94072334cea4a9f23077c62fc899, type: 3}
       propertyPath: m_StaticEditorFlags

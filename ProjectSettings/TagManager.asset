@@ -7,7 +7,9 @@ TagManager:
   - Gun
   - Magazine
   - Bullet
-  - SpawnArea
+  - ReviveCapsule
+  - Spawnarea_Blue
+  - Spawnarea_Red
   layers:
   - Default
   - TransparentFX
