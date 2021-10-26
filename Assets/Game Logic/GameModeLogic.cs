@@ -146,24 +146,8 @@ public class GameModeLogic : MonoBehaviour
                 debugText.GetComponent<TextMesh>().text = "all players ready";
             } else
             {
-                debugText.GetComponent<TextMesh>().text = "players not ready" + "team "+GetComponent<PlayerStats>()._team + " I am ready: "+GetComponent<PlayerStats>()._isReady;
-                /*
-                string notreadyplayers = "";
-                for (int i = 0; i < avatars.Count; i++)
-                {
-                    RealtimeAvatar player = avatars[i];
-
-                    if (!player.gameObject.GetComponent<PlayerStats>()._isReady)
-                    {
-                        
-                        string oldstring = notreadyplayers;
-                        notreadyplayers = oldstring + player.gameObject.GetComponent<PlayerStats>()._team.ToString() + GetComponent<PlayerStats>()._isReady.ToString();
-                    }
-
-                }
-
-                debugText.GetComponent<TextMesh>().text = notreadyplayers;
-                */
+                debugText.GetComponent<TextMesh>().text = "players not ready";
+                
             }
 
         } 
@@ -172,6 +156,7 @@ public class GameModeLogic : MonoBehaviour
         
         if (isRoundStarted)
         {
+            debugText.GetComponent<TextMesh>().text = "round started successfully";
             roundElapsedTime = Time.time - roundStartTime;
             //debugText.GetComponent<TextMesh>().text = "round started";
             /*
@@ -222,7 +207,7 @@ public class GameModeLogic : MonoBehaviour
 
     bool CheckIfPlayersConnectedAndTeamsAssigned()
     {
-        if (avatars.Count != teamSize * 2) return false;
+        if (avatars.Count < teamSize * 2) return false;
 
         bool isTeamsSet = true;
         team1Players.Clear();
