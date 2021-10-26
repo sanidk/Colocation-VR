@@ -103,7 +103,7 @@ public class GameModeLogic : MonoBehaviour
         roundText.GetComponent<TextMesh>().text = roundCurrent.ToString();
         scoreText.GetComponent<TextMesh>().text = team1Score.ToString() + "-" + team2Score.ToString();
         killsText.GetComponent<TextMesh>().text = team1Kills.ToString() + "-" + team2Kills.ToString();
-        timeText.GetComponent<TextMesh>().text = (roundTotalTime - roundElapsedTime).ToString();
+        timeText.GetComponent<TextMesh>().text = (roundElapsedTime).ToString();
         debugText.GetComponent<TextMesh>().text = "hello world"; //GetComponent<PlayerStats>()._health.ToString();
 
         //Get list of players connected
@@ -124,7 +124,7 @@ public class GameModeLogic : MonoBehaviour
             if (CheckIfPlayersConnectedAndTeamsAssigned())
             {
                 isPlayersConnectedAndTeamsAssigned = true;
-                print("teams assigned success");
+                debugText.GetComponent<TextMesh>().text = "teams assigned success";
             }
             else
             {
@@ -141,15 +141,17 @@ public class GameModeLogic : MonoBehaviour
                 isPlayersReadyToStartGame = true;
                 roundStartTime = Time.time;
                 isRoundStarted = true;
-                print("players ready");
+                debugText.GetComponent<TextMesh>().text = "all players ready";
             }
         }
 
 
-        roundElapsedTime = Time.time - roundStartTime;
-
+        
         if (isRoundStarted)
         {
+            roundElapsedTime = Time.time - roundStartTime;
+
+
             if (CheckRoundWinner() == 1)
             {
                 team1Score++;
@@ -217,11 +219,8 @@ public class GameModeLogic : MonoBehaviour
             else if (team == 2)
             {
                 team2Players.Add(player.gameObject);
-
             }
         }
-
-
 
         return isTeamsSet;
     }
