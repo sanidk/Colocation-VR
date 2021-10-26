@@ -166,6 +166,37 @@ public class Player_Behavior : MonoBehaviour
             //print("ONTRIGGERENTER - DEAD SpawnArea collider - HP RESET");
         }
 
+        //if (playerStats._team == 1 && other.CompareTag("Spawnarea_Blue"))
+        //{
+        //    playerStats._isReady = true;
+        //    //isPlayerReady = true;
+        //}
+        //else if (playerStats._team == 2 && other.CompareTag("Spawnarea_Blue")) // Change to red spawnarea
+        //{
+        //    playerStats._isReady = true;
+        //}
+        //else
+        //{
+        //    playerStats._isReady = false;
+        //}
+
+        if(other.name == "Team1")
+        {
+            playerStats._team = 1;
+            print("team1 chosen - Player behavior");
+        }
+        if (other.name == "Team2")
+        {
+            playerStats._team = 2;
+            print("team2 chosen - Player behavior");
+        }
+
+        
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+
         if (playerStats._team == 1 && other.CompareTag("Spawnarea_Blue"))
         {
             playerStats._isReady = true;
@@ -180,79 +211,8 @@ public class Player_Behavior : MonoBehaviour
             playerStats._isReady = false;
         }
 
-        if(other.name == "Team1")
-        {
-            playerStats._team = 1;
-            print("team1 chosen - Player behavior");
-        }
-        if (other.name == "Team2")
-        {
-            playerStats._team = 2;
-            print("team2 chosen - Player behavior");
-        }
-
-        /*
-        Collision collision = new Collision();
-
-        ContactPoint cp = collision.GetContact(0);
-
-        if (cp.thisCollider.name == "HeadCollider" && other.CompareTag("Bullet"))
-        {
-            currentHp_Local -= 50;
-            _hp.setHp(currentHp_Local);
-            print("Head hit, HP: " + _hp.GetHp());
-        }
-        if (cp.thisCollider.name == "TorsoCollider" && other.CompareTag("Bullet"))
-        {
-            currentHp_Local -= 35;
-            _hp.setHp(currentHp_Local);
-            print("Torso hit, HP: " + _hp.GetHp());
-        }
-        if (cp.thisCollider.name == "RightThighCollider" && other.CompareTag("Bullet") || cp.thisCollider.name == "LeftThighCollider"
-            && other.CompareTag("Bullet"))
-        {
-            currentHp_Local -= 20;
-            _hp.setHp(currentHp_Local);
-            print("Thighs hit, HP: " + _hp.GetHp());
-        }
-        if (cp.thisCollider.name == "RightShinCollider" && other.CompareTag("Bullet") || cp.thisCollider.name == "LeftShinCollider"
-            && other.CompareTag("Bullet"))
-        {
-            currentHp_Local -= 10;
-            _hp.setHp(currentHp_Local);
-            print("Shins hit hit, HP: " + _hp.GetHp());
-        }
-        if (cp.thisCollider.name == "RightUpperArmCollider" && other.CompareTag("Bullet") || cp.thisCollider.name == "LeftUpperArmCollider"
-            && other.CompareTag("Bullet"))
-        {
-            currentHp_Local -= 15;
-            _hp.setHp(currentHp_Local);
-            print("UpperArms hit, HP: " + _hp.GetHp());
-        }
-
-        if (cp.thisCollider.name == "RightLowerArmCollider" && other.CompareTag("Bullet") || cp.thisCollider.name == "LeftLowerArmCollider"
-            && other.CompareTag("Bullet"))
-        {
-            currentHp_Local -= 7.5f;
-            _hp.setHp(currentHp_Local);
-            print("LowerArms HP: " + _hp.GetHp());
-        }
-
-        if (other.CompareTag("Bullet"))
-        {
-            currentHp_Local -= 2;
-            _hp.setHp(currentHp_Local);
-            print("DefaultIstrigger HP: " + _hp.GetHp());
-        }*/
-
-
-        /*
-        if (other.CompareTag("SpawnArea") && !dead) // Create spawn area tag or something else to check on.
-        {
-            resetHp();
-            print("ONTRIGGERENTER - Not DEAD SpawnArea collider - HP RESET");
-        }*/
     }
+
 
     public void resetHp()
     {
