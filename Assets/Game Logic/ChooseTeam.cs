@@ -9,11 +9,18 @@ public class ChooseTeam : MonoBehaviour
     bool isPressed;
     public GameObject playerReference;
     public GameObject gameReference;
+    PlayerStats playerStats;
     // Start is called before the first frame update
     void Start()
     {
         //playerReference = this.gameObject;
         gameReference = GameObject.Find("GameManager");
+        print("print works");
+    }
+
+    private void Awake()
+    {
+        playerStats = GetComponent<PlayerStats>();
     }
 
     // Update is called once per frame
@@ -33,6 +40,7 @@ public class ChooseTeam : MonoBehaviour
             {
 
                 isPressed = true;
+                //print("pressed");
 
 
             }
@@ -57,20 +65,24 @@ public class ChooseTeam : MonoBehaviour
             if (other.gameObject.name == "Team1")
             {
                 //playerReference.GetComponent<PlayerBehaviour>().team = 1;
+                playerStats._team = 1;
                 team = 1;
+                print("team1");
 
             }
 
             if (other.gameObject.name == "Team2")
             {
                 //playerReference.GetComponent<PlayerBehaviour>().team = 2;
+                playerStats._team = 2;
                 team = 2;
+                print("team2");
 
             }
 
-            if (team != 0)
+            if (playerStats._team != 0)
             {
-                //Destroy(other.gameObject);
+                Destroy(other.gameObject);
             }
 
         }

@@ -114,7 +114,7 @@ public class GameModeLogic : MonoBehaviour
         else
         {
             avatars = manager.avatars;
-            print(avatars.Count);
+            
             //print("updated: " + avatars.Count);
 
         }
