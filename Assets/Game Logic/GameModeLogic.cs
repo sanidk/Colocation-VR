@@ -104,7 +104,7 @@ public class GameModeLogic : MonoBehaviour
         scoreText.GetComponent<TextMesh>().text = team1Score.ToString() + "-" + team2Score.ToString();
         killsText.GetComponent<TextMesh>().text = team1Kills.ToString() + "-" + team2Kills.ToString();
         timeText.GetComponent<TextMesh>().text = (roundTotalTime - roundElapsedTime).ToString();
-        debugText.GetComponent<TextMesh>().text = "hello world";//GetComponent<PlayerStats>()._health.ToString();
+        debugText.GetComponent<TextMesh>().text = "hello world"; //GetComponent<PlayerStats>()._health.ToString();
 
         //Get list of players connected
         if (manager == null)
@@ -124,12 +124,15 @@ public class GameModeLogic : MonoBehaviour
             if (CheckIfPlayersConnectedAndTeamsAssigned())
             {
                 isPlayersConnectedAndTeamsAssigned = true;
+                print("teams assigned success");
             }
             else
             {
                 return;
             }
         }
+
+        
 
         if (!isPlayersReadyToStartGame && !isRoundStarted)
         {
@@ -138,6 +141,7 @@ public class GameModeLogic : MonoBehaviour
                 isPlayersReadyToStartGame = true;
                 roundStartTime = Time.time;
                 isRoundStarted = true;
+                print("players ready");
             }
         }
 
