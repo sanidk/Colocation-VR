@@ -145,8 +145,8 @@ public class GameModeLogic : MonoBehaviour
                 debugText.GetComponent<TextMesh>().text = "all players ready";
             } else
             {
-                //debugText.GetComponent<TextMesh>().text = "players not ready" + "team "+GetComponent<PlayerStats>()._team + " I am ready: "+GetComponent<PlayerStats>()._isReady;
-
+                debugText.GetComponent<TextMesh>().text = "players not ready" + "team "+GetComponent<PlayerStats>()._team + " I am ready: "+GetComponent<PlayerStats>()._isReady;
+                /*
                 string notreadyplayers = "";
                 for (int i = 0; i < avatars.Count; i++)
                 {
@@ -162,6 +162,7 @@ public class GameModeLogic : MonoBehaviour
                 }
 
                 debugText.GetComponent<TextMesh>().text = notreadyplayers;
+                */
             }
 
         }
