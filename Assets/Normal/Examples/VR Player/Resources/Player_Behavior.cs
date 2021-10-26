@@ -180,6 +180,17 @@ public class Player_Behavior : MonoBehaviour
             playerStats._isReady = false;
         }
 
+        if(other.name == "Team1")
+        {
+            playerStats._team = 1;
+            print("team1 chosen - Player behavior");
+        }
+        if (other.name == "Team2")
+        {
+            playerStats._team = 2;
+            print("team2 chosen - Player behavior");
+        }
+
         /*
         Collision collision = new Collision();
 

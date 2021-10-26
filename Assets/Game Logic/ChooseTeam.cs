@@ -56,6 +56,7 @@ public class ChooseTeam : MonoBehaviour
         }
     }
 
+    /*
     private void OnTriggerStay(Collider other)
     {
         //print("ONTRIGGERSTAY");
@@ -89,7 +90,7 @@ public class ChooseTeam : MonoBehaviour
         }
 
 
-    }
+    }*/
     /*
     private void OnCollisionEnter(Collision collision)
     {
@@ -110,7 +111,7 @@ public class ChooseTeam : MonoBehaviour
 
     }*/
 
-    
+    /*
     private void OnTriggerEnter(Collider other)
     {
         print("ONTRIGGERENTER METHOD");
@@ -137,7 +138,7 @@ public class ChooseTeam : MonoBehaviour
             Destroy(other.gameObject);
         }
 
-    }
+    }*/
 
 
 
