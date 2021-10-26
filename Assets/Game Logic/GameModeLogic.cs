@@ -166,6 +166,9 @@ public class GameModeLogic : MonoBehaviour
                 */
             }
 
+        } else
+        {
+            debugText.GetComponent<TextMesh>().text = "players not ready" + "team " + GetComponent<PlayerStats>()._team + " I am ready: " + GetComponent<PlayerStats>()._isReady;
         }
 
 
