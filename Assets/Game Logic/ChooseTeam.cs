@@ -58,6 +58,7 @@ public class ChooseTeam : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        //print("ONTRIGGERSTAY");
         //print(other.gameObject.name);
         if (isPressed)
         {
@@ -87,6 +88,54 @@ public class ChooseTeam : MonoBehaviour
 
         }
 
+
+    }
+    /*
+    private void OnCollisionEnter(Collision collision)
+    {
+        print("ONCOLLISIONENTER METHOD");
+
+        if(collision.collider.name == "Team1")
+        {
+            playerStats._team = 1;
+            team = 1;
+            print("team1");
+        }
+        if (collision.collider.name == "Team2")
+        {
+            playerStats._team = 2;
+            team = 2;
+            print("team1");
+        }
+
+    }*/
+
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        print("ONTRIGGERENTER METHOD");
+        if (other.gameObject.name == "Team1")
+        {
+            //playerReference.GetComponent<PlayerBehaviour>().team = 1;
+            playerStats._team = 1;
+            team = 1;
+            print("team1");
+
+        }
+
+        if (other.gameObject.name == "Team2")
+        {
+            //playerReference.GetComponent<PlayerBehaviour>().team = 2;
+            playerStats._team = 2;
+            team = 2;
+            print("team2");
+
+        }
+
+        if (playerStats._team != 0)
+        {
+            Destroy(other.gameObject);
+        }
 
     }
 
