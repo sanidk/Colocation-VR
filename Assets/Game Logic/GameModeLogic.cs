@@ -56,7 +56,7 @@ public class GameModeLogic : MonoBehaviour
 
     public int roundCurrent;
     int roundsPlayed;
-    int roundsTotal;
+    int roundsTotal = 3;
 
     int team1Kills;
     int team2Kills;
@@ -166,10 +166,7 @@ public class GameModeLogic : MonoBehaviour
                 */
             }
 
-        } else
-        {
-            debugText.GetComponent<TextMesh>().text = "players not ready" + "team " + GetComponent<PlayerStats>()._team + " I am ready: " + GetComponent<PlayerStats>()._isReady;
-        }
+        } 
 
 
         
@@ -177,7 +174,7 @@ public class GameModeLogic : MonoBehaviour
         {
             roundElapsedTime = Time.time - roundStartTime;
             //debugText.GetComponent<TextMesh>().text = "round started";
-
+            /*
             if (CheckRoundWinner() == 1)
             {
                 team1Score++;
@@ -197,6 +194,7 @@ public class GameModeLogic : MonoBehaviour
                 //debugText.GetComponent<TextMesh>().text = "round winner team 2";
                 roundText.GetComponent<TextMesh>().text = "round winner team 2";
             }
+            */
         }
 
 
