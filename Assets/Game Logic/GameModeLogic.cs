@@ -47,7 +47,7 @@ public class GameModeLogic : MonoBehaviour
     public List<GameObject> team2Players = new List<GameObject>();
 
     //is players dead
-    public float roundTotalTime;
+    float roundTotalTime = 60;
     float roundStartTime;
     float roundElapsedTime;
 
@@ -137,6 +137,7 @@ public class GameModeLogic : MonoBehaviour
 
         if (!isPlayersReadyToStartGame && !isRoundStarted)
         {
+            debugText.GetComponent<TextMesh>().text = "checking if players ready";
             if (CheckIfAllPlayersReady())
             {
                 isPlayersReadyToStartGame = true;
