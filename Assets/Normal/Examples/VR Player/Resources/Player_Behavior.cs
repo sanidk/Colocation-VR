@@ -26,6 +26,8 @@ public class Player_Behavior : MonoBehaviour
     public GameObject textMeshObject;
     TextMesh textMesh;
 
+    PlayerStats playerStats;
+
     private void Awake()
     {
         //_colorSync = GetComponentInChildren<ColorSync>();
@@ -33,6 +35,7 @@ public class Player_Behavior : MonoBehaviour
         _hp = GetComponent<HpFloatSync>();
         //coll = meshObject.GetComponent<CapsuleCollider>();
         textMesh = textMeshObject.GetComponent<TextMesh>();
+        playerStats = GetComponent<PlayerStats>();
     }
 
     void Start()
@@ -165,15 +168,16 @@ public class Player_Behavior : MonoBehaviour
 
         if (team == 1 && other.CompareTag("Spawnarea_Blue"))
         {
-            isPlayerReady = true;
+            playerStats._isReady = true;
+            //isPlayerReady = true;
         }
         else if (team == 2 && other.CompareTag("Spawnarea_Red"))
         {
-            isPlayerReady = true;
+            playerStats._isReady = true;
         }
         else
         {
-            isPlayerReady = false;
+            playerStats._isReady = false;
         }
 
         /*
