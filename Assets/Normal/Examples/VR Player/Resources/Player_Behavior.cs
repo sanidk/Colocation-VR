@@ -44,29 +44,31 @@ public class Player_Behavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         if (hp != previousHp_Local)
         {
             _hp.setHp(hp);
             textMesh.text = "Hp: " + _hp.GetHp();
             previousHp_Local = hp;
-        }
+        }*/
 
-        if (hp <= 0 && !dead) // can also just use localHP variable?
+        if (_hp.GetHp() <= 0 && !dead) // can also just use localHP variable?
         {
             print("player ded");
             dead = true;
             _colorSync.SetColor(new Color(255,0,0));
             meshObject.GetComponent<MeshRenderer>().enabled = false;
         }
-        else if (hp <= 25 && !dead)
+        else if (_hp.GetHp() <= 25 && !dead)
         {
             _colorSync.SetColor(new Color(200, 50, 50));
         }
-        else if (hp <= 50 && !dead)
+        else if (_hp.GetHp() <= 50 && !dead)
         {
 
             _colorSync.SetColor(new Color(255, 255, 0));
         }
+        textMesh.text = "HP: " + _hp.GetHp(); // change dis
 
     }
     
@@ -86,43 +88,43 @@ public class Player_Behavior : MonoBehaviour
         if (cp.thisCollider.name == "HeadCollider" && collision.collider.CompareTag("Bullet"))
         {
             hp -= 50;
-            _hp.setHp(hp);
-            print("Head hit, HP: " + _hp.GetHp());
+            _hp.setHp(_hp.GetHp() - 50);
+            //print("Head hit, HP: " + _hp.GetHp());
         }
         if (cp.thisCollider.name == "TorsoCollider" && collision.collider.CompareTag("Bullet"))
         {
             hp -= 35;
-            _hp.setHp(hp);
-            print("Torso hit, HP: " + _hp.GetHp());
+            _hp.setHp(_hp.GetHp() - 35);
+            //print("Torso hit, HP: " + _hp.GetHp());
         }
         if (cp.thisCollider.name == "RightThighCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftThighCollider"
             && collision.collider.CompareTag("Bullet"))
         {
             hp -= 20;
-            _hp.setHp(hp);
-            print("Thighs hit, HP: " + _hp.GetHp());
+            _hp.setHp(_hp.GetHp() - 20);
+            //print("Thighs hit, HP: " + _hp.GetHp());
         }
         if (cp.thisCollider.name == "RightShinCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftShinCollider"
             && collision.collider.CompareTag("Bullet"))
         {
             hp -= 10;
-            _hp.setHp(hp);
-            print("Shins hit hit, HP: " + _hp.GetHp());
+            _hp.setHp(_hp.GetHp() - 10);
+            //print("Shins hit hit, HP: " + _hp.GetHp());
         }
         if (cp.thisCollider.name == "RightUpperArmCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftUpperArmCollider"
             && collision.collider.CompareTag("Bullet"))
         {
             hp -= 15;
-            _hp.setHp(hp);
-            print("UpperArms hit, HP: " + _hp.GetHp());
+            _hp.setHp(_hp.GetHp() - 15);
+            //print("UpperArms hit, HP: " + _hp.GetHp());
         }
 
         if (cp.thisCollider.name == "RightLowerArmCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftLowerArmCollider"
             && collision.collider.CompareTag("Bullet"))
         {
             hp -= 7.5f;
-            _hp.setHp(hp);
-            print("LowerArms HP: " + _hp.GetHp());
+            _hp.setHp(_hp.GetHp() - 7.5f);
+            //print("LowerArms HP: " + _hp.GetHp());
         }
 
         if (collision.collider.CompareTag("Bullet"))
