@@ -210,6 +210,7 @@ public class GameModeLogic : MonoBehaviour
             }
             else if (team == 1)
             {
+
                 team1Players.Add(player.gameObject);
 
             }
