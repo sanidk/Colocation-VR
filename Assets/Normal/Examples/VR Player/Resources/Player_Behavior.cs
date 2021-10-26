@@ -166,12 +166,12 @@ public class Player_Behavior : MonoBehaviour
             //print("ONTRIGGERENTER - DEAD SpawnArea collider - HP RESET");
         }
 
-        if (team == 1 && other.CompareTag("Spawnarea_Blue"))
+        if (playerStats._team == 1 && other.CompareTag("Spawnarea_Blue"))
         {
             playerStats._isReady = true;
             //isPlayerReady = true;
         }
-        else if (team == 2 && other.CompareTag("Spawnarea_Red"))
+        else if (playerStats._team == 2 && other.CompareTag("Spawnarea_Blue")) // Change to red spawnarea
         {
             playerStats._isReady = true;
         }
