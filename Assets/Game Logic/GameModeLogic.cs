@@ -103,7 +103,7 @@ public class GameModeLogic : MonoBehaviour
         roundText.GetComponent<TextMesh>().text = roundCurrent.ToString();
         scoreText.GetComponent<TextMesh>().text = team1Score.ToString() + "-" + team2Score.ToString();
         killsText.GetComponent<TextMesh>().text = team1Kills.ToString() + "-" + team2Kills.ToString();
-        timeText.GetComponent<TextMesh>().text = (roundElapsedTime).ToString();
+        timeText.GetComponent<TextMesh>().text = roundElapsedTime.ToString();
         //debugText.GetComponent<TextMesh>().text = "hello world"; //GetComponent<PlayerStats>()._health.ToString();
 
         //Get list of players connected
@@ -145,8 +145,25 @@ public class GameModeLogic : MonoBehaviour
                 debugText.GetComponent<TextMesh>().text = "all players ready";
             } else
             {
-                debugText.GetComponent<TextMesh>().text = "players not ready";
+                //debugText.GetComponent<TextMesh>().text = "players not ready" + "team "+GetComponent<PlayerStats>()._team + " I am ready: "+GetComponent<PlayerStats>()._isReady;
+
+                string notreadyplayers = "";
+                for (int i = 0; i < avatars.Count; i++)
+                {
+                    RealtimeAvatar player = avatars[i];
+
+                    if (!player.gameObject.GetComponent<PlayerStats>()._isReady)
+                    {
+                        
+                        string oldstring = notreadyplayers;
+                        notreadyplayers = oldstring + player.gameObject.GetComponent<PlayerStats>()._team.ToString() + GetComponent<PlayerStats>()._isReady.ToString();
+                    }
+
+                }
+
+                debugText.GetComponent<TextMesh>().text = notreadyplayers;
             }
+
         }
 
 
@@ -154,13 +171,16 @@ public class GameModeLogic : MonoBehaviour
         if (isRoundStarted)
         {
             roundElapsedTime = Time.time - roundStartTime;
-            debugText.GetComponent<TextMesh>().text = "round started";
+            //debugText.GetComponent<TextMesh>().text = "round started";
 
             if (CheckRoundWinner() == 1)
             {
                 team1Score++;
                 ResetAndCreateNewRound();
                 isRoundStarted = false;
+                //debugText.GetComponent<TextMesh>().text = "round winner team 1";
+                roundText.GetComponent<TextMesh>().text = "round winner team 1";
+
 
 
             }
@@ -169,7 +189,8 @@ public class GameModeLogic : MonoBehaviour
                 team2Score++;
                 ResetAndCreateNewRound();
                 isRoundStarted = false;
-
+                //debugText.GetComponent<TextMesh>().text = "round winner team 2";
+                roundText.GetComponent<TextMesh>().text = "round winner team 2";
             }
         }
 
@@ -177,6 +198,7 @@ public class GameModeLogic : MonoBehaviour
         if (roundCurrent > roundsTotal)
         {
             gameWinner = CheckGameWinner();
+            roundText.GetComponent<TextMesh>().text = gameWinner.ToString();
         }
 
 
