@@ -128,6 +128,7 @@ public class GameModeLogic : MonoBehaviour
             }
             else
             {
+                debugText.GetComponent<TextMesh>().text = "teams assigned failed";
                 return;
             }
         }
@@ -142,6 +143,9 @@ public class GameModeLogic : MonoBehaviour
                 roundStartTime = Time.time;
                 isRoundStarted = true;
                 debugText.GetComponent<TextMesh>().text = "all players ready";
+            } else
+            {
+                debugText.GetComponent<TextMesh>().text = "players not ready";
             }
         }
 
@@ -150,7 +154,7 @@ public class GameModeLogic : MonoBehaviour
         if (isRoundStarted)
         {
             roundElapsedTime = Time.time - roundStartTime;
-
+            debugText.GetComponent<TextMesh>().text = "round started";
 
             if (CheckRoundWinner() == 1)
             {
