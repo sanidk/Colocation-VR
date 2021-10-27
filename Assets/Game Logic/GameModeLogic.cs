@@ -8,7 +8,7 @@ using UnityEngine.UIElements;
 public class GameModeLogic : MonoBehaviour
 {
     [Header("Game Mode: 1: Most Kills, 2: Rounds")]
-    public int gameMode; //if 1 kills, if 2 rounds
+    int gameMode = 2; //if 1 kills, if 2 rounds
 
     //Game Mode 1: 2v2
     //You play best of X(uneven) rounds (roundsTotal)
@@ -47,7 +47,7 @@ public class GameModeLogic : MonoBehaviour
     public List<GameObject> team2Players = new List<GameObject>();
 
     //is players dead
-    float roundTotalTime = 60;
+    float roundTotalTime = 10;
     float roundStartTime;
     float roundElapsedTime;
 
@@ -159,8 +159,10 @@ public class GameModeLogic : MonoBehaviour
             debugText.GetComponent<TextMesh>().text = "round started successfully";
             roundElapsedTime = Time.time - roundStartTime;
             //debugText.GetComponent<TextMesh>().text = "round started";
-            /*
-            if (CheckRoundWinner() == 1)
+
+            int roundWinner = CheckRoundWinner();
+
+            if (roundWinner == 1)
             {
                 team1Score++;
                 ResetAndCreateNewRound();
@@ -171,7 +173,7 @@ public class GameModeLogic : MonoBehaviour
 
 
             }
-            else if (CheckRoundWinner() == 2)
+            else if (roundWinner == 2)
             {
                 team2Score++;
                 ResetAndCreateNewRound();
@@ -179,7 +181,7 @@ public class GameModeLogic : MonoBehaviour
                 //debugText.GetComponent<TextMesh>().text = "round winner team 2";
                 roundText.GetComponent<TextMesh>().text = "round winner team 2";
             }
-            */
+            
         }
 
 
