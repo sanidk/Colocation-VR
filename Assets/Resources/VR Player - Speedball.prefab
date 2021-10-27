@@ -850,7 +850,6 @@ GameObject:
   - component: {fileID: 7284614017862553479}
   - component: {fileID: 8974333821929730835}
   - component: {fileID: 2797230496229765909}
-  - component: {fileID: 516204353544435365}
   - component: {fileID: 1313331249081717031}
   m_Layer: 0
   m_Name: Right Hand Presence
@@ -953,22 +952,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.05894132, y: 0.12317376, z: 0.20720063}
   m_Center: {x: 0.037160076, y: -0.052748524, z: -0.02912607}
---- !u!54 &516204353544435365
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 159586116591348392}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1313331249081717031
 MonoBehaviour:
   m_ObjectHideFlags: 0

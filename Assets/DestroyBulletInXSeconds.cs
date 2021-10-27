@@ -22,7 +22,7 @@ public class DestroyBulletInXSeconds : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+    /*
     public void OnCollisionEnter(Collision collision) // Works. NOtice that the object needs Bullet tag AND collider AND probably both realtimeview and transform.
     {
         ContactPoint cp = collision.GetContact(0);
@@ -38,5 +38,5 @@ public class DestroyBulletInXSeconds : MonoBehaviour
         {
             print("Second OncollisionConditional");
         }
-    }
+    }*/
 }
