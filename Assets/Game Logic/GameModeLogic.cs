@@ -181,7 +181,7 @@ public class GameModeLogic : MonoBehaviour
             //    //debugText.GetComponent<TextMesh>().text = "round winner team 2";
             //    roundText.GetComponent<TextMesh>().text = "round winner team 2";
             //}
-            
+
         }
 
 
