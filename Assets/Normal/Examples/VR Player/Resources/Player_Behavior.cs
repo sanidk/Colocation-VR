@@ -10,12 +10,12 @@ public class Player_Behavior : MonoBehaviour
     public float hp = 100;
 
     //private float currentHp_Local;
-    private ColorSync _colorSync;
+    //private ColorSync _colorSync;
     private bool dead;
     //private HPSync _hp;
     private float _redAmount = 0;
 
-    private HpFloatSync _hp; // ADD COMPONENT TO PLAYER
+    //private HpFloatSync _hp; // ADD COMPONENT TO PLAYER
 
     public GameObject meshObject;
     Collider coll;
@@ -31,8 +31,8 @@ public class Player_Behavior : MonoBehaviour
     private void Awake()
     {
         //_colorSync = GetComponentInChildren<ColorSync>();
-        _colorSync = meshObject.GetComponent<ColorSync>();
-        _hp = GetComponent<HpFloatSync>();
+        //_colorSync = meshObject.GetComponent<ColorSync>();
+        //_hp = GetComponent<HpFloatSync>();
         //coll = meshObject.GetComponent<CapsuleCollider>();
         textMesh = textMeshObject.GetComponent<TextMesh>();
         playerStats = GetComponent<PlayerStats>();
@@ -41,40 +41,30 @@ public class Player_Behavior : MonoBehaviour
     void Start()
     {
         hp = 100;
-        _hp.setHp(hp);
+        //_hp.setHp(hp);
+        playerStats._health = hp;
     }
 
     // Update is called once per frame
     void Update()
     {
-        /*
-        if (hp != previousHp_Local)
-        {
-            _hp.setHp(hp);
-            textMesh.text = "Hp: " + _hp.GetHp();
-            previousHp_Local = hp;
-        }*/
-
-        if (_hp.GetHp() <= 0 && !dead) // can also just use localHP variable?
+        if (playerStats._health <= 0 && !dead) // can also just use localHP variable?
         {
             print("player ded");
             dead = true;
-            _colorSync.SetColor(new Color(255,0,0));
-            meshObject.GetComponent<MeshRenderer>().enabled = false;
         }
-        else if (_hp.GetHp() <= 25 && !dead)
+        else if (playerStats._health <= 25 && !dead)
         {
-            _colorSync.SetColor(new Color(200, 50, 50));
+            // _colorSync.SetColor(new Color(200, 50, 50));
         }
-        else if (_hp.GetHp() <= 50 && !dead)
+        else if (playerStats._health <= 50 && !dead)
         {
-
-            _colorSync.SetColor(new Color(255, 255, 0));
+        
         }
-        textMesh.text = "HP: " + _hp.GetHp(); // change dis
+        textMesh.text = "HP: " + playerStats._health; // change dis
 
     }
-    
+
     public void OnCollisionEnter(Collision collision) // Works. NOtice that the object needs Bullet tag AND collider AND probably both realtimeview and transform.
     {
         /*
@@ -84,55 +74,60 @@ public class Player_Behavior : MonoBehaviour
             //Debug.DrawRay(contact.point, contact.normal, Color.white);
         }
         */
-        
 
         ContactPoint cp = collision.GetContact(0); // ??
 
         if (cp.thisCollider.name == "HeadCollider" && collision.collider.CompareTag("Bullet"))
         {
-            hp -= 50;
-            _hp.setHp(_hp.GetHp() - 50);
+            //hp -= 50;
+            //_hp.setHp(_hp.GetHp() - 50);
+            playerStats._health = playerStats._health - 50;
             //print("Head hit, HP: " + _hp.GetHp());
         }
         if (cp.thisCollider.name == "TorsoCollider" && collision.collider.CompareTag("Bullet"))
         {
-            hp -= 35;
-            _hp.setHp(_hp.GetHp() - 35);
+            //hp -= 35;
+            //_hp.setHp(_hp.GetHp() - 35);
             //print("Torso hit, HP: " + _hp.GetHp());
+            playerStats._health = playerStats._health - 35;
         }
         if (cp.thisCollider.name == "RightThighCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftThighCollider"
             && collision.collider.CompareTag("Bullet"))
         {
-            hp -= 20;
-            _hp.setHp(_hp.GetHp() - 20);
+            //hp -= 20;
+            //_hp.setHp(_hp.GetHp() - 20);
             //print("Thighs hit, HP: " + _hp.GetHp());
+            playerStats._health = playerStats._health - 20;
         }
         if (cp.thisCollider.name == "RightShinCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftShinCollider"
             && collision.collider.CompareTag("Bullet"))
         {
-            hp -= 10;
-            _hp.setHp(_hp.GetHp() - 10);
+            //hp -= 10;
+            //_hp.setHp(_hp.GetHp() - 10);
             //print("Shins hit hit, HP: " + _hp.GetHp());
+            playerStats._health = playerStats._health - 10;
         }
         if (cp.thisCollider.name == "RightUpperArmCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftUpperArmCollider"
             && collision.collider.CompareTag("Bullet"))
         {
-            hp -= 15;
-            _hp.setHp(_hp.GetHp() - 15);
+            //hp -= 15;
+            //_hp.setHp(_hp.GetHp() - 15);
             //print("UpperArms hit, HP: " + _hp.GetHp());
+            playerStats._health = playerStats._health - 15;
         }
 
         if (cp.thisCollider.name == "RightLowerArmCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftLowerArmCollider"
             && collision.collider.CompareTag("Bullet"))
         {
-            hp -= 7.5f;
-            _hp.setHp(_hp.GetHp() - 7.5f);
+            //hp -= 7.5f;
+            //_hp.setHp(_hp.GetHp() - 7.5f);
             //print("LowerArms HP: " + _hp.GetHp());
+            playerStats._health = playerStats._health - 7.5f;
         }
 
         if (collision.collider.CompareTag("Bullet"))
         {
-            collision.gameObject.SetActive(false);
+            //collision.gameObject.SetActive(false);
         }
         /*
         if (collision.collider.CompareTag("SpawnArea") && dead) // Create spawn area tag or something else to check on.
@@ -142,22 +137,6 @@ public class Player_Behavior : MonoBehaviour
         }*/
     }
 
-    /*
-
-    private void OnCollisionStay(Collision collision)
-    {
-        if (collision.collider.CompareTag("SpawnArea") && dead) // Create spawn area tag or something else to check on.
-        {
-            resetHp();
-            print("ONCOLLISIONSTAY - DEAD SpawnArea collider - HP RESET");
-        }
-        if (collision.collider.CompareTag("SpawnArea") && !dead) // Create spawn area tag or something else to check on.
-        {
-            resetHp();
-            print("ONCOLLISIONSTAY - Not DEAD SpawnArea collider - HP RESET");
-        }
-    }*/
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("ReviveCapsule") && dead) // Create spawn area tag or something else to check on.
@@ -166,21 +145,7 @@ public class Player_Behavior : MonoBehaviour
             //print("ONTRIGGERENTER - DEAD SpawnArea collider - HP RESET");
         }
 
-        //if (playerStats._team == 1 && other.CompareTag("Spawnarea_Blue"))
-        //{
-        //    playerStats._isReady = true;
-        //    //isPlayerReady = true;
-        //}
-        //else if (playerStats._team == 2 && other.CompareTag("Spawnarea_Blue")) // Change to red spawnarea
-        //{
-        //    playerStats._isReady = true;
-        //}
-        //else
-        //{
-        //    playerStats._isReady = false;
-        //}
-
-        if(other.name == "Team1")
+        if (other.name == "Team1")
         {
             playerStats._team = 1;
             print("team1 chosen - Player behavior");
@@ -190,13 +155,10 @@ public class Player_Behavior : MonoBehaviour
             playerStats._team = 2;
             print("team2 chosen - Player behavior");
         }
-
-        
     }
 
     private void OnTriggerStay(Collider other)
     {
-        
         if (playerStats._team == 1 && other.CompareTag("Spawnarea_Blue"))
         {
             //GetComponent<GameModeLogic>().debugText.GetComponent<TextMesh>().text = "is ready set to true";
@@ -208,32 +170,33 @@ public class Player_Behavior : MonoBehaviour
             //GetComponent<GameModeLogic>().debugText.GetComponent<TextMesh>().text = "is ready set to true";
             playerStats._isReady = true;
         }
-        //else
-        //{
-        //    playerStats._isReady = false;
-        //}
+        /*
+        else
+        {
+            playerStats._isReady = false;
+        }*/
 
     }
-
-
     public void resetHp()
     {
         //currentHp_Local = 100;
         dead = false;
         hp = 100;
-        _colorSync.SetColor(new Color(255,255,255));
+        playerStats._health = 100;
+        //_colorSync.SetColor(new Color(255,255,255));
         //gameObject.SetActive(true);
         print("Hp reset method called");
         meshObject.GetComponent<MeshRenderer>().enabled = true;
     }
-
+    /*
     private Color updateColor()
     {
         _redAmount += 40;
         Color _color = new Color(_redAmount, 0, 0);
         return _color;
     }
-
+    */
+    /*
     public void healthRegain()
     {
         if (_hp.GetHp() <= 100) {
@@ -243,5 +206,6 @@ public class Player_Behavior : MonoBehaviour
         {
             //gameObject.SetActive(true);
         }
-    }
+    }*/
 }
+
