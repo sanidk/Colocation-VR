@@ -7,7 +7,7 @@ public class Player_Behavior : MonoBehaviour
 {
     public int team;
     public bool isPlayerReady;
-    public float hp = 100;
+    //public float hp = 100;
 
     //private float currentHp_Local;
     //private ColorSync _colorSync;
@@ -40,9 +40,9 @@ public class Player_Behavior : MonoBehaviour
 
     void Start()
     {
-        hp = 100;
+        //hp = 100;
         //_hp.setHp(hp);
-        playerStats._health = hp;
+        //playerStats._health = 100;
     }
 
     // Update is called once per frame
@@ -181,7 +181,7 @@ public class Player_Behavior : MonoBehaviour
     {
         //currentHp_Local = 100;
         dead = false;
-        hp = 100;
+        //hp = 100;
         playerStats._health = 100;
         //_colorSync.SetColor(new Color(255,255,255));
         //gameObject.SetActive(true);

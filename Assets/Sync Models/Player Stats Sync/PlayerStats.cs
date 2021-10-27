@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
     [SerializeField]
-    public float _health = default;
+    public float _health = 100f;
     public float _previousHealth = default;
 
     [SerializeField]
