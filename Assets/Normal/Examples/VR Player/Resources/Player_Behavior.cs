@@ -90,6 +90,7 @@ public class Player_Behavior : MonoBehaviour
             //_hp.setHp(_hp.GetHp() - 35);
             //print("Torso hit, HP: " + _hp.GetHp());
             playerStats._health = playerStats._health - 100;
+            Realtime.Destroy(collision.collider.gameObject);
         }
         /*
         if (cp.thisCollider.name == "RightThighCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftThighCollider"
