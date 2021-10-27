@@ -128,6 +128,7 @@ public class Player_Behavior : MonoBehaviour
         if (collision.collider.CompareTag("Bullet"))
         {
             //collision.gameObject.SetActive(false);
+            Realtime.Destroy(collision.collider.gameObject);
         }
         /*
         if (collision.collider.CompareTag("SpawnArea") && dead) // Create spawn area tag or something else to check on.

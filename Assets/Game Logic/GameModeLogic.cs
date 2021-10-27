@@ -36,7 +36,7 @@ public class GameModeLogic : MonoBehaviour
     bool isPlayersConnectedAndTeamsAssigned;
     bool isPlayersReadyToStartGame;
     bool isGameStart;
-    bool isRoundStarted;
+    public static bool isRoundStarted;
     int gameWinner;
 
 

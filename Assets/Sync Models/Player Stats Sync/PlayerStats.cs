@@ -26,11 +26,17 @@ public class PlayerStats : MonoBehaviour
     {
         // Get a reference to the color sync component
         _playerStatsSync = GetComponent<PlayerStatsSync>();
-        _health = 100;
+        //_health = 100; this works and sets _health to 100 on connection/spawn
     }
 
     private void Update()
     {
+        if (!GameModeLogic.isRoundStarted)
+        {
+            _health = 100;
+        }
+
+
         // If the color has changed (via the inspector), call SetColor on the color sync component.
         if (_health != _previousHealth)
         {

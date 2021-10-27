@@ -16,6 +16,7 @@ public class PlayerStatsSync : RealtimeComponent<PlayerStatsSyncModel>
 
         //Get reference to script containing player stats
         _playerStats = GetComponent<PlayerStats>();
+
     }
 
     protected override void OnRealtimeModelReplaced(PlayerStatsSyncModel previousModel, PlayerStatsSyncModel currentModel)
