@@ -160,27 +160,27 @@ public class GameModeLogic : MonoBehaviour
             roundElapsedTime = Time.time - roundStartTime;
             //debugText.GetComponent<TextMesh>().text = "round started";
 
-            int roundWinner = CheckRoundWinner();
+            //int roundWinner = CheckRoundWinner();
 
-            if (roundWinner == 1)
-            {
-                team1Score++;
-                ResetAndCreateNewRound();
-                isRoundStarted = false;
-                //debugText.GetComponent<TextMesh>().text = "round winner team 1";
-                roundText.GetComponent<TextMesh>().text = "round winner team 1";
+            //if (roundWinner == 1)
+            //{
+            //    team1Score++;
+            //    ResetAndCreateNewRound();
+            //    isRoundStarted = false;
+            //    //debugText.GetComponent<TextMesh>().text = "round winner team 1";
+            //    roundText.GetComponent<TextMesh>().text = "round winner team 1";
 
 
 
-            }
-            else if (roundWinner == 2)
-            {
-                team2Score++;
-                ResetAndCreateNewRound();
-                isRoundStarted = false;
-                //debugText.GetComponent<TextMesh>().text = "round winner team 2";
-                roundText.GetComponent<TextMesh>().text = "round winner team 2";
-            }
+            //}
+            //else if (roundWinner == 2)
+            //{
+            //    team2Score++;
+            //    ResetAndCreateNewRound();
+            //    isRoundStarted = false;
+            //    //debugText.GetComponent<TextMesh>().text = "round winner team 2";
+            //    roundText.GetComponent<TextMesh>().text = "round winner team 2";
+            //}
             
         }
 
