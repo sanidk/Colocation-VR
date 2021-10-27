@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class GrenadeBehaviour : MonoBehaviour
 {
-
-    private HpFloatSync _hp;
-
     public GameObject explosionEffect; 
     public AudioSource audioSource;
 
@@ -59,15 +56,14 @@ public class GrenadeBehaviour : MonoBehaviour
 
         foreach (Collider nearbyObject in colliders) {
             Rigidbody rb = nearbyObject.GetComponent<Rigidbody>();
-            HpFloatSync enemy = nearbyObject.GetComponent<HpFloatSync>();
-            Transform enemyTransform = nearbyObject.GetComponent<Transform>();
+            PlayerStats enemy = nearbyObject.GetComponent<PlayerStats>();
             Vector3 enemyPos = new Vector3(nearbyObject.transform.position.x, nearbyObject.transform.position.y, nearbyObject.transform.position.z);
             float proximity = (transform.position - enemyPos).magnitude;
             float effect = 1 - (proximity / radius);
             
             if (enemy != null) {
                 // MULTIPLY BY EFFECT (enemy.GetHp() - damage * effect) WHEN HP IS EXPECTED AS FLOAT
-                enemy.setHp(enemy.GetHp() - damage);
+                enemy._health = enemy._health - damage * effect;
             }
             
             if (rb != null) {
@@ -75,16 +71,16 @@ public class GrenadeBehaviour : MonoBehaviour
             }
         }
 
-        if (this.name == "SmokeGrenade") {
+        if (this.tag == "SmokeGrenade") {
             audioSource.PlayOneShot(smokeSound);
-        } else if (this.name == "FragGrenade") {
+        } else if (this.tag == "FragGrenade") {
             audioSource.PlayOneShot(explosionSound);
 
             // Make controller vibration
             OVRInput.SetControllerVibration(1, 1, OVRInput.Controller.Touch);
             StartCoroutine(GrenadeVibrationDelay());
 
-        } else if (this.name == "Molotov") {
+        } else if (this.tag == "Molotov") {
             audioSource.PlayOneShot(molotovSound);
         }
         Destroy(gameObject, 0.5f); 
