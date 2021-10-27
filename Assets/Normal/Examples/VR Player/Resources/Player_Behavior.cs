@@ -208,10 +208,10 @@ public class Player_Behavior : MonoBehaviour
             //GetComponent<GameModeLogic>().debugText.GetComponent<TextMesh>().text = "is ready set to true";
             playerStats._isReady = true;
         }
-        else
-        {
-            playerStats._isReady = false;
-        }
+        //else
+        //{
+        //    playerStats._isReady = false;
+        //}
 
     }
 
