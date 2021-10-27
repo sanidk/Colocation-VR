@@ -106,6 +106,7 @@ public class GameModeLogic : MonoBehaviour
         timeText.GetComponent<TextMesh>().text = roundElapsedTime.ToString();
         //debugText.GetComponent<TextMesh>().text = "hello world"; //GetComponent<PlayerStats>()._health.ToString();
 
+
         //Get list of players connected
         if (manager == null)
         {
@@ -114,10 +115,13 @@ public class GameModeLogic : MonoBehaviour
         else
         {
             avatars = manager.avatars;
-            
+
             //print("updated: " + avatars.Count);
 
         }
+
+        if (gameWinner != 0) return;
+
 
         if (!isPlayersConnectedAndTeamsAssigned)
         {
@@ -133,7 +137,7 @@ public class GameModeLogic : MonoBehaviour
             }
         }
 
-        
+
 
         if (!isPlayersReadyToStartGame && !isRoundStarted)
         {
@@ -144,43 +148,54 @@ public class GameModeLogic : MonoBehaviour
                 roundStartTime = Time.time;
                 isRoundStarted = true;
                 debugText.GetComponent<TextMesh>().text = "all players ready";
-            } else
+            }
+            else
             {
                 debugText.GetComponent<TextMesh>().text = "players not ready";
-                
+
             }
 
-        } 
+        }
 
 
-        
+
         if (isRoundStarted)
         {
             debugText.GetComponent<TextMesh>().text = "round started successfully";
             roundElapsedTime = Time.time - roundStartTime;
             //debugText.GetComponent<TextMesh>().text = "round started";
 
-            //int roundWinner = CheckRoundWinner();
+            int roundWinner = CheckRoundWinner();
 
-            //if (roundWinner == 1)
-            //{
-            //    team1Score++;
-            //    ResetAndCreateNewRound();
-            //    isRoundStarted = false;
-            //    //debugText.GetComponent<TextMesh>().text = "round winner team 1";
-            //    roundText.GetComponent<TextMesh>().text = "round winner team 1";
+            if (roundWinner == 1)
+            {
+                team1Score++;
+                roundCurrent++;
+
+                team1Kills = 0;
+                team2Kills = 0;
+
+                isRoundStarted = false;
+                isPlayersReadyToStartGame = false;
+
+                roundText.GetComponent<TextMesh>().text = "round winner team 1";
 
 
 
-            //}
-            //else if (roundWinner == 2)
-            //{
-            //    team2Score++;
-            //    ResetAndCreateNewRound();
-            //    isRoundStarted = false;
-            //    //debugText.GetComponent<TextMesh>().text = "round winner team 2";
-            //    roundText.GetComponent<TextMesh>().text = "round winner team 2";
-            //}
+            }
+            else if (roundWinner == 2)
+            {
+                team2Score++;
+                roundCurrent++;
+
+                team1Kills = 0;
+                team2Kills = 0;
+
+                isPlayersReadyToStartGame = false;
+                isRoundStarted = false;
+
+                roundText.GetComponent<TextMesh>().text = "round winner team 2";
+            }
 
         }
 
@@ -195,8 +210,8 @@ public class GameModeLogic : MonoBehaviour
 
 
 
-        
-        
+
+
         /*
         playersConnectedText.text = team1Players.Count.ToString() + "/" + team2Players.Count.ToString();
         roundText.text = roundCurrent.ToString();
@@ -266,12 +281,6 @@ public class GameModeLogic : MonoBehaviour
 
     }
 
-    void ResetAndCreateNewRound()
-    {
-        roundCurrent++;
-        team1Kills = 0;
-        team2Kills = 0;
-    }
 
     int CheckRoundWinner()
     {
