@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
     [SerializeField]
-    public float _health = 100f;
+    public float _health = default;
     public float _previousHealth = default;
 
     [SerializeField]
@@ -26,6 +26,7 @@ public class PlayerStats : MonoBehaviour
     {
         // Get a reference to the color sync component
         _playerStatsSync = GetComponent<PlayerStatsSync>();
+        _health = 100;
     }
 
     private void Update()
