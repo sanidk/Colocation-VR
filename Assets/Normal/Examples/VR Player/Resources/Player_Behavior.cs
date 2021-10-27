@@ -76,21 +76,22 @@ public class Player_Behavior : MonoBehaviour
         */
 
         ContactPoint cp = collision.GetContact(0); // ??
-
+        /*
         if (cp.thisCollider.name == "HeadCollider" && collision.collider.CompareTag("Bullet"))
         {
             //hp -= 50;
             //_hp.setHp(_hp.GetHp() - 50);
             playerStats._health = playerStats._health - 50;
             //print("Head hit, HP: " + _hp.GetHp());
-        }
+        }*/
         if (cp.thisCollider.name == "TorsoCollider" && collision.collider.CompareTag("Bullet"))
         {
             //hp -= 35;
             //_hp.setHp(_hp.GetHp() - 35);
             //print("Torso hit, HP: " + _hp.GetHp());
-            playerStats._health = playerStats._health - 35;
+            playerStats._health = playerStats._health - 100;
         }
+        /*
         if (cp.thisCollider.name == "RightThighCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftThighCollider"
             && collision.collider.CompareTag("Bullet"))
         {
@@ -129,7 +130,7 @@ public class Player_Behavior : MonoBehaviour
         {
             //collision.gameObject.SetActive(false);
             Realtime.Destroy(collision.collider.gameObject);
-        }
+        }*/
         /*
         if (collision.collider.CompareTag("SpawnArea") && dead) // Create spawn area tag or something else to check on.
         {
