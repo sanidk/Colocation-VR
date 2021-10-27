@@ -10,6 +10,7 @@ TagManager:
   - ReviveCapsule
   - Spawnarea_Blue
   - Spawnarea_Red
+  - AvatarHitbox
   layers:
   - Default
   - TransparentFX
