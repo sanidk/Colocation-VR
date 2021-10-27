@@ -241,7 +241,7 @@ public class GameModeLogic : MonoBehaviour
 
     bool CheckIfAllPlayersReady()
     {
-        if (avatars.Count != teamSize * 2)
+        if (avatars.Count < teamSize * 2)
         {
             return false;
         }

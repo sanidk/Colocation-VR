@@ -197,13 +197,13 @@ public class Player_Behavior : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         
-        if (!playerStats._isReady && playerStats._team == 1 && other.CompareTag("Spawnarea_Blue"))
+        if (playerStats._team == 1 && other.CompareTag("Spawnarea_Blue"))
         {
             //GetComponent<GameModeLogic>().debugText.GetComponent<TextMesh>().text = "is ready set to true";
             playerStats._isReady = true;
             //isPlayerReady = true;
         }
-        else if (!playerStats._isReady && playerStats._team == 2 && other.CompareTag("Spawnarea_Blue")) // Change to red spawnarea
+        else if (playerStats._team == 2 && other.CompareTag("Spawnarea_Blue")) // Change to red spawnarea
         {
             //GetComponent<GameModeLogic>().debugText.GetComponent<TextMesh>().text = "is ready set to true";
             playerStats._isReady = true;
