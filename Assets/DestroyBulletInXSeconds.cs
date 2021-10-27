@@ -33,5 +33,10 @@ public class DestroyBulletInXSeconds : MonoBehaviour
             print("RealtimeDestroy bullet on impact with avatarHitbox");
             Destroy(gameObject);
         }
+
+        if (collision.collider.CompareTag("AvatarHitbox"))
+        {
+            print("Second OncollisionConditional");
+        }
     }
 }
