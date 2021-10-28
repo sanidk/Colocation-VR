@@ -88,9 +88,24 @@ public class GameManagerLogic : MonoBehaviour
 
     bool isServer = false;
 
-    private void Awake()
+
+    // Update is called once per frame
+    void Update()
     {
-        gameLogic = GetComponent<GameLogic>();
+        //Get list of players connected
+        if (manager == null)
+        {
+            manager = networkManager.GetComponent<RealtimeAvatarManager>();
+        }
+        else
+        {
+            avatars = manager.avatars;
+
+            //print("updated: " + avatars.Count);
+
+        }
+
+        
 
         //maybe for later change host to be first avatar in array always and sync this to everyone.
         if (avatars.Count == 1)
@@ -98,13 +113,10 @@ public class GameManagerLogic : MonoBehaviour
             isServer = true;
         }
 
-    }
+        if (!isServer) { return; }
 
-    // Update is called once per frame
-    void Update()
-    {
+        gameLogic = GetComponent<GameLogic>();
         
-        //if (!isServer) { return; }
 
         //set variables
         gameLogic._gameMode = gameMode;
@@ -138,23 +150,12 @@ public class GameManagerLogic : MonoBehaviour
         team1killsText.GetComponent<TextMesh>().text = team1Kills.ToString();
         team2killsText.GetComponent<TextMesh>().text = team2Kills.ToString();
         
-        roundText.GetComponent<TextMesh>().text = roundCurrent.ToString();
+        roundText.GetComponent<TextMesh>().text = "Round: " + roundCurrent.ToString();
         timeText.GetComponent<TextMesh>().text = roundElapsedTime.ToString();
         //debugText.GetComponent<TextMesh>().text = "hello world"; //GetComponent<PlayerStats>()._health.ToString();
 
 
-        //Get list of players connected
-        if (manager == null)
-        {
-            manager = networkManager.GetComponent<RealtimeAvatarManager>();
-        }
-        else
-        {
-            avatars = manager.avatars;
-
-            //print("updated: " + avatars.Count);
-
-        }
+        
 
         if (gameWinner != 0) return;
 
