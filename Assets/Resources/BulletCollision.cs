@@ -32,13 +32,14 @@ public class BulletCollision : MonoBehaviour
             print("Head collider hit");
             collision.collider.gameObject.GetComponentInParent<PlayerStats>()._health -= 40;
             //Realtime.Destroy(gameObject);
-            //Destroy(gameObject);
+            Destroy(gameObject);
         }
         else if (collision.collider.name == "TorsoCollider")
         {
             print("Torso collider hit");
             collision.collider.gameObject.GetComponentInParent<PlayerStats>()._health = collision.collider.gameObject.GetComponentInParent<PlayerStats>()._health -30;
             //Realtime.Destroy(gameObject);
+            Destroy(gameObject);
         }
         else if(collision.collider.name == "LeftThighCollider" || collision.collider.name == "RightThighCollider")
         {
@@ -55,12 +56,14 @@ public class BulletCollision : MonoBehaviour
         else if (collision.collider.name == "LeftUpperArmCollider" || collision.collider.name == "RightUpperArmCollider")
         {
             collision.collider.gameObject.GetComponentInParent<PlayerStats>()._health -= 15;
-            Realtime.Destroy(gameObject);
+            //Realtime.Destroy(gameObject);
+            Destroy(gameObject);
         }
         else if (collision.collider.name == "LeftLowerArmCollider" || collision.collider.name == "RightLowerArmCollider")
         {
             collision.collider.gameObject.GetComponentInParent<PlayerStats>()._health -= 10;
-            Realtime.Destroy(gameObject);
+            //Realtime.Destroy(gameObject);
+            Destroy(gameObject);
         }
         /*
         if (collision.collider.CompareTag("AvatarHitbox"))
