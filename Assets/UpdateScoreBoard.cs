@@ -38,9 +38,9 @@ public class UpdateScoreBoard : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        //team1countText.GetComponent<TextMesh>().text = gameLogic._te.Count.ToString();
-        //team2countText.GetComponent<TextMesh>().text = team2Players.Count.ToString();
+    { 
+        team1countText.GetComponent<TextMesh>().text = gameLogic._team1PlayerCount.ToString();
+        team2countText.GetComponent<TextMesh>().text = gameLogic._team2PlayerCount.ToString();
 
         team1scoreText.GetComponent<TextMesh>().text = gameLogic._team1Score.ToString();
         team2scoreText.GetComponent<TextMesh>().text = gameLogic._team2Score.ToString();

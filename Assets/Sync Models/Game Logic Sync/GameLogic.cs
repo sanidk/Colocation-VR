@@ -217,6 +217,18 @@ public class GameLogic : MonoBehaviour
             _gameLogicSync.SetTeam2TotalKills(_team2TotalKills);
             _previousTeam2TotalKills = _team2TotalKills;
         }
-        
+
+        if (_team1PlayerCount != _previousTeam1PlayerCount)
+        {
+            _gameLogicSync.SetTeam1PlayerCount(_team1PlayerCount);
+            _previousTeam1PlayerCount = _team1PlayerCount;
+        }
+
+        if (_team2PlayerCount != _previousTeam2PlayerCount)
+        {
+            _gameLogicSync.SetTeam1PlayerCount(_team2PlayerCount);
+            _previousTeam2PlayerCount = _team2PlayerCount;
+        }
+
     }
 }

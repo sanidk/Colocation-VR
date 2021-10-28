@@ -138,6 +138,8 @@ public class GameManagerLogic : MonoBehaviour
         gameLogic._team2Kills = team2Kills;
         gameLogic._team1TotalKills = team1TotalKills;
         gameLogic._team2TotalKills = team2TotalKills;
+        gameLogic._team1PlayerCount = team1Players.Count;
+        gameLogic._team1PlayerCount = team2Players.Count;
 
 
         //Update UI
@@ -149,12 +151,12 @@ public class GameManagerLogic : MonoBehaviour
 
         //team1killsText.GetComponent<TextMesh>().text = team1Kills.ToString();
         //team2killsText.GetComponent<TextMesh>().text = team2Kills.ToString();
-        
+
         //roundText.GetComponent<TextMesh>().text = "Round " + roundCurrent.ToString();
         //timeText.GetComponent<TextMesh>().text = roundElapsedTime.ToString();
-        
 
-        
+
+
 
         if (gameWinner != 0) return;
 
