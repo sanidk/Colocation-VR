@@ -69,20 +69,20 @@ public class GameManagerLogic : MonoBehaviour
     //
 
     //UI
-    public GameObject roundText;
+    //public GameObject roundText;
 
 
-    public GameObject team1countText;
-    public GameObject team2countText;
+    //public GameObject team1countText;
+    //public GameObject team2countText;
 
-    public GameObject team1scoreText;
-    public GameObject team2scoreText;
+    //public GameObject team1scoreText;
+    //public GameObject team2scoreText;
 
-    public GameObject team1killsText;
-    public GameObject team2killsText;
+    //public GameObject team1killsText;
+    //public GameObject team2killsText;
 
-    public GameObject timeText;
-    public GameObject winnerText;
+    //public GameObject timeText;
+    //public GameObject winnerText;
     public GameObject debugText;
 
 
@@ -141,19 +141,18 @@ public class GameManagerLogic : MonoBehaviour
 
 
         //Update UI
-        team1countText.GetComponent<TextMesh>().text = team1Players.Count.ToString();
-        team2countText.GetComponent<TextMesh>().text = team2Players.Count.ToString();
+        //team1countText.GetComponent<TextMesh>().text = team1Players.Count.ToString();
+        //team2countText.GetComponent<TextMesh>().text = team2Players.Count.ToString();
 
-        team1scoreText.GetComponent<TextMesh>().text = team1Score.ToString();
-        team2scoreText.GetComponent<TextMesh>().text = team2Score.ToString();
+        //team1scoreText.GetComponent<TextMesh>().text = team1Score.ToString();
+        //team2scoreText.GetComponent<TextMesh>().text = team2Score.ToString();
 
-        team1killsText.GetComponent<TextMesh>().text = team1Kills.ToString();
-        team2killsText.GetComponent<TextMesh>().text = team2Kills.ToString();
+        //team1killsText.GetComponent<TextMesh>().text = team1Kills.ToString();
+        //team2killsText.GetComponent<TextMesh>().text = team2Kills.ToString();
         
-        roundText.GetComponent<TextMesh>().text = "Round " + roundCurrent.ToString();
-        timeText.GetComponent<TextMesh>().text = roundElapsedTime.ToString();
-        //debugText.GetComponent<TextMesh>().text = "hello world"; //GetComponent<PlayerStats>()._health.ToString();
-
+        //roundText.GetComponent<TextMesh>().text = "Round " + roundCurrent.ToString();
+        //timeText.GetComponent<TextMesh>().text = roundElapsedTime.ToString();
+        
 
         
 
@@ -215,7 +214,7 @@ public class GameManagerLogic : MonoBehaviour
                 isRoundStarted = false;
                 isPlayersReadyToStartGame = false;
 
-                roundText.GetComponent<TextMesh>().text = "round winner team 1";
+                //roundText.GetComponent<TextMesh>().text = "round winner team 1";
 
 
 
@@ -231,7 +230,7 @@ public class GameManagerLogic : MonoBehaviour
                 isPlayersReadyToStartGame = false;
                 isRoundStarted = false;
 
-                roundText.GetComponent<TextMesh>().text = "round winner team 2";
+                //roundText.GetComponent<TextMesh>().text = "round winner team 2";
             }
 
         }
@@ -240,7 +239,7 @@ public class GameManagerLogic : MonoBehaviour
         if (roundCurrent > roundsTotal)
         {
             gameWinner = CheckGameWinner();
-            roundText.GetComponent<TextMesh>().text = gameWinner.ToString();
+            //roundText.GetComponent<TextMesh>().text = gameWinner.ToString();
         }
 
 
