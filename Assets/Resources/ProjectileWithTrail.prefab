@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 588499950766244583}
   - component: {fileID: 7611338153086275810}
   - component: {fileID: 2183589424854893783}
-  - component: {fileID: 6971651906579997276}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Bullet
@@ -96,19 +95,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6971651906579997276
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5054747493553055426}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48a2fd10c03a5f549baa5f6eb27d2894, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lifeTime: 10
 --- !u!1 &6145403765088284854
 GameObject:
   m_ObjectHideFlags: 0
@@ -5064,6 +5050,7 @@ GameObject:
   - component: {fileID: 6145403766552688402}
   - component: {fileID: 6145403766552688404}
   - component: {fileID: -6887462929257883337}
+  - component: {fileID: 91091671274494411}
   m_Layer: 0
   m_Name: ProjectileWithTrail
   m_TagString: Untagged
@@ -5154,9 +5141,22 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6145403766552688429}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48a2fd10c03a5f549baa5f6eb27d2894, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeTime: 5
+--- !u!114 &91091671274494411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6145403766552688429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13cde09dc0aba4bcb8cb891630cb7331, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   lifeTime: 5

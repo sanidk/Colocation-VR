@@ -58,4 +58,6 @@ public class BulletCollision : MonoBehaviour
             //Destroy(gameObject);
         }
     }
+
+    //Test with onTriggerEnter?
 }
