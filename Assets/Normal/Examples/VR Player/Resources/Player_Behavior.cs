@@ -48,6 +48,7 @@ public class Player_Behavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         if (playerStats._health <= 0 && !dead) // can also just use localHP variable?
         {
             print("player ded");
@@ -61,6 +62,7 @@ public class Player_Behavior : MonoBehaviour
         {
         
         }
+        */
         textMesh.text = "HP: " + playerStats._health; // change dis
 
     }
@@ -74,25 +76,25 @@ public class Player_Behavior : MonoBehaviour
             //Debug.DrawRay(contact.point, contact.normal, Color.white);
         }
         */
-
-        ContactPoint cp = collision.GetContact(0); // ??
         /*
+        ContactPoint cp = collision.GetContact(0); // ??
+        
         if (cp.thisCollider.name == "HeadCollider" && collision.collider.CompareTag("Bullet"))
         {
             //hp -= 50;
             //_hp.setHp(_hp.GetHp() - 50);
             playerStats._health = playerStats._health - 50;
             //print("Head hit, HP: " + _hp.GetHp());
-        }*/
+        }
         if (cp.thisCollider.name == "TorsoCollider" && collision.collider.CompareTag("Bullet"))
         {
             //hp -= 35;
             //_hp.setHp(_hp.GetHp() - 35);
             //print("Torso hit, HP: " + _hp.GetHp());
-            playerStats._health = playerStats._health - 100;
+            playerStats._health = playerStats._health - 10;
             //Destroy(collision.collider.gameObject.GetComponentInParent<GameObject>());
         }
-        /*
+        
         if (cp.thisCollider.name == "RightThighCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftThighCollider"
             && collision.collider.CompareTag("Bullet"))
         {
