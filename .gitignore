@@ -35,3 +35,6 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+Assets/Normal/Examples-URP.unitypackage.meta
+Assets/Resources/OVRBuildConfig.asset
+ProjectSettings/ProjectSettings.asset
