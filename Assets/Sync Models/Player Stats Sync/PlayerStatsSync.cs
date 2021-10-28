@@ -28,6 +28,7 @@ public class PlayerStatsSync : RealtimeComponent<PlayerStatsSyncModel>
             previousModel.energyDidChange -= EnergyDidChange;
             previousModel.isReadyDidChange -= IsReadyDidChange;
             previousModel.teamDidChange -= TeamDidChange;
+            previousModel.isServerDidChange -= IsServerDidChange;
 
         }
 
@@ -39,6 +40,7 @@ public class PlayerStatsSync : RealtimeComponent<PlayerStatsSyncModel>
                 currentModel.energy = _playerStats._energy;
                 currentModel.isReady = _playerStats._isReady;
                 currentModel.team = _playerStats._team;
+                currentModel.isServer = _playerStats._isServer;
                 }
 
             // Update the mesh render to match the new model
@@ -46,12 +48,14 @@ public class PlayerStatsSync : RealtimeComponent<PlayerStatsSyncModel>
             UpdateEnergy();
             UpdateIsReady();
             UpdateTeam();
+            UpdateIsServer();
 
             // Register for events so we'll know if the color changes later
             currentModel.healthDidChange += HealthDidChange;
             currentModel.energyDidChange += EnergyDidChange;
             currentModel.isReadyDidChange += IsReadyDidChange;
             currentModel.teamDidChange += TeamDidChange;
+            currentModel.isServerDidChange += IsServerDidChange;
         }
     }
 
@@ -76,6 +80,13 @@ public class PlayerStatsSync : RealtimeComponent<PlayerStatsSyncModel>
         UpdateTeam();
     }
 
+    private void IsServerDidChange(PlayerStatsSyncModel model, bool value)
+    {
+        UpdateIsServer();
+    }
+
+
+
     private void UpdateHealth()
     {
         // Get the color from the model and set it on the mesh renderer.
@@ -96,6 +107,14 @@ public class PlayerStatsSync : RealtimeComponent<PlayerStatsSyncModel>
         _playerStats._team = model.team;
     }
 
+    private void UpdateIsServer()
+    {
+        _playerStats._isServer = model.isServer;
+    }
+
+
+
+
     public void SetHealth(float health)
     {
         // Set the color on the model
@@ -115,6 +134,11 @@ public class PlayerStatsSync : RealtimeComponent<PlayerStatsSyncModel>
 
     public void SetTeam(int team) {
         model.team = team;
+    }
+
+    public void SetIsServer(bool isServer)
+    {
+        model.isServer = isServer;
     }
 
 

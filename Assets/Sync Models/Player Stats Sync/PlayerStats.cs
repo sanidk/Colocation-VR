@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Normal.Realtime;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -20,6 +21,10 @@ public class PlayerStats : MonoBehaviour
     public int _team = default;
     public int _previousTeam = default;
 
+    [SerializeField]
+    public bool _isServer = default;
+    public bool _previousIsServer = default;
+
     public PlayerStatsSync _playerStatsSync;
     GameLogic gameLogic;
     public GameObject gameManager;
@@ -31,6 +36,11 @@ public class PlayerStats : MonoBehaviour
         _playerStatsSync = GetComponent<PlayerStatsSync>();
         gameLogic = gameManager.GetComponent<GameLogic>();
         //_health = 100; this works and sets _health to 100 on connection/spawn
+
+        if (Application.platform != RuntimePlatform.Android)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void Update()
@@ -61,6 +71,12 @@ public class PlayerStats : MonoBehaviour
         if (_team != _previousTeam) {
             _playerStatsSync.SetTeam(_team);
             _previousTeam = _team;
+        }
+
+        if (_isServer != _previousIsServer)
+        {
+            _playerStatsSync.SetIsServer(_isServer);
+            _previousIsServer = _isServer;
         }
 
     }

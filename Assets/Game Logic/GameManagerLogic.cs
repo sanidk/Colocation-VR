@@ -100,12 +100,22 @@ public class GameManagerLogic : MonoBehaviour
         else
         {
             avatars = manager.avatars;
+            
 
-            //print("updated: " + avatars.Count);
+            //print("avatar count: " + avatars.Count);
 
         }
 
-        
+        for(int i = 0; i<avatars.Count; i++)
+        {
+            print(i+" "+avatars[i]);
+        }
+
+        if (!avatars[0].GetComponent<PlayerStats>()._isServer)
+        {
+            avatars[0].GetComponent<PlayerStats>()._isServer = true;
+        }
+
 
         //maybe for later change host to be first avatar in array always and sync this to everyone.
         if (avatars.Count == 1)
