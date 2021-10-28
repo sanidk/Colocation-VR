@@ -104,7 +104,7 @@ public class GameManagerLogic : MonoBehaviour
     void Update()
     {
         
-        if (!isServer) { return; }
+        //if (!isServer) { return; }
 
         //set variables
         gameLogic._gameMode = gameMode;
