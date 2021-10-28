@@ -25,39 +25,48 @@ public class BulletCollision : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
+        print("OnCollisionEnter On bullet");
         //ContactPoint cp = collision.GetContact(0);
         if (collision.collider.name == "HeadCollider")
         {
+            print("Head collider hit");
             collision.collider.GetComponent<PlayerStats>()._health -= 40;
+            Realtime.Destroy(gameObject);
         }
         else if (collision.collider.name == "TorsoCollider")
         {
+            print("Torso collider hit");
             collision.collider.GetComponent<PlayerStats>()._health -= 30;
+            Realtime.Destroy(gameObject);
         }
         else if(collision.collider.name == "LeftThighCollider" || collision.collider.name == "RightThighCollider")
         {
             collision.collider.GetComponent<PlayerStats>()._health -= 20;
+            Realtime.Destroy(gameObject);
         }
         else if (collision.collider.name == "LeftShinCollider" || collision.collider.name == "RightShinCollider")
         {
             collision.collider.GetComponent<PlayerStats>()._health -= 10;
+            Realtime.Destroy(gameObject);
         }
         else if (collision.collider.name == "LeftUpperArmCollider" || collision.collider.name == "RightUpperArmCollider")
         {
             collision.collider.GetComponent<PlayerStats>()._health -= 15;
+            Realtime.Destroy(gameObject);
         }
         else if (collision.collider.name == "LeftLowerArmCollider" || collision.collider.name == "RightLowerArmCollider")
         {
             collision.collider.GetComponent<PlayerStats>()._health -= 10;
+            Realtime.Destroy(gameObject);
         }
-
-        
+        /*
         if (collision.collider.CompareTag("AvatarHitbox"))
         {
             Realtime.Destroy(gameObject);
 
             //Destroy(gameObject);
         }
+        */
     }
 
     //Test with onTriggerEnter?
