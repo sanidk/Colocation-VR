@@ -21,17 +21,21 @@ public class PlayerStats : MonoBehaviour
     public int _previousTeam = default;
 
     public PlayerStatsSync _playerStatsSync;
+    GameLogic gameLogic;
+    public GameObject gameManager;
 
     private void Awake()
     {
+        gameManager = GameObject.Find("GameManager");
         // Get a reference to the color sync component
         _playerStatsSync = GetComponent<PlayerStatsSync>();
+        gameLogic = gameManager.GetComponent<GameLogic>();
         //_health = 100; this works and sets _health to 100 on connection/spawn
     }
 
     private void Update()
     {
-        if (!GameModeLogic.isRoundStarted)
+        if (!gameLogic._isRoundStarted)
         {
             _health = 100;
         }
