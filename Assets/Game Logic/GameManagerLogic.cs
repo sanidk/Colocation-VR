@@ -119,17 +119,33 @@ public class GameManagerLogic : MonoBehaviour
         for (int i = 0; i < avatars.Count; i++)
         {
             
-            if (avatars[i].gameObject != null)
+            try
             {
                 if (avatars[i].gameObject.GetComponent<PlayerStats>()._isServer)
                 {
                     isServerExist = true;
                     break;
-                } else
+                }
+                else
                 {
                     isServerExist = false;
                 }
+            } catch
+            {
+                
             }
+
+            //if (avatars[i].gameObject != null)
+            //{
+            //    if (avatars[i].gameObject.GetComponent<PlayerStats>()._isServer)
+            //    {
+            //        isServerExist = true;
+            //        break;
+            //    } else
+            //    {
+            //        isServerExist = false;
+            //    }
+            //}
 
         }
 
@@ -137,11 +153,24 @@ public class GameManagerLogic : MonoBehaviour
         {
             for (int i = 0; i < avatars.Count; i++)
             {
-                if (avatars[i].gameObject != null)
+                try
                 {
-                    avatars[i].gameObject.GetComponent<PlayerStats>()._isServer = true;
-                    break;
+                    if (avatars[i].gameObject != null)
+                    {
+                        avatars[i].gameObject.GetComponent<PlayerStats>()._isServer = true;
+                        break;
+                    }
+                    
+                } catch
+                {
+
                 }
+
+                //if (avatars[i].gameObject != null)
+                //{
+                //    avatars[i].gameObject.GetComponent<PlayerStats>()._isServer = true;
+                //    break;
+                //}
                     
             }
         }
