@@ -31,25 +31,26 @@ public class BulletCollision : MonoBehaviour
         {
             print("Head collider hit");
             collision.collider.gameObject.GetComponentInParent<PlayerStats>()._health -= 40;
-            Realtime.Destroy(gameObject);
-            Destroy(gameObject);
+            //Realtime.Destroy(gameObject);
+            //Destroy(gameObject);
         }
         else if (collision.collider.name == "TorsoCollider")
         {
             print("Torso collider hit");
-            collision.collider.gameObject.GetComponentInParent<PlayerStats>()._health = collision.collider.gameObject.GetComponentInParent<PlayerStats>()._health - -30;
-            Realtime.Destroy(gameObject);
+            collision.collider.gameObject.GetComponentInParent<PlayerStats>()._health = collision.collider.gameObject.GetComponentInParent<PlayerStats>()._health -30;
+            //Realtime.Destroy(gameObject);
         }
         else if(collision.collider.name == "LeftThighCollider" || collision.collider.name == "RightThighCollider")
         {
             collision.collider.gameObject.GetComponentInParent<PlayerStats>()._health -= 20;
-            Realtime.Destroy(gameObject);
+            //Realtime.Destroy(gameObject);
             Destroy(gameObject);
         }
         else if (collision.collider.name == "LeftShinCollider" || collision.collider.name == "RightShinCollider")
         {
             collision.collider.gameObject.GetComponentInParent<PlayerStats>()._health -= 10;
-            Realtime.Destroy(gameObject);
+            //Realtime.Destroy(gameObject);
+            Destroy(gameObject);
         }
         else if (collision.collider.name == "LeftUpperArmCollider" || collision.collider.name == "RightUpperArmCollider")
         {
