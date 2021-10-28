@@ -80,6 +80,15 @@ public class GameLogic : MonoBehaviour
     public float _team2TotalKills = default;
     public float _previousTeam2TotalKills = default;
 
+    [SerializeField]
+    public float _team1PlayerCount = default;
+    public float _previousTeam1PlayerCount = default;
+
+    [SerializeField]
+    public float _team2PlayerCount = default;
+    public float _previousTeam2PlayerCount = default;
+
+
     public GameLogicSync _gameLogicSync;
 
     private void Awake()

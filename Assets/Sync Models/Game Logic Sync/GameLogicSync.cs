@@ -35,6 +35,8 @@ public class GameLogicSync : RealtimeComponent<GameLogicSyncModel>
             previousModel.team2KillsDidChange -= Team2KillsDidChange;
             previousModel.team1TotalKillsDidChange -= Team1TotalKillsDidChange;
             previousModel.team2TotalKillsDidChange -= Team2TotalKillsDidChange;
+            previousModel.team1PlayerCountDidChange -= Team1PlayerCountDidChange;
+            previousModel.team2PlayerCountDidChange -= Team2PlayerCountDidChange;
         }
 
         if (currentModel != null) {
@@ -58,6 +60,8 @@ public class GameLogicSync : RealtimeComponent<GameLogicSyncModel>
                 currentModel.team2Kills = _gameLogic._team2Kills;
                 currentModel.team1TotalKills = _gameLogic._team1TotalKills;
                 currentModel.team2TotalKills = _gameLogic._team2TotalKills;
+                currentModel.team1PlayerCount = _gameLogic._team1PlayerCount;
+                currentModel.team2PlayerCount = _gameLogic._team2PlayerCount;
             }
 
             UpdateGameMode();
@@ -79,6 +83,8 @@ public class GameLogicSync : RealtimeComponent<GameLogicSyncModel>
             UpdateTeam2Kills();
             UpdateTeam1TotalKills();
             UpdateTeam2TotalKills();
+            UpdateTeam1PlayerCount();
+            UpdateTeam2PlayerCount();
 
             currentModel.gameModeDidChange += GameModeDidChange;
             currentModel.isPlayersConnectedAndTeamsAssignedDidChange += IsPlayersConnectedAndTeamsAssignedDidChange;
@@ -99,6 +105,9 @@ public class GameLogicSync : RealtimeComponent<GameLogicSyncModel>
             currentModel.team2KillsDidChange += Team2KillsDidChange;
             currentModel.team1TotalKillsDidChange += Team1TotalKillsDidChange;
             currentModel.team2TotalKillsDidChange += Team2TotalKillsDidChange;
+            currentModel.team1PlayerCountDidChange += Team1PlayerCountDidChange;
+            currentModel.team2PlayerCountDidChange += Team2PlayerCountDidChange;
+
         }
     }
     
@@ -197,6 +206,27 @@ public class GameLogicSync : RealtimeComponent<GameLogicSyncModel>
         UpdateTeam2TotalKills();
     }
 
+    private void Team1PlayerCountDidChange(GameLogicSyncModel model, float value)
+    {
+        UpdateTeam1PlayerCount();
+    }
+
+    private void Team2PlayerCountDidChange(GameLogicSyncModel model, float value)
+    {
+        UpdateTeam2PlayerCount();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
     private void UpdateGameMode() {
         _gameLogic._gameMode = model.gameMode;
     }
@@ -273,6 +303,21 @@ public class GameLogicSync : RealtimeComponent<GameLogicSyncModel>
         _gameLogic._team2TotalKills = model.team2TotalKills;
     }
 
+    private void UpdateTeam1PlayerCount()
+    {
+        _gameLogic._team1PlayerCount = model.team1PlayerCount;
+    }
+
+    private void UpdateTeam2PlayerCount()
+    {
+        _gameLogic._team2PlayerCount = model.team2PlayerCount;
+    }
+
+
+
+
+
+
     public void SetGameMode(int gameMode) {
         model.gameMode = gameMode;
     }
@@ -348,4 +393,14 @@ public class GameLogicSync : RealtimeComponent<GameLogicSyncModel>
     public void SetTeam2TotalKills(float team2TotalKills) {
         model.team2TotalKills = team2TotalKills;
     }
+
+    public void SetTeam1PlayerCount(float team1PlayerCount)
+    {
+        model.team1PlayerCount = team1PlayerCount;
+    }
+    public void SetTeam2PlayerCount(float team2PlayerCount)
+    {
+        model.team2PlayerCount = team2PlayerCount;
+    }
+
 }
