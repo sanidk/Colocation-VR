@@ -150,7 +150,7 @@ public class GameManagerLogic : MonoBehaviour
         team1killsText.GetComponent<TextMesh>().text = team1Kills.ToString();
         team2killsText.GetComponent<TextMesh>().text = team2Kills.ToString();
         
-        roundText.GetComponent<TextMesh>().text = "Round: " + roundCurrent.ToString();
+        roundText.GetComponent<TextMesh>().text = "Round " + roundCurrent.ToString();
         timeText.GetComponent<TextMesh>().text = roundElapsedTime.ToString();
         //debugText.GetComponent<TextMesh>().text = "hello world"; //GetComponent<PlayerStats>()._health.ToString();
 
