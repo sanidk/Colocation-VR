@@ -104,76 +104,51 @@ public class GameManagerLogic : MonoBehaviour
         {
             avatars = manager.avatars;
             
-
-            //print("avatar count: " + avatars.Count);
-
         }
 
-        //for(int i = 0; i<avatars.Count; i++)
-        //{
-        //    print(i+" "+avatars[i]);
-        //}
 
         
-
-        for (int i = 0; i < avatars.Count; i++)
-        {
+        //logic for assigning new server authority
+        //for (int i = 0; i < avatars.Count; i++)
+        //{
             
-            try
-            {
-                if (avatars[i].gameObject.GetComponent<PlayerStats>()._isServer)
-                {
-                    isServerExist = true;
-                    break;
-                }
-                else
-                {
-                    isServerExist = false;
-                }
-            } catch
-            {
+        //    try
+        //    {
+        //        if (avatars[i].gameObject.GetComponent<PlayerStats>()._isServer)
+        //        {
+        //            isServerExist = true;
+        //            break;
+        //        }
+        //        else
+        //        {
+        //            isServerExist = false;
+        //        }
+        //    } catch
+        //    {
                 
-            }
+        //    }
 
-            //if (avatars[i].gameObject != null)
-            //{
-            //    if (avatars[i].gameObject.GetComponent<PlayerStats>()._isServer)
-            //    {
-            //        isServerExist = true;
-            //        break;
-            //    } else
-            //    {
-            //        isServerExist = false;
-            //    }
-            //}
+        //}
 
-        }
-
-        if (!isServerExist)
-        {
-            for (int i = 0; i < avatars.Count; i++)
-            {
-                try
-                {
-                    if (avatars[i].gameObject != null)
-                    {
-                        avatars[i].gameObject.GetComponent<PlayerStats>()._isServer = true;
-                        break;
-                    }
+        //if (!isServerExist)
+        //{
+        //    for (int i = 0; i < avatars.Count; i++)
+        //    {
+        //        try
+        //        {
+        //            if (avatars[i].gameObject != null)
+        //            {
+        //                avatars[i].gameObject.GetComponent<PlayerStats>()._isServer = true;
+        //                break;
+        //            }
                     
-                } catch
-                {
+        //        } catch
+        //        {
 
-                }
-
-                //if (avatars[i].gameObject != null)
-                //{
-                //    avatars[i].gameObject.GetComponent<PlayerStats>()._isServer = true;
-                //    break;
-                //}
+        //        }
                     
-            }
-        }
+        //    }
+        //}
 
 
         //gameMode = GameLogicSync.get(gameMode);
@@ -181,25 +156,26 @@ public class GameManagerLogic : MonoBehaviour
 
         gameLogic = GetComponent<GameLogic>();
 
-        gameMode = gameLogic._gameMode;
-        isPlayersConnectedAndTeamsAssigned = gameLogic._isPlayersConnectedAndTeamsAssigned;
-        isPlayersReadyToStartGame = gameLogic._isPlayersReadyToStartGame;
-        isGameStart = gameLogic._isGameStart;
-        isRoundStarted = gameLogic._isRoundStarted;
-        gameWinner = gameLogic._gameWinner;
-        teamSize = gameLogic._teamSize;
-        roundTotalTime = gameLogic._roundTotalTime;
-        roundStartTime = gameLogic._roundStartTime;
-        roundElapsedTime = gameLogic._roundElapsedTime;
-        team1Score = gameLogic._team1Score;
-        team2Score = gameLogic._team2Score;
-        roundCurrent = gameLogic._roundCurrent;
-        roundsPlayed = gameLogic._roundsPlayed;
-        roundsTotal = gameLogic._roundsTotal;
-        team1Kills = (int)gameLogic._team1Kills;
-        team2Kills = (int)gameLogic._team2Kills;
-        team1TotalKills = (int)gameLogic._team1TotalKills;
-        team2TotalKills = (int)gameLogic._team2TotalKills;
+        //gameMode = gameLogic._gameMode;
+        //isPlayersConnectedAndTeamsAssigned = gameLogic._isPlayersConnectedAndTeamsAssigned;
+        //isPlayersReadyToStartGame = gameLogic._isPlayersReadyToStartGame;
+        //isGameStart = gameLogic._isGameStart;
+        //isRoundStarted = gameLogic._isRoundStarted;
+        //gameWinner = gameLogic._gameWinner;
+        //teamSize = gameLogic._teamSize;
+        //roundTotalTime = gameLogic._roundTotalTime;
+        //roundStartTime = gameLogic._roundStartTime;
+        //roundElapsedTime = gameLogic._roundElapsedTime;
+        //team1Score = gameLogic._team1Score;
+        //team2Score = gameLogic._team2Score;
+        //roundCurrent = gameLogic._roundCurrent;
+        //roundsPlayed = gameLogic._roundsPlayed;
+        //roundsTotal = gameLogic._roundsTotal;
+        //team1Kills = (int)gameLogic._team1Kills;
+        //team2Kills = (int)gameLogic._team2Kills;
+        //team1TotalKills = (int)gameLogic._team1TotalKills;
+        //team2TotalKills = (int)gameLogic._team2TotalKills;
+
         //team1Players = gameLogic._team1PlayerCount;
         //team2Players = gameLogic._team2PlayerCount;
         
