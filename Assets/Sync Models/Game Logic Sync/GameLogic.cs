@@ -226,7 +226,7 @@ public class GameLogic : MonoBehaviour
 
         if (_team2PlayerCount != _previousTeam2PlayerCount)
         {
-            _gameLogicSync.SetTeam1PlayerCount(_team2PlayerCount);
+            _gameLogicSync.SetTeam2PlayerCount(_team2PlayerCount);
             _previousTeam2PlayerCount = _team2PlayerCount;
         }
 

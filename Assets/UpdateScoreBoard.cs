@@ -49,6 +49,7 @@ public class UpdateScoreBoard : MonoBehaviour
         team2killsText.GetComponent<TextMesh>().text = gameLogic._team2Kills.ToString();
 
         roundText.GetComponent<TextMesh>().text = "Round " + gameLogic._roundCurrent.ToString();
-        timeText.GetComponent<TextMesh>().text = gameLogic._roundElapsedTime.ToString();
+        //timeText.GetComponent<TextMesh>().text = gameLogic._roundElapsedTime.ToString();
+        timeText.GetComponent<TextMesh>().text = gameLogic._roundElapsedTime.ToString("mm:ss");
     }
 }

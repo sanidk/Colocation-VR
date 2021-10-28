@@ -277,7 +277,7 @@ public class GameManagerLogic : MonoBehaviour
             if (team == 0)
             {
                 isTeamsSet = false;
-                return false;
+                //return false;
             }
             else if (team == 1)
             {
