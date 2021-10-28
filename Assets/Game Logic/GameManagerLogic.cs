@@ -332,28 +332,35 @@ public class GameManagerLogic : MonoBehaviour
 
         for (int i = 0; i < avatars.Count; i++)
         {
-            if (avatars[i] != null)
+            try
             {
-                RealtimeAvatar player = avatars[i];
-                int team;
-                team = player.gameObject.GetComponent<PlayerStats>()._team;
-
-                if (team == 0)
+                if (avatars[i] != null)
                 {
-                    isTeamsSet = false;
-                    //return false;
-                }
-                else if (team == 1)
-                {
+                    RealtimeAvatar player = avatars[i];
+                    int team;
+                    team = player.gameObject.GetComponent<PlayerStats>()._team;
 
-                    team1Players.Add(player.gameObject);
+                    if (team == 0)
+                    {
+                        isTeamsSet = false;
+                        //return false;
+                    }
+                    else if (team == 1)
+                    {
 
+                        team1Players.Add(player.gameObject);
+
+                    }
+                    else if (team == 2)
+                    {
+                        team2Players.Add(player.gameObject);
+                    }
                 }
-                else if (team == 2)
-                {
-                    team2Players.Add(player.gameObject);
-                }
+            } catch
+            {
+
             }
+            
             
         }
 
