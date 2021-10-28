@@ -139,7 +139,7 @@ public class GameManagerLogic : MonoBehaviour
         gameLogic._team1TotalKills = team1TotalKills;
         gameLogic._team2TotalKills = team2TotalKills;
         gameLogic._team1PlayerCount = team1Players.Count;
-        gameLogic._team1PlayerCount = team2Players.Count;
+        gameLogic._team2PlayerCount = team2Players.Count;
 
 
         //Update UI

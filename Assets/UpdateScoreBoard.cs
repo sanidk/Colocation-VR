@@ -50,7 +50,12 @@ public class UpdateScoreBoard : MonoBehaviour
 
         roundText.GetComponent<TextMesh>().text = "Round " + gameLogic._roundCurrent.ToString();
         int time = (int)(gameLogic._roundTotalTime - gameLogic._roundElapsedTime);
-        timeText.GetComponent<TextMesh>().text = time.ToString();
+        int minutes;
+        int seconds;
+        minutes = (int)Mathf.Floor(time / 60);
+        seconds = time - (int)Mathf.Floor(time / 60)*60;
+
+        timeText.GetComponent<TextMesh>().text = minutes.ToString()+":"+seconds.ToString();
         //ToString("mm:ss");
     }
 }
