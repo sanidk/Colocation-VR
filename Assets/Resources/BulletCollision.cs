@@ -32,6 +32,7 @@ public class BulletCollision : MonoBehaviour
             print("Head collider hit");
             collision.collider.gameObject.GetComponent<PlayerStats>()._health -= 40;
             Realtime.Destroy(gameObject);
+            Destroy(gameObject);
         }
         else if (collision.collider.name == "TorsoCollider")
         {
@@ -43,6 +44,7 @@ public class BulletCollision : MonoBehaviour
         {
             collision.collider.gameObject.GetComponent<PlayerStats>()._health -= 20;
             Realtime.Destroy(gameObject);
+            Destroy(gameObject);
         }
         else if (collision.collider.name == "LeftShinCollider" || collision.collider.name == "RightShinCollider")
         {
