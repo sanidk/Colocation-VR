@@ -14,11 +14,16 @@ public class ColorSyncTest : MonoBehaviour
     {
         // Get a reference to the color sync component
         _colorSync = GetComponent<ColorSync>();
+
+        _colorSync.SetColor(_color);
     }
 
     private void Update()
     {
         // If the color has changed (via the inspector), call SetColor on the color sync component.
+
+        
+
         if (_color != _previousColor)
         {
             _colorSync.SetColor(_color);
