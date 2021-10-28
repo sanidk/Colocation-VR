@@ -178,7 +178,11 @@ public class GameManagerLogic : MonoBehaviour
 
         //team1Players = gameLogic._team1PlayerCount;
         //team2Players = gameLogic._team2PlayerCount;
-        
+
+        if (avatars.Count == 1)
+        {
+            isServer = true;
+        }
 
         if (!isServer) { return; }
 

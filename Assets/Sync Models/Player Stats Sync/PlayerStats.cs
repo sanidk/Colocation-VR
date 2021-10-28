@@ -30,6 +30,8 @@ public class PlayerStats : MonoBehaviour
     public GameObject gameManager;
     GameManagerLogic gameManagerLogic;
 
+    //HUSK VI HAR UNCOMMENTET I LINIE 86
+
     private void Awake()
     {
         gameManager = GameObject.Find("GameManager");
@@ -81,7 +83,7 @@ public class PlayerStats : MonoBehaviour
         if (_isServer != _previousIsServer)
         {
             _playerStatsSync.SetIsServer(_isServer);
-            gameManagerLogic.isServer = _isServer;
+            //gameManagerLogic.isServer = _isServer;
             _previousIsServer = _isServer;
         }
 
