@@ -30,35 +30,35 @@ public class BulletCollision : MonoBehaviour
         if (collision.collider.name == "HeadCollider")
         {
             print("Head collider hit");
-            collision.collider.gameObject.GetComponent<PlayerStats>()._health -= 40;
+            collision.collider.gameObject.GetComponentInParent<PlayerStats>()._health -= 40;
             Realtime.Destroy(gameObject);
             Destroy(gameObject);
         }
         else if (collision.collider.name == "TorsoCollider")
         {
             print("Torso collider hit");
-            collision.collider.gameObject.GetComponent<PlayerStats>()._health -= 30;
+            collision.collider.gameObject.GetComponentInParent<PlayerStats>()._health = collision.collider.gameObject.GetComponentInParent<PlayerStats>()._health - -30;
             Realtime.Destroy(gameObject);
         }
         else if(collision.collider.name == "LeftThighCollider" || collision.collider.name == "RightThighCollider")
         {
-            collision.collider.gameObject.GetComponent<PlayerStats>()._health -= 20;
+            collision.collider.gameObject.GetComponentInParent<PlayerStats>()._health -= 20;
             Realtime.Destroy(gameObject);
             Destroy(gameObject);
         }
         else if (collision.collider.name == "LeftShinCollider" || collision.collider.name == "RightShinCollider")
         {
-            collision.collider.gameObject.GetComponent<PlayerStats>()._health -= 10;
+            collision.collider.gameObject.GetComponentInParent<PlayerStats>()._health -= 10;
             Realtime.Destroy(gameObject);
         }
         else if (collision.collider.name == "LeftUpperArmCollider" || collision.collider.name == "RightUpperArmCollider")
         {
-            collision.collider.gameObject.GetComponent<PlayerStats>()._health -= 15;
+            collision.collider.gameObject.GetComponentInParent<PlayerStats>()._health -= 15;
             Realtime.Destroy(gameObject);
         }
         else if (collision.collider.name == "LeftLowerArmCollider" || collision.collider.name == "RightLowerArmCollider")
         {
-            collision.collider.gameObject.GetComponent<PlayerStats>()._health -= 10;
+            collision.collider.gameObject.GetComponentInParent<PlayerStats>()._health -= 10;
             Realtime.Destroy(gameObject);
         }
         /*
