@@ -7,7 +7,7 @@ public class BulletCollision : MonoBehaviour
 {
 
     float spawnTime;
-    public float lifeTime = 2f;
+    public float lifeTime = 5f;
 
     void Start()
     {
@@ -51,12 +51,13 @@ public class BulletCollision : MonoBehaviour
             collision.collider.GetComponent<PlayerStats>()._health -= 10;
         }
 
+        /*
         if (collision.collider.CompareTag("AvatarHitbox"))
         {
             Realtime.Destroy(gameObject);
 
             //Destroy(gameObject);
-        }
+        }*/
     }
 
     //Test with onTriggerEnter?
