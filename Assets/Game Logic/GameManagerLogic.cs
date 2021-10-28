@@ -63,6 +63,9 @@ public class GameManagerLogic : MonoBehaviour
     int team2Kills;
     int team1TotalKills;
     int team2TotalKills;
+
+    bool isServerExist;
+
     //create player stats variable to track kills
     //create player stats variable to track ready to start new round
     //Team variable to track which team the player is joined
@@ -86,7 +89,7 @@ public class GameManagerLogic : MonoBehaviour
     public GameObject debugText;
 
 
-    bool isServer = false;
+    public bool isServer = false;
 
 
     // Update is called once per frame
@@ -106,21 +109,41 @@ public class GameManagerLogic : MonoBehaviour
 
         }
 
-        for(int i = 0; i<avatars.Count; i++)
+        //for(int i = 0; i<avatars.Count; i++)
+        //{
+        //    print(i+" "+avatars[i]);
+        //}
+
+        
+
+        for (int i = 0; i < avatars.Count; i++)
         {
-            print(i+" "+avatars[i]);
+            
+            if (avatars[i].gameObject != null)
+            {
+                if (avatars[i].gameObject.GetComponent<PlayerStats>()._isServer)
+                {
+                    isServerExist = true;
+                    break;
+                } else
+                {
+                    isServerExist = false;
+                }
+            }
+
         }
 
-        if (!avatars[0].GetComponent<PlayerStats>()._isServer)
+        if (!isServerExist)
         {
-            avatars[0].GetComponent<PlayerStats>()._isServer = true;
-        }
-
-
-        //maybe for later change host to be first avatar in array always and sync this to everyone.
-        if (avatars.Count == 1)
-        {
-            isServer = true;
+            for (int i = 0; i < avatars.Count; i++)
+            {
+                if (avatars[i].gameObject != null)
+                {
+                    avatars[i].gameObject.GetComponent<PlayerStats>()._isServer = true;
+                    break;
+                }
+                    
+            }
         }
 
         if (!isServer) { return; }
@@ -243,7 +266,7 @@ public class GameManagerLogic : MonoBehaviour
                 isRoundStarted = false;
 
                 //roundText.GetComponent<TextMesh>().text = "round winner team 2";
-            }
+            } 
 
         }
 

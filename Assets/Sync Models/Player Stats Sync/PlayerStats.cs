@@ -28,6 +28,7 @@ public class PlayerStats : MonoBehaviour
     public PlayerStatsSync _playerStatsSync;
     GameLogic gameLogic;
     public GameObject gameManager;
+    GameManagerLogic gameManagerLogic;
 
     private void Awake()
     {
@@ -35,6 +36,8 @@ public class PlayerStats : MonoBehaviour
         // Get a reference to the color sync component
         _playerStatsSync = GetComponent<PlayerStatsSync>();
         gameLogic = gameManager.GetComponent<GameLogic>();
+        gameManagerLogic = gameManager.GetComponent<GameManagerLogic>();
+
         //_health = 100; this works and sets _health to 100 on connection/spawn
 
         if (Application.platform != RuntimePlatform.Android)
@@ -49,6 +52,8 @@ public class PlayerStats : MonoBehaviour
         {
             _health = 100;
         }
+
+        
 
 
         // If the color has changed (via the inspector), call SetColor on the color sync component.
@@ -76,6 +81,7 @@ public class PlayerStats : MonoBehaviour
         if (_isServer != _previousIsServer)
         {
             _playerStatsSync.SetIsServer(_isServer);
+            gameManagerLogic.isServer = _isServer;
             _previousIsServer = _isServer;
         }
 
