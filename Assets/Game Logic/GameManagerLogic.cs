@@ -175,10 +175,36 @@ public class GameManagerLogic : MonoBehaviour
             }
         }
 
-        if (!isServer) { return; }
+
+        //gameMode = GameLogicSync.get(gameMode);
+        //get variables
 
         gameLogic = GetComponent<GameLogic>();
+
+        gameMode = gameLogic._gameMode;
+        isPlayersConnectedAndTeamsAssigned = gameLogic._isPlayersConnectedAndTeamsAssigned;
+        isPlayersReadyToStartGame = gameLogic._isPlayersReadyToStartGame;
+        isGameStart = gameLogic._isGameStart;
+        isRoundStarted = gameLogic._isRoundStarted;
+        gameWinner = gameLogic._gameWinner;
+        teamSize = gameLogic._teamSize;
+        roundTotalTime = gameLogic._roundTotalTime;
+        roundStartTime = gameLogic._roundStartTime;
+        roundElapsedTime = gameLogic._roundElapsedTime;
+        team1Score = gameLogic._team1Score;
+        team2Score = gameLogic._team2Score;
+        roundCurrent = gameLogic._roundCurrent;
+        roundsPlayed = gameLogic._roundsPlayed;
+        roundsTotal = gameLogic._roundsTotal;
+        team1Kills = (int)gameLogic._team1Kills;
+        team2Kills = (int)gameLogic._team2Kills;
+        team1TotalKills = (int)gameLogic._team1TotalKills;
+        team2TotalKills = (int)gameLogic._team2TotalKills;
+        //team1Players = gameLogic._team1PlayerCount;
+        //team2Players = gameLogic._team2PlayerCount;
         
+
+        if (!isServer) { return; }
 
         //set variables
         gameLogic._gameMode = gameMode;
