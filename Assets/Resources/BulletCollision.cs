@@ -6,12 +6,15 @@ using Normal.Realtime;
 public class BulletCollision : MonoBehaviour
 {
 
+    private GameObject GameManager;
+
     float spawnTime;
     public float lifeTime = 5f;
 
     void Start()
     {
         spawnTime = Time.time;
+        //GameManager = GameObject.Find("GameManager");
     }
 
     void Update()
@@ -41,8 +44,8 @@ public class BulletCollision : MonoBehaviour
             collision.collider.gameObject.GetComponentInParent<PlayerStatsSync>().DeductHealth(10);
             //Realtime.Destroy(gameObject);
             Destroy(gameObject);
-        }/*
-        else if(collision.collider.name == "LeftThighCollider" || collision.collider.name == "RightThighCollider")
+        }
+        /*else if(collision.collider.name == "LeftThighCollider" || collision.collider.name == "RightThighCollider")
         {
             collision.collider.gameObject.GetComponentInParent<PlayerStats>()._health -= 20;
             //Realtime.Destroy(gameObject);

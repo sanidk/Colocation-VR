@@ -71,7 +71,7 @@ public class PlayerStats : MonoBehaviour
         }
 
         // If the color has changed (via the inspector), call SetColor on the color sync component.
-        if (_health != _previousHealth)
+        if (_health != _previousHealth || _health != _playerStatsSync.GetHealth())
         {
             _playerStatsSync.SetHealth(_health);
             _previousHealth = _health;
