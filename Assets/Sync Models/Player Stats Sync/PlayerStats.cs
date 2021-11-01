@@ -30,6 +30,12 @@ public class PlayerStats : MonoBehaviour
     public GameObject gameManager;
     GameManagerLogic gameManagerLogic;
 
+    private Material healthShaderMat;
+    private int childIndexDisplay = 0;
+    private float convertedHealth;
+    private float convertedHealthColor;
+    public GameObject watch;
+
     //HUSK VI HAR UNCOMMENTET I LINIE 86
 
     private void Awake()
@@ -39,6 +45,9 @@ public class PlayerStats : MonoBehaviour
         _playerStatsSync = GetComponent<PlayerStatsSync>();
         gameLogic = gameManager.GetComponent<GameLogic>();
         gameManagerLogic = gameManager.GetComponent<GameManagerLogic>();
+        //healthShaderMat = transform.GetChild(childIndexDisplay).GetChild(childIndexDisplay).GetComponent<MeshRenderer>().material;
+        healthShaderMat = watch.GetComponent<MeshRenderer>().material;
+        
 
         //_health = 100; this works and sets _health to 100 on connection/spawn
 
@@ -46,17 +55,20 @@ public class PlayerStats : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        
     }
 
     private void Update()
     {
+        convertedHealth = Remap(_health, 0, 100, 5, 0);
+        healthShaderMat.SetFloat("_ConvHealth", Remap(_health, 0, 100, 0, 1));
+        healthShaderMat.SetFloat("_RemovedSegments", convertedHealth);
+
         if (!gameLogic._isRoundStarted)
         {
             _health = 100;
+
         }
-
-        
-
 
         // If the color has changed (via the inspector), call SetColor on the color sync component.
         if (_health != _previousHealth)
@@ -65,17 +77,20 @@ public class PlayerStats : MonoBehaviour
             _previousHealth = _health;
         }
 
-        if (_energy != _previousEnergy) {
+        if (_energy != _previousEnergy)
+        {
             _playerStatsSync.SetEnergy(_energy);
             _previousEnergy = _energy;
         }
 
-        if (_isReady != _previousIsReady) {
+        if (_isReady != _previousIsReady)
+        {
             _playerStatsSync.SetIsReady(_isReady);
             _previousIsReady = _isReady;
         }
 
-        if (_team != _previousTeam) {
+        if (_team != _previousTeam)
+        {
             _playerStatsSync.SetTeam(_team);
             _previousTeam = _team;
         }
@@ -88,4 +103,11 @@ public class PlayerStats : MonoBehaviour
         }
 
     }
+
+    // Remap function taken from unity forum
+    public float Remap(float value, float from1, float to1, float from2, float to2)
+    {
+        return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
+    }
+
 }

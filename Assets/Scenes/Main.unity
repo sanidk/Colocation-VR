@@ -33912,6 +33912,10 @@ MonoBehaviour:
   _previousTeam1TotalKills: 0
   _team2TotalKills: 0
   _previousTeam2TotalKills: 0
+  _team1PlayerCount: 0
+  _previousTeam1PlayerCount: 0
+  _team2PlayerCount: 0
+  _previousTeam2PlayerCount: 0
   _gameLogicSync: {fileID: 0}
 --- !u!114 &16850717895447386
 MonoBehaviour:
