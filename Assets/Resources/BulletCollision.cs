@@ -21,6 +21,7 @@ public class BulletCollision : MonoBehaviour
 
     void Update()
     {
+        if (!hasAuthority) return;
         if (Time.time > spawnTime + lifeTime)
         {
             Destroy(gameObject);
@@ -30,6 +31,7 @@ public class BulletCollision : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
+        if (!hasAuthority) return;
         print("OnCollisionEnter On bullet");
         //ContactPoint cp = collision.GetContact(0);
         /*if (collision.collider.name == "HeadCollider")
