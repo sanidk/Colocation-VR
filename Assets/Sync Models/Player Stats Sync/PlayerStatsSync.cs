@@ -122,6 +122,16 @@ public class PlayerStatsSync : RealtimeComponent<PlayerStatsSyncModel>
         model.health = health;
     }
 
+    public float GetHealth()
+    {
+        return model.health;
+    }
+
+    public void DeductHealth(float damage)
+    {
+        model.health = model.health - damage;
+    }
+
     public void SetEnergy(float energy) {
 
         model.energy = energy;

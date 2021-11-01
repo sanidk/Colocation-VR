@@ -66,7 +66,7 @@ public class PlayerStats : MonoBehaviour
 
         if (!gameLogic._isRoundStarted)
         {
-            _health = 100;
+            //_health = 100;
 
         }
 

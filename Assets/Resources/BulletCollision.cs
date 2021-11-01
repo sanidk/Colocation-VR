@@ -27,20 +27,21 @@ public class BulletCollision : MonoBehaviour
     {
         print("OnCollisionEnter On bullet");
         //ContactPoint cp = collision.GetContact(0);
-        if (collision.collider.name == "HeadCollider")
+        /*if (collision.collider.name == "HeadCollider")
         {
             print("Head collider hit");
             collision.collider.gameObject.GetComponentInParent<PlayerStats>()._health -= 40;
             //Realtime.Destroy(gameObject);
             Destroy(gameObject);
-        }
-        else if (collision.collider.name == "TorsoCollider")
+        }*/
+        if (collision.collider.name == "TorsoCollider")
         {
             print("Torso collider hit");
-            collision.collider.gameObject.GetComponentInParent<PlayerStats>()._health = collision.collider.gameObject.GetComponentInParent<PlayerStats>()._health -30;
+            //collision.collider.gameObject.GetComponentInParent<PlayerStats>()._health -= 10;
+            collision.collider.gameObject.GetComponentInParent<PlayerStatsSync>().DeductHealth(10);
             //Realtime.Destroy(gameObject);
             Destroy(gameObject);
-        }
+        }/*
         else if(collision.collider.name == "LeftThighCollider" || collision.collider.name == "RightThighCollider")
         {
             collision.collider.gameObject.GetComponentInParent<PlayerStats>()._health -= 20;
@@ -64,7 +65,7 @@ public class BulletCollision : MonoBehaviour
             collision.collider.gameObject.GetComponentInParent<PlayerStats>()._health -= 10;
             //Realtime.Destroy(gameObject);
             Destroy(gameObject);
-        }
+        }*/
         /*
         if (collision.collider.CompareTag("AvatarHitbox"))
         {
