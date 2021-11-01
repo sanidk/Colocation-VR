@@ -39,8 +39,8 @@ public class SimpleShoot : MonoBehaviour
 
     float fireTriggerStartTime;
     float fireSpeedTime = .11f;
+    private Realtime _realtime;
 
-    
     int previousBulletsInMag;
     public int maxBulletsInMag = 64;
     public int bulletsInMag;
@@ -225,7 +225,14 @@ public class SimpleShoot : MonoBehaviour
 
         // Create a bullet and add force on it in direction of the barrel
         //Instantiate(bulletPrefab, barrelLocation.position, barrelLocation.rotation).GetComponent<Rigidbody>().AddForce(barrelLocation.forward * shotPower);
-        Realtime.Instantiate("ProjectileWithTrail", barrelLocation.position, barrelLocation.rotation, preventOwnershipTakeover: true).GetComponent<Rigidbody>().AddForce(barrelLocation.forward * shotPower);
+        Realtime.Instantiate("ProjectileWithTrail", barrelLocation.position, barrelLocation.rotation, new Realtime.InstantiateOptions
+        {
+            ownedByClient = true,
+            preventOwnershipTakeover = true,
+            destroyWhenOwnerLeaves = false,
+            destroyWhenLastClientLeaves = true,
+            //useInstance = _realtime,
+        }).GetComponent<Rigidbody>().AddForce(barrelLocation.forward * shotPower);
 
         //This function creates a casing at the ejection slot
         void CasingRelease()
