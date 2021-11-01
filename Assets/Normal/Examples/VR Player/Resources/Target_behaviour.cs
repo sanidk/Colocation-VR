@@ -12,7 +12,7 @@ public class Target_behaviour : MonoBehaviour
     private int previousHp_Local;
     //private int hp = 100;
     // Start is called before the first frame update
-    private ColorSync _colorSync;
+
     private bool dead;
     private HPSync _hp;
     TextMesh textMesh;
@@ -20,7 +20,6 @@ public class Target_behaviour : MonoBehaviour
     private void Awake()
     {
         _playerHitbox = GetComponent<BoxCollider>();
-        _colorSync = GetComponent<ColorSync>();
         _color = new Color(0, 0, 0);
         _hp = GetComponent<HPSync>();
         textMesh = GetComponentInChildren<TextMesh>();
@@ -49,7 +48,7 @@ public class Target_behaviour : MonoBehaviour
         }
         else if(_hp.GetHp() < 25 && !dead)
         {
-            _colorSync.SetColor(new Color(255, 0, 0));
+            //_colorSync.SetColor(new Color(255, 0, 0));
         }
         
     }
