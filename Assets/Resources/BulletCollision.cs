@@ -44,6 +44,7 @@ public class BulletCollision : MonoBehaviour
             //collision.collider.gameObject.GetComponentInParent<PlayerStatsSync>().DeductHealth(15);
             //Realtime.Destroy(gameObject);
             //Destroy(gameObject);
+            Realtime.Destroy(gameObject);
         }/*
         else if(collision.collider.name == "LeftThighCollider" || collision.collider.name == "RightThighCollider")
         {
