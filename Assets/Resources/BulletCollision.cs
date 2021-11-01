@@ -6,6 +6,8 @@ using Normal.Realtime;
 public class BulletCollision : MonoBehaviour
 {
 
+    public bool hasAuthority = false;
+
     private GameObject GameManager;
 
     float spawnTime;

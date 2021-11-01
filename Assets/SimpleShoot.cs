@@ -48,6 +48,8 @@ public class SimpleShoot : MonoBehaviour
     public bool isPistol;
     public bool isRifle;
 
+    GameObject gameManager;
+
     TMPro.TextMeshPro bulletsInMagTextMesh;
 
     public void AddMagazine(XRBaseInteractable interactable)
@@ -87,7 +89,7 @@ public class SimpleShoot : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         bulletsInMagTextMesh = GetComponentInChildren<TMPro.TextMeshPro>();
-        
+        gameManager = GameObject.Find("GameManager");
     }
 
 
@@ -225,14 +227,21 @@ public class SimpleShoot : MonoBehaviour
 
         // Create a bullet and add force on it in direction of the barrel
         //Instantiate(bulletPrefab, barrelLocation.position, barrelLocation.rotation).GetComponent<Rigidbody>().AddForce(barrelLocation.forward * shotPower);
-        Realtime.Instantiate("ProjectileWithTrail", barrelLocation.position, barrelLocation.rotation, new Realtime.InstantiateOptions
+        GameObject projectile = Realtime.Instantiate("ProjectileWithTrail", barrelLocation.position, barrelLocation.rotation, new Realtime.InstantiateOptions
         {
             ownedByClient = true,
             preventOwnershipTakeover = true,
             destroyWhenOwnerLeaves = false,
             destroyWhenLastClientLeaves = true,
             //useInstance = _realtime,
-        }).GetComponent<Rigidbody>().AddForce(barrelLocation.forward * shotPower);
+        });
+        projectile.GetComponent<Rigidbody>().AddForce(barrelLocation.forward * shotPower);
+        //if (GetComponent<>)
+        if (gameManager.GetComponent<GameManagerLogic>().isServer)
+        {
+            projectile.GetComponent<BulletCollision>().hasAuthority = true;
+        }
+        
 
         //This function creates a casing at the ejection slot
         void CasingRelease()
