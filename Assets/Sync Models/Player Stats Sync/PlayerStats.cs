@@ -53,7 +53,7 @@ public class PlayerStats : MonoBehaviour
 
         if (Application.platform != RuntimePlatform.Android)
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
         
     }
