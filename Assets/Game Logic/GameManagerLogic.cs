@@ -48,7 +48,7 @@ public class GameManagerLogic : MonoBehaviour
     public List<GameObject> team2Players = new List<GameObject>();
 
     //is players dead
-    float roundTotalTime = 80;
+    float roundTotalTime = 20;
     float roundStartTime;
     float roundElapsedTime;
 
@@ -275,6 +275,8 @@ public class GameManagerLogic : MonoBehaviour
 
             if (roundWinner == 1)
             {
+                ResetPlayerHealth();
+
                 team1Score++;
                 roundCurrent++;
 
@@ -284,6 +286,9 @@ public class GameManagerLogic : MonoBehaviour
                 isRoundStarted = false;
                 isPlayersReadyToStartGame = false;
 
+
+
+
                 //roundText.GetComponent<TextMesh>().text = "round winner team 1";
 
 
@@ -291,6 +296,8 @@ public class GameManagerLogic : MonoBehaviour
             }
             else if (roundWinner == 2)
             {
+                ResetPlayerHealth();
+
                 team2Score++;
                 roundCurrent++;
 
@@ -326,6 +333,30 @@ public class GameManagerLogic : MonoBehaviour
         timeText.text = (roundTotalTime - roundElapsedTime).ToString();
         debugText.text = "hello world";//GetComponent<PlayerStats>()._health.ToString();
         */
+    }
+
+    void ResetPlayerHealth()
+    {
+        for (int i = 0; i < avatars.Count; i++)
+        {
+            try
+            {
+                if (avatars[i] != null)
+                {
+                    RealtimeAvatar player = avatars[i];
+
+                    player.gameObject.GetComponent<PlayerStats>()._health = 100;
+
+
+                }
+            }
+            catch
+            {
+
+            }
+
+
+        }
     }
 
     bool CheckIfPlayersConnectedAndTeamsAssigned()
