@@ -27,6 +27,7 @@ public class Player_Behavior : MonoBehaviour
     TextMesh textMesh;
 
     PlayerStats playerStats;
+    PlayerStatsSync playerStatsSync;
 
     private void Awake()
     {
@@ -36,6 +37,7 @@ public class Player_Behavior : MonoBehaviour
         //coll = meshObject.GetComponent<CapsuleCollider>();
         textMesh = textMeshObject.GetComponent<TextMesh>();
         playerStats = GetComponent<PlayerStats>();
+        playerStatsSync = GetComponent<PlayerStatsSync>();
     }
 
     void Start()
@@ -63,7 +65,7 @@ public class Player_Behavior : MonoBehaviour
         
         }
         */
-        textMesh.text = "HP: " + playerStats._health; // change dis
+        textMesh.text = "HP: " + playerStatsSync.GetHealth(); // change dis
 
     }
 
