@@ -8,7 +8,7 @@ public class BulletCollision : MonoBehaviour
 
     public bool hasAuthority = false;
 
-    private GameObject GameManager;
+    private GameObject gameManager;
 
     float spawnTime;
     public float lifeTime = 5f;
@@ -16,7 +16,11 @@ public class BulletCollision : MonoBehaviour
     void Start()
     {
         spawnTime = Time.time;
-        //GameManager = GameObject.Find("GameManager");
+        gameManager = GameObject.Find("GameManager");
+        if (gameManager.GetComponent<GameManagerLogic>().isServer)
+        {
+            hasAuthority = true;
+        }
     }
 
     void Update()
@@ -24,7 +28,7 @@ public class BulletCollision : MonoBehaviour
         if (!hasAuthority) return;
         if (Time.time > spawnTime + lifeTime)
         {
-            Destroy(gameObject);
+            //Realtime.Destroy(gameObject);
         }
     }
 

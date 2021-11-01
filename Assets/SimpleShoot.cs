@@ -89,7 +89,7 @@ public class SimpleShoot : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         bulletsInMagTextMesh = GetComponentInChildren<TMPro.TextMeshPro>();
-        gameManager = GameObject.Find("GameManager");
+        
     }
 
 
@@ -237,10 +237,7 @@ public class SimpleShoot : MonoBehaviour
         });
         projectile.GetComponent<Rigidbody>().AddForce(barrelLocation.forward * shotPower);
         //if (GetComponent<>)
-        if (gameManager.GetComponent<GameManagerLogic>().isServer)
-        {
-            projectile.GetComponent<BulletCollision>().hasAuthority = true;
-        }
+        
         
 
         //This function creates a casing at the ejection slot
