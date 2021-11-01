@@ -41,22 +41,22 @@ public class BulletCollision : MonoBehaviour
         {
             print("Torso collider hit");
             //collision.collider.gameObject.GetComponentInParent<PlayerStats>()._health -= 10;
-            collision.collider.gameObject.GetComponentInParent<PlayerStatsSync>().DeductHealth(10);
+            collision.collider.gameObject.GetComponentInParent<PlayerStatsSync>().DeductHealth(15);
             //Realtime.Destroy(gameObject);
             Destroy(gameObject);
         }
-        /*else if(collision.collider.name == "LeftThighCollider" || collision.collider.name == "RightThighCollider")
-        {
-            collision.collider.gameObject.GetComponentInParent<PlayerStats>()._health -= 20;
-            //Realtime.Destroy(gameObject);
-            Destroy(gameObject);
-        }
-        else if (collision.collider.name == "LeftShinCollider" || collision.collider.name == "RightShinCollider")
+        else if(collision.collider.name == "LeftThighCollider" || collision.collider.name == "RightThighCollider")
         {
             collision.collider.gameObject.GetComponentInParent<PlayerStats>()._health -= 10;
             //Realtime.Destroy(gameObject);
             Destroy(gameObject);
         }
+        else if (collision.collider.name == "LeftShinCollider" || collision.collider.name == "RightShinCollider")
+        {
+            collision.collider.gameObject.GetComponentInParent<PlayerStats>()._health -= 5;
+            //Realtime.Destroy(gameObject);
+            Destroy(gameObject);
+        }/*
         else if (collision.collider.name == "LeftUpperArmCollider" || collision.collider.name == "RightUpperArmCollider")
         {
             collision.collider.gameObject.GetComponentInParent<PlayerStats>()._health -= 15;
@@ -68,7 +68,7 @@ public class BulletCollision : MonoBehaviour
             collision.collider.gameObject.GetComponentInParent<PlayerStats>()._health -= 10;
             //Realtime.Destroy(gameObject);
             Destroy(gameObject);
-        }*/
+        }
         /*
         if (collision.collider.CompareTag("AvatarHitbox"))
         {
