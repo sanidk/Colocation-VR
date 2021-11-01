@@ -275,7 +275,7 @@ public class GameManagerLogic : MonoBehaviour
 
             if (roundWinner == 1)
             {
-                ResetPlayerHealth();
+                //ResetPlayerHealth();
 
                 team1Score++;
                 roundCurrent++;
@@ -296,7 +296,7 @@ public class GameManagerLogic : MonoBehaviour
             }
             else if (roundWinner == 2)
             {
-                ResetPlayerHealth();
+                //ResetPlayerHealth();
 
                 team2Score++;
                 roundCurrent++;

@@ -40,14 +40,14 @@ public class BulletCollision : MonoBehaviour
         if (collision.collider.name == "TorsoCollider")
         {
             print("Torso collider hit");
-            //collision.collider.gameObject.GetComponentInParent<PlayerStats>()._health -= 10;
-            collision.collider.gameObject.GetComponentInParent<PlayerStatsSync>().DeductHealth(15);
+            collision.collider.gameObject.GetComponentInParent<PlayerStats>()._health -= 10;
+            //collision.collider.gameObject.GetComponentInParent<PlayerStatsSync>().DeductHealth(15);
             //Realtime.Destroy(gameObject);
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
         else if(collision.collider.name == "LeftThighCollider" || collision.collider.name == "RightThighCollider")
         {
-            collision.collider.gameObject.GetComponentInParent<PlayerStats>()._health -= 10;
+            collision.collider.gameObject.GetComponentInParent<PlayerStats>()._health -= 5;
             //Realtime.Destroy(gameObject);
             Destroy(gameObject);
         }

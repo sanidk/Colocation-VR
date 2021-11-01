@@ -66,12 +66,12 @@ public class PlayerStats : MonoBehaviour
 
         if (!gameLogic._isRoundStarted)
         {
-            _health = 100;
+           // _health = 100;
 
         }
 
         // If the color has changed (via the inspector), call SetColor on the color sync component.
-        if (_health != _previousHealth || _health != _playerStatsSync.GetHealth())
+        if (_health != _previousHealth)
         {
             _playerStatsSync.SetHealth(_health);
             _previousHealth = _health;

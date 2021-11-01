@@ -65,7 +65,7 @@ public class Player_Behavior : MonoBehaviour
         
         }
         */
-        textMesh.text = "HP: " + playerStatsSync.GetHealth(); // change dis
+        textMesh.text = "HP: " + playerStats._health; // change dis
 
     }
 
