@@ -77,24 +77,26 @@ public class PlayerStats : MonoBehaviour
         */
         if (!gameManagerLogic.isServer)
         {
-            _health = _playerStatsSync.GetHealth();
+            //_health = _playerStatsSync.GetHealth();
             return;
         }
-        
-        
 
+
+        _playerStatsSync.SetHealth(_health);
 
         //if (!gameManagerLogic.isServer) return;
 
-        
+
 
 
         // If the color has changed (via the inspector), call SetColor on the color sync component.
+        /*
         if (_health != _previousHealth)
         {
             _playerStatsSync.SetHealth(_health);
             _previousHealth = _health;
         }
+        */
 
         if (_energy != _previousEnergy)
         {
