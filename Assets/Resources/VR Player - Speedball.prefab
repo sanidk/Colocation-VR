@@ -425,6 +425,17 @@ MonoBehaviour:
   deadPostFX: {fileID: 0}
   damagePostFX: {fileID: 0}
   vignetteControl: {fileID: 0}
+  colliderObjects:
+  - {fileID: 2483275311580171978}
+  - {fileID: 6822099320902657682}
+  - {fileID: 8451146681087232465}
+  - {fileID: 7681638452679272378}
+  - {fileID: 8019038920339931220}
+  - {fileID: 7467528735616529802}
+  - {fileID: 1741737734817869513}
+  - {fileID: 7183579557150037287}
+  - {fileID: 7977139018095083758}
+  - {fileID: 3526620698066648782}
 --- !u!114 &-3078369984816020322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7486,14 +7497,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50cff2be1c49d2849847717bf4d6b1d4, type: 3}
---- !u!4 &224318890204697963 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2983699994613793762, guid: 50cff2be1c49d2849847717bf4d6b1d4, type: 3}
-  m_PrefabInstance: {fileID: 3059293804491560585}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &738366655711902612 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2327234068396551453, guid: 50cff2be1c49d2849847717bf4d6b1d4, type: 3}
+  m_PrefabInstance: {fileID: 3059293804491560585}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &224318890204697963 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2983699994613793762, guid: 50cff2be1c49d2849847717bf4d6b1d4, type: 3}
   m_PrefabInstance: {fileID: 3059293804491560585}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5277539009823233697

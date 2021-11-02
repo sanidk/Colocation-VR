@@ -68,7 +68,7 @@ public class PlayerStats : MonoBehaviour
         healthShaderMat.SetFloat("_RemovedSegments", convertedHealth);
 
         _health = _playerStatsSync.GetHealth();
-        hp = _health;
+        //hp = _health;
 
         /*
         if (!gameLogic._isRoundStarted)
@@ -149,8 +149,10 @@ public class PlayerStats : MonoBehaviour
         
         if (cp.thisCollider.name == "HeadCollider" && collision.collider.CompareTag("Bullet"))
         {
-            hp -= 20;
-            _playerStatsSync.SetHealth(hp);
+            //hp -= 20;
+            //_playerStatsSync.SetHealth(hp);
+            _playerStatsSync.SetHealth(_health - 20);
+            collision.collider.gameObject.GetComponentInParent<BulletCollision>().isActive = false;
         }
         if (cp.thisCollider.name == "TorsoCollider" && collision.collider.CompareTag("Bullet"))
         {
@@ -158,34 +160,46 @@ public class PlayerStats : MonoBehaviour
             //_playerStatsSync.SetHealth(_playerStatsSync.GetHealth() - 10);
             //_health -= 10;
             //_playerStatsSync.SetHealth(_health);
-            hp -= 10;
-            _playerStatsSync.SetHealth(hp);
             //_health -= 10;
+
+            //hp -= 10;
+            //_playerStatsSync.SetHealth(hp);
+            _playerStatsSync.SetHealth(_health - 10);
+            collision.collider.gameObject.GetComponentInParent<BulletCollision>().isActive = false;
+
         }
         if (cp.thisCollider.name == "RightThighCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftThighCollider"
             && collision.collider.CompareTag("Bullet"))
         {
-            hp -= 10;
-            _playerStatsSync.SetHealth(hp);
+            //hp -= 10;
+            //_playerStatsSync.SetHealth(hp);
+            _playerStatsSync.SetHealth(_health - 10);
+            collision.collider.gameObject.GetComponentInParent<BulletCollision>().isActive = false;
         }
         if (cp.thisCollider.name == "RightShinCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftShinCollider"
             && collision.collider.CompareTag("Bullet"))
         {
-            hp -= 10;
-            _playerStatsSync.SetHealth(hp);
+            //hp -= 10;
+            //_playerStatsSync.SetHealth(hp);
+            _playerStatsSync.SetHealth(_health - 10);
+            collision.collider.gameObject.GetComponentInParent<BulletCollision>().isActive = false;
         }
         if (cp.thisCollider.name == "RightUpperArmCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftUpperArmCollider"
             && collision.collider.CompareTag("Bullet"))
         {
-            hp -= 10;
-            _playerStatsSync.SetHealth(hp);
+            //hp -= 10;
+            //_playerStatsSync.SetHealth(hp);
+            _playerStatsSync.SetHealth(_health - 10);
+            collision.collider.gameObject.GetComponentInParent<BulletCollision>().isActive = false;
         }
 
         if (cp.thisCollider.name == "RightLowerArmCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftLowerArmCollider"
             && collision.collider.CompareTag("Bullet"))
         {
-            hp -= 10;
-            _playerStatsSync.SetHealth(hp);
+            //hp -= 10;
+            //_playerStatsSync.SetHealth(hp);
+            _playerStatsSync.SetHealth(_health - 10);
+            collision.collider.gameObject.GetComponentInParent<BulletCollision>().isActive = false;
         }
     }
 

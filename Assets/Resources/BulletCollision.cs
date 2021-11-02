@@ -12,28 +12,31 @@ public class BulletCollision : MonoBehaviour
 
     float spawnTime;
     public float lifeTime = 5f;
+    public bool isActive;
 
     void Start()
     {
         spawnTime = Time.time;
-        gameManager = GameObject.Find("GameManager");
+        isActive = false;
+        //gameManager = GameObject.Find("GameManager");
         //print("START GameManager: " + gameManager);
-        if (gameManager.GetComponent<GameManagerLogic>().isServer)
-        {
-            hasAuthority = true;
-        }
+        //if (gameManager.GetComponent<GameManagerLogic>().isServer)
+        //{
+        //    hasAuthority = true;
+        //}
     }
 
     void Update()
     {
-        if (!hasAuthority) return;
-        if (Time.time > spawnTime + lifeTime)
+        //if (!hasAuthority) return;
+        if (Time.time > spawnTime + lifeTime || isActive)
         {
             //Realtime.Destroy(gameObject);
+            Destroy(gameObject);
         }
     }
 
-
+    /*
     public void OnCollisionEnter(Collision collision)
     {
         //if (!hasAuthority) return;
@@ -45,7 +48,8 @@ public class BulletCollision : MonoBehaviour
             collision.collider.gameObject.GetComponentInParent<PlayerStats>()._health -= 40;
             //Realtime.Destroy(gameObject);
             Destroy(gameObject);
-        }*/
+        }
+
         if (collision.collider.name == "TorsoCollider")
         {
             //print("Torso collider hit");
@@ -92,8 +96,8 @@ public class BulletCollision : MonoBehaviour
 
             //Destroy(gameObject);
         }
-        */
-    }
+        
+    }*/
 
     //Test with onTriggerEnter?
 }
