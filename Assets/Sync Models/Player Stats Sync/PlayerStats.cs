@@ -158,8 +158,9 @@ public class PlayerStats : MonoBehaviour
         if (cp.thisCollider.name == "RightThighCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftThighCollider"
             && collision.collider.CompareTag("Bullet"))
         {
-            hp -= 10;
-            _playerStatsSync.SetHealth(hp);
+            //hp -= 10;
+            //_playerStatsSync.SetHealth(hp);
+            _playerStatsSync.SetHealth(_playerStatsSync.GetHealth() - 10);
         }
         if (cp.thisCollider.name == "RightShinCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftShinCollider"
             && collision.collider.CompareTag("Bullet"))
