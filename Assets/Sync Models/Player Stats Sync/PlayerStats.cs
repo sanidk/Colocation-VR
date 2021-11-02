@@ -72,11 +72,15 @@ public class PlayerStats : MonoBehaviour
             _health = 100;
 
         }
+        
+        _health = _playerStatsSync.GetHealth();
+
+        
+
 
         if (!_isServer) return;
 
-        //_health = _playerStatsSync.GetHealth();
-
+        
 
 
         // If the color has changed (via the inspector), call SetColor on the color sync component.
