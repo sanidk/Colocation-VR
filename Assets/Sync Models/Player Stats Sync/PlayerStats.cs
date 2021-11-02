@@ -67,7 +67,7 @@ public class PlayerStats : MonoBehaviour
         healthShaderMat.SetFloat("_ConvHealth", Remap(_health, 0, 100, 0, 1));
         healthShaderMat.SetFloat("_RemovedSegments", convertedHealth);
 
-        //_health = _playerStatsSync.GetHealth();
+        _health = _playerStatsSync.GetHealth();
 
         /*
         if (!gameLogic._isRoundStarted)
@@ -135,7 +135,7 @@ public class PlayerStats : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision) // Works. NOtice that the object needs Bullet tag AND collider AND probably both realtimeview and transform.
     {
-        if (!GetComponent<RealtimeTransform>().isOwnedLocallySelf) { return; }
+        //if (!GetComponent<RealtimeTransform>().isOwnedLocallySelf) { return; }
 
         foreach (ContactPoint contact in collision.contacts) // Use contact.GetContacts() instead, No garbage
         {
@@ -153,8 +153,10 @@ public class PlayerStats : MonoBehaviour
         if (cp.thisCollider.name == "TorsoCollider" && collision.collider.CompareTag("Bullet"))
         {
             //_health -= 10;
-            hp -= 10;
-            _playerStatsSync.SetHealth(_playerStatsSync.GetHealth() - 10);
+            //hp -= 10;
+            //_playerStatsSync.SetHealth(_playerStatsSync.GetHealth() - 10);
+            _health -= 10;
+            _playerStatsSync.SetHealth(_health);
         }/*
         if (cp.thisCollider.name == "RightThighCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftThighCollider"
             && collision.collider.CompareTag("Bullet"))
