@@ -75,6 +75,7 @@ public class PlayerStats : MonoBehaviour
 
         }
         */
+        /*
         if (!gameManagerLogic.isServer)
         {
             //_health = _playerStatsSync.GetHealth();
@@ -82,7 +83,7 @@ public class PlayerStats : MonoBehaviour
         }
 
 
-        _playerStatsSync.SetHealth(_health);
+        _playerStatsSync.SetHealth(_health);*/
 
         //if (!gameManagerLogic.isServer) return;
 
@@ -90,13 +91,13 @@ public class PlayerStats : MonoBehaviour
 
 
         // If the color has changed (via the inspector), call SetColor on the color sync component.
-        /*
+        
         if (_health != _previousHealth)
         {
             _playerStatsSync.SetHealth(_health);
             _previousHealth = _health;
         }
-        */
+        
 
         if (_energy != _previousEnergy)
         {
@@ -129,6 +130,54 @@ public class PlayerStats : MonoBehaviour
     public float Remap(float value, float from1, float to1, float from2, float to2)
     {
         return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
+    }
+
+    public void OnCollisionEnter(Collision collision) // Works. NOtice that the object needs Bullet tag AND collider AND probably both realtimeview and transform.
+    {
+        
+        foreach (ContactPoint contact in collision.contacts) // Use contact.GetContacts() instead, No garbage
+        {
+            print(contact.thisCollider.name + " hit " + contact.otherCollider.name);
+            //Debug.DrawRay(contact.point, contact.normal, Color.white);
+        }
+        
+        
+        ContactPoint cp = collision.GetContact(0); // ??
+        
+        if (cp.thisCollider.name == "HeadCollider" && collision.collider.CompareTag("Bullet"))
+        {
+            _health -= 10;
+        }
+        if (cp.thisCollider.name == "TorsoCollider" && collision.collider.CompareTag("Bullet"))
+        {
+            _health -= 10;
+        }
+        
+        if (cp.thisCollider.name == "RightThighCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftThighCollider"
+            && collision.collider.CompareTag("Bullet"))
+        {
+            
+            _health -= 10;
+        }
+        if (cp.thisCollider.name == "RightShinCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftShinCollider"
+            && collision.collider.CompareTag("Bullet"))
+        {
+            
+            _health -= 10;
+        }
+        if (cp.thisCollider.name == "RightUpperArmCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftUpperArmCollider"
+            && collision.collider.CompareTag("Bullet"))
+        {
+            
+            _health -= 10;
+        }
+
+        if (cp.thisCollider.name == "RightLowerArmCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftLowerArmCollider"
+            && collision.collider.CompareTag("Bullet"))
+        {
+
+            _health -= 10;
+        }
     }
 
 }

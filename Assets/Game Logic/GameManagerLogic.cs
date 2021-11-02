@@ -179,15 +179,17 @@ public class GameManagerLogic : MonoBehaviour
         //team1Players = gameLogic._team1PlayerCount;
         //team2Players = gameLogic._team2PlayerCount;
 
+        /*
         if (avatars.Count == 1)
         {
             isServer = true;
             avatars[0].GetComponent<PlayerStats>()._isServer = true;
         }
 
-        if (!isServer) { return; }
+        if (!isServer) { return; }*/
 
         //set variables
+        /*
         gameLogic._gameMode = gameMode;
         gameLogic._isPlayersConnectedAndTeamsAssigned = isPlayersConnectedAndTeamsAssigned;
         gameLogic._isPlayersReadyToStartGame = isPlayersReadyToStartGame;
@@ -209,7 +211,7 @@ public class GameManagerLogic : MonoBehaviour
         gameLogic._team2TotalKills = team2TotalKills;
         gameLogic._team1PlayerCount = team1Players.Count;
         gameLogic._team2PlayerCount = team2Players.Count;
-
+        */
 
         //Update UI
         //team1countText.GetComponent<TextMesh>().text = team1Players.Count.ToString();
