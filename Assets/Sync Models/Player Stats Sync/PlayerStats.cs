@@ -37,7 +37,7 @@ public class PlayerStats : MonoBehaviour
     public GameObject watch;
 
     //HUSK VI HAR UNCOMMENTET I LINIE 86
-
+    private float hp;
     private void Awake()
     {
         gameManager = GameObject.Find("GameManager");
@@ -49,6 +49,7 @@ public class PlayerStats : MonoBehaviour
         healthShaderMat = watch.GetComponent<MeshRenderer>().material;
 
         _health = 100;
+        hp = 100;
         
 
         //_health = 100; this works and sets _health to 100 on connection/spawn
@@ -91,7 +92,7 @@ public class PlayerStats : MonoBehaviour
 
 
         // If the color has changed (via the inspector), call SetColor on the color sync component.
-        
+        /*
         if (_health != _previousHealth)
         {
             _playerStatsSync.SetHealth(_health);
@@ -122,7 +123,7 @@ public class PlayerStats : MonoBehaviour
             _playerStatsSync.SetIsServer(_isServer);
             //gameManagerLogic.isServer = _isServer;
             _previousIsServer = _isServer;
-        }
+        }*/
 
     }
 
@@ -150,15 +151,16 @@ public class PlayerStats : MonoBehaviour
         }*/
         if (cp.thisCollider.name == "TorsoCollider" && collision.collider.CompareTag("Bullet"))
         {
-            _health -= 10;
+            //_health -= 10;
+            hp -= 10;
+            _playerStatsSync.SetHealth(_playerStatsSync.GetHealth() - 10);
         }
-        /*
         if (cp.thisCollider.name == "RightThighCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftThighCollider"
             && collision.collider.CompareTag("Bullet"))
         {
-            
-            _health -= 10;
-        }
+            hp -= 10;
+            _playerStatsSync.SetHealth(hp);
+        }/*
         if (cp.thisCollider.name == "RightShinCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftShinCollider"
             && collision.collider.CompareTag("Bullet"))
         {

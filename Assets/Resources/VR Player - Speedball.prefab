@@ -344,32 +344,14 @@ MonoBehaviour:
   - componentID: 2
     component: {fileID: 114272718057082298}
   - componentID: 3
-    component: {fileID: 0}
-  - componentID: 4
     component: {fileID: 5680419806792718050}
   _childViews:
   - viewID: 1
-    view: {fileID: 114098979720017432}
-  - viewID: 2
-    view: {fileID: 114397248209533090}
-  - viewID: 3
     view: {fileID: 114142483780946230}
-  - viewID: 4
-    view: {fileID: 0}
-  - viewID: 5
-    view: {fileID: 0}
-  - viewID: 6
-    view: {fileID: 0}
-  - viewID: 7
-    view: {fileID: 0}
-  - viewID: 8
-    view: {fileID: 0}
-  - viewID: 9
-    view: {fileID: 0}
-  - viewID: 10
-    view: {fileID: 0}
-  - viewID: 11
-    view: {fileID: 0}
+  - viewID: 2
+    view: {fileID: 114098979720017432}
+  - viewID: 3
+    view: {fileID: 114397248209533090}
 --- !u!114 &114800176784454794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6685,14 +6667,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50cff2be1c49d2849847717bf4d6b1d4, type: 3}
---- !u!1 &738366655711902612 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2327234068396551453, guid: 50cff2be1c49d2849847717bf4d6b1d4, type: 3}
-  m_PrefabInstance: {fileID: 3059293804491560585}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &224318890204697963 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2983699994613793762, guid: 50cff2be1c49d2849847717bf4d6b1d4, type: 3}
+  m_PrefabInstance: {fileID: 3059293804491560585}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &738366655711902612 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2327234068396551453, guid: 50cff2be1c49d2849847717bf4d6b1d4, type: 3}
   m_PrefabInstance: {fileID: 3059293804491560585}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5277539009823233697
