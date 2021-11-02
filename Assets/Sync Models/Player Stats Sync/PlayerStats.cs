@@ -153,10 +153,11 @@ public class PlayerStats : MonoBehaviour
         if (cp.thisCollider.name == "TorsoCollider" && collision.collider.CompareTag("Bullet"))
         {
             //_health -= 10;
-            //hp -= 10;
+            hp -= 10;
             //_playerStatsSync.SetHealth(_playerStatsSync.GetHealth() - 10);
-            _health -= 10;
-            _playerStatsSync.SetHealth(_health);
+            //_health -= 10;
+            //_playerStatsSync.SetHealth(_health);
+            _playerStatsSync.SetHealth(hp);
         }/*
         if (cp.thisCollider.name == "RightThighCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftThighCollider"
             && collision.collider.CompareTag("Bullet"))
