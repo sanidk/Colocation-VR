@@ -180,11 +180,13 @@ public class Player_Behavior : MonoBehaviour
         if (other.name == "Team1")
         {
             playerStats._team = 1;
+            Destroy(other.GetComponentInParent<GameObject>());
             print("team1 chosen - Player behavior");
         }
         if (other.name == "Team2")
         {
             playerStats._team = 2;
+            Destroy(other.GetComponentInParent<GameObject>());
             print("team2 chosen - Player behavior");
         }
     }
