@@ -24,6 +24,8 @@ public class UpdateScoreBoard : MonoBehaviour
     public GameObject winnerText;
     public GameObject debugText;
 
+    public GameObject playerInfoText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +36,8 @@ public class UpdateScoreBoard : MonoBehaviour
     {
         gameManager = GetComponent<GameManagerLogic>();
         gameLogic = gameManager.GetComponent<GameLogic>();
+        
+
     }
 
     // Update is called once per frame
@@ -47,6 +51,7 @@ public class UpdateScoreBoard : MonoBehaviour
 
         team1killsText.GetComponent<TextMesh>().text = gameLogic._team1Kills.ToString();
         team2killsText.GetComponent<TextMesh>().text = gameLogic._team2Kills.ToString();
+
 
         roundText.GetComponent<TextMesh>().text = "Round " + gameLogic._roundCurrent.ToString();
         int time = (int)(gameLogic._roundTotalTime - gameLogic._roundElapsedTime);

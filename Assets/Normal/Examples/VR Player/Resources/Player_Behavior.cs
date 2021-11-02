@@ -36,6 +36,12 @@ public class Player_Behavior : MonoBehaviour
     public Material ghostMaterial;
     public Material defaultMaterial;
 
+    public GameObject deadPostFX;
+    public GameObject damagePostFX;
+    public VignetteControl vignetteControl;
+    float oldHealth = 100;
+
+
     private void Awake()
     {
         //_colorSync = GetComponentInChildren<ColorSync>();
@@ -46,15 +52,22 @@ public class Player_Behavior : MonoBehaviour
         playerStats = GetComponent<PlayerStats>();
         playerStatsSync = GetComponent<PlayerStatsSync>();
         skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material = defaultMaterial;
-
+        deadPostFX = GameObject.Find("PostFXDead");
+        deadPostFX.SetActive(false);
+        damagePostFX = GameObject.Find("PostFXVignette");
+        vignetteControl = damagePostFX.GetComponent<VignetteControl>();
+        oldHealth = playerStats._health;
     }
 
     void Start()
     {
+        
         //hp = 100;
         //_hp.setHp(hp);
         //playerStats._health = 100;
     }
+
+    
 
     // Update is called once per frame
     void Update()
@@ -74,9 +87,20 @@ public class Player_Behavior : MonoBehaviour
         
         }
         */
+
+        if (playerStats._health != oldHealth)
+        {
+            //add directionality later maybe
+            vignetteControl.vignetteIntensity = (100-playerStats._health)/100*2;
+            oldHealth = playerStats._health;
+        }
+
+
+
         if (playerStats._health <= 0 && !dead)//&& !skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material == ghostMaterial) // need logic to check for revive or new round
         {
             skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material = ghostMaterial;
+            deadPostFX.SetActive(true);
             rightHand.SetActive(false);
             leftHand.SetActive(false);
             dead = true;
@@ -85,6 +109,7 @@ public class Player_Behavior : MonoBehaviour
         if (playerStats._health > 0 && dead)
         {
             skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material = defaultMaterial;
+            deadPostFX.SetActive(false);
             rightHand.SetActive(true);
             leftHand.SetActive(true);
             //print("Player alive / revived");
@@ -199,7 +224,7 @@ public class Player_Behavior : MonoBehaviour
             playerStats._isReady = true;
             //isPlayerReady = true;
         }
-        else if (playerStats._team == 2 && other.CompareTag("Spawnarea_Blue")) // Change to red spawnarea
+        else if (playerStats._team == 2 && other.CompareTag("Spawnarea_Red")) // Change to red spawnarea
         {
             //GetComponent<GameModeLogic>().debugText.GetComponent<TextMesh>().text = "is ready set to true";
             playerStats._isReady = true;
