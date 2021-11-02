@@ -143,16 +143,16 @@ public class PlayerStats : MonoBehaviour
         
         
         ContactPoint cp = collision.GetContact(0); // ??
-        
+        /*
         if (cp.thisCollider.name == "HeadCollider" && collision.collider.CompareTag("Bullet"))
         {
             _health -= 10;
-        }
+        }*/
         if (cp.thisCollider.name == "TorsoCollider" && collision.collider.CompareTag("Bullet"))
         {
             _health -= 10;
         }
-        
+        /*
         if (cp.thisCollider.name == "RightThighCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftThighCollider"
             && collision.collider.CompareTag("Bullet"))
         {
@@ -177,7 +177,7 @@ public class PlayerStats : MonoBehaviour
         {
 
             _health -= 10;
-        }
+        }*/
     }
 
 }
