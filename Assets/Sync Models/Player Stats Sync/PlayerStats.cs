@@ -66,15 +66,15 @@ public class PlayerStats : MonoBehaviour
         healthShaderMat.SetFloat("_ConvHealth", Remap(_health, 0, 100, 0, 1));
         healthShaderMat.SetFloat("_RemovedSegments", convertedHealth);
 
-         
+        _health = _playerStatsSync.GetHealth();
+
         if (!gameLogic._isRoundStarted)
         {
             _health = 100;
 
         }
         
-        _health = _playerStatsSync.GetHealth();
-
+        
         
 
 
