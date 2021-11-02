@@ -182,6 +182,7 @@ public class GameManagerLogic : MonoBehaviour
         if (avatars.Count == 1)
         {
             isServer = true;
+            avatars[0].GetComponent<PlayerStats>()._isServer = true;
         }
 
         if (!isServer) { return; }

@@ -98,6 +98,8 @@ public class GameLogic : MonoBehaviour
 
     private void Update()
     {
+        
+
         if (_gameMode != _previousGameMode)
         {
             _gameLogicSync.SetGameMode(_gameMode);
