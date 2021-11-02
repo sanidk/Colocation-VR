@@ -2081,3 +2081,51 @@ AssetImportParameters requested are different than current active one (requested
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 5171.505902 seconds.
+  path: Assets/Resources/ProjectileWithTrail.prefab
+  artifactKey: Guid(76030fb934b936c4c82dda99be233296) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/ProjectileWithTrail.prefab using Guid(76030fb934b936c4c82dda99be233296) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e82a12609883c5dd7f75d8cb51f23980') in 0.238984 seconds 
+  Import took 0.246712 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000348 seconds.
+  path: Assets/Resources/VR Player - Speedball.prefab
+  artifactKey: Guid(ecdc2cf924408504ea3c6df80a8787b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/VR Player - Speedball.prefab using Guid(ecdc2cf924408504ea3c6df80a8787b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7ca0f4fe86cfe99adcf6c2895c3f48fb') in 0.240777 seconds 
+  Import took 0.249058 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000223 seconds.
+  path: Assets/Resources/ProjectileWithTrail.prefab
+  artifactKey: Guid(76030fb934b936c4c82dda99be233296) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/ProjectileWithTrail.prefab using Guid(76030fb934b936c4c82dda99be233296) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e82a12609883c5dd7f75d8cb51f23980') in 0.012356 seconds 
+  Import took 0.019308 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000269 seconds.
+  path: Assets/Resources/VR Player - Speedball.prefab
+  artifactKey: Guid(ecdc2cf924408504ea3c6df80a8787b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/VR Player - Speedball.prefab using Guid(ecdc2cf924408504ea3c6df80a8787b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7ca0f4fe86cfe99adcf6c2895c3f48fb') in 0.119241 seconds 
+  Import took 0.127895 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.787006 seconds.
+  path: Assets/Normal/Examples/VR Player/Resources/VR_Player_New_Custom.prefab
+  artifactKey: Guid(68875d2c8823b5d48ae054a02d406641) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Normal/Examples/VR Player/Resources/VR_Player_New_Custom.prefab using Guid(68875d2c8823b5d48ae054a02d406641) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c662e5018fe322233361b7871e62a714') in 0.024192 seconds 
+  Import took 0.031514 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.005811 seconds.
+  path: Assets/Normal/Examples/VR Player/Resources/VR_Player_New_Custom.prefab
+  artifactKey: Guid(68875d2c8823b5d48ae054a02d406641) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Normal/Examples/VR Player/Resources/VR_Player_New_Custom.prefab using Guid(68875d2c8823b5d48ae054a02d406641) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c662e5018fe322233361b7871e62a714') in 0.014554 seconds 
+  Import took 0.021871 seconds .
+
