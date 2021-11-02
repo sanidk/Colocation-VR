@@ -17,6 +17,7 @@ public class BulletCollision : MonoBehaviour
     {
         spawnTime = Time.time;
         gameManager = GameObject.Find("GameManager");
+        //print("START GameManager: " + gameManager);
         if (gameManager.GetComponent<GameManagerLogic>().isServer)
         {
             hasAuthority = true;
@@ -36,7 +37,7 @@ public class BulletCollision : MonoBehaviour
     public void OnCollisionEnter(Collision collision)
     {
         if (!hasAuthority) return;
-        print("OnCollisionEnter On bullet");
+        //print("OnCollisionEnter On bullet");
         //ContactPoint cp = collision.GetContact(0);
         /*if (collision.collider.name == "HeadCollider")
         {
@@ -47,7 +48,7 @@ public class BulletCollision : MonoBehaviour
         }*/
         if (collision.collider.name == "TorsoCollider")
         {
-            print("Torso collider hit");
+            //print("Torso collider hit");
             collision.collider.gameObject.GetComponentInParent<PlayerStats>()._health -= 10;
             //collision.collider.gameObject.GetComponentInParent<PlayerStatsSync>().DeductHealth(15);
             //Realtime.Destroy(gameObject);
@@ -56,7 +57,7 @@ public class BulletCollision : MonoBehaviour
         }/*
         else if(collision.collider.name == "LeftThighCollider" || collision.collider.name == "RightThighCollider")
         {
-            collision.collider.gameObject.GetComponentInParent<PlayerStats>()._health -= 5;
+            collision.collider.gameObject.GetComponentInParent<PlayerStats>()._health -= 10;
             //Realtime.Destroy(gameObject);
             Destroy(gameObject);
         }
@@ -73,6 +74,12 @@ public class BulletCollision : MonoBehaviour
             Destroy(gameObject);
         }
         else if (collision.collider.name == "LeftLowerArmCollider" || collision.collider.name == "RightLowerArmCollider")
+        {
+            collision.collider.gameObject.GetComponentInParent<PlayerStats>()._health -= 10;
+            //Realtime.Destroy(gameObject);
+            Destroy(gameObject);
+        }
+        else if (collision.collider.name == "Right Hand Presence" || collision.collider.name == "Left Hand Presence")
         {
             collision.collider.gameObject.GetComponentInParent<PlayerStats>()._health -= 10;
             //Realtime.Destroy(gameObject);

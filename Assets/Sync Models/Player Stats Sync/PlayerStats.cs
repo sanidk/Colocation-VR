@@ -47,6 +47,8 @@ public class PlayerStats : MonoBehaviour
         gameManagerLogic = gameManager.GetComponent<GameManagerLogic>();
         //healthShaderMat = transform.GetChild(childIndexDisplay).GetChild(childIndexDisplay).GetComponent<MeshRenderer>().material;
         healthShaderMat = watch.GetComponent<MeshRenderer>().material;
+
+        //_health = 100;
         
 
         //_health = 100; this works and sets _health to 100 on connection/spawn

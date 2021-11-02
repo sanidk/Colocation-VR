@@ -29,6 +29,13 @@ public class Player_Behavior : MonoBehaviour
     PlayerStats playerStats;
     PlayerStatsSync playerStatsSync;
 
+    public GameObject skinnedMeshObject;
+    public GameObject rightHand;
+    public GameObject leftHand;
+
+    public Material ghostMaterial;
+    public Material defaultMaterial;
+
     private void Awake()
     {
         //_colorSync = GetComponentInChildren<ColorSync>();
@@ -38,6 +45,8 @@ public class Player_Behavior : MonoBehaviour
         textMesh = textMeshObject.GetComponent<TextMesh>();
         playerStats = GetComponent<PlayerStats>();
         playerStatsSync = GetComponent<PlayerStatsSync>();
+        skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material = defaultMaterial;
+
     }
 
     void Start()
@@ -65,6 +74,22 @@ public class Player_Behavior : MonoBehaviour
         
         }
         */
+        if (playerStats._health <= 0 && !dead)//&& !skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material == ghostMaterial) // need logic to check for revive or new round
+        {
+            skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material = ghostMaterial;
+            rightHand.SetActive(false);
+            leftHand.SetActive(false);
+            dead = true;
+            //print("Player dead - Ned skinned mesh renderer set and hands inactive");
+        }
+        if (playerStats._health > 0 && dead)
+        {
+            skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material = defaultMaterial;
+            rightHand.SetActive(true);
+            leftHand.SetActive(true);
+            //print("Player alive / revived");
+            dead = false;
+        }
         textMesh.text = "HP: " + playerStats._health; // change dis
 
     }
