@@ -5,18 +5,27 @@ using UnityEngine;
 public class InfoPlayerText : MonoBehaviour
 {
     GameObject gameManager;
-    TextMesh text;
+    TextMesh textObject;
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameObject.Find("GameManager");
-        text = GetComponent<TextMesh>();
+        textObject = GetComponent<TextMesh>();
+        textObject.text = "";
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        text.text = "det virker";
+        float cd = gameManager.GetComponent<GameManagerLogic>().countdownTime;
+        if (cd < 5 && cd > 0)
+        {
+            int cdint = (int)Mathf.Floor(cd);
+            textObject.text = cdint.ToString();
+        } else
+        {
+            textObject.text = "";
+        }
+        
     }
 }

@@ -38,6 +38,7 @@ public class GameManagerLogic : MonoBehaviour
     bool isPlayersReadyToStartGame;
     bool isGameStart;
     public static bool isRoundStarted;
+    public static bool isRoundCountdownStarted;
     int gameWinner;
 
 
@@ -65,6 +66,10 @@ public class GameManagerLogic : MonoBehaviour
     int team2TotalKills;
 
     bool isServerExist;
+
+    float countdownStart;
+    public float countdownTime = 5f;
+    float countdownValue;
 
     //create player stats variable to track kills
     //create player stats variable to track ready to start new round
@@ -255,7 +260,8 @@ public class GameManagerLogic : MonoBehaviour
             {
                 isPlayersReadyToStartGame = true;
                 roundStartTime = Time.time;
-                isRoundStarted = true;
+                
+                
                 debugText.GetComponent<TextMesh>().text = "all players ready";
             }
             else
@@ -264,6 +270,23 @@ public class GameManagerLogic : MonoBehaviour
 
             }
 
+        }
+
+        if (isPlayersReadyToStartGame && !isRoundCountdownStarted)
+        {
+            isRoundCountdownStarted = true;
+            countdownStart = Time.time;
+
+        }
+        if (isRoundCountdownStarted && Time.time > countdownStart + countdownTime)
+        {
+            isRoundStarted = true;
+            //isRoundCountdownStarted = false;
+        }
+
+        if (isRoundCountdownStarted)
+        {
+            countdownValue = Time.time - countdownStart;
         }
 
 
