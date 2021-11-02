@@ -146,48 +146,47 @@ public class PlayerStats : MonoBehaviour
         
         
         ContactPoint cp = collision.GetContact(0); // ??
-        /*
+        
         if (cp.thisCollider.name == "HeadCollider" && collision.collider.CompareTag("Bullet"))
         {
-            _health -= 10;
-        }*/
+            hp -= 1;
+            _playerStatsSync.SetHealth(hp);
+        }
         if (cp.thisCollider.name == "TorsoCollider" && collision.collider.CompareTag("Bullet"))
         {
             //_health -= 10;
             //_playerStatsSync.SetHealth(_playerStatsSync.GetHealth() - 10);
             //_health -= 10;
             //_playerStatsSync.SetHealth(_health);
-
-            hp -= 10;
+            hp -= 2;
             _playerStatsSync.SetHealth(hp);
             //_health -= 10;
-        }/*
+        }
         if (cp.thisCollider.name == "RightThighCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftThighCollider"
             && collision.collider.CompareTag("Bullet"))
         {
-            //hp -= 10;
-            //_playerStatsSync.SetHealth(hp);
-            _playerStatsSync.SetHealth(_playerStatsSync.GetHealth() - 10);
+            hp -= 3;
+            _playerStatsSync.SetHealth(hp);
         }
         if (cp.thisCollider.name == "RightShinCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftShinCollider"
             && collision.collider.CompareTag("Bullet"))
         {
-            
-            _health -= 10;
+            hp -= 4;
+            _playerStatsSync.SetHealth(hp);
         }
         if (cp.thisCollider.name == "RightUpperArmCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftUpperArmCollider"
             && collision.collider.CompareTag("Bullet"))
         {
-            
-            _health -= 10;
+            hp -= 5;
+            _playerStatsSync.SetHealth(hp);
         }
 
         if (cp.thisCollider.name == "RightLowerArmCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftLowerArmCollider"
             && collision.collider.CompareTag("Bullet"))
         {
-
-            _health -= 10;
-        }*/
+            hp -= 6;
+            _playerStatsSync.SetHealth(hp);
+        }
     }
 
 }
