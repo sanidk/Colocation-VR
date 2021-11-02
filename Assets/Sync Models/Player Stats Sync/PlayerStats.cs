@@ -68,6 +68,7 @@ public class PlayerStats : MonoBehaviour
         healthShaderMat.SetFloat("_RemovedSegments", convertedHealth);
 
         _health = _playerStatsSync.GetHealth();
+        hp = _health;
 
         /*
         if (!gameLogic._isRoundStarted)
@@ -157,9 +158,9 @@ public class PlayerStats : MonoBehaviour
             //_health -= 10;
             //_playerStatsSync.SetHealth(_health);
 
-            //hp -= 10;
-            //_playerStatsSync.SetHealth(hp);
-            _health -= 10;
+            hp -= 10;
+            _playerStatsSync.SetHealth(hp);
+            //_health -= 10;
         }/*
         if (cp.thisCollider.name == "RightThighCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftThighCollider"
             && collision.collider.CompareTag("Bullet"))
