@@ -75,12 +75,16 @@ public class PlayerStats : MonoBehaviour
 
         }
         */
-        
+        if (!gameManagerLogic.isServer)
+        {
+            _health = _playerStatsSync.GetHealth();
+            return;
+        }
         
         
 
 
-        if (!gameManagerLogic.isServer) return;
+        //if (!gameManagerLogic.isServer) return;
 
         
 
