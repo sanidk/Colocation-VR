@@ -149,7 +149,7 @@ public class PlayerStats : MonoBehaviour
         
         if (cp.thisCollider.name == "HeadCollider" && collision.collider.CompareTag("Bullet"))
         {
-            hp -= 1;
+            hp -= 20;
             _playerStatsSync.SetHealth(hp);
         }
         if (cp.thisCollider.name == "TorsoCollider" && collision.collider.CompareTag("Bullet"))
@@ -158,33 +158,33 @@ public class PlayerStats : MonoBehaviour
             //_playerStatsSync.SetHealth(_playerStatsSync.GetHealth() - 10);
             //_health -= 10;
             //_playerStatsSync.SetHealth(_health);
-            hp -= 2;
+            hp -= 10;
             _playerStatsSync.SetHealth(hp);
             //_health -= 10;
         }
         if (cp.thisCollider.name == "RightThighCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftThighCollider"
             && collision.collider.CompareTag("Bullet"))
         {
-            hp -= 3;
+            hp -= 10;
             _playerStatsSync.SetHealth(hp);
         }
         if (cp.thisCollider.name == "RightShinCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftShinCollider"
             && collision.collider.CompareTag("Bullet"))
         {
-            hp -= 4;
+            hp -= 10;
             _playerStatsSync.SetHealth(hp);
         }
         if (cp.thisCollider.name == "RightUpperArmCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftUpperArmCollider"
             && collision.collider.CompareTag("Bullet"))
         {
-            hp -= 5;
+            hp -= 10;
             _playerStatsSync.SetHealth(hp);
         }
 
         if (cp.thisCollider.name == "RightLowerArmCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftLowerArmCollider"
             && collision.collider.CompareTag("Bullet"))
         {
-            hp -= 6;
+            hp -= 10;
             _playerStatsSync.SetHealth(hp);
         }
     }
