@@ -135,7 +135,8 @@ public class PlayerStats : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision) // Works. NOtice that the object needs Bullet tag AND collider AND probably both realtimeview and transform.
     {
-        
+        if (!GetComponent<RealtimeTransform>().isOwnedLocallySelf) { return; }
+
         foreach (ContactPoint contact in collision.contacts) // Use contact.GetContacts() instead, No garbage
         {
             print(contact.thisCollider.name + " hit " + contact.otherCollider.name);
