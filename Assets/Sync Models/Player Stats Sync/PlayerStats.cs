@@ -48,7 +48,7 @@ public class PlayerStats : MonoBehaviour
         //healthShaderMat = transform.GetChild(childIndexDisplay).GetChild(childIndexDisplay).GetComponent<MeshRenderer>().material;
         healthShaderMat = watch.GetComponent<MeshRenderer>().material;
 
-        //_health = 100;
+        _health = 100;
         
 
         //_health = 100; this works and sets _health to 100 on connection/spawn
@@ -66,11 +66,13 @@ public class PlayerStats : MonoBehaviour
         healthShaderMat.SetFloat("_ConvHealth", Remap(_health, 0, 100, 0, 1));
         healthShaderMat.SetFloat("_RemovedSegments", convertedHealth);
 
+        /*
         if (!gameLogic._isRoundStarted)
         {
             _health = 100;
 
         }
+        */
 
         _health = _playerStatsSync.GetHealth();
 
