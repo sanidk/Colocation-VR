@@ -66,14 +66,19 @@ public class PlayerStats : MonoBehaviour
 
     private void Update()
     {
-
-        if (gameLogic._isRoundStarted && gameLogic._roundCurrent != oldRound)
+        if (!gameLogic._isRoundStarted && _isReady)
         {
             _health = 100;
-
-            oldRound = gameLogic._roundCurrent;
-
         }
+
+
+        //if (gameLogic._isRoundStarted && gameLogic._roundCurrent != oldRound)
+        //{
+        //    _health = 100;
+
+        //    oldRound = gameLogic._roundCurrent;
+
+        //}
 
         convertedHealth = Remap(_health, 0, 100, 5, 0);
         healthShaderMat.SetFloat("_ConvHealth", Remap(_health, 0, 100, 0, 1));
