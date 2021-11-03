@@ -29,7 +29,7 @@ public class BulletCollision : MonoBehaviour
     void Update()
     {
         //if (!hasAuthority) return;
-        if (Time.time > spawnTime + lifeTime || isActive)
+        if (Time.time > spawnTime + lifeTime)
         {
             //Realtime.Destroy(gameObject);
             Destroy(gameObject);
