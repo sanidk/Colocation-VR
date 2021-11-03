@@ -49,7 +49,7 @@ public class GameManagerLogic : MonoBehaviour
     public List<GameObject> team2Players = new List<GameObject>();
 
     //is players dead
-    float roundTotalTime = 30;
+    float roundTotalTime = 180;
     float roundStartTime;
     float roundElapsedTime;
 
