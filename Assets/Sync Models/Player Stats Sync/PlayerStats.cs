@@ -59,28 +59,32 @@ public class PlayerStats : MonoBehaviour
 
         if (Application.platform != RuntimePlatform.Android)
         {
-            //Destroy(gameObject);
+            Destroy(gameObject);
         }
         
     }
 
     private void Update()
     {
-        if (!gameLogic._isRoundStarted && _isReady)
+        //if (!gameLogic._isRoundStarted && _isReady)
+        //{
+        //    _health = 100;
+        //}
+
+        if (!gameLogic._isRoundStarted)
         {
             _health = 100;
         }
-
 
         //if (gameLogic._isRoundStarted && gameLogic._roundCurrent != oldRound)
         //{
         //    _health = 100;
 
-        //    oldRound = gameLogic._roundCurrent;
+            //    oldRound = gameLogic._roundCurrent;
 
-        //}
+            //}
 
-        convertedHealth = Remap(_health, 0, 100, 5, 0);
+            convertedHealth = Remap(_health, 0, 100, 5, 0);
         healthShaderMat.SetFloat("_ConvHealth", Remap(_health, 0, 100, 0, 1));
         healthShaderMat.SetFloat("_RemovedSegments", convertedHealth);
 
