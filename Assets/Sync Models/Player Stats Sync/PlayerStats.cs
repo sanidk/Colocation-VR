@@ -36,6 +36,9 @@ public class PlayerStats : MonoBehaviour
     private float convertedHealthColor;
     public GameObject watch;
 
+    int currentRound;
+    int oldRound;
+
     //HUSK VI HAR UNCOMMENTET I LINIE 86
     public float hp;
     private void Awake()
@@ -63,6 +66,15 @@ public class PlayerStats : MonoBehaviour
 
     private void Update()
     {
+
+        if (gameLogic._isRoundStarted && gameLogic._roundCurrent != oldRound)
+        {
+            _health = 100;
+
+            oldRound = gameLogic._roundCurrent;
+
+        }
+
         convertedHealth = Remap(_health, 0, 100, 5, 0);
         healthShaderMat.SetFloat("_ConvHealth", Remap(_health, 0, 100, 0, 1));
         healthShaderMat.SetFloat("_RemovedSegments", convertedHealth);
@@ -70,13 +82,9 @@ public class PlayerStats : MonoBehaviour
         _health = _playerStatsSync.GetHealth();
         //hp = _health;
 
-        
-        //if (!gameLogic._isRoundStarted)
-        //{
-        //    _health = 100;
 
-        //}
         
+
         /*
         if (!gameManagerLogic.isServer)
         {

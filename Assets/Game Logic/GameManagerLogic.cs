@@ -58,7 +58,7 @@ public class GameManagerLogic : MonoBehaviour
 
     public int roundCurrent;
     int roundsPlayed;
-    int roundsTotal = 3;
+    int roundsTotal = 10;
 
     int team1Kills;
     int team2Kills;
@@ -266,7 +266,8 @@ public class GameManagerLogic : MonoBehaviour
                 isPlayersReadyToStartGame = true;
                 roundStartTime = Time.time;
                 isRoundStarted = true;
-
+                roundCurrent++;
+                /*
                 for (int i = 0; i < avatars.Count; i++)
                 {
                     RealtimeAvatar player = avatars[i];
@@ -274,7 +275,7 @@ public class GameManagerLogic : MonoBehaviour
                     player.gameObject.GetComponent<PlayerStats>()._health = 100;
                    
                 }
-
+                */
 
                 debugText.GetComponent<TextMesh>().text = "all players ready";
             }
@@ -318,7 +319,7 @@ public class GameManagerLogic : MonoBehaviour
                 //ResetPlayerHealth();
 
                 team1Score++;
-                roundCurrent++;
+                
 
                 team1Kills = 0;
                 team2Kills = 0;
@@ -338,7 +339,7 @@ public class GameManagerLogic : MonoBehaviour
                 //ResetPlayerHealth();
 
                 team2Score++;
-                roundCurrent++;
+                
 
                 team1Kills = 0;
                 team2Kills = 0;
