@@ -54,9 +54,10 @@ public class Player_Behavior : MonoBehaviour
         playerStats = GetComponent<PlayerStats>();
         playerStatsSync = GetComponent<PlayerStatsSync>();
         skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material = defaultMaterial;
-        deadPostFX = GameObject.Find("PostFXDead");
+        //deadPostFX = GameObject.Find("PostFXDead");
+        deadPostFX = GameObject.FindWithTag("PostFXDead");
         deadPostFX.SetActive(false);
-        damagePostFX = GameObject.Find("PostFXVignette");
+        damagePostFX = GameObject.FindWithTag("PostFXDamage");
         vignetteControl = damagePostFX.GetComponent<VignetteControl>();
         oldHealth = playerStats._health;
     }

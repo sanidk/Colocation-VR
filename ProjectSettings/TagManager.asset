@@ -11,6 +11,9 @@ TagManager:
   - Spawnarea_Blue
   - Spawnarea_Red
   - AvatarHitbox
+  - PostFX
+  - PostFXDead
+  - PostFXDamage
   layers:
   - Default
   - TransparentFX
