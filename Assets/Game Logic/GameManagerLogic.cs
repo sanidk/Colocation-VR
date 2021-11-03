@@ -266,7 +266,7 @@ public class GameManagerLogic : MonoBehaviour
                 isPlayersReadyToStartGame = true;
                 roundStartTime = Time.time;
                 isRoundStarted = true;
-                roundCurrent++;
+                
                 /*
                 for (int i = 0; i < avatars.Count; i++)
                 {
@@ -319,7 +319,7 @@ public class GameManagerLogic : MonoBehaviour
                 //ResetPlayerHealth();
 
                 team1Score++;
-                
+                roundCurrent++;
 
                 team1Kills = 0;
                 team2Kills = 0;
@@ -339,7 +339,7 @@ public class GameManagerLogic : MonoBehaviour
                 //ResetPlayerHealth();
 
                 team2Score++;
-                
+                roundCurrent++;
 
                 team1Kills = 0;
                 team2Kills = 0;
