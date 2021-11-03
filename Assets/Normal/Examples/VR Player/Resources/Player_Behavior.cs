@@ -155,7 +155,7 @@ public class Player_Behavior : MonoBehaviour
                 
             }
         }
-            textMesh.text = "HP: " + playerStats._health; // change dis
+            //textMesh.text = "HP: " + playerStats._health; // change dis
         }
         
 
