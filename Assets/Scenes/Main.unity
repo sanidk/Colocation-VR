@@ -791,13 +791,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 88115085}
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -4.5, y: 0, z: -12}
-  m_LocalScale: {x: 0.009999998, y: 3, z: 15}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -4.5, y: 0, z: -11.5}
+  m_LocalScale: {x: 0.009999998, y: 3, z: 14}
   m_Children: []
   m_Father: {fileID: 2104134331}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!65 &88115087
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2123,8 +2123,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 275856281}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3, y: 0, z: -4.5}
-  m_LocalScale: {x: 0.01, y: 3, z: 15}
+  m_LocalPosition: {x: 2.5, y: 0, z: -4.5}
+  m_LocalScale: {x: 0.01, y: 3, z: 14}
   m_Children: []
   m_Father: {fileID: 2104134331}
   m_RootOrder: 0
@@ -2342,13 +2342,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 297342813}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -12, y: 0, z: -4.5}
-  m_LocalScale: {x: 0.01, y: 3, z: 15}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -11.5, y: 0, z: -4.5}
+  m_LocalScale: {x: 0.01, y: 3, z: 14}
   m_Children: []
   m_Father: {fileID: 2104134331}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &297342815
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2556,8 +2556,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 327959369}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -4.5, y: 0, z: 3}
-  m_LocalScale: {x: 0.009999998, y: 3, z: 15}
+  m_LocalPosition: {x: -4.5, y: 0, z: 2.5}
+  m_LocalScale: {x: 0.009999998, y: 3, z: 14}
   m_Children: []
   m_Father: {fileID: 2104134331}
   m_RootOrder: 2
@@ -6397,7 +6397,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &810282458
 Transform:
   m_ObjectHideFlags: 0
@@ -18493,7 +18493,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2104134331
 Transform:
   m_ObjectHideFlags: 0
