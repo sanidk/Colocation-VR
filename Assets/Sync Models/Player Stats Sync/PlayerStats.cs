@@ -71,11 +71,11 @@ public class PlayerStats : MonoBehaviour
         //hp = _health;
 
         
-        if (!gameLogic._isRoundStarted)
-        {
-            _health = 100;
+        //if (!gameLogic._isRoundStarted)
+        //{
+        //    _health = 100;
 
-        }
+        //}
         
         /*
         if (!gameManagerLogic.isServer)

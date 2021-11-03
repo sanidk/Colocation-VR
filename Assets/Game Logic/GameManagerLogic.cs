@@ -266,7 +266,14 @@ public class GameManagerLogic : MonoBehaviour
                 isPlayersReadyToStartGame = true;
                 roundStartTime = Time.time;
                 isRoundStarted = true;
-                
+
+                for (int i = 0; i < avatars.Count; i++)
+                {
+                    RealtimeAvatar player = avatars[i];
+
+                    player.gameObject.GetComponent<PlayerStats>()._health = 100;
+                   
+                }
 
 
                 debugText.GetComponent<TextMesh>().text = "all players ready";
