@@ -46,7 +46,7 @@ public class PlayerStats : MonoBehaviour
         gameManager = GameObject.Find("GameManager");
         // Get a reference to the color sync component
         _playerStatsSync = GetComponent<PlayerStatsSync>();
-        gameLogic = gameManager.GetComponent<GameLogic>();
+        
         gameManagerLogic = gameManager.GetComponent<GameManagerLogic>();
         //healthShaderMat = transform.GetChild(childIndexDisplay).GetChild(childIndexDisplay).GetComponent<MeshRenderer>().material;
         healthShaderMat = watch.GetComponent<MeshRenderer>().material;
@@ -70,7 +70,7 @@ public class PlayerStats : MonoBehaviour
         //{
         //    _health = 100;
         //}
-
+        gameLogic = gameManager.GetComponent<GameLogic>();
         if (!gameLogic._isRoundStarted)
         {
             _health = 100;
