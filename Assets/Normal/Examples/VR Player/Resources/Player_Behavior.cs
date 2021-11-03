@@ -116,26 +116,30 @@ public class Player_Behavior : MonoBehaviour
 
         if (playerStats._health <= 0 && !dead)//&& !skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material == ghostMaterial) // need logic to check for revive or new round
         {
-        skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material = ghostMaterial;
-        foreach (GameObject obj in colliderObjects)
-        {
-            obj.SetActive(false);
-        }
-
-        if (GetComponent<RealtimeTransform>().isOwnedLocallySelf)
-        {
-            deadPostFX.SetActive(true);
-            //rightHand.SetActive(false);
-            //leftHand.SetActive(false);
             dead = true;
+            skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material = ghostMaterial;
+
+            foreach (GameObject obj in colliderObjects)
+            {
+                obj.SetActive(false);
+            }
+
+            if (GetComponent<RealtimeTransform>().isOwnedLocallySelf)
+            {
+                deadPostFX.SetActive(true);
+                //rightHand.SetActive(false);
+                //leftHand.SetActive(false);
+            
                 
-        }
+            }
             
 
         }
         if (playerStats._health > 0 && dead)
         {
             skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material = defaultMaterial;
+            dead = false;
+
             foreach (GameObject obj in colliderObjects)
             {
                 obj.SetActive(true);
@@ -147,88 +151,14 @@ public class Player_Behavior : MonoBehaviour
                 //rightHand.SetActive(true);
                 //leftHand.SetActive(true);
                 //print("Player alive / revived");
-                dead = false;
+                
                 
             }
         }
-        textMesh.text = "HP: " + playerStats._health; // change dis
-    }
+            textMesh.text = "HP: " + playerStats._health; // change dis
+        }
         
 
-        public void OnCollisionEnter(Collision collision) // Works. NOtice that the object needs Bullet tag AND collider AND probably both realtimeview and transform.
-        {
-            /*
-            foreach (ContactPoint contact in collision.contacts) // Use contact.GetContacts() instead, No garbage
-            {
-                print(contact.thisCollider.name + " hit " + contact.otherCollider.name);
-                //Debug.DrawRay(contact.point, contact.normal, Color.white);
-            }
-            */
-            /*
-            ContactPoint cp = collision.GetContact(0); // ??
-
-            if (cp.thisCollider.name == "HeadCollider" && collision.collider.CompareTag("Bullet"))
-            {
-                //hp -= 50;
-                //_hp.setHp(_hp.GetHp() - 50);
-                playerStats._health = playerStats._health - 50;
-                //print("Head hit, HP: " + _hp.GetHp());
-            }
-            if (cp.thisCollider.name == "TorsoCollider" && collision.collider.CompareTag("Bullet"))
-            {
-                //hp -= 35;
-                //_hp.setHp(_hp.GetHp() - 35);
-                //print("Torso hit, HP: " + _hp.GetHp());
-                playerStats._health = playerStats._health - 10;
-                //Destroy(collision.collider.gameObject.GetComponentInParent<GameObject>());
-            }
-
-            if (cp.thisCollider.name == "RightThighCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftThighCollider"
-                && collision.collider.CompareTag("Bullet"))
-            {
-                //hp -= 20;
-                //_hp.setHp(_hp.GetHp() - 20);
-                //print("Thighs hit, HP: " + _hp.GetHp());
-                playerStats._health = playerStats._health - 20;
-            }
-            if (cp.thisCollider.name == "RightShinCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftShinCollider"
-                && collision.collider.CompareTag("Bullet"))
-            {
-                //hp -= 10;
-                //_hp.setHp(_hp.GetHp() - 10);
-                //print("Shins hit hit, HP: " + _hp.GetHp());
-                playerStats._health = playerStats._health - 10;
-            }
-            if (cp.thisCollider.name == "RightUpperArmCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftUpperArmCollider"
-                && collision.collider.CompareTag("Bullet"))
-            {
-                //hp -= 15;
-                //_hp.setHp(_hp.GetHp() - 15);
-                //print("UpperArms hit, HP: " + _hp.GetHp());
-                playerStats._health = playerStats._health - 15;
-            }
-
-            if (cp.thisCollider.name == "RightLowerArmCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftLowerArmCollider"
-                && collision.collider.CompareTag("Bullet"))
-            {
-                //hp -= 7.5f;
-                //_hp.setHp(_hp.GetHp() - 7.5f);
-                //print("LowerArms HP: " + _hp.GetHp());
-                playerStats._health = playerStats._health - 7.5f;
-            }
-
-            if (collision.collider.CompareTag("Bullet"))
-            {
-                //collision.gameObject.SetActive(false);
-                Realtime.Destroy(collision.collider.gameObject);
-            }*/
-            /*
-            if (collision.collider.CompareTag("SpawnArea") && dead) // Create spawn area tag or something else to check on.
-            {
-                resetHp();
-                print(" DEAD SpawnArea collider - HP RESET");
-            }*/
-        }
 
         private void OnTriggerEnter(Collider other)
         {
