@@ -42,7 +42,7 @@ public class GameManagerLogic : MonoBehaviour
     int gameWinner;
 
 
-    public static int teamSize = 1;
+    public static int teamSize = 2;
 
     //Probably have to be networked:
     public List<GameObject> team1Players = new List<GameObject>();

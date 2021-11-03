@@ -93,40 +93,62 @@ public class Player_Behavior : MonoBehaviour
         }
         */
 
-        
-        if (playerStats._health != oldHealth)
+        /*
+        if (playerStats.hp != oldHealth)
         {
             //add directionality later maybe
-            vignetteControl.vignetteIntensity = (100 - playerStats._health) / 100 * 2;
-            oldHealth = playerStats._health;
+            vignetteControl.vignetteIntensity = (100 - playerStats.hp) / 100 * 2;
+            oldHealth = playerStats.hp;
+        }
+        */
+
+        if (GetComponent<RealtimeTransform>().isOwnedLocallySelf)
+        {
+            if (playerStats._health != oldHealth)
+            {
+                vignetteControl.vignetteIntensity = (100 - playerStats._health) / 100 * 2;
+                oldHealth = playerStats._health;
+            }
+                
         }
 
-        
+
 
         if (playerStats._health <= 0 && !dead)//&& !skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material == ghostMaterial) // need logic to check for revive or new round
         {
-            skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material = ghostMaterial;
+        skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material = ghostMaterial;
+        foreach (GameObject obj in colliderObjects)
+        {
+            obj.SetActive(false);
+        }
+
+        if (GetComponent<RealtimeTransform>().isOwnedLocallySelf)
+        {
             deadPostFX.SetActive(true);
             //rightHand.SetActive(false);
             //leftHand.SetActive(false);
             dead = true;
-            foreach (GameObject obj in colliderObjects)
-            {
-                obj.SetActive(false);
-            }
+                
+        }
+            
 
         }
         if (playerStats._health > 0 && dead)
         {
             skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material = defaultMaterial;
-            deadPostFX.SetActive(false);
-            //rightHand.SetActive(true);
-            //leftHand.SetActive(true);
-            //print("Player alive / revived");
-            dead = false;
             foreach (GameObject obj in colliderObjects)
             {
                 obj.SetActive(true);
+            }
+
+            if (GetComponent<RealtimeTransform>().isOwnedLocallySelf)
+            {
+                deadPostFX.SetActive(false);
+                //rightHand.SetActive(true);
+                //leftHand.SetActive(true);
+                //print("Player alive / revived");
+                dead = false;
+                
             }
         }
         textMesh.text = "HP: " + playerStats._health; // change dis
