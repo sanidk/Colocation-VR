@@ -55,10 +55,13 @@ public class Player_Behavior : MonoBehaviour
         playerStatsSync = GetComponent<PlayerStatsSync>();
         skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material = defaultMaterial;
         //deadPostFX = GameObject.Find("PostFXDead");
-        deadPostFX = GameObject.FindWithTag("PostFXDead");
+        /*
+        deadPostFX = GameObject.Find("PostFXDead");
         deadPostFX.SetActive(false);
-        damagePostFX = GameObject.FindWithTag("PostFXDamage");
+        damagePostFX = GameObject.Find("PostFXVignette");
+        
         vignetteControl = damagePostFX.GetComponent<VignetteControl>();
+        */
         oldHealth = playerStats._health;
     }
 
@@ -91,6 +94,7 @@ public class Player_Behavior : MonoBehaviour
         }
         */
 
+        /*
         if (playerStats._health != oldHealth)
         {
             //add directionality later maybe
@@ -98,7 +102,7 @@ public class Player_Behavior : MonoBehaviour
             oldHealth = playerStats._health;
         }
 
-
+        */
 
         if (playerStats._health <= 0 && !dead)//&& !skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material == ghostMaterial) // need logic to check for revive or new round
         {
