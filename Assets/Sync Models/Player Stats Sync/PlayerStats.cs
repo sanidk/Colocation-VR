@@ -70,8 +70,8 @@ public class PlayerStats : MonoBehaviour
         //{
         //    _health = 100;
         //}
-        gameLogic = gameManager.GetComponent<GameLogic>();
-        if (!gameLogic._isRoundStarted)
+        
+        if (!GameManagerLogic.isRoundStarted)
         {
             _health = 100;
         }
