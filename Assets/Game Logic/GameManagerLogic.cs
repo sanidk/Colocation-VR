@@ -49,7 +49,7 @@ public class GameManagerLogic : MonoBehaviour
     public List<GameObject> team2Players = new List<GameObject>();
 
     //is players dead
-    float roundTotalTime = 20;
+    float roundTotalTime = 30;
     float roundStartTime;
     float roundElapsedTime;
 
@@ -260,8 +260,9 @@ public class GameManagerLogic : MonoBehaviour
             {
                 isPlayersReadyToStartGame = true;
                 roundStartTime = Time.time;
-                
-                
+                isRoundStarted = true;
+
+
                 debugText.GetComponent<TextMesh>().text = "all players ready";
             }
             else
@@ -271,7 +272,7 @@ public class GameManagerLogic : MonoBehaviour
             }
 
         }
-
+        /*
         if (isPlayersReadyToStartGame && !isRoundCountdownStarted)
         {
             isRoundCountdownStarted = true;
@@ -288,7 +289,7 @@ public class GameManagerLogic : MonoBehaviour
         {
             countdownValue = Time.time - countdownStart;
         }
-
+        */
 
 
         if (isRoundStarted)
