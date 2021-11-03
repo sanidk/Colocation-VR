@@ -49,6 +49,9 @@ public class PlayerStats : MonoBehaviour
         
         //healthShaderMat = transform.GetChild(childIndexDisplay).GetChild(childIndexDisplay).GetComponent<MeshRenderer>().material;
         healthShaderMat = watch.GetComponent<MeshRenderer>().material;
+        gameLogic = gameManager.GetComponent<GameLogic>();
+        gameManagerLogic = gameManager.GetComponent<GameManagerLogic>();
+        
 
         _health = 100;
         hp = 100;
@@ -65,17 +68,19 @@ public class PlayerStats : MonoBehaviour
 
     private void Update()
     {
+        convertedHealth = Remap(_health, 0, 100, 5, 0);
+        healthShaderMat.SetFloat("_ConvHealth", Remap(_health, 0, 100, 0, 1));
+        healthShaderMat.SetFloat("_RemovedSegments", convertedHealth);
+
+        _health = _playerStatsSync.GetHealth();
         //if (!gameLogic._isRoundStarted && _isReady)
         //{
         //    _health = 100;
         //}
 
-        gameManagerLogic = gameManager.GetComponent<GameManagerLogic>();
-        gameLogic = gameManager.GetComponent<GameLogic>();
         if (!gameLogic._isRoundStarted)
         {
-            //_health = 100;
-            _playerStatsSync.SetHealth(100);
+            _health = 100;
 
         }
 
@@ -87,15 +92,10 @@ public class PlayerStats : MonoBehaviour
 
         //}
 
-        convertedHealth = Remap(_health, 0, 100, 5, 0);
-        healthShaderMat.SetFloat("_ConvHealth", Remap(_health, 0, 100, 0, 1));
-        healthShaderMat.SetFloat("_RemovedSegments", convertedHealth);
-
-        _health = _playerStatsSync.GetHealth();
         //hp = _health;
 
 
-        
+
 
         /*
         if (!gameManagerLogic.isServer)
