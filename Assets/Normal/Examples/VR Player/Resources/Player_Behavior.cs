@@ -272,12 +272,10 @@ public class Player_Behavior : MonoBehaviour
             {
                 //GetComponent<GameModeLogic>().debugText.GetComponent<TextMesh>().text = "is ready set to true";
                 playerStats._isReady = true;
-            }
-            /*
-            else
+            }else
             {
                 playerStats._isReady = false;
-            }*/
+            }
 
         }
         public void resetHp()

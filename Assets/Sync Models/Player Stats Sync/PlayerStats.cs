@@ -70,13 +70,13 @@ public class PlayerStats : MonoBehaviour
         _health = _playerStatsSync.GetHealth();
         //hp = _health;
 
-        /*
+        
         if (!gameLogic._isRoundStarted)
         {
             _health = 100;
 
         }
-        */
+        
         /*
         if (!gameManagerLogic.isServer)
         {

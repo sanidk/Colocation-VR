@@ -71,6 +71,11 @@ public class GameManagerLogic : MonoBehaviour
     public float countdownTime = 5f;
     float countdownValue;
 
+
+
+    // NOT SYNCED VARS
+    bool isRoundReset = true;
+
     //create player stats variable to track kills
     //create player stats variable to track ready to start new round
     //Team variable to track which team the player is joined
@@ -261,6 +266,7 @@ public class GameManagerLogic : MonoBehaviour
                 isPlayersReadyToStartGame = true;
                 roundStartTime = Time.time;
                 isRoundStarted = true;
+                
 
 
                 debugText.GetComponent<TextMesh>().text = "all players ready";
@@ -315,7 +321,6 @@ public class GameManagerLogic : MonoBehaviour
 
 
 
-
                 //roundText.GetComponent<TextMesh>().text = "round winner team 1";
 
 
@@ -338,6 +343,8 @@ public class GameManagerLogic : MonoBehaviour
             } 
 
         }
+
+
 
 
         if (roundCurrent > roundsTotal)
