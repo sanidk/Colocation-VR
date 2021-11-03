@@ -47,7 +47,6 @@ public class PlayerStats : MonoBehaviour
         // Get a reference to the color sync component
         _playerStatsSync = GetComponent<PlayerStatsSync>();
         
-        gameManagerLogic = gameManager.GetComponent<GameManagerLogic>();
         //healthShaderMat = transform.GetChild(childIndexDisplay).GetChild(childIndexDisplay).GetComponent<MeshRenderer>().material;
         healthShaderMat = watch.GetComponent<MeshRenderer>().material;
 
@@ -70,21 +69,25 @@ public class PlayerStats : MonoBehaviour
         //{
         //    _health = 100;
         //}
-        
-        if (!GameManagerLogic.isRoundStarted)
+
+        gameManagerLogic = gameManager.GetComponent<GameManagerLogic>();
+        gameLogic = gameManager.GetComponent<GameLogic>();
+        if (!gameLogic._isRoundStarted)
         {
-            _health = 100;
+            //_health = 100;
+            _playerStatsSync.SetHealth(100);
+
         }
 
         //if (gameLogic._isRoundStarted && gameLogic._roundCurrent != oldRound)
         //{
         //    _health = 100;
 
-            //    oldRound = gameLogic._roundCurrent;
+        //    oldRound = gameLogic._roundCurrent;
 
-            //}
+        //}
 
-            convertedHealth = Remap(_health, 0, 100, 5, 0);
+        convertedHealth = Remap(_health, 0, 100, 5, 0);
         healthShaderMat.SetFloat("_ConvHealth", Remap(_health, 0, 100, 0, 1));
         healthShaderMat.SetFloat("_RemovedSegments", convertedHealth);
 
