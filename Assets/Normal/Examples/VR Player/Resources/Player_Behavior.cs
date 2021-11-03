@@ -190,7 +190,23 @@ public class Player_Behavior : MonoBehaviour
             }
         }
 
-        private void OnTriggerStay(Collider other)
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Spawnarea_Blue"))
+        {
+            //GetComponent<GameModeLogic>().debugText.GetComponent<TextMesh>().text = "is ready set to true";
+            playerStats._isReady = false;
+            //isPlayerReady = true;
+        }
+        if (other.CompareTag("Spawnarea_Red"))
+        {
+            //GetComponent<GameModeLogic>().debugText.GetComponent<TextMesh>().text = "is ready set to true";
+            playerStats._isReady = false;
+            //isPlayerReady = true;
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
         {
             if (playerStats._team == 1 && other.CompareTag("Spawnarea_Blue"))
             {
