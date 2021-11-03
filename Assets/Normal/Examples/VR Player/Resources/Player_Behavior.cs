@@ -50,7 +50,7 @@ public class Player_Behavior : MonoBehaviour
         //_colorSync = meshObject.GetComponent<ColorSync>();
         //_hp = GetComponent<HpFloatSync>();
         //coll = meshObject.GetComponent<CapsuleCollider>();
-        textMesh = textMeshObject.GetComponent<TextMesh>();
+        //textMesh = textMeshObject.GetComponent<TextMesh>();
         playerStats = GetComponent<PlayerStats>();
         playerStatsSync = GetComponent<PlayerStatsSync>();
         skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material = defaultMaterial;
