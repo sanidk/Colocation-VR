@@ -5674,6 +5674,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 919110543}
     m_Modifications:
     - target: {fileID: 3277885095020542566, guid: 348d1abb74a70a74ebe01e2ba034c282, type: 3}
+      propertyPath: isPistol
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3277885095020542566, guid: 348d1abb74a70a74ebe01e2ba034c282, type: 3}
       propertyPath: ejectPower
       value: 150
       objectReference: {fileID: 0}
@@ -5924,6 +5928,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 919110543}
     m_Modifications:
+    - target: {fileID: 3277885095020542566, guid: 348d1abb74a70a74ebe01e2ba034c282, type: 3}
+      propertyPath: isPistol
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3277885095020542566, guid: 348d1abb74a70a74ebe01e2ba034c282, type: 3}
       propertyPath: ejectPower
       value: 150
@@ -13744,6 +13752,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 919110543}
     m_Modifications:
     - target: {fileID: 3277885095020542566, guid: 348d1abb74a70a74ebe01e2ba034c282, type: 3}
+      propertyPath: isPistol
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3277885095020542566, guid: 348d1abb74a70a74ebe01e2ba034c282, type: 3}
       propertyPath: ejectPower
       value: 150
       objectReference: {fileID: 0}
@@ -14719,6 +14731,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 919110543}
     m_Modifications:
+    - target: {fileID: 3277885095020542566, guid: 348d1abb74a70a74ebe01e2ba034c282, type: 3}
+      propertyPath: isPistol
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3277885095020542566, guid: 348d1abb74a70a74ebe01e2ba034c282, type: 3}
       propertyPath: ejectPower
       value: 150

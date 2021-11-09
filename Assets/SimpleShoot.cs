@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 using Normal.Realtime;
 
 
+
 [AddComponentMenu("Nokobot/Modern Guns/Simple Shoot")]
 public class SimpleShoot : MonoBehaviour
 {
@@ -62,13 +63,6 @@ public class SimpleShoot : MonoBehaviour
     {
         magazine = null;
         audioSource.PlayOneShot(reload);
-    }
-
-     // Coroutine Variable for vibration
-    IEnumerator VibrationDelay()
-    {
-        yield return new WaitForSeconds(0.15f);
-        OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.Touch);
     }
 
     void Start()
@@ -177,11 +171,11 @@ public class SimpleShoot : MonoBehaviour
         {
             if (bulletsInMag > 0)
             {
-                Shoot();
+                Invoke("Shoot",0.1f);
                 audioSource.PlayOneShot(fireSoundSingle);
                 bulletsInMag--;
-                //
-            } else
+            }
+            else
             {
                 audioSource.PlayOneShot(noAmmo);
             }
@@ -208,9 +202,20 @@ public class SimpleShoot : MonoBehaviour
     {
         //magazine.numberOfBullets--;
         //audioSource.PlayOneShot(fireSound);
+
         // Make controller vibration
-            OVRInput.SetControllerVibration(1, 1, OVRInput.Controller.Touch);
-            StartCoroutine(VibrationDelay());
+        var inputDevices = new List<UnityEngine.XR.InputDevice>(); 
+        UnityEngine.XR.InputDevices.GetDevices(inputDevices);
+        bool triggerValue;
+
+            foreach (var device in inputDevices)
+            {
+                if(device.TryGetFeatureValue(UnityEngine.XR.CommonUsages.triggerButton, out triggerValue) && triggerValue)
+                {
+                device.SendHapticImpulse(0, 1f, 0.15f);
+                }
+            }
+
 
         if (muzzleFlashPrefab)
         {
