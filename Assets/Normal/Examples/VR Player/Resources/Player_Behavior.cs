@@ -91,21 +91,8 @@ public class Player_Behavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*
-        if (playerStats._health <= 0 && !dead) // can also just use localHP variable?
-        {
-            print("player ded");
-            dead = true;
-        }
-        else if (playerStats._health <= 25 && !dead)
-        {
-            // _colorSync.SetColor(new Color(200, 50, 50));
-        }
-        else if (playerStats._health <= 50 && !dead)
-        {
-        
-        }
-        */
+        LocomotionControl(); // remember to disable for testing
+
 
         /*
         if (playerStats.hp != oldHealth)
@@ -305,5 +292,42 @@ public class Player_Behavior : MonoBehaviour
                 //gameObject.SetActive(true);
             }
         }*/
+
+        void LocomotionControl()
+        {
+
+            var inputDevices = new List<UnityEngine.XR.InputDevice>();
+            UnityEngine.XR.InputDevices.GetDevices(inputDevices);
+            Vector2 triggerValue;
+
+            foreach (var device in inputDevices)
+            {
+                if (device.TryGetFeatureValue(UnityEngine.XR.CommonUsages.secondary2DAxis, out triggerValue))
+                {
+                    if (triggerValue.x > 0)
+                    {
+                    transform.position = new Vector3(transform.position.x+triggerValue.x, transform.position.y, transform.position.z);
+                    
+                    }
+                    if (triggerValue.x < 0)
+                    {
+                        transform.position = new Vector3(transform.position.x - triggerValue.x, transform.position.y, transform.position.z);
+
+                    }
+
+                    if (triggerValue.y > 0)
+                    {
+                    transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + triggerValue.y);
+
+                    }
+                    if (triggerValue.y < 0)
+                    {
+                        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - triggerValue.y);
+
+                    }
+
+                }
+            }
+        }
     }
 
