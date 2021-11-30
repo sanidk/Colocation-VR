@@ -321,7 +321,7 @@ public class GameManagerLogic : MonoBehaviour
 
             if (roundWinner == 1)
             {
-                ResetPlayerHealth();
+                //ResetPlayerHealth();
                 TextFeedbackManager.feedbackText = "Blue Team Wins Round "+roundCurrent.ToString();
 
                 team1Score++;
@@ -342,7 +342,7 @@ public class GameManagerLogic : MonoBehaviour
             }
             else if (roundWinner == 2)
             {
-                ResetPlayerHealth();
+                //ResetPlayerHealth();
                 TextFeedbackManager.feedbackText = "Red Team Wins Round " + roundCurrent.ToString();
 
                 team2Score++;
