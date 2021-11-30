@@ -85,29 +85,32 @@ public class HandPresence : MonoBehaviour
 
     void UpdateHandAnimation()
     {
-        if(targetDevice.TryGetFeatureValue(CommonUsages.trigger, out float triggerValue))
+        if (GetComponentInParent<RealtimeTransform>().isOwnedLocallySelf)
         {
-            //handAnimator.SetFloat("Trigger", triggerValue);
-            handAnimationSyncTest._triggerValue = triggerValue;
-            
-            
-            
-        }
-        else
-        {
-            //handAnimator.SetFloat("Trigger", 0);
-            handAnimationSyncTest._triggerValue = 0;
-        }
+            if (targetDevice.TryGetFeatureValue(CommonUsages.trigger, out float triggerValue))
+            {
+                //handAnimator.SetFloat("Trigger", triggerValue);
+                handAnimationSyncTest._triggerValue = triggerValue;
 
-        if (targetDevice.TryGetFeatureValue(CommonUsages.grip, out float gripValue))
-        {
-            //handAnimator.SetFloat("Grip", gripValue);
-            handAnimationSyncTest._gripValue = gripValue;
-        }
-        else
-        {
-            //handAnimator.SetFloat("Grip", 0);
-            handAnimationSyncTest._gripValue = 0;
+
+
+            }
+            else
+            {
+                //handAnimator.SetFloat("Trigger", 0);
+                handAnimationSyncTest._triggerValue = 0;
+            }
+
+            if (targetDevice.TryGetFeatureValue(CommonUsages.grip, out float gripValue))
+            {
+                //handAnimator.SetFloat("Grip", gripValue);
+                handAnimationSyncTest._gripValue = gripValue;
+            }
+            else
+            {
+                //handAnimator.SetFloat("Grip", 0);
+                handAnimationSyncTest._gripValue = 0;
+            }
         }
     }
 

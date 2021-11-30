@@ -106,7 +106,7 @@ public class SimpleShoot : MonoBehaviour
         {
             if (!audioSource.isPlaying)
             {
-                audioSource.PlayOneShot(fireSound);
+                //audioSource.PlayOneShot(fireSound);
                 fireSoundStart = Time.time;
             }
             if (Time.time > fireTriggerStartTime + fireSpeedTime) //.11 seem to work well through testing
@@ -122,8 +122,8 @@ public class SimpleShoot : MonoBehaviour
             //play the clipping sound effect
             if (Time.time > fireTriggerStartTime + fireSpeedTime)
             {
-                audioSource.Stop();
-                audioSource.PlayOneShot(noAmmo);
+                //audioSource.Stop();
+                //audioSource.PlayOneShot(noAmmo);
                 fireTriggerStartTime = Time.time;
             }
             
@@ -133,7 +133,7 @@ public class SimpleShoot : MonoBehaviour
             {
                 if (Time.time > fireSoundStart + fireSoundMinimumDuration)
                 {
-                    audioSource.Stop();
+                    //audioSource.Stop();
                 }
                 
 

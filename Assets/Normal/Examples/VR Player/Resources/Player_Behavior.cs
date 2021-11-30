@@ -154,7 +154,12 @@ public class Player_Behavior : MonoBehaviour
                 vignetteControl.vignetteIntensity = (100 - playerStats._health) / 100 * 2;
                 oldHealth = playerStats._health;
             }
-                
+            if (skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().enabled)
+            {
+                skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().enabled = false;
+            }
+
+
         }
 
 
