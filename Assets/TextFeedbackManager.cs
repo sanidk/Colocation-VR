@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Normal.Realtime;
 
 public class TextFeedbackManager : MonoBehaviour
 {
@@ -24,6 +25,8 @@ public class TextFeedbackManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!GetComponentInParent<RealtimeView>().isOwnedLocallySelf) return;
+
         if (feedbackText == "CHOOSE YOUR TEAM")
         {
             textMesh.text = feedbackText;

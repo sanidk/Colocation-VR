@@ -254,6 +254,7 @@ public class GameManagerLogic : MonoBehaviour
             else
             {
                 debugText.GetComponent<TextMesh>().text = "teams assigned failed";
+                TextFeedbackManager.feedbackText = "WAITING FOR PLAYERS TO CHOOSE TEAMS";
                 return;
             }
         }
@@ -268,6 +269,7 @@ public class GameManagerLogic : MonoBehaviour
                 isPlayersReadyToStartGame = true;
                 roundStartTime = Time.time;
                 isRoundStarted = true;
+                TextFeedbackManager.feedbackText = "ROUND STARTED";
                 
                 /*
                 for (int i = 0; i < avatars.Count; i++)
@@ -288,6 +290,7 @@ public class GameManagerLogic : MonoBehaviour
             }
 
         }
+
         /*
         if (isPlayersReadyToStartGame && !isRoundCountdownStarted)
         {
@@ -356,9 +359,6 @@ public class GameManagerLogic : MonoBehaviour
 
         }
 
-
-
-
         if (roundCurrent > roundsTotal)
         {
             gameWinner = CheckGameWinner();
@@ -373,11 +373,6 @@ public class GameManagerLogic : MonoBehaviour
             }
             //roundText.GetComponent<TextMesh>().text = gameWinner.ToString();
         }
-
-
-
-
-
 
 
         /*

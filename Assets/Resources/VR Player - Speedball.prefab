@@ -420,6 +420,7 @@ MonoBehaviour:
   spawnArrow: {fileID: 8497516208345413584}
   spawnAreaRedSide: {fileID: 0}
   spawnAreaBlueSide: {fileID: 0}
+  chooseTeamObjects: {fileID: 0}
   feedbackText: {fileID: 7073418511260633279}
   feedbackTextField: {fileID: 0}
   meshObject: {fileID: 0}
@@ -1166,7 +1167,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: bfcbe502320b4f845b3d61ecd3f94c8b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1357,7 +1358,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: bfcbe502320b4f845b3d61ecd3f94c8b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1752,7 +1753,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: bfcbe502320b4f845b3d61ecd3f94c8b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
