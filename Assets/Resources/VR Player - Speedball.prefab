@@ -294,6 +294,7 @@ GameObject:
   - component: {fileID: 63484684034565116}
   - component: {fileID: -3078369984816020322}
   - component: {fileID: 5680419806792718050}
+  - component: {fileID: 8824921667083484682}
   m_Layer: 0
   m_Name: VR Player - Speedball
   m_TagString: Untagged
@@ -480,6 +481,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 212bc0f5015c1094e8797a2e64a112b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8824921667083484682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1435502846325602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6ff262fbf852b745b24eae3d77d1241, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1573471737031190
