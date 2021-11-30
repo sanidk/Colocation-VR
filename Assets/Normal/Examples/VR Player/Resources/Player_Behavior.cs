@@ -91,7 +91,7 @@ public class Player_Behavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        LocomotionControl(); // remember to disable for testing
+        //LocomotionControl(); // remember to disable for testing
 
 
         /*
@@ -293,41 +293,6 @@ public class Player_Behavior : MonoBehaviour
             }
         }*/
 
-        void LocomotionControl()
-        {
-
-            var inputDevices = new List<UnityEngine.XR.InputDevice>();
-            UnityEngine.XR.InputDevices.GetDevices(inputDevices);
-            Vector2 triggerValue;
-
-            foreach (var device in inputDevices)
-            {
-                if (device.TryGetFeatureValue(UnityEngine.XR.CommonUsages.secondary2DAxis, out triggerValue))
-                {
-                    if (triggerValue.x > 0)
-                    {
-                    transform.position = new Vector3(transform.position.x+triggerValue.x, transform.position.y, transform.position.z);
-                    
-                    }
-                    if (triggerValue.x < 0)
-                    {
-                        transform.position = new Vector3(transform.position.x - triggerValue.x, transform.position.y, transform.position.z);
-
-                    }
-
-                    if (triggerValue.y > 0)
-                    {
-                    transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + triggerValue.y);
-
-                    }
-                    if (triggerValue.y < 0)
-                    {
-                        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - triggerValue.y);
-
-                    }
-
-                }
-            }
-        }
+        
     }
 
