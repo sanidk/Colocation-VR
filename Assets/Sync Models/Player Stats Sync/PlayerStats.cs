@@ -78,10 +78,10 @@ public class PlayerStats : MonoBehaviour
         //    _health = 100;
         //}
 
-        if (!gameLogic._isRoundStarted && _isReady && _health != 100)
-        {
-            _playerStatsSync.SetHealth(100);
-        }
+        //if (!gameLogic._isRoundStarted && _isReady && _health != 100)
+        //{
+        //    _playerStatsSync.SetHealth(100);
+        //}
 
         //if (gameLogic._isRoundStarted && gameLogic._roundCurrent != oldRound)
         //{
