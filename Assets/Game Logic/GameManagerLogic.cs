@@ -71,6 +71,8 @@ public class GameManagerLogic : MonoBehaviour
     public float countdownTime = 5f;
     float countdownValue;
 
+    public static string playerFeedbackString;
+
 
 
     // NOT SYNCED VARS
@@ -317,6 +319,7 @@ public class GameManagerLogic : MonoBehaviour
             if (roundWinner == 1)
             {
                 //ResetPlayerHealth();
+                TextFeedbackManager.feedbackText = "Blue Team Wins Round "+roundCurrent.ToString();
 
                 team1Score++;
                 roundCurrent++;
@@ -337,6 +340,7 @@ public class GameManagerLogic : MonoBehaviour
             else if (roundWinner == 2)
             {
                 //ResetPlayerHealth();
+                TextFeedbackManager.feedbackText = "Red Team Wins Round " + roundCurrent.ToString();
 
                 team2Score++;
                 roundCurrent++;
@@ -348,7 +352,7 @@ public class GameManagerLogic : MonoBehaviour
                 isRoundStarted = false;
 
                 //roundText.GetComponent<TextMesh>().text = "round winner team 2";
-            } 
+            }
 
         }
 
@@ -358,6 +362,15 @@ public class GameManagerLogic : MonoBehaviour
         if (roundCurrent > roundsTotal)
         {
             gameWinner = CheckGameWinner();
+            if (gameWinner == 1)
+            {
+                playerFeedbackString = "Blue Team Wins";
+            }
+
+            if (gameWinner == 2)
+            {
+                playerFeedbackString = "Red Team Wins";
+            }
             //roundText.GetComponent<TextMesh>().text = gameWinner.ToString();
         }
 

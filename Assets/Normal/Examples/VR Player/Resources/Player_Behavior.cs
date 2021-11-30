@@ -7,6 +7,12 @@ public class Player_Behavior : MonoBehaviour
 {
     public int team;
     public bool isPlayerReady;
+
+    public GameObject spawnArrow;
+    public GameObject spawnAreaRedSide;
+    public GameObject spawnAreaBlueSide;
+    public GameObject chooseTeamObjects;
+
     //public float hp = 100;
 
     //private float currentHp_Local;
@@ -16,7 +22,8 @@ public class Player_Behavior : MonoBehaviour
     private float _redAmount = 0;
 
     //private HpFloatSync _hp; // ADD COMPONENT TO PLAYER
-
+    public GameObject feedbackText;
+    public TextMesh feedbackTextField;
     public GameObject meshObject;
     Collider coll;
     //public GameObject Hitbox_Head;
@@ -28,6 +35,8 @@ public class Player_Behavior : MonoBehaviour
 
     PlayerStats playerStats;
     PlayerStatsSync playerStatsSync;
+
+    Vector3 arrowStartScale;
 
     public GameObject skinnedMeshObject;
     public GameObject rightHand;
@@ -43,7 +52,7 @@ public class Player_Behavior : MonoBehaviour
     public GameObject[] colliderObjects;
     float oldHealth = 100;
 
-
+    Vector3 arrowTarget;
     private void Awake()
     {
         //_colorSync = GetComponentInChildren<ColorSync>();
@@ -54,13 +63,18 @@ public class Player_Behavior : MonoBehaviour
         playerStats = GetComponent<PlayerStats>();
         playerStatsSync = GetComponent<PlayerStatsSync>();
         skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material = defaultMaterial;
-
+        feedbackTextField = feedbackText.GetComponent<TextMesh>();
         //deadPostFX = GameObject.Find("PostFXDead");
-        
+
         deadPostFX = GameObject.Find("PostFXDead");
         damagePostFX = GameObject.Find("PostFXVignette");
-        
-        oldHealth = playerStats._health;
+        spawnAreaRedSide = GameObject.Find("SpawnAreaRedSide");
+        spawnAreaBlueSide = GameObject.Find("SpawnAreaBlueSide");
+        chooseTeamObjects = GameObject.Find("ChooseTeam");
+
+        arrowStartScale = spawnArrow.transform.localScale;
+
+    oldHealth = playerStats._health;
     }
 
     void Start()
@@ -101,6 +115,37 @@ public class Player_Behavior : MonoBehaviour
             oldHealth = playerStats.hp;
         }
         */
+        spawnArrow.SetActive(false);
+        if (playerStats._team == 0)
+        {
+            TextFeedbackManager.feedbackText = "CHOOSE YOUR TEAM";
+            arrowTarget = chooseTeamObjects.transform.position;
+            spawnArrow.SetActive(true);
+            spawnArrow.transform.rotation = Quaternion.LookRotation(arrowTarget - spawnArrow.transform.position);
+            spawnArrow.transform.localScale = arrowStartScale * (Mathf.Pow((Mathf.Sin(Time.time)), 2)+1)/2;
+        }
+
+
+        //Create arrow to spawn point
+        if (GetComponent<RealtimeTransform>().isOwnedLocallySelf && dead) // ADD IF EDEAD
+        {
+            
+            spawnArrow.SetActive(true);
+            TextFeedbackManager.feedbackText = "YOU DIED - RETURN TO SPAWN";
+            if (playerStats._team == 1)
+            {
+                arrowTarget = spawnAreaBlueSide.transform.position;
+
+                //blue
+            } else if (playerStats._team == 2)
+            {
+                //red
+                arrowTarget = spawnAreaRedSide.transform.position;
+            }
+            //arrow pointing towards player spawn
+            spawnArrow.transform.rotation = Quaternion.LookRotation(arrowTarget - spawnArrow.transform.position);
+            spawnArrow.transform.localScale = arrowStartScale * (Mathf.Pow((Mathf.Sin(Time.time)), 2) + 1) / 2;
+        } 
 
         if (GetComponent<RealtimeTransform>().isOwnedLocallySelf)
         {

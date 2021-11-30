@@ -18,7 +18,7 @@ public class PlayerStats : MonoBehaviour
     public bool _previousIsReady = default;
 
     [SerializeField]
-    public int _team = default;
+    public int _team = default; //team 1 is blue, 2 is red
     public int _previousTeam = default;
 
     [SerializeField]
