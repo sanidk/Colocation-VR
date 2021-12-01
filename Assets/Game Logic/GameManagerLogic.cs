@@ -56,9 +56,9 @@ public class GameManagerLogic : MonoBehaviour
     public int team1Score;
     public int team2Score;
 
-    public int roundCurrent;
+    public int roundCurrent = 0;
     int roundsPlayed;
-    int roundsTotal = 10;
+    int roundsTotal = 5;
 
     int team1Kills;
     int team2Kills;
@@ -174,7 +174,7 @@ public class GameManagerLogic : MonoBehaviour
                 SpawnGuns();
                 roundStartTime = Time.time;
                 isRoundStarted = true;
-                
+                roundCurrent++;
 
                 debugText.GetComponent<TextMesh>().text = "all players ready";
             }
@@ -201,7 +201,7 @@ public class GameManagerLogic : MonoBehaviour
                 TextFeedbackManager.winnerFeedbackText = "Blue Team Wins Round";
                 roundDelayStartTime = Time.time;
                 team1Score++;
-                roundCurrent++;
+                //roundCurrent++;
 
                 team1Kills = 0;
                 team2Kills = 0;
@@ -222,7 +222,7 @@ public class GameManagerLogic : MonoBehaviour
                 TextFeedbackManager.winnerFeedbackText = "Red Team Wins Round";
                 roundDelayStartTime = Time.time;
                 team2Score++;
-                roundCurrent++;
+                //roundCurrent++;
 
                 team1Kills = 0;
                 team2Kills = 0;
@@ -239,7 +239,7 @@ public class GameManagerLogic : MonoBehaviour
                 //ResetPlayerHealth();
                 TextFeedbackManager.winnerFeedbackText = "Tie Round";
                 roundDelayStartTime = Time.time;
-                roundCurrent++;
+                //roundCurrent++;
 
                 team1Kills = 0;
                 team2Kills = 0;
