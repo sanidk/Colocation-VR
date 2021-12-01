@@ -8,7 +8,11 @@ public class Player_Behavior : MonoBehaviour
     public int team;
     public bool isPlayerReady;
 
-    public GameObject spawnArrow;
+    public GameObject spawnArrowNeutral;
+    public GameObject spawnArrowRed;
+    public GameObject spawnArrowBlue;
+
+
     public GameObject spawnAreaRedSide;
     public GameObject spawnAreaBlueSide;
     public GameObject chooseTeamObjects;
@@ -72,9 +76,10 @@ public class Player_Behavior : MonoBehaviour
         spawnAreaBlueSide = GameObject.Find("SpawnAreaBlueSide");
         chooseTeamObjects = GameObject.Find("ChooseTeam");
 
-        arrowStartScale = spawnArrow.transform.localScale;
+        arrowStartScale = spawnArrowRed.transform.localScale;
+        //arrowStartScale = spawnArrowRed.transform.localScale;
 
-    oldHealth = playerStats._health;
+        oldHealth = playerStats._health;
     }
 
     void Start()
@@ -102,14 +107,23 @@ public class Player_Behavior : MonoBehaviour
             oldHealth = playerStats.hp;
         }
         */
-        spawnArrow.SetActive(false);
+        
+        spawnArrowRed.SetActive(false);
+        spawnArrowBlue.SetActive(false);
+        spawnArrowNeutral.SetActive(false);
+
+
         if (playerStats._team == 0)
         {
-            TextFeedbackManager.feedbackText = "CHOOSE YOUR TEAM";
-            arrowTarget = chooseTeamObjects.transform.position;
-            spawnArrow.SetActive(true);
-            spawnArrow.transform.rotation = Quaternion.LookRotation(arrowTarget - spawnArrow.transform.position);
-            spawnArrow.transform.localScale = arrowStartScale * (Mathf.Pow((Mathf.Sin(Time.time)), 2)+1)/2;
+            if (GetComponent<RealtimeTransform>().isOwnedLocallySelf)
+            {
+                TextFeedbackManager.feedbackText = "CHOOSE YOUR TEAM";
+                arrowTarget = chooseTeamObjects.transform.position;
+                spawnArrowNeutral.SetActive(true);
+                spawnArrowNeutral.transform.rotation = Quaternion.LookRotation(arrowTarget - spawnArrowNeutral.transform.position);
+                spawnArrowNeutral.transform.localScale = arrowStartScale * (Mathf.Pow((Mathf.Sin(Time.time)), 2) + 1) / 2;
+            }
+            
         }
 
 
@@ -117,21 +131,27 @@ public class Player_Behavior : MonoBehaviour
         if (GetComponent<RealtimeTransform>().isOwnedLocallySelf && dead) // ADD IF EDEAD
         {
             
-            spawnArrow.SetActive(true);
+            
             TextFeedbackManager.feedbackText = "YOU DIED - RETURN TO SPAWN";
             if (playerStats._team == 1)
             {
+                spawnArrowBlue.SetActive(true);
                 arrowTarget = spawnAreaBlueSide.transform.position;
-
+                spawnArrowBlue.transform.rotation = Quaternion.LookRotation(arrowTarget - spawnArrowBlue.transform.position);
+                spawnArrowBlue.transform.localScale = arrowStartScale * (Mathf.Pow((Mathf.Sin(Time.time)), 2) + 1) / 2;
                 //blue
             } else if (playerStats._team == 2)
             {
                 //red
+                spawnArrowRed.SetActive(true);
                 arrowTarget = spawnAreaRedSide.transform.position;
+                spawnArrowRed.transform.rotation = Quaternion.LookRotation(arrowTarget - spawnArrowRed.transform.position);
+                spawnArrowRed.transform.localScale = arrowStartScale * (Mathf.Pow((Mathf.Sin(Time.time)), 2) + 1) / 2;
             }
             //arrow pointing towards player spawn
-            spawnArrow.transform.rotation = Quaternion.LookRotation(arrowTarget - spawnArrow.transform.position);
-            spawnArrow.transform.localScale = arrowStartScale * (Mathf.Pow((Mathf.Sin(Time.time)), 2) + 1) / 2;
+            
+
+            
         } 
 
         if (GetComponent<RealtimeTransform>().isOwnedLocallySelf)
@@ -193,11 +213,16 @@ public class Player_Behavior : MonoBehaviour
             }
         }
             textMesh.text = "HP: " + playerStats._health; // change dis
+            if (!GetComponent<RealtimeTransform>().isOwnedLocallySelf)
+            {
+            TextFeedbackManager.feedbackText = "";
+            }
+
         }
-        
 
 
-        private void OnTriggerEnter(Collider other)
+
+    private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("ReviveCapsule") && dead) // Create spawn area tag or something else to check on.
             {
