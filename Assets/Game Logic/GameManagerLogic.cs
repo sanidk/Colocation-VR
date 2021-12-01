@@ -74,7 +74,7 @@ public class GameManagerLogic : MonoBehaviour
     public static string playerFeedbackString;
 
     float roundDelayStartTime;
-    float roundDelayLifeTime = 10;
+    float roundDelayLifeTime = 2;
 
 
 
