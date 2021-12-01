@@ -319,7 +319,7 @@ public class GameManagerLogic : MonoBehaviour
                 }
                 else if (childTransform.gameObject.name == "Rifle")
                 {
-                    GameObject gun = Realtime.Instantiate("Pistol", childTransform.position, childTransform.rotation, new Realtime.InstantiateOptions
+                    GameObject gun = Realtime.Instantiate("Rifle", childTransform.position, childTransform.rotation, new Realtime.InstantiateOptions
                     {
                         ownedByClient = false,
                         preventOwnershipTakeover = false,
@@ -492,6 +492,14 @@ public class GameManagerLogic : MonoBehaviour
         }
 
 
+        void ResetGame()
+        {
+        roundCurrent = 0;
+        team1Score = 0;
+        team2Score = 0;
+
+
+        }
 
         int CheckGameWinner()
         {
