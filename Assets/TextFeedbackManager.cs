@@ -7,9 +7,11 @@ using Normal.Realtime;
 public class TextFeedbackManager : MonoBehaviour
 {
     public static string feedbackText = "";
+    public static string winnerFeedbackText = "";
+    string combinedString = "";
     string previousFeedbackText;
     float startTime;
-    float textLifeTime = 5;
+    float textLifeTime = 10;
     TextMesh textMesh;
 
     // Start is called before the first frame update
@@ -27,15 +29,11 @@ public class TextFeedbackManager : MonoBehaviour
     {
         if (!GetComponentInParent<RealtimeView>().isOwnedLocallySelf) return;
 
-        if (feedbackText == "CHOOSE YOUR TEAM")
-        {
-            textMesh.text = feedbackText;
-            return;
-        }
+        combinedString = winnerFeedbackText + "\n" + feedbackText;
 
-        if (feedbackText != previousFeedbackText)
+        if (combinedString != previousFeedbackText)
         {
-            previousFeedbackText = feedbackText;
+            previousFeedbackText = combinedString;
             startTime = Time.time;
         }
 
@@ -43,10 +41,12 @@ public class TextFeedbackManager : MonoBehaviour
 
         if (Time.time < startTime + textLifeTime)
         {
-            textMesh.text = feedbackText;
+            
+            textMesh.text = combinedString;
         } else
         {
-            textMesh.text = "";
+            winnerFeedbackText = "";
+            feedbackText = "";
         }
 
 

@@ -157,7 +157,7 @@ public class GameManagerLogic : MonoBehaviour
             else
             {
                 debugText.GetComponent<TextMesh>().text = "teams assigned failed";
-                TextFeedbackManager.feedbackText = "WAITING FOR PLAYERS TO CHOOSE TEAMS";
+                TextFeedbackManager.feedbackText = "WAITING FOR PLAYERS"+"\n"+"CHOOSING TEAMS";
                 return;
             }
         }
@@ -198,7 +198,7 @@ public class GameManagerLogic : MonoBehaviour
             if (roundWinner == 1)
             {
                 //ResetPlayerHealth();
-                TextFeedbackManager.feedbackText = "Blue Team Wins Round";
+                TextFeedbackManager.winnerFeedbackText = "Blue Team Wins Round";
                 roundDelayStartTime = Time.time;
                 team1Score++;
                 roundCurrent++;
@@ -219,7 +219,7 @@ public class GameManagerLogic : MonoBehaviour
             else if (roundWinner == 2)
             {
                 //ResetPlayerHealth();
-                TextFeedbackManager.feedbackText = "Red Team Wins Round";
+                TextFeedbackManager.winnerFeedbackText = "Red Team Wins Round";
                 roundDelayStartTime = Time.time;
                 team2Score++;
                 roundCurrent++;
@@ -237,7 +237,7 @@ public class GameManagerLogic : MonoBehaviour
             else if (roundWinner == 3)
             {
                 //ResetPlayerHealth();
-                TextFeedbackManager.feedbackText = "Tie Round " + roundCurrent.ToString();
+                TextFeedbackManager.winnerFeedbackText = "Tie Round";
                 roundDelayStartTime = Time.time;
                 roundCurrent++;
 
@@ -259,12 +259,12 @@ public class GameManagerLogic : MonoBehaviour
             gameWinner = CheckGameWinner();
             if (gameWinner == 1)
             {
-                playerFeedbackString = "Blue Team Wins";
+                TextFeedbackManager.winnerFeedbackText = "Blue Team Wins";
             }
 
             if (gameWinner == 2)
             {
-                playerFeedbackString = "Red Team Wins";
+                TextFeedbackManager.winnerFeedbackText = "Red Team Wins";
             }
             //roundText.GetComponent<TextMesh>().text = gameWinner.ToString();
         }
