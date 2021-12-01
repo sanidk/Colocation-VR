@@ -147,6 +147,8 @@ public class PlayerStats : MonoBehaviour
 
     }
 
+
+
     // Remap function taken from unity forum
     public float Remap(float value, float from1, float to1, float from2, float to2)
     {
@@ -163,9 +165,27 @@ public class PlayerStats : MonoBehaviour
             //Debug.DrawRay(contact.point, contact.normal, Color.white);
         }
         
-        
         ContactPoint cp = collision.GetContact(0); // ??
-        
+
+        if (collision.collider.CompareTag("Bullet"))
+        {
+            ContactPoint contactPoint = collision.contacts[0];
+            var rot = Quaternion.FromToRotation(Vector3.up, contactPoint.normal);
+
+            //GameObject BloodParticle = Realtime.Instantiate("BloodParticle", contactPoint.point, rot);
+            /*
+            GameObject BloodParticle = Realtime.Instantiate("BloodParticle", contactPoint.point, rot, new Realtime.InstantiateOptions
+            {
+                ownedByClient = true,
+                preventOwnershipTakeover = true,
+                destroyWhenOwnerLeaves = false,
+                destroyWhenLastClientLeaves = true,
+                //useInstance = _realtime,
+            });*/
+
+            GameObject blood = Realtime.Instantiate("BloodParticle", cp.point, rot);
+        }
+
         if (cp.thisCollider.name == "HeadCollider" && collision.collider.CompareTag("Bullet"))
         {
             hp -= 20;
