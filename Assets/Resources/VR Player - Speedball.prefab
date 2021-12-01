@@ -4027,7 +4027,7 @@ GameObject:
   - component: {fileID: 1226151122162893}
   - component: {fileID: 6727222359400965820}
   m_Layer: 0
-  m_Name: LeftArmLowerCollider
+  m_Name: LeftLowerArmCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6412,7 +6412,7 @@ GameObject:
   - component: {fileID: 1533921600806465628}
   - component: {fileID: 6879560045473183130}
   m_Layer: 0
-  m_Name: RightArmLowerCollider
+  m_Name: RightLowerArmCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
