@@ -198,7 +198,7 @@ public class GameManagerLogic : MonoBehaviour
             if (roundWinner == 1)
             {
                 //ResetPlayerHealth();
-                TextFeedbackManager.feedbackText = "Blue Team Wins Round " + roundCurrent.ToString();
+                TextFeedbackManager.feedbackText = "Blue Team Wins Round";
                 roundDelayStartTime = Time.time;
                 team1Score++;
                 roundCurrent++;
@@ -219,7 +219,7 @@ public class GameManagerLogic : MonoBehaviour
             else if (roundWinner == 2)
             {
                 //ResetPlayerHealth();
-                TextFeedbackManager.feedbackText = "Red Team Wins Round " + roundCurrent.ToString();
+                TextFeedbackManager.feedbackText = "Red Team Wins Round";
                 roundDelayStartTime = Time.time;
                 team2Score++;
                 roundCurrent++;
