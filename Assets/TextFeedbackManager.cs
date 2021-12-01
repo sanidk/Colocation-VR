@@ -38,10 +38,10 @@ public class TextFeedbackManager : MonoBehaviour
 
         
 
-        if (Time.time < startTime + textLifeTime)
-        {
-            textMesh.text = feedbackText;
-        } 
+        //if (Time.time < startTime + textLifeTime)
+        //{
+        //    textMesh.text = feedbackText;
+        //} 
 
 
     }

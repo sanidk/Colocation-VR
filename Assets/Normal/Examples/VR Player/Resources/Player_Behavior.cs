@@ -160,7 +160,7 @@ public class Player_Behavior : MonoBehaviour
         {
             
             
-            TextFeedbackManager.feedbackText = "YOU DIED - RETURN TO SPAWN";
+            TextFeedbackManager.feedbackText = "YOU DIED"+"\n"+"RETURN TO SPAWN";
             if (playerStats._team == 1)
             {
                 spawnArrowBlue.SetActive(true);
