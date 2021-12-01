@@ -73,6 +73,9 @@ public class GameManagerLogic : MonoBehaviour
 
     public static string playerFeedbackString;
 
+    float roundDelayStartTime;
+    float roundDelayLifeTime = 10;
+
 
 
     // NOT SYNCED VARS
@@ -261,8 +264,9 @@ public class GameManagerLogic : MonoBehaviour
 
 
 
-        if (!isPlayersReadyToStartGame && !isRoundStarted)
+        if (!isPlayersReadyToStartGame && !isRoundStarted && Time.time > roundDelayStartTime+roundDelayLifeTime)
         {
+            
             debugText.GetComponent<TextMesh>().text = "checking if players ready";
             if (CheckIfAllPlayersReady())
             {
@@ -323,7 +327,7 @@ public class GameManagerLogic : MonoBehaviour
             {
                 //ResetPlayerHealth();
                 TextFeedbackManager.feedbackText = "Blue Team Wins Round "+roundCurrent.ToString();
-
+                roundDelayStartTime = Time.time;
                 team1Score++;
                 roundCurrent++;
 
@@ -344,7 +348,7 @@ public class GameManagerLogic : MonoBehaviour
             {
                 //ResetPlayerHealth();
                 TextFeedbackManager.feedbackText = "Red Team Wins Round " + roundCurrent.ToString();
-
+                roundDelayStartTime = Time.time;
                 team2Score++;
                 roundCurrent++;
 
