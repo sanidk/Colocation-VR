@@ -169,19 +169,7 @@ public class PlayerStats : MonoBehaviour
 
         if (collision.collider.CompareTag("Bullet"))
         {
-            ContactPoint contactPoint = collision.contacts[0];
-            var rot = Quaternion.FromToRotation(Vector3.up, contactPoint.normal);
-
-            //GameObject BloodParticle = Realtime.Instantiate("BloodParticle", contactPoint.point, rot);
-            /*
-            GameObject BloodParticle = Realtime.Instantiate("BloodParticle", contactPoint.point, rot, new Realtime.InstantiateOptions
-            {
-                ownedByClient = true,
-                preventOwnershipTakeover = true,
-                destroyWhenOwnerLeaves = false,
-                destroyWhenLastClientLeaves = true,
-                //useInstance = _realtime,
-            });*/
+            var rot = Quaternion.FromToRotation(Vector3.up, cp.normal);
 
             GameObject blood = Realtime.Instantiate("BloodParticle", cp.point, rot);
         }
