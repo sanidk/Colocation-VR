@@ -103,6 +103,9 @@ public class Player_Behavior : MonoBehaviour
     {
         if (GetComponent<RealtimeTransform>().isOwnedLocallySelf && dead)
         {
+            //set text to dis
+            TextFeedbackManager.feedbackText = "YOU DIED" + "\n" + "RETURN TO SPAWN";
+
             //disable guns
             foreach (GameObject gun in gameManager.GetComponent<GameManagerLogic>().gunsList)
             {
@@ -160,7 +163,7 @@ public class Player_Behavior : MonoBehaviour
         {
             
             
-            TextFeedbackManager.feedbackText = "YOU DIED"+"\n"+"RETURN TO SPAWN";
+            
             if (playerStats._team == 1)
             {
                 spawnArrowBlue.SetActive(true);

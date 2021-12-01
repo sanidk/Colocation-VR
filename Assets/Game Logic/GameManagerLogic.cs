@@ -157,7 +157,7 @@ public class GameManagerLogic : MonoBehaviour
             else
             {
                 debugText.GetComponent<TextMesh>().text = "teams assigned failed";
-                TextFeedbackManager.feedbackText = "WAITING FOR PLAYERS"+"\n"+"CHOOSING TEAMS";
+                
                 return;
             }
         }
@@ -174,7 +174,7 @@ public class GameManagerLogic : MonoBehaviour
                 SpawnGuns();
                 roundStartTime = Time.time;
                 isRoundStarted = true;
-                TextFeedbackManager.feedbackText = "ROUND STARTED";
+                
 
                 debugText.GetComponent<TextMesh>().text = "all players ready";
             }
