@@ -91,7 +91,7 @@ public class GameManagerLogic : MonoBehaviour
     public GameObject gunSpawnLocationsObject;
     Transform[] spawnsList;
     //GameObject[] gunsList;
-    List<GameObject> gunsList = new List<GameObject>();
+    public List<GameObject> gunsList = new List<GameObject>();
     //bool isGunsSpawned;
     bool isGunsDestroyed;
 
@@ -284,7 +284,7 @@ public class GameManagerLogic : MonoBehaviour
                     if (!gameLogic._isRoundStarted && player.gameObject.GetComponent<PlayerStats>()._isReady && player.gameObject.GetComponent<PlayerStats>()._health != 100)
                     {
                         player.gameObject.GetComponent<PlayerStatsSync>().SetHealth(100);
-                    }
+                    }   
 
 
 

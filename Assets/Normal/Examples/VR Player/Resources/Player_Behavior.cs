@@ -56,6 +56,10 @@ public class Player_Behavior : MonoBehaviour
     public GameObject[] colliderObjects;
     float oldHealth = 100;
 
+    GameObject gameManager;
+
+    bool disableGunsOnce;
+
     Vector3 arrowTarget;
     private void Awake()
     {
@@ -75,6 +79,7 @@ public class Player_Behavior : MonoBehaviour
         spawnAreaRedSide = GameObject.Find("SpawnAreaRedSide");
         spawnAreaBlueSide = GameObject.Find("SpawnAreaBlueSide");
         chooseTeamObjects = GameObject.Find("ChooseTeam");
+        gameManager = GameObject.Find("GameManager");
 
         arrowStartScale = spawnArrowRed.transform.localScale;
         //arrowStartScale = spawnArrowRed.transform.localScale;
@@ -96,6 +101,28 @@ public class Player_Behavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GetComponent<RealtimeTransform>().isOwnedLocallySelf && dead)
+        {
+            //disable guns
+            foreach (GameObject gun in gameManager.GetComponent<GameManagerLogic>().gunsList)
+            {
+                gun.SetActive(false);
+            }
+            disableGunsOnce = true;
+
+
+
+        } else if (GetComponent<RealtimeTransform>().isOwnedLocallySelf && disableGunsOnce && !dead)
+        {
+            foreach(GameObject gun in gameManager.GetComponent<GameManagerLogic>().gunsList)
+            {
+                gun.SetActive(true);
+
+            }
+            disableGunsOnce = false;
+        }
+
+
         //LocomotionControl(); // remember to disable for testing
 
 
