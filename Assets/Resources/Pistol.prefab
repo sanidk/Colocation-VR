@@ -1707,8 +1707,10 @@ GameObject:
   - component: {fileID: 134164315154703594}
   - component: {fileID: 3277885095020542566}
   - component: {fileID: 3735844807691964709}
+  - component: {fileID: 626867349009508717}
+  - component: {fileID: 3293924267853274965}
   m_Layer: 0
-  m_Name: gunfinaly shoot
+  m_Name: Pistol
   m_TagString: Gun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1901,6 +1903,8 @@ MonoBehaviour:
     component: {fileID: 2252819753059393363}
   - componentID: 2
     component: {fileID: 134164315154703596}
+  - componentID: 3
+    component: {fileID: 3293924267853274965}
   _childViews: []
 --- !u!114 &2252819753059393363
 MonoBehaviour:
@@ -2107,6 +2111,33 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &626867349009508717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7054609897058738313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7650042afd40c564990e3ebaff808c0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ammo: 8
+  _previousAmmo: 0
+  _ammoStatsSync: {fileID: 0}
+--- !u!114 &3293924267853274965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7054609897058738313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65f40386d0b811942ba8fb4584040334, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7141372237486726953
 GameObject:
   m_ObjectHideFlags: 0

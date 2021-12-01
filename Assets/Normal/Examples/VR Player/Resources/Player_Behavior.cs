@@ -120,7 +120,8 @@ public class Player_Behavior : MonoBehaviour
                 TextFeedbackManager.feedbackText = "CHOOSE YOUR TEAM";
                 arrowTarget = chooseTeamObjects.transform.position;
                 spawnArrowNeutral.SetActive(true);
-                spawnArrowNeutral.transform.rotation = Quaternion.LookRotation(arrowTarget - spawnArrowNeutral.transform.position);
+                Vector3 lookVector = arrowTarget - spawnArrowNeutral.transform.position;
+                spawnArrowNeutral.transform.rotation = Quaternion.LookRotation(new Vector3(lookVector.x, 0, lookVector.z));
                 spawnArrowNeutral.transform.localScale = arrowStartScale * (Mathf.Pow((Mathf.Sin(Time.time)), 2) + 1) / 2;
             }
             

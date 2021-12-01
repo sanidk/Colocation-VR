@@ -77,35 +77,23 @@ public class GameManagerLogic : MonoBehaviour
     float roundDelayLifeTime = 2;
 
 
-
-    // NOT SYNCED VARS
     bool isRoundReset = true;
 
-    //create player stats variable to track kills
-    //create player stats variable to track ready to start new round
-    //Team variable to track which team the player is joined
-    //
-
-    //UI
-    //public GameObject roundText;
-
-
-    //public GameObject team1countText;
-    //public GameObject team2countText;
-
-    //public GameObject team1scoreText;
-    //public GameObject team2scoreText;
-
-    //public GameObject team1killsText;
-    //public GameObject team2killsText;
-
-    //public GameObject timeText;
-    //public GameObject winnerText;
     public GameObject debugText;
 
 
     public bool isServer = false;
 
+
+
+
+
+    public GameObject gunSpawnLocationsObject;
+    Transform[] spawnsList;
+    //GameObject[] gunsList;
+    List<GameObject> gunsList = new List<GameObject>();
+    bool isGunsSpawned;
+    bool isGunsDestroyed;
 
     // Update is called once per frame
     void Update()
@@ -118,83 +106,11 @@ public class GameManagerLogic : MonoBehaviour
         else
         {
             avatars = manager.avatars;
-            
+
         }
-
-
-        
-        //logic for assigning new server authority
-        //for (int i = 0; i < avatars.Count; i++)
-        //{
-            
-        //    try
-        //    {
-        //        if (avatars[i].gameObject.GetComponent<PlayerStats>()._isServer)
-        //        {
-        //            isServerExist = true;
-        //            break;
-        //        }
-        //        else
-        //        {
-        //            isServerExist = false;
-        //        }
-        //    } catch
-        //    {
-                
-        //    }
-
-        //}
-
-        //if (!isServerExist)
-        //{
-        //    for (int i = 0; i < avatars.Count; i++)
-        //    {
-        //        try
-        //        {
-        //            if (avatars[i].gameObject != null)
-        //            {
-        //                avatars[i].gameObject.GetComponent<PlayerStats>()._isServer = true;
-        //                break;
-        //            }
-                    
-        //        } catch
-        //        {
-
-        //        }
-                    
-        //    }
-        //}
-
-
-        //gameMode = GameLogicSync.get(gameMode);
-        //get variables
 
         gameLogic = GetComponent<GameLogic>();
 
-        //gameMode = gameLogic._gameMode;
-        //isPlayersConnectedAndTeamsAssigned = gameLogic._isPlayersConnectedAndTeamsAssigned;
-        //isPlayersReadyToStartGame = gameLogic._isPlayersReadyToStartGame;
-        //isGameStart = gameLogic._isGameStart;
-        //isRoundStarted = gameLogic._isRoundStarted;
-        //gameWinner = gameLogic._gameWinner;
-        //teamSize = gameLogic._teamSize;
-        //roundTotalTime = gameLogic._roundTotalTime;
-        //roundStartTime = gameLogic._roundStartTime;
-        //roundElapsedTime = gameLogic._roundElapsedTime;
-        //team1Score = gameLogic._team1Score;
-        //team2Score = gameLogic._team2Score;
-        //roundCurrent = gameLogic._roundCurrent;
-        //roundsPlayed = gameLogic._roundsPlayed;
-        //roundsTotal = gameLogic._roundsTotal;
-        //team1Kills = (int)gameLogic._team1Kills;
-        //team2Kills = (int)gameLogic._team2Kills;
-        //team1TotalKills = (int)gameLogic._team1TotalKills;
-        //team2TotalKills = (int)gameLogic._team2TotalKills;
-
-        //team1Players = gameLogic._team1PlayerCount;
-        //team2Players = gameLogic._team2PlayerCount;
-
-        
         if (avatars.Count == 1)
         {
             isServer = true;
@@ -203,8 +119,8 @@ public class GameManagerLogic : MonoBehaviour
 
         if (!isServer) { return; }
 
-        //set variables
-        
+
+
         gameLogic._gameMode = gameMode;
         gameLogic._isPlayersConnectedAndTeamsAssigned = isPlayersConnectedAndTeamsAssigned;
         gameLogic._isPlayersReadyToStartGame = isPlayersReadyToStartGame;
@@ -226,22 +142,6 @@ public class GameManagerLogic : MonoBehaviour
         gameLogic._team2TotalKills = team2TotalKills;
         gameLogic._team1PlayerCount = team1Players.Count;
         gameLogic._team2PlayerCount = team2Players.Count;
-        
-
-        //Update UI
-        //team1countText.GetComponent<TextMesh>().text = team1Players.Count.ToString();
-        //team2countText.GetComponent<TextMesh>().text = team2Players.Count.ToString();
-
-        //team1scoreText.GetComponent<TextMesh>().text = team1Score.ToString();
-        //team2scoreText.GetComponent<TextMesh>().text = team2Score.ToString();
-
-        //team1killsText.GetComponent<TextMesh>().text = team1Kills.ToString();
-        //team2killsText.GetComponent<TextMesh>().text = team2Kills.ToString();
-
-        //roundText.GetComponent<TextMesh>().text = "Round " + roundCurrent.ToString();
-        //timeText.GetComponent<TextMesh>().text = roundElapsedTime.ToString();
-
-
 
 
         if (gameWinner != 0) return;
@@ -264,26 +164,17 @@ public class GameManagerLogic : MonoBehaviour
 
 
 
-        if (!isPlayersReadyToStartGame && !isRoundStarted && Time.time > roundDelayStartTime+roundDelayLifeTime)
+        if (!isPlayersReadyToStartGame && !isRoundStarted && Time.time > roundDelayStartTime + roundDelayLifeTime)
         {
-            
+
             debugText.GetComponent<TextMesh>().text = "checking if players ready";
             if (CheckIfAllPlayersReady())
             {
                 isPlayersReadyToStartGame = true;
+                SpawnGuns();
                 roundStartTime = Time.time;
                 isRoundStarted = true;
                 TextFeedbackManager.feedbackText = "ROUND STARTED";
-                
-                /*
-                for (int i = 0; i < avatars.Count; i++)
-                {
-                    RealtimeAvatar player = avatars[i];
-
-                    player.gameObject.GetComponent<PlayerStats>()._health = 100;
-                   
-                }
-                */
 
                 debugText.GetComponent<TextMesh>().text = "all players ready";
             }
@@ -294,25 +185,6 @@ public class GameManagerLogic : MonoBehaviour
             }
 
         }
-
-        /*
-        if (isPlayersReadyToStartGame && !isRoundCountdownStarted)
-        {
-            isRoundCountdownStarted = true;
-            countdownStart = Time.time;
-
-        }
-        if (isRoundCountdownStarted && Time.time > countdownStart + countdownTime)
-        {
-            isRoundStarted = true;
-            //isRoundCountdownStarted = false;
-        }
-
-        if (isRoundCountdownStarted)
-        {
-            countdownValue = Time.time - countdownStart;
-        }
-        */
 
 
         if (isRoundStarted)
@@ -326,7 +198,7 @@ public class GameManagerLogic : MonoBehaviour
             if (roundWinner == 1)
             {
                 //ResetPlayerHealth();
-                TextFeedbackManager.feedbackText = "Blue Team Wins Round "+roundCurrent.ToString();
+                TextFeedbackManager.feedbackText = "Blue Team Wins Round " + roundCurrent.ToString();
                 roundDelayStartTime = Time.time;
                 team1Score++;
                 roundCurrent++;
@@ -337,7 +209,7 @@ public class GameManagerLogic : MonoBehaviour
                 isRoundStarted = false;
                 isPlayersReadyToStartGame = false;
 
-
+                DestroyGuns();
 
                 //roundText.GetComponent<TextMesh>().text = "round winner team 1";
 
@@ -357,6 +229,25 @@ public class GameManagerLogic : MonoBehaviour
 
                 isPlayersReadyToStartGame = false;
                 isRoundStarted = false;
+
+                DestroyGuns();
+
+                //roundText.GetComponent<TextMesh>().text = "round winner team 2";
+            }
+            else if (roundWinner == 3)
+            {
+                //ResetPlayerHealth();
+                TextFeedbackManager.feedbackText = "Tie Round " + roundCurrent.ToString();
+                roundDelayStartTime = Time.time;
+                roundCurrent++;
+
+                team1Kills = 0;
+                team2Kills = 0;
+
+                isPlayersReadyToStartGame = false;
+                isRoundStarted = false;
+
+                DestroyGuns();
 
                 //roundText.GetComponent<TextMesh>().text = "round winner team 2";
             }
@@ -378,15 +269,6 @@ public class GameManagerLogic : MonoBehaviour
             //roundText.GetComponent<TextMesh>().text = gameWinner.ToString();
         }
 
-
-        /*
-        playersConnectedText.text = team1Players.Count.ToString() + "/" + team2Players.Count.ToString();
-        roundText.text = roundCurrent.ToString();
-        scoreText.text = team1Score.ToString() + "-" + team2Score.ToString();
-        killsText.text = team1Kills.ToString() + "-" + team2Kills.ToString();
-        timeText.text = (roundTotalTime - roundElapsedTime).ToString();
-        debugText.text = "hello world";//GetComponent<PlayerStats>()._health.ToString();
-        */
     }
 
     void ResetPlayerHealth()
@@ -417,89 +299,209 @@ public class GameManagerLogic : MonoBehaviour
         }
     }
 
-    bool CheckIfPlayersConnectedAndTeamsAssigned()
+    void SpawnGuns()
     {
-        if (avatars.Count < teamSize * 2) return false;
-
-        bool isTeamsSet = true;
-        team1Players.Clear();
-        team2Players.Clear();
-
-        for (int i = 0; i < avatars.Count; i++)
+        if (!isGunsSpawned)
         {
-            try
+            foreach (Transform childTransform in gunSpawnLocationsObject.GetComponentsInChildren<Transform>())
             {
-                if (avatars[i] != null)
+                if (childTransform.gameObject.name == "Pistol")
                 {
-                    RealtimeAvatar player = avatars[i];
-                    int team;
-                    team = player.gameObject.GetComponent<PlayerStats>()._team;
-
-                    if (team == 0)
+                    GameObject gun = Realtime.Instantiate("Pistol", childTransform.position, childTransform.rotation, new Realtime.InstantiateOptions
                     {
-                        isTeamsSet = false;
-                        //return false;
-                    }
-                    else if (team == 1)
+                        ownedByClient = false,
+                        preventOwnershipTakeover = false,
+                        destroyWhenOwnerLeaves = false,
+                        destroyWhenLastClientLeaves = true,
+                        //useInstance = _realtime,
+                    });
+                    gunsList.Add(gun);
+                }
+                else if (childTransform.gameObject.name == "Rifle")
+                {
+                    GameObject gun = Realtime.Instantiate("Pistol", childTransform.position, childTransform.rotation, new Realtime.InstantiateOptions
                     {
+                        ownedByClient = false,
+                        preventOwnershipTakeover = false,
+                        destroyWhenOwnerLeaves = false,
+                        destroyWhenLastClientLeaves = true,
+                        //useInstance = _realtime,
+                    });
+                    gunsList.Add(gun);
 
-                        team1Players.Add(player.gameObject);
+                }
+                isGunsSpawned = true;
 
-                    }
-                    else if (team == 2)
+            }
+            Debug.Log(gunsList.Count);
+        }
+    }
+
+        void DestroyGuns()
+        {
+            foreach (GameObject gun in gunsList)
+            {
+                Realtime.Destroy(gun);
+            }
+
+            gunsList.Clear();
+        }
+
+        bool CheckIfPlayersConnectedAndTeamsAssigned()
+        {
+            if (avatars.Count < teamSize * 2) return false;
+
+            bool isTeamsSet = true;
+            team1Players.Clear();
+            team2Players.Clear();
+
+            for (int i = 0; i < avatars.Count; i++)
+            {
+                try
+                {
+                    if (avatars[i] != null)
                     {
-                        team2Players.Add(player.gameObject);
+                        RealtimeAvatar player = avatars[i];
+                        int team;
+                        team = player.gameObject.GetComponent<PlayerStats>()._team;
+
+                        if (team == 0)
+                        {
+                            isTeamsSet = false;
+                            //return false;
+                        }
+                        else if (team == 1)
+                        {
+
+                            team1Players.Add(player.gameObject);
+
+                        }
+                        else if (team == 2)
+                        {
+                            team2Players.Add(player.gameObject);
+                        }
                     }
                 }
-            } catch
-            {
+                catch
+                {
+
+                }
+
 
             }
-            
-            
+
+            return isTeamsSet;
         }
 
-        return isTeamsSet;
-    }
-
-    bool CheckIfAllPlayersReady()
-    {
-        if (avatars.Count < teamSize * 2)
+        bool CheckIfAllPlayersReady()
         {
-            return false;
-        }
-
-        bool isTeamsReady = true;
-
-        for (int i = 0; i < avatars.Count; i++)
-        {
-            RealtimeAvatar player = avatars[i];
-
-            if (!player.gameObject.GetComponent<PlayerStats>()._isReady)
+            if (avatars.Count < teamSize * 2)
             {
-                isTeamsReady = false;
+                return false;
             }
 
+            bool isTeamsReady = true;
+
+            for (int i = 0; i < avatars.Count; i++)
+            {
+                RealtimeAvatar player = avatars[i];
+
+                if (!player.gameObject.GetComponent<PlayerStats>()._isReady)
+                {
+                    isTeamsReady = false;
+                }
+
+            }
+
+            return isTeamsReady;
+
+
         }
 
-        return isTeamsReady;
 
-
-    }
-
-
-    int CheckRoundWinner()
-    {
-
-        if (gameMode == 1)
+        int CheckRoundWinner()
         {
-            if (roundElapsedTime > roundTotalTime)
+
+            if (gameMode == 1)
             {
-                if (team1Kills > team2Kills)
+                if (roundElapsedTime > roundTotalTime)
+                {
+                    if (team1Kills > team2Kills)
+                    {
+                        return 1;
+                    }
+                    else if (team2Kills > team1Kills)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+                else
+                {
+                    return 0;
+                }
+
+            }
+            else if (gameMode == 2)
+            {
+                bool isTeam1Dead = true;
+                bool isTeam2Dead = true;
+
+                foreach (GameObject obj in team1Players)
+                {
+                    if (obj.GetComponent<PlayerStats>()._health > 0)
+                    {
+                        isTeam1Dead = false;
+                    }
+                }
+
+                foreach (GameObject obj in team2Players)
+                {
+                    if (obj.GetComponent<PlayerStats>()._health > 0)
+                    {
+                        isTeam2Dead = false;
+                    }
+                }
+
+                if (isTeam1Dead && isTeam2Dead)
+                {
+                    return 3;
+                }
+                else if (isTeam1Dead)
+                {
+                    return 2;
+                }
+                else if (isTeam2Dead)
                 {
                     return 1;
                 }
-                else if (team2Kills > team1Kills)
+                else
+                {
+                    return 0;
+                }
+
+
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+
+
+        int CheckGameWinner()
+        {
+            if (roundsPlayed == roundsTotal)
+            {
+                if (team1Score > team2Score)
+                {
+                    return 1;
+                }
+                else if (team2Score > team1Score)
                 {
                     return 2;
                 }
@@ -512,76 +514,6 @@ public class GameManagerLogic : MonoBehaviour
             {
                 return 0;
             }
-
         }
-        else if (gameMode == 2)
-        {
-            bool isTeam1Dead = true;
-            bool isTeam2Dead = true;
-
-            foreach (GameObject obj in team1Players)
-            {
-                if (obj.GetComponent<PlayerStats>()._health > 0)
-                {
-                    isTeam1Dead = false;
-                }
-            }
-
-            foreach (GameObject obj in team2Players)
-            {
-                if (obj.GetComponent<PlayerStats>()._health > 0)
-                {
-                    isTeam2Dead = false;
-                }
-            }
-
-            if (isTeam1Dead && isTeam2Dead)
-            {
-                return 3;
-            }
-            else if (isTeam1Dead)
-            {
-                return 2;
-            }
-            else if (isTeam2Dead)
-            {
-                return 1;
-            }
-            else
-            {
-                return 0;
-            }
-
-
-        }
-        else
-        {
-            return 0;
-        }
-    }
-
-
-
-    int CheckGameWinner()
-    {
-        if (roundsPlayed == roundsTotal)
-        {
-            if (team1Score > team2Score)
-            {
-                return 1;
-            }
-            else if (team2Score > team1Score)
-            {
-                return 2;
-            }
-            else
-            {
-                return 3;
-            }
-        }
-        else
-        {
-            return 0;
-        }
-    }
 }
+
