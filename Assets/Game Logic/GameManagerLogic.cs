@@ -497,8 +497,10 @@ public class GameManagerLogic : MonoBehaviour
         roundCurrent = 0;
         team1Score = 0;
         team2Score = 0;
-
-
+        isPlayersConnectedAndTeamsAssigned = false;
+        isRoundStarted = false;
+        isPlayersReadyToStartGame = false;
+        DestroyGuns();
         }
 
         int CheckGameWinner()
