@@ -29,11 +29,10 @@ public class TextFeedbackManager : MonoBehaviour
     {
         if (!GetComponentInParent<RealtimeView>().isOwnedLocallySelf) return;
 
-        combinedString = winnerFeedbackText + "\n" + feedbackText;
 
-        if (combinedString != previousFeedbackText)
+        if (feedbackText != previousFeedbackText)
         {
-            previousFeedbackText = combinedString;
+            previousFeedbackText = feedbackText;
             startTime = Time.time;
         }
 
@@ -41,13 +40,8 @@ public class TextFeedbackManager : MonoBehaviour
 
         if (Time.time < startTime + textLifeTime)
         {
-            
-            textMesh.text = combinedString;
-        } else
-        {
-            winnerFeedbackText = "";
-            feedbackText = "";
-        }
+            textMesh.text = feedbackText;
+        } 
 
 
     }
