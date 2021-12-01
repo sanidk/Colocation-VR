@@ -44,7 +44,7 @@ public class SimpleShoot : MonoBehaviour
 
     int previousBulletsInMag;
     public int maxBulletsInMag = 64;
-    public int bulletsInMag;
+    //public int bulletsInMag;
 
     public bool isPistol;
     public bool isRifle;
@@ -102,7 +102,7 @@ public class SimpleShoot : MonoBehaviour
             return;
         }
 
-        if (isShooting & bulletsInMag>0)
+        if (isShooting & GetComponent<AmmoStats>()._ammo>0)
         {
             if (!audioSource.isPlaying)
             {
@@ -112,13 +112,14 @@ public class SimpleShoot : MonoBehaviour
             if (Time.time > fireTriggerStartTime + fireSpeedTime) //.11 seem to work well through testing
             {
                 Shoot();
-                bulletsInMag--;
+                //bulletsInMag--;
+                GetComponent<AmmoStats>()._ammo--;
                 
                 fireTriggerStartTime = Time.time;
             }
             
 
-        } else if (isShooting & bulletsInMag == 0){
+        } else if (isShooting & GetComponent<AmmoStats>()._ammo == 0){
             //play the clipping sound effect
             if (Time.time > fireTriggerStartTime + fireSpeedTime)
             {
@@ -140,10 +141,10 @@ public class SimpleShoot : MonoBehaviour
             }
         }
 
-        if (bulletsInMag != previousBulletsInMag)
+        if (GetComponent<AmmoStats>()._ammo != previousBulletsInMag)
         {
-            bulletsInMagTextMesh.text = bulletsInMag + "/" + maxBulletsInMag;
-            previousBulletsInMag = bulletsInMag;
+            bulletsInMagTextMesh.text = GetComponent<AmmoStats>()._ammo + "/" + maxBulletsInMag;
+            previousBulletsInMag = GetComponent<AmmoStats>()._ammo;
         }
         
     }
@@ -169,11 +170,11 @@ public class SimpleShoot : MonoBehaviour
         isShooting = true;
         if (isPistol)
         {
-            if (bulletsInMag > 0)
+            if (GetComponent<AmmoStats>()._ammo > 0)
             {
                 Invoke("Shoot",0.1f);
                 //audioSource.PlayOneShot(fireSoundSingle);
-                bulletsInMag--;
+                GetComponent<AmmoStats>()._ammo--;
             }
             else
             {

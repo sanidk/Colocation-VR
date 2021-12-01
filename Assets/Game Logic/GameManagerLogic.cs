@@ -92,7 +92,7 @@ public class GameManagerLogic : MonoBehaviour
     Transform[] spawnsList;
     //GameObject[] gunsList;
     List<GameObject> gunsList = new List<GameObject>();
-    bool isGunsSpawned;
+    //bool isGunsSpawned;
     bool isGunsDestroyed;
 
     // Update is called once per frame
@@ -301,7 +301,7 @@ public class GameManagerLogic : MonoBehaviour
 
     void SpawnGuns()
     {
-        if (!isGunsSpawned)
+        
         {
             foreach (Transform childTransform in gunSpawnLocationsObject.GetComponentsInChildren<Transform>())
             {
@@ -330,7 +330,7 @@ public class GameManagerLogic : MonoBehaviour
                     gunsList.Add(gun);
 
                 }
-                isGunsSpawned = true;
+                
 
             }
             Debug.Log(gunsList.Count);
