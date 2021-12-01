@@ -172,7 +172,7 @@ public class SimpleShoot : MonoBehaviour
             if (bulletsInMag > 0)
             {
                 Invoke("Shoot",0.1f);
-                audioSource.PlayOneShot(fireSoundSingle);
+                //audioSource.PlayOneShot(fireSoundSingle);
                 bulletsInMag--;
             }
             else
