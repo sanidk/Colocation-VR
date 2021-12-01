@@ -30,18 +30,18 @@ public class TextFeedbackManager : MonoBehaviour
         if (!GetComponentInParent<RealtimeView>().isOwnedLocallySelf) return;
 
 
-        if (feedbackText != previousFeedbackText)
-        {
-            previousFeedbackText = feedbackText;
-            startTime = Time.time;
-        }
+        //if (feedbackText != previousFeedbackText)
+        //{
+        //    previousFeedbackText = feedbackText;
+        //    startTime = Time.time;
+        //}
 
-        
+        textMesh.text = feedbackText;
 
         //if (Time.time < startTime + textLifeTime)
         //{
         //    textMesh.text = feedbackText;
-        //} 
+        //}
 
 
     }

@@ -241,10 +241,11 @@ public class Player_Behavior : MonoBehaviour
             }
         }
             textMesh.text = "HP: " + playerStats._health; // change dis
-            if (!GetComponent<RealtimeTransform>().isOwnedLocallySelf)
-            {
-            TextFeedbackManager.feedbackText = "";
-            }
+
+            //if (!GetComponent<RealtimeTransform>().isOwnedLocallySelf)
+            //{
+            //TextFeedbackManager.feedbackText = "";
+            //}
 
         }
 
