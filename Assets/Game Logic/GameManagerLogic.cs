@@ -65,11 +65,8 @@ public class GameManagerLogic : MonoBehaviour
     int team1TotalKills;
     int team2TotalKills;
 
-    bool isServerExist;
 
-    float countdownStart;
     public float countdownTime = 5f;
-    float countdownValue;
 
     public static string playerFeedbackString;
 
@@ -77,7 +74,6 @@ public class GameManagerLogic : MonoBehaviour
     float roundDelayLifeTime = 2;
 
 
-    bool isRoundReset = true;
 
     public GameObject debugText;
 
@@ -89,11 +85,7 @@ public class GameManagerLogic : MonoBehaviour
 
 
     public GameObject gunSpawnLocationsObject;
-    Transform[] spawnsList;
-    //GameObject[] gunsList;
     public List<GameObject> gunsList = new List<GameObject>();
-    //bool isGunsSpawned;
-    bool isGunsDestroyed;
 
     // Update is called once per frame
     void Update()
@@ -119,6 +111,13 @@ public class GameManagerLogic : MonoBehaviour
 
         if (!isServer) { return; }
 
+
+
+        if (CheckForGameReset())
+        {
+            ResetGame();
+        }
+        
 
 
         gameLogic._gameMode = gameMode;
@@ -157,7 +156,7 @@ public class GameManagerLogic : MonoBehaviour
             else
             {
                 debugText.GetComponent<TextMesh>().text = "teams assigned failed";
-                
+
                 return;
             }
         }
@@ -271,37 +270,9 @@ public class GameManagerLogic : MonoBehaviour
 
     }
 
-    void ResetPlayerHealth()
-    {
-        for (int i = 0; i < avatars.Count; i++)
-        {
-            try
-            {
-                if (avatars[i] != null)
-                {
-                    RealtimeAvatar player = avatars[i];
-
-                    if (!gameLogic._isRoundStarted && player.gameObject.GetComponent<PlayerStats>()._isReady && player.gameObject.GetComponent<PlayerStats>()._health != 100)
-                    {
-                        player.gameObject.GetComponent<PlayerStatsSync>().SetHealth(100);
-                    }   
-
-
-
-                }
-            }
-            catch
-            {
-
-            }
-
-
-        }
-    }
-
     void SpawnGuns()
     {
-        
+
         {
             foreach (Transform childTransform in gunSpawnLocationsObject.GetComponentsInChildren<Transform>())
             {
@@ -330,200 +301,302 @@ public class GameManagerLogic : MonoBehaviour
                     gunsList.Add(gun);
 
                 }
-                
+
 
             }
             Debug.Log(gunsList.Count);
         }
     }
 
-        void DestroyGuns()
+    void DestroyGuns()
+    {
+        foreach (GameObject gun in gunsList)
         {
-            foreach (GameObject gun in gunsList)
-            {
-                Realtime.Destroy(gun);
-            }
-
-            gunsList.Clear();
+            Realtime.Destroy(gun);
         }
 
-        bool CheckIfPlayersConnectedAndTeamsAssigned()
+        gunsList.Clear();
+    }
+
+    bool CheckIfPlayersConnectedAndTeamsAssigned()
+    {
+        if (avatars.Count < teamSize * 2) return false;
+
+        bool isTeamsSet = true;
+        team1Players.Clear();
+        team2Players.Clear();
+
+        for (int i = 0; i < avatars.Count; i++)
         {
-            if (avatars.Count < teamSize * 2) return false;
-
-            bool isTeamsSet = true;
-            team1Players.Clear();
-            team2Players.Clear();
-
-            for (int i = 0; i < avatars.Count; i++)
+            try
             {
-                try
+                if (avatars[i] != null)
                 {
-                    if (avatars[i] != null)
+                    RealtimeAvatar player = avatars[i];
+                    int team;
+                    team = player.gameObject.GetComponent<PlayerStats>()._team;
+
+                    if (team == 0)
                     {
-                        RealtimeAvatar player = avatars[i];
-                        int team;
-                        team = player.gameObject.GetComponent<PlayerStats>()._team;
+                        isTeamsSet = false;
+                        //return false;
+                    }
+                    else if (team == 1)
+                    {
 
-                        if (team == 0)
-                        {
-                            isTeamsSet = false;
-                            //return false;
-                        }
-                        else if (team == 1)
-                        {
+                        team1Players.Add(player.gameObject);
 
-                            team1Players.Add(player.gameObject);
-
-                        }
-                        else if (team == 2)
-                        {
-                            team2Players.Add(player.gameObject);
-                        }
+                    }
+                    else if (team == 2)
+                    {
+                        team2Players.Add(player.gameObject);
                     }
                 }
-                catch
-                {
-
-                }
-
-
             }
-
-            return isTeamsSet;
-        }
-
-        bool CheckIfAllPlayersReady()
-        {
-            if (avatars.Count < teamSize * 2)
+            catch
             {
-                return false;
-            }
-
-            bool isTeamsReady = true;
-
-            for (int i = 0; i < avatars.Count; i++)
-            {
-                RealtimeAvatar player = avatars[i];
-
-                if (!player.gameObject.GetComponent<PlayerStats>()._isReady)
-                {
-                    isTeamsReady = false;
-                }
 
             }
-
-            return isTeamsReady;
 
 
         }
 
+        return isTeamsSet;
+    }
 
-        int CheckRoundWinner()
+    void ResetTeams()
+    {
+
+        team1Players.Clear();
+        team2Players.Clear();
+
+        for (int i = 0; i < avatars.Count; i++)
         {
-
-            if (gameMode == 1)
+            try
             {
-                if (roundElapsedTime > roundTotalTime)
+                if (avatars[i] != null)
                 {
-                    if (team1Kills > team2Kills)
-                    {
-                        return 1;
-                    }
-                    else if (team2Kills > team1Kills)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    RealtimeAvatar player = avatars[i];
+                    int team;
+                    player.gameObject.GetComponent<PlayerStats>()._team = 0;
+
                 }
-                else
-                {
-                    return 0;
-                }
+            }
+            catch
+            {
 
             }
-            else if (gameMode == 2)
+
+
+        }
+
+    }
+
+    bool CheckIfAllPlayersReady()
+    {
+        if (avatars.Count < teamSize * 2)
+        {
+            return false;
+        }
+
+        bool isTeamsReady = true;
+
+        for (int i = 0; i < avatars.Count; i++)
+        {
+            RealtimeAvatar player = avatars[i];
+
+            if (!player.gameObject.GetComponent<PlayerStats>()._isReady)
             {
-                bool isTeam1Dead = true;
-                bool isTeam2Dead = true;
+                isTeamsReady = false;
+            }
 
-                foreach (GameObject obj in team1Players)
-                {
-                    if (obj.GetComponent<PlayerStats>()._health > 0)
-                    {
-                        isTeam1Dead = false;
-                    }
-                }
+        }
 
-                foreach (GameObject obj in team2Players)
-                {
-                    if (obj.GetComponent<PlayerStats>()._health > 0)
-                    {
-                        isTeam2Dead = false;
-                    }
-                }
+        return isTeamsReady;
 
-                if (isTeam1Dead && isTeam2Dead)
-                {
-                    return 3;
-                }
-                else if (isTeam1Dead)
-                {
-                    return 2;
-                }
-                else if (isTeam2Dead)
+
+    }
+
+
+    int CheckRoundWinner()
+    {
+
+        if (gameMode == 1)
+        {
+            if (roundElapsedTime > roundTotalTime)
+            {
+                if (team1Kills > team2Kills)
                 {
                     return 1;
                 }
+                else if (team2Kills > team1Kills)
+                {
+                    return 2;
+                }
                 else
                 {
-                    return 0;
+                    return 3;
                 }
-
-
             }
             else
             {
                 return 0;
             }
+
+        }
+        else if (gameMode == 2)
+        {
+            bool isTeam1Dead = true;
+            bool isTeam2Dead = true;
+
+            foreach (GameObject obj in team1Players)
+            {
+                if (obj.GetComponent<PlayerStats>()._health > 0)
+                {
+                    isTeam1Dead = false;
+                }
+            }
+
+            foreach (GameObject obj in team2Players)
+            {
+                if (obj.GetComponent<PlayerStats>()._health > 0)
+                {
+                    isTeam2Dead = false;
+                }
+            }
+
+            if (isTeam1Dead && isTeam2Dead)
+            {
+                return 3;
+            }
+            else if (isTeam1Dead)
+            {
+                return 2;
+            }
+            else if (isTeam2Dead)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+
+
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
+
+
+
+    int CheckGameWinner()
+    {
+        if (roundsPlayed == roundsTotal)
+        {
+            if (team1Score > team2Score)
+            {
+                return 1;
+            }
+            else if (team2Score > team1Score)
+            {
+                return 2;
+            }
+            else
+            {
+                return 3;
+            }
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
+    bool CheckForGameReset()
+    {
+        bool isLeftPressed = false;
+        bool isRightPressed = false;
+
+        var leftHandDevices = new List<UnityEngine.XR.InputDevice>();
+        UnityEngine.XR.InputDevices.GetDevicesAtXRNode(UnityEngine.XR.XRNode.LeftHand, leftHandDevices);
+
+        var rightHandDevices = new List<UnityEngine.XR.InputDevice>();
+        UnityEngine.XR.InputDevices.GetDevicesAtXRNode(UnityEngine.XR.XRNode.RightHand, rightHandDevices);
+
+        if (leftHandDevices.Count == 1)
+        {
+            UnityEngine.XR.InputDevice device = leftHandDevices[0];
+
+            bool triggerValue;
+            if (device.TryGetFeatureValue(UnityEngine.XR.CommonUsages.primaryButton, out triggerValue) && triggerValue)
+            {
+                isLeftPressed = true;
+            } else
+            {
+                isLeftPressed = false;
+            }
         }
 
-
-        void ResetGame()
+        if (rightHandDevices.Count == 1)
         {
-        roundCurrent = 0;
+            UnityEngine.XR.InputDevice device = rightHandDevices[0];
+
+            bool triggerValue;
+            if (device.TryGetFeatureValue(UnityEngine.XR.CommonUsages.primaryButton, out triggerValue) && triggerValue)
+            {
+                isRightPressed = true;
+            }
+            else
+            {
+                isRightPressed = false;
+            }
+        }
+
+        if (isLeftPressed && isRightPressed)
+        {
+            return true;
+        } else
+        {
+            return false;
+        }
+    }
+
+    void ResetGame()
+    {
+        DestroyGuns();
+        ResetTeams();
+        
+        isPlayersConnectedAndTeamsAssigned = false;
+        isPlayersReadyToStartGame = false;
+        isGameStart = false;
+        isRoundStarted = false;
+        gameWinner = 0;
+        roundStartTime = 0;
+        roundElapsedTime = 0;
         team1Score = 0;
         team2Score = 0;
-        isPlayersConnectedAndTeamsAssigned = false;
-        isRoundStarted = false;
-        isPlayersReadyToStartGame = false;
-        DestroyGuns();
-        }
+        roundCurrent = 0;
+        roundsPlayed = 0;
+        team1Kills = 0;
+        team2Kills = 0;
+        team1TotalKills = 0;
+        team2TotalKills = 0;
 
-        int CheckGameWinner()
-        {
-            if (roundsPlayed == roundsTotal)
-            {
-                if (team1Score > team2Score)
-                {
-                    return 1;
-                }
-                else if (team2Score > team1Score)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-            else
-            {
-                return 0;
-            }
-        }
+        //roundTotalTime;
+        //gameMode;
+        //teamSize;
+        //roundsTotal;
+        //team1Players.Count;
+        //team2Players.Count;
+
+
+    }
 }
+
+
+
 
