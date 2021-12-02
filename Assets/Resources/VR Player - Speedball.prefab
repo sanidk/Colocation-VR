@@ -294,6 +294,7 @@ GameObject:
   - component: {fileID: 63484684034565116}
   - component: {fileID: -3078369984816020322}
   - component: {fileID: 5680419806792718050}
+  - component: {fileID: 2044766923174584979}
   m_Layer: 0
   m_Name: VR Player - Speedball
   m_TagString: Untagged
@@ -483,6 +484,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 212bc0f5015c1094e8797a2e64a112b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2044766923174584979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1435502846325602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dc0c3c3010eb61439cf966bedebf294, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  previousPos: {x: 0, y: 0, z: 0}
+  velocity: 0
 --- !u!1 &1573471737031190
 GameObject:
   m_ObjectHideFlags: 0
@@ -4067,6 +4082,7 @@ GameObject:
   - component: {fileID: 895718131811245823}
   - component: {fileID: 2063202486122161642}
   - component: {fileID: 2637434287290592775}
+  - component: {fileID: 7260604206936642491}
   m_Layer: 0
   m_Name: Char
   m_TagString: Untagged
@@ -4226,6 +4242,20 @@ MonoBehaviour:
   - m_Rig: {fileID: 509246718445349890}
     m_Active: 1
   m_Effectors: []
+--- !u!114 &7260604206936642491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6186481666444210139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dc0c3c3010eb61439cf966bedebf294, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  previousPos: {x: 0, y: 0, z: 0}
+  velocity: 0
 --- !u!1 &6186481666444210141
 GameObject:
   m_ObjectHideFlags: 0
@@ -4763,6 +4793,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 936f617de17a4084d9d6c0a097229b23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
 --- !u!1 &7183579557150037287
 GameObject:
   m_ObjectHideFlags: 0
@@ -7841,14 +7872,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50cff2be1c49d2849847717bf4d6b1d4, type: 3}
---- !u!1 &738366655711902612 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2327234068396551453, guid: 50cff2be1c49d2849847717bf4d6b1d4, type: 3}
-  m_PrefabInstance: {fileID: 3059293804491560585}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &224318890204697963 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2983699994613793762, guid: 50cff2be1c49d2849847717bf4d6b1d4, type: 3}
+  m_PrefabInstance: {fileID: 3059293804491560585}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &738366655711902612 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2327234068396551453, guid: 50cff2be1c49d2849847717bf4d6b1d4, type: 3}
   m_PrefabInstance: {fileID: 3059293804491560585}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5277539009823233697
