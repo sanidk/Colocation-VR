@@ -34,7 +34,7 @@ public class GameManagerLogic : MonoBehaviour
 
     GameLogic gameLogic;
 
-    bool isPlayersConnectedAndTeamsAssigned;
+    public bool isPlayersConnectedAndTeamsAssigned;
     bool isPlayersReadyToStartGame;
     bool isGameStart;
     public static bool isRoundStarted;
@@ -75,7 +75,7 @@ public class GameManagerLogic : MonoBehaviour
 
 
 
-    public GameObject debugText;
+    //public GameObject debugText;
 
 
     public bool isServer = false;
@@ -151,11 +151,12 @@ public class GameManagerLogic : MonoBehaviour
             if (CheckIfPlayersConnectedAndTeamsAssigned())
             {
                 isPlayersConnectedAndTeamsAssigned = true;
-                debugText.GetComponent<TextMesh>().text = "teams assigned success";
+
+                //debugText.GetComponent<TextMesh>().text = "teams assigned success";
             }
             else
             {
-                debugText.GetComponent<TextMesh>().text = "teams assigned failed";
+                //debugText.GetComponent<TextMesh>().text = "teams assigned failed";
 
                 return;
             }
@@ -166,20 +167,22 @@ public class GameManagerLogic : MonoBehaviour
         if (!isPlayersReadyToStartGame && !isRoundStarted && Time.time > roundDelayStartTime + roundDelayLifeTime)
         {
 
-            debugText.GetComponent<TextMesh>().text = "checking if players ready";
+            //debugText.GetComponent<TextMesh>().text = "checking if players ready";
             if (CheckIfAllPlayersReady())
             {
+
+
                 isPlayersReadyToStartGame = true;
                 SpawnGuns();
                 roundStartTime = Time.time;
                 isRoundStarted = true;
                 roundCurrent++;
 
-                debugText.GetComponent<TextMesh>().text = "all players ready";
+                //debugText.GetComponent<TextMesh>().text = "all players ready";
             }
             else
             {
-                debugText.GetComponent<TextMesh>().text = "players not ready";
+                //debugText.GetComponent<TextMesh>().text = "players not ready";
 
             }
 
@@ -188,7 +191,7 @@ public class GameManagerLogic : MonoBehaviour
 
         if (isRoundStarted)
         {
-            debugText.GetComponent<TextMesh>().text = "round started successfully";
+            //debugText.GetComponent<TextMesh>().text = "round started successfully";
             roundElapsedTime = Time.time - roundStartTime;
             //debugText.GetComponent<TextMesh>().text = "round started";
 

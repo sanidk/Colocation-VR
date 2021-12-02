@@ -10,7 +10,7 @@ public class UpdateScoreBoard : MonoBehaviour
     //UI
     public GameObject roundText;
 
-
+    public GameObject teamCounterText;
     public GameObject team1countText;
     public GameObject team2countText;
 
@@ -43,6 +43,18 @@ public class UpdateScoreBoard : MonoBehaviour
     // Update is called once per frame
     void Update()
     { 
+        if (gameManager.isPlayersConnectedAndTeamsAssigned)
+        {
+            team1countText.SetActive(false);
+            team2countText.SetActive(false);
+            teamCounterText.SetActive(false);
+        } else
+        {
+            team1countText.SetActive(true);
+            team2countText.SetActive(true);
+            teamCounterText.SetActive(true);
+        }
+
         team1countText.GetComponent<TextMesh>().text = gameLogic._team1PlayerCount.ToString();
         team2countText.GetComponent<TextMesh>().text = gameLogic._team2PlayerCount.ToString();
 
