@@ -32,6 +32,8 @@ public class SimpleShoot : MonoBehaviour
     public AudioClip reload;
     public AudioClip noAmmo;
     public Magazine magazine;
+    public GameObject Mag;
+    public GameObject MagLocation;
     public XRBaseInteractor socketInteractor;
 
     public bool isShooting = false;
@@ -265,5 +267,25 @@ public class SimpleShoot : MonoBehaviour
             Destroy(tempCasing, destroyTimer);
         }
     }
+
+    void Reload()
+    {
+        GetComponent<AmmoStats>()._ammo = 8;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (gameObject != isPistol) return;
+        if (collision.gameObject.CompareTag("Magazine") && Mag == null && GetComponent<AmmoStats>()._ammo < 8)
+        {
+            Reload();
+            Mag = collision.gameObject;
+            Mag.transform.position = MagLocation.transform.position;
+            Destroy(Mag);
+            Mag = null;
+        }
+
+    }
+
 }
 
