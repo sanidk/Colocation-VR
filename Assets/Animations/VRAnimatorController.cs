@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class VRAnimatorController : MonoBehaviour
 {
-    private AudioSource footstepSound;
     private Animator animator;
     public Vector3 previousPos;
 
@@ -14,7 +13,6 @@ public class VRAnimatorController : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        footstepSound = GetComponent<AudioSource>();
     }
 
 
@@ -25,15 +23,6 @@ public class VRAnimatorController : MonoBehaviour
         previousPos = transform.TransformPoint(Vector3.zero);
 
         animator.SetBool("isMoving", velocity > 0.3f);
-
-        if (velocity > 0.3f)
-        {
-            footstepSound.Play();
-        }
-        else
-        {
-            footstepSound.Stop();
-        }
 
         Debug.Log("Velocity: " + velocity);
     }
