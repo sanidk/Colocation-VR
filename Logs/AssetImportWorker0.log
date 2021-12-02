@@ -1095,3 +1095,115 @@ AssetImportParameters requested are different than current active one (requested
   custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 1136.614977 seconds.
+  path: Assets/Resources/VR Player - Speedball.prefab
+  artifactKey: Guid(ecdc2cf924408504ea3c6df80a8787b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/VR Player - Speedball.prefab using Guid(ecdc2cf924408504ea3c6df80a8787b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fe2845ea26a809cdac48979925f805d5') in 0.267591 seconds 
+  Import took 0.278813 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.313873 seconds.
+  path: Assets/Resources/VR Player - Speedball.prefab
+  artifactKey: Guid(ecdc2cf924408504ea3c6df80a8787b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/VR Player - Speedball.prefab using Guid(ecdc2cf924408504ea3c6df80a8787b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5d9dc0a167519f597925d860974d62fa') in 0.111234 seconds 
+  Import took 0.120091 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.310935 seconds.
+  path: Assets/Resources/VR Player - Speedball.prefab
+  artifactKey: Guid(ecdc2cf924408504ea3c6df80a8787b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/VR Player - Speedball.prefab using Guid(ecdc2cf924408504ea3c6df80a8787b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '64d5c71eb4e10986fa27fffacffb1d03') in 0.116012 seconds 
+  Import took 0.124987 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 6.541610 seconds.
+  path: Assets/Resources/VR Player - Speedball.prefab
+  artifactKey: Guid(ecdc2cf924408504ea3c6df80a8787b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/VR Player - Speedball.prefab using Guid(ecdc2cf924408504ea3c6df80a8787b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '365cef172aeb74f1aa18a6ca9bfc4257') in 0.150917 seconds 
+  Import took 0.164593 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.472638 seconds.
+  path: Assets/Resources/VR Player - Speedball.prefab
+  artifactKey: Guid(ecdc2cf924408504ea3c6df80a8787b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/VR Player - Speedball.prefab using Guid(ecdc2cf924408504ea3c6df80a8787b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '392ae4af98aa4580e90036b16f2c63d1') in 0.150012 seconds 
+  Import took 0.159122 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.871038 seconds.
+  path: Assets/Resources/VR Player - Speedball.prefab
+  artifactKey: Guid(ecdc2cf924408504ea3c6df80a8787b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/VR Player - Speedball.prefab using Guid(ecdc2cf924408504ea3c6df80a8787b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '738e0069327d085f012e98ad15dfa6ce') in 0.110808 seconds 
+  Import took 0.119964 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 162.712163 seconds.
+  path: Assets/spaceshipwalltex.jpg
+  artifactKey: Guid(59fda77b0bf33dd4cb441a2fdc1a5426) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/spaceshipwalltex.jpg using Guid(59fda77b0bf33dd4cb441a2fdc1a5426) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'de07d884b5fe3d5a260945a93c559326') in 0.027928 seconds 
+  Import took 0.034943 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000961 seconds.
+  path: Assets/spaceshipwalltex.jpg
+  artifactKey: Guid(59fda77b0bf33dd4cb441a2fdc1a5426) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/spaceshipwalltex.jpg using Guid(59fda77b0bf33dd4cb441a2fdc1a5426) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'de07d884b5fe3d5a260945a93c559326') in 0.013941 seconds 
+  Import took 0.020644 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 13.500277 seconds.
+  path: Assets/WallMat.mat
+  artifactKey: Guid(357b792ad91dc0945b6c88ae8c1de2a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WallMat.mat using Guid(357b792ad91dc0945b6c88ae8c1de2a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00a7fe9814061841feb358e53ab67efe') in 0.045771 seconds 
+  Import took 0.053488 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 18.538854 seconds.
+  path: Assets/WallMat.mat
+  artifactKey: Guid(357b792ad91dc0945b6c88ae8c1de2a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WallMat.mat using Guid(357b792ad91dc0945b6c88ae8c1de2a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '42cda2e0a4cb013f38709ea6dd65f216') in 0.015167 seconds 
+  Import took 0.022985 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 129.896405 seconds.
+  path: Assets/WallMat.mat
+  artifactKey: Guid(357b792ad91dc0945b6c88ae8c1de2a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WallMat.mat using Guid(357b792ad91dc0945b6c88ae8c1de2a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1a780e399fd9dab8bfea66981c3847d6') in 0.017134 seconds 
+  Import took 0.025383 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 4.924062 seconds.
+  path: Assets/WallCornerMat.mat
+  artifactKey: Guid(9d112f5e253348243b31f4e68890ba22) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WallCornerMat.mat using Guid(9d112f5e253348243b31f4e68890ba22) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9af2f842d9e9d3ca17f044a4a779f885') in 0.017558 seconds 
+  Import took 0.025533 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 200.237809 seconds.
+  path: Assets/WallCornerMat.mat
+  artifactKey: Guid(9d112f5e253348243b31f4e68890ba22) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WallCornerMat.mat using Guid(9d112f5e253348243b31f4e68890ba22) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5d75fe1be248f415494a455d1ad6599d') in 0.018889 seconds 
+  Import took 0.025852 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000293 seconds.
+  path: Assets/WallMat.mat
+  artifactKey: Guid(357b792ad91dc0945b6c88ae8c1de2a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WallMat.mat using Guid(357b792ad91dc0945b6c88ae8c1de2a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '118ea756776b6be44f28b6307299acc1') in 0.016587 seconds 
+  Import took 0.024841 seconds .
+
