@@ -172,6 +172,7 @@ public class PlayerStats : MonoBehaviour
             var rot = Quaternion.FromToRotation(Vector3.up, cp.normal);
 
             GameObject blood = Realtime.Instantiate("BloodParticle", cp.point, rot);
+            GameObject hitMarkerAudio = Realtime.Instantiate("HitMarkerSound", cp.point, rot);//ownedLocallySelf?
         }
 
         if (cp.thisCollider.name == "HeadCollider" && collision.collider.CompareTag("Bullet"))

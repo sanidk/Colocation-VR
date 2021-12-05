@@ -183,7 +183,7 @@ public class Player_Behavior : MonoBehaviour
             
 
             
-        } 
+        }
 
         if (GetComponent<RealtimeTransform>().isOwnedLocallySelf)
         {
@@ -265,6 +265,8 @@ public class Player_Behavior : MonoBehaviour
             if (other.name == "Team1")
             {
                 playerStats._team = 1;
+                defaultMaterial.color = Color.blue;
+                skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material = defaultMaterial;
                 if (GetComponent<RealtimeTransform>().isOwnedLocallySelf)
                 {
                     other.GetComponentInParent<GameObject>().SetActive(false);
@@ -275,6 +277,8 @@ public class Player_Behavior : MonoBehaviour
             if (other.name == "Team2")
             {
                 playerStats._team = 2;
+                defaultMaterial.color = Color.red;
+                skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material = defaultMaterial;
                 if (GetComponent<RealtimeTransform>().isOwnedLocallySelf)
                 {
                     other.GetComponentInParent<GameObject>().SetActive(false);
@@ -282,26 +286,26 @@ public class Player_Behavior : MonoBehaviour
             //Destroy(other.GetComponentInParent<GameObject>());
             print("team2 chosen - Player behavior");
             }
-        }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Spawnarea_Blue"))
-        {
-            //GetComponent<GameModeLogic>().debugText.GetComponent<TextMesh>().text = "is ready set to true";
-            playerStats._isReady = false;
-            //isPlayerReady = true;
-        }
-        if (other.CompareTag("Spawnarea_Red"))
-        {
-            //GetComponent<GameModeLogic>().debugText.GetComponent<TextMesh>().text = "is ready set to true";
-            playerStats._isReady = false;
-            //isPlayerReady = true;
-        }
     }
 
-    private void OnTriggerStay(Collider other)
-        {
+            private void OnTriggerExit(Collider other)
+            {
+                if (other.CompareTag("Spawnarea_Blue"))
+                {
+                    //GetComponent<GameModeLogic>().debugText.GetComponent<TextMesh>().text = "is ready set to true";
+                    playerStats._isReady = false;
+                    //isPlayerReady = true;
+                }
+                if (other.CompareTag("Spawnarea_Red"))
+                {
+                    //GetComponent<GameModeLogic>().debugText.GetComponent<TextMesh>().text = "is ready set to true";
+                    playerStats._isReady = false;
+                    //isPlayerReady = true;
+                }
+            }
+
+         private void OnTriggerStay(Collider other)
+         {
             if (playerStats._team == 1 && other.CompareTag("Spawnarea_Blue"))
             {
                 //GetComponent<GameModeLogic>().debugText.GetComponent<TextMesh>().text = "is ready set to true";
@@ -318,7 +322,7 @@ public class Player_Behavior : MonoBehaviour
             //    playerStats._isReady = false;
             //}
 
-        }
+         }
         public void resetHp()
         {
             //currentHp_Local = 100;

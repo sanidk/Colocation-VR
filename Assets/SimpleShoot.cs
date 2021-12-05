@@ -235,17 +235,33 @@ public class SimpleShoot : MonoBehaviour
 
         // Create a bullet and add force on it in direction of the barrel
         //Instantiate(bulletPrefab, barrelLocation.position, barrelLocation.rotation).GetComponent<Rigidbody>().AddForce(barrelLocation.forward * shotPower);
-        GameObject projectile = Realtime.Instantiate("ProjectileWithTrail", barrelLocation.position, barrelLocation.rotation, new Realtime.InstantiateOptions
+        if (!isPistol)
         {
-            ownedByClient = true,
-            preventOwnershipTakeover = true,
-            destroyWhenOwnerLeaves = false,
-            destroyWhenLastClientLeaves = true,
-            //useInstance = _realtime,
-        });
-        projectile.GetComponent<Rigidbody>().AddForce(barrelLocation.forward * shotPower);
-        //if (GetComponent<>)
-        
+            GameObject projectile = Realtime.Instantiate("ProjectileWithTrail_Rifle", barrelLocation.position, barrelLocation.rotation, new Realtime.InstantiateOptions
+            {
+                ownedByClient = true,
+                preventOwnershipTakeover = true,
+                destroyWhenOwnerLeaves = false,
+                destroyWhenLastClientLeaves = true,
+                //useInstance = _realtime,
+            });
+
+            projectile.GetComponent<Rigidbody>().AddForce(barrelLocation.forward * shotPower);
+        }
+        else
+        {
+            GameObject projectile = Realtime.Instantiate("ProjectileWithTrail", barrelLocation.position, barrelLocation.rotation, new Realtime.InstantiateOptions
+            {
+                ownedByClient = true,
+                preventOwnershipTakeover = true,
+                destroyWhenOwnerLeaves = false,
+                destroyWhenLastClientLeaves = true,
+                //useInstance = _realtime,
+            });
+
+            projectile.GetComponent<Rigidbody>().AddForce(barrelLocation.forward * shotPower);
+            //if (GetComponent<>)
+        }
         
 
         //This function creates a casing at the ejection slot
