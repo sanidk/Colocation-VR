@@ -40,43 +40,64 @@ public class LocomotionCustom : MonoBehaviour
             if (device.TryGetFeatureValue(UnityEngine.XR.CommonUsages.primary2DAxis, out triggerValue))
             {
 
-            //if (triggerValue.x > 0)
-            //{
+                //if (triggerValue.x > 0)
+                //{
 
-            //        Vector3 headRotationVector = new Vector3(head.transform.forward.x, 0, 0);
-            //        transform.position += headRotationVector * triggerValue.y * scalar;
+                //        Vector3 headRotationVector = new Vector3(head.transform.forward.x, 0, 0);
+                //        transform.position += headRotationVector * triggerValue.y * scalar;
 
-            //}
-            //if (triggerValue.x < 0)
-            //{
-               
-            //        Vector3 headRotationVector = new Vector3(head.transform.forward.x, 0, 0);
-            //        transform.position += headRotationVector * triggerValue.y * scalar;
-            //}
+                //}
+                //if (triggerValue.x < 0)
+                //{
+
+                //        Vector3 headRotationVector = new Vector3(head.transform.forward.x, 0, 0);
+                //        transform.position += headRotationVector * triggerValue.y * scalar;
+                //}
+
+                if (!isHorizontalLocked)
+                {
+                    headRotationHorizontalVector = new Vector3(head.transform.forward.x, 0, 0);
+                }
+                if (triggerValue.y > 0)
+                {
+                    isHorizontalLocked = true;
+                    transform.position += headRotationHorizontalVector * scalar;
+
+                }
+                else if (triggerValue.y < 0)
+                {
+                    isHorizontalLocked = true;
+                    transform.position -= headRotationHorizontalVector * scalar;
+                }
+                else
+                {
+                    isHorizontalLocked = false;
+                }
 
 
-            if (!isVerticalLocked)
+                if (!isVerticalLocked)
                 {
                     headRotationVerticalVector = new Vector3(head.transform.forward.x, 0, head.transform.forward.z);
                 }
-            if (triggerValue.y > 0)
-            {
-                isVerticalLocked = true;
+                if (triggerValue.y > 0)
+                {
+                    isVerticalLocked = true;
 
                  
-                transform.position += headRotationVerticalVector*scalar;
+                    transform.position += headRotationVerticalVector*scalar;
 
-            } else if (triggerValue.y < 0)
-            {
-                transform.position -= headRotationVerticalVector * scalar;
-            }
-            else
-            {
-                isVerticalLocked = false;
-            }
+                } else if (triggerValue.y < 0)
+                {
+                    isVerticalLocked = true;
+                    transform.position -= headRotationVerticalVector * scalar;
+                }
+                else
+                {
+                    isVerticalLocked = false;
+                }
             
 
-        }
+            }
         }
 
         //DebuggerVR.debuggingString = triggerValue.ToString();
