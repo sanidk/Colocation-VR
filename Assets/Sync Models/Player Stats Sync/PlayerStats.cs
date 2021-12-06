@@ -169,11 +169,11 @@ public class PlayerStats : MonoBehaviour
 
         if (collision.collider.CompareTag("Bullet"))
         {
-            var rot = Quaternion.FromToRotation(Vector3.up, cp.normal);
-
-            GameObject blood = Realtime.Instantiate("BloodParticle", cp.point, rot);
             if (GetComponent<RealtimeTransform>().isOwnedLocallySelf)
             {
+                var rot = Quaternion.FromToRotation(Vector3.up, cp.normal);
+                GameObject blood = Realtime.Instantiate("BloodParticle", cp.point, rot);
+            
                 GameObject hitMarkerAudio = Realtime.Instantiate("HitMarkerSound", cp.point, rot);//ownedLocallySelf?
             }
         }
