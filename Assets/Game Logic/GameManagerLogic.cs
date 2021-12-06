@@ -107,7 +107,13 @@ public class GameManagerLogic : MonoBehaviour
         {
             isServer = true;
             avatars[0].GetComponent<PlayerStats>()._isServer = true;
-            Realtime.Destroy(avatars[0].gameObject);
+            
+        }
+
+        if (!isServer)
+        {
+            avatars[0].gameObject.SetActive(false);
+            return;
         }
 
         if (!isServer) { return; }
