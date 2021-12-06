@@ -620,14 +620,14 @@ public class GameManagerLogic : MonoBehaviour
 
     void LogStartOfDataCollection()
     {
-        File.AppendAllText(userPositionPath, System.DateTime.Now.ToString() + "\n");
+        File.AppendAllText(userPositionPath, "COLLECTION STARTED: " + System.DateTime.Now.ToString() + "\n");
     }
 
     void LogDataCollection()
     {
-        for (int i = 1; i<avatars.Count; i++)
+        for (int i = 0; i<avatars.Count; i++)
         {
-            File.AppendAllText(userPositionPath, Time.time.ToString() + " : " + avatars[i] + " : " + avatars[i].gameObject.transform.position + "\n");
+            File.AppendAllText(userPositionPath, Time.time.ToString() + " : " + i + " : " + avatars[i].gameObject.transform.position.x.ToString() + " : " + avatars[i].gameObject.transform.position.y.ToString() + " : " + avatars[i].gameObject.transform.position.z.ToString() + "\n");
         }
         
     }
