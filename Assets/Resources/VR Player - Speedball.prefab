@@ -1246,7 +1246,7 @@ GameObject:
   - component: {fileID: 2902484231301841376}
   - component: {fileID: 5430579578569743998}
   - component: {fileID: 2621541211879191802}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RightThighCollider
   m_TagString: AvatarHitbox
   m_Icon: {fileID: 0}
@@ -1903,7 +1903,7 @@ GameObject:
   - component: {fileID: 8194276950201254030}
   - component: {fileID: 1300039987665000445}
   - component: {fileID: 8273181008107911403}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: TorsoCollider
   m_TagString: AvatarHitbox
   m_Icon: {fileID: 0}
@@ -4557,7 +4557,7 @@ GameObject:
   - component: {fileID: 4756402789815779143}
   - component: {fileID: 1226151122162893}
   - component: {fileID: 6727222359400965820}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: LeftLowerArmCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4712,7 +4712,7 @@ GameObject:
   - component: {fileID: 5931128975751176540}
   - component: {fileID: 5155052418766770295}
   - component: {fileID: 6186809578113445012}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: HeadCollider
   m_TagString: AvatarHitbox
   m_Icon: {fileID: 0}
@@ -4917,7 +4917,7 @@ GameObject:
   - component: {fileID: 4199478551922747324}
   - component: {fileID: 115116766487830643}
   - component: {fileID: 5776039902428743630}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RightShinCollider
   m_TagString: AvatarHitbox
   m_Icon: {fileID: 0}
@@ -6943,7 +6943,7 @@ GameObject:
   - component: {fileID: 6663952272309710568}
   - component: {fileID: 3745775827505767326}
   - component: {fileID: 7110114385670589391}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: LeftThighCollider
   m_TagString: AvatarHitbox
   m_Icon: {fileID: 0}
@@ -7039,7 +7039,7 @@ GameObject:
   - component: {fileID: 3128495925565408408}
   - component: {fileID: 1533921600806465628}
   - component: {fileID: 6879560045473183130}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RightLowerArmCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7230,7 +7230,7 @@ GameObject:
   - component: {fileID: 6529002680307218133}
   - component: {fileID: 4252866870475644065}
   - component: {fileID: 6074470669843456225}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: LeftShinCollider
   m_TagString: AvatarHitbox
   m_Icon: {fileID: 0}
@@ -7326,7 +7326,7 @@ GameObject:
   - component: {fileID: 3369486825114325382}
   - component: {fileID: 8381366469679108257}
   - component: {fileID: 7925800963420104099}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RightUpperArmCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7517,7 +7517,7 @@ GameObject:
   - component: {fileID: 2836630461114522331}
   - component: {fileID: 8063558918221531890}
   - component: {fileID: 6373449367591341561}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: LeftUpperArmCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
