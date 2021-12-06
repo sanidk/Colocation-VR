@@ -17,7 +17,7 @@ public class LocomotionCustom : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         LocomotionControl();
     }
@@ -28,46 +28,40 @@ public class LocomotionCustom : MonoBehaviour
         var inputDevices = new List<UnityEngine.XR.InputDevice>();
         UnityEngine.XR.InputDevices.GetDevices(inputDevices);
         Vector2 triggerValue = new Vector2();
-        float scalar = 0.025f;
+        float scalar = 1f;
+
+        if (!isVerticalLocked)
+        {
+            headRotationVerticalVector = new Vector3(head.transform.forward.x, 0, head.transform.forward.z);
+        }
+
+        if (!isHorizontalLocked)
+        {
+            headRotationHorizontalVector = new Vector3(head.transform.forward.x, 0, 0);
+        }
 
         foreach (var device in inputDevices)
         {
             //if (device.TryGetFeatureValue(UnityEngine.XR.CommonUsages.primary2DAxis, out triggerValue))
             //{ 
-            
+
             //}
+
+            
 
             if (device.TryGetFeatureValue(UnityEngine.XR.CommonUsages.primary2DAxis, out triggerValue))
             {
-
-                //if (triggerValue.x > 0)
-                //{
-
-                //        Vector3 headRotationVector = new Vector3(head.transform.forward.x, 0, 0);
-                //        transform.position += headRotationVector * triggerValue.y * scalar;
-
-                //}
-                //if (triggerValue.x < 0)
-                //{
-
-                //        Vector3 headRotationVector = new Vector3(head.transform.forward.x, 0, 0);
-                //        transform.position += headRotationVector * triggerValue.y * scalar;
-                //}
-
-                if (!isHorizontalLocked)
-                {
-                    headRotationHorizontalVector = new Vector3(head.transform.forward.x, 0, 0);
-                }
-                if (triggerValue.y > 0)
+                //HORIZONTAL
+                if (triggerValue.x > 0.1)
                 {
                     isHorizontalLocked = true;
-                    transform.position += headRotationHorizontalVector * scalar;
+                    transform.position += headRotationHorizontalVector * triggerValue.x * scalar * Time.deltaTime;
 
                 }
-                else if (triggerValue.y < 0)
+                else if (triggerValue.x < -0.1)
                 {
                     isHorizontalLocked = true;
-                    transform.position -= headRotationHorizontalVector * scalar;
+                    transform.position -= headRotationHorizontalVector * triggerValue.x * scalar * Time.deltaTime;
                 }
                 else
                 {
@@ -75,23 +69,17 @@ public class LocomotionCustom : MonoBehaviour
                 }
 
 
-                if (!isVerticalLocked)
-                {
-                    headRotationVerticalVector = new Vector3(head.transform.forward.x, 0, head.transform.forward.z);
-                }
-                if (triggerValue.y > 0)
+                //VERTICAL
+                if (triggerValue.y > 0.1)
                 {
                     isVerticalLocked = true;
+                    transform.position += headRotationVerticalVector * triggerValue.y * scalar * Time.deltaTime;
 
-                 
-                    transform.position += headRotationVerticalVector*scalar;
-
-                } else if (triggerValue.y < 0)
+                } else if (triggerValue.y < -0.1)
                 {
                     isVerticalLocked = true;
-                    transform.position -= headRotationVerticalVector * scalar;
-                }
-                else
+                    transform.position -= headRotationVerticalVector * triggerValue.y * scalar * Time.deltaTime;
+                } else
                 {
                     isVerticalLocked = false;
                 }
