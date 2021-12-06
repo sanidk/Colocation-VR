@@ -24,6 +24,6 @@ public class VRAnimatorController : MonoBehaviour
 
         animator.SetBool("isMoving", velocity > 0.3f);
 
-        Debug.Log("Velocity: " + velocity);
+        //Debug.Log("Velocity: " + velocity);
     }
 }
