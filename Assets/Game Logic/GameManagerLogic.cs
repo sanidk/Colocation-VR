@@ -625,7 +625,7 @@ public class GameManagerLogic : MonoBehaviour
 
     void LogDataCollection()
     {
-        for (int i = 0; i<avatars.Count; i++)
+        for (int i = 1; i<avatars.Count; i++)
         {
             File.AppendAllText(userPositionPath, Time.time.ToString() + " : " + i + " : " + avatars[i].gameObject.transform.position.x.ToString() + " : " + avatars[i].gameObject.transform.position.y.ToString() + " : " + avatars[i].gameObject.transform.position.z.ToString() + "\n");
         }
