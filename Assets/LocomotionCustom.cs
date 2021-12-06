@@ -61,7 +61,7 @@ public class LocomotionCustom : MonoBehaviour
                 else if (triggerValue.x < -0.1)
                 {
                     isHorizontalLocked = true;
-                    transform.position -= headRotationHorizontalVector * triggerValue.x * scalar * Time.deltaTime;
+                    transform.position += headRotationHorizontalVector * triggerValue.x * scalar * Time.deltaTime;
                 }
                 else
                 {
@@ -78,7 +78,7 @@ public class LocomotionCustom : MonoBehaviour
                 } else if (triggerValue.y < -0.1)
                 {
                     isVerticalLocked = true;
-                    transform.position -= headRotationVerticalVector * triggerValue.y * scalar * Time.deltaTime;
+                    transform.position += headRotationVerticalVector * triggerValue.y * scalar * Time.deltaTime;
                 } else
                 {
                     isVerticalLocked = false;
