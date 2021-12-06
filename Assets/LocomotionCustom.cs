@@ -37,7 +37,7 @@ public class LocomotionCustom : MonoBehaviour
 
         if (!isHorizontalLocked)
         {
-            headRotationHorizontalVector = new Vector3(head.transform.forward.x, 0, 0);
+            headRotationHorizontalVector = new Vector3(head.transform.right.x, 0, head.transform.right.z);
         }
 
         foreach (var device in inputDevices)
