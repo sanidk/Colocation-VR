@@ -172,62 +172,68 @@ public class PlayerStats : MonoBehaviour
             var rot = Quaternion.FromToRotation(Vector3.up, cp.normal);
 
             GameObject blood = Realtime.Instantiate("BloodParticle", cp.point, rot);
-            GameObject hitMarkerAudio = Realtime.Instantiate("HitMarkerSound", cp.point, rot);//ownedLocallySelf?
+            if (GetComponent<RealtimeTransform>().isOwnedLocallySelf)
+            {
+                GameObject hitMarkerAudio = Realtime.Instantiate("HitMarkerSound", cp.point, rot);//ownedLocallySelf?
+            }
         }
 
-        if (cp.thisCollider.name == "HeadCollider" && collision.collider.CompareTag("Bullet"))
+        if (GetComponent<RealtimeTransform>().isOwnedLocallySelf)
         {
-            hp -= 20;
-            //_playerStatsSync.SetHealth(hp);
-            _playerStatsSync.SetHealth(_health - 20);
-            //collision.collider.gameObject.GetComponentInParent<BulletCollision>().isActive = false;
-        }
-        if (cp.thisCollider.name == "TorsoCollider" && collision.collider.CompareTag("Bullet"))
-        {
-            //_health -= 10;
-            //_playerStatsSync.SetHealth(_playerStatsSync.GetHealth() - 10);
-            //_health -= 10;
-            //_playerStatsSync.SetHealth(_health);
-            //_health -= 10;
+            if (cp.thisCollider.name == "HeadCollider" && collision.collider.CompareTag("Bullet"))
+            {
+                hp -= 20;
+                //_playerStatsSync.SetHealth(hp);
+                _playerStatsSync.SetHealth(_health - 20);
+                //collision.collider.gameObject.GetComponentInParent<BulletCollision>().isActive = false;
+            }
+            if (cp.thisCollider.name == "TorsoCollider" && collision.collider.CompareTag("Bullet"))
+            {
+                //_health -= 10;
+                //_playerStatsSync.SetHealth(_playerStatsSync.GetHealth() - 10);
+                //_health -= 10;
+                //_playerStatsSync.SetHealth(_health);
+                //_health -= 10;
 
-            hp -= 10;
-            //_playerStatsSync.SetHealth(hp);
-            _playerStatsSync.SetHealth(_health - 10);
-            //collision.collider.gameObject.GetComponentInParent<BulletCollision>().isActive = false;
+                hp -= 10;
+                //_playerStatsSync.SetHealth(hp);
+                _playerStatsSync.SetHealth(_health - 10);
+                //collision.collider.gameObject.GetComponentInParent<BulletCollision>().isActive = false;
 
-        }
-        if (cp.thisCollider.name == "RightThighCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftThighCollider"
-            && collision.collider.CompareTag("Bullet"))
-        {
-            hp -= 10;
-            //_playerStatsSync.SetHealth(hp);
-            _playerStatsSync.SetHealth(_health - 10);
-            //collision.collider.gameObject.GetComponentInParent<BulletCollision>().isActive = false;
-        }
-        if (cp.thisCollider.name == "RightShinCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftShinCollider"
-            && collision.collider.CompareTag("Bullet"))
-        {
-            hp -= 10;
-            //_playerStatsSync.SetHealth(hp);
-            _playerStatsSync.SetHealth(_health - 10);
-            //collision.collider.gameObject.GetComponentInParent<BulletCollision>().isActive = false;
-        }
-        if (cp.thisCollider.name == "RightUpperArmCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftUpperArmCollider"
-            && collision.collider.CompareTag("Bullet"))
-        {
-            hp -= 10;
-            //_playerStatsSync.SetHealth(hp);
-            _playerStatsSync.SetHealth(_health - 10);
-            //collision.collider.gameObject.GetComponentInParent<BulletCollision>().isActive = false;
-        }
+            }
+            if (cp.thisCollider.name == "RightThighCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftThighCollider"
+                && collision.collider.CompareTag("Bullet"))
+            {
+                hp -= 10;
+                //_playerStatsSync.SetHealth(hp);
+                _playerStatsSync.SetHealth(_health - 10);
+                //collision.collider.gameObject.GetComponentInParent<BulletCollision>().isActive = false;
+            }
+            if (cp.thisCollider.name == "RightShinCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftShinCollider"
+                && collision.collider.CompareTag("Bullet"))
+            {
+                hp -= 10;
+                //_playerStatsSync.SetHealth(hp);
+                _playerStatsSync.SetHealth(_health - 10);
+                //collision.collider.gameObject.GetComponentInParent<BulletCollision>().isActive = false;
+            }
+            if (cp.thisCollider.name == "RightUpperArmCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftUpperArmCollider"
+                && collision.collider.CompareTag("Bullet"))
+            {
+                hp -= 10;
+                //_playerStatsSync.SetHealth(hp);
+                _playerStatsSync.SetHealth(_health - 10);
+                //collision.collider.gameObject.GetComponentInParent<BulletCollision>().isActive = false;
+            }
 
-        if (cp.thisCollider.name == "RightLowerArmCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftLowerArmCollider"
-            && collision.collider.CompareTag("Bullet"))
-        {
-            hp -= 10;
-            //_playerStatsSync.SetHealth(hp);
-            _playerStatsSync.SetHealth(_health - 10);
-            //collision.collider.gameObject.GetComponentInParent<BulletCollision>().isActive = false;
+            if (cp.thisCollider.name == "RightLowerArmCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftLowerArmCollider"
+                && collision.collider.CompareTag("Bullet"))
+            {
+                hp -= 10;
+                //_playerStatsSync.SetHealth(hp);
+                _playerStatsSync.SetHealth(_health - 10);
+                //collision.collider.gameObject.GetComponentInParent<BulletCollision>().isActive = false;
+            }
         }
     }
 
