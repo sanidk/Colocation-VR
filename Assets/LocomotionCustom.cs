@@ -43,12 +43,12 @@ public class LocomotionCustom : MonoBehaviour
 
                 if (triggerValue.y > 0)
                 {
-                    transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + (triggerValue.y * scalar));
+                    transform.position = new Vector3(transform.position.x, transform.position.y, transform.localPosition.z + (triggerValue.y * scalar));
 
                 }
                 if (triggerValue.y < 0)
                 {
-                    transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + (triggerValue.y * scalar));
+                    transform.position = new Vector3(transform.position.x, transform.position.y, transform.localPosition.z + (triggerValue.y * scalar));
 
                 }
 
