@@ -112,7 +112,7 @@ public class GameManagerLogic : MonoBehaviour
 
         if (!isServer)
         {
-            avatars[0].gameObject.SetActive(false);
+            //avatars[0].gameObject.SetActive(false);
             return;
         }
 
