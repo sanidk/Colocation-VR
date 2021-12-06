@@ -31,24 +31,24 @@ public class LocomotionCustom : MonoBehaviour
 
                 if (triggerValue.x > 0)
                 {
-                    transform.position = new Vector3(transform.position.x + (triggerValue.x * scalar), transform.position.y, transform.position.z);
+                    //transform.position = new Vector3(transform.position.x + (triggerValue.x * scalar), transform.position.y, transform.position.z);
                     //transform.position += Vector3.right;
 
                 }
                 if (triggerValue.x < 0)
                 {
-                    transform.position = new Vector3(transform.position.x + (triggerValue.x * scalar), transform.position.y, transform.position.z);
+                    //transform.position = new Vector3(transform.position.x + (triggerValue.x * scalar), transform.position.y, transform.position.z);
 
                 }
 
                 if (triggerValue.y > 0)
                 {
-                    transform.position = new Vector3(transform.position.x, transform.position.y, transform.localPosition.z + (triggerValue.y * scalar));
+                    transform.position = new Vector3(transform.position.x, transform.position.y, transform.forward.z + (triggerValue.y * scalar));
 
                 }
                 if (triggerValue.y < 0)
                 {
-                    transform.position = new Vector3(transform.position.x, transform.position.y, transform.localPosition.z + (triggerValue.y * scalar));
+                    transform.position = new Vector3(transform.position.x, transform.position.y, transform.forward.z + (triggerValue.y * scalar));
 
                 }
 
