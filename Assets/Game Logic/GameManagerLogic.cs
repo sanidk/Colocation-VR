@@ -4,6 +4,9 @@ using UnityEngine;
 using Normal.Realtime;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using TMPro;
+using System.IO;
+
 
 public class GameManagerLogic : MonoBehaviour
 {
@@ -87,6 +90,15 @@ public class GameManagerLogic : MonoBehaviour
     public GameObject gunSpawnLocationsObject;
     public List<GameObject> gunsList = new List<GameObject>();
 
+
+    //LOG DATA
+    string userPositionPath = @"C:\TelemetryData\UserPosition.txt";
+
+    private void Awake()
+    {
+        LogStartOfDataCollection();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -112,12 +124,12 @@ public class GameManagerLogic : MonoBehaviour
 
         if (!isServer)
         {
-            //avatars[0].gameObject.SetActive(false);
+            avatars[0].gameObject.SetActive(false);
             return;
         }
 
         if (!isServer) { return; }
-
+        LogDataCollection();
 
 
         if (CheckForGameReset())
@@ -604,6 +616,20 @@ public class GameManagerLogic : MonoBehaviour
         //team2Players.Count;
 
 
+    }
+
+    void LogStartOfDataCollection()
+    {
+        File.AppendAllText(userPositionPath, System.DateTime.Now.ToString() + "\n");
+    }
+
+    void LogDataCollection()
+    {
+        for (int i = 1; i<avatars.Count; i++)
+        {
+            File.AppendAllText(userPositionPath, Time.time.ToString() + " : " + avatars[i] + " : " + avatars[i].gameObject.transform.position + "\n");
+        }
+        
     }
 }
 
