@@ -202,12 +202,12 @@ public class Player_Behavior : MonoBehaviour
 
         if(playerStats._team == 1)
         {
-            defaultMaterial.color = Color.blue;
+            defaultMaterial.color = Color.red;
             skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material = defaultMaterial;
         }
         else if (playerStats._team == 2)
         {
-            defaultMaterial.color = Color.red;
+            defaultMaterial.color = Color.blue;
             skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material = defaultMaterial;
         }
 
