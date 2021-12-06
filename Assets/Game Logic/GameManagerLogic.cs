@@ -42,7 +42,7 @@ public class GameManagerLogic : MonoBehaviour
     int gameWinner;
 
 
-    public static int teamSize = 2;
+    public static int teamSize = 1;
 
     //Probably have to be networked:
     public List<GameObject> team1Players = new List<GameObject>();
@@ -323,13 +323,13 @@ public class GameManagerLogic : MonoBehaviour
 
     bool CheckIfPlayersConnectedAndTeamsAssigned()
     {
-        if (avatars.Count < teamSize * 2) return false;
+        if (avatars.Count < (teamSize * 2)+1) return false;
 
         bool isTeamsSet = true;
         team1Players.Clear();
         team2Players.Clear();
 
-        for (int i = 0; i < avatars.Count; i++)
+        for (int i = 1; i < avatars.Count; i++) // i = 1 . skip 1st player because its server.
         {
             try
             {
@@ -373,7 +373,7 @@ public class GameManagerLogic : MonoBehaviour
         team1Players.Clear();
         team2Players.Clear();
 
-        for (int i = 0; i < avatars.Count; i++)
+        for (int i = 1; i < avatars.Count; i++)
         {
             try
             {
@@ -397,14 +397,14 @@ public class GameManagerLogic : MonoBehaviour
 
     bool CheckIfAllPlayersReady()
     {
-        if (avatars.Count < teamSize * 2)
+        if (avatars.Count < (teamSize * 2)+1)
         {
             return false;
         }
 
         bool isTeamsReady = true;
 
-        for (int i = 0; i < avatars.Count; i++)
+        for (int i = 1; i < avatars.Count; i++)
         {
             RealtimeAvatar player = avatars[i];
 
