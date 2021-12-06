@@ -23,7 +23,7 @@ public class LocomotionCustom : MonoBehaviour
         var inputDevices = new List<UnityEngine.XR.InputDevice>();
         UnityEngine.XR.InputDevices.GetDevices(inputDevices);
         Vector2 triggerValue = new Vector2();
-        float scalar = 0.1f;
+        float scalar = 0.025f;
 
         foreach (var device in inputDevices)
         {
