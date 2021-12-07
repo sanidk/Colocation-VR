@@ -13,6 +13,10 @@ public class GameManagerLogic : MonoBehaviour
     [Header("Game Mode: 1: Most Kills, 2: Rounds")]
     int gameMode = 2; //if 1 kills, if 2 rounds
 
+    public static int teamSize = 1;
+
+
+
     //Game Mode 1: 2v2
     //You play best of X(uneven) rounds (roundsTotal)
     //Round lasts x amounts of minutes (roundTotalTime)
@@ -45,7 +49,6 @@ public class GameManagerLogic : MonoBehaviour
     int gameWinner;
 
 
-    public static int teamSize = 2;
 
     //Probably have to be networked:
     public List<GameObject> team1Players = new List<GameObject>();
