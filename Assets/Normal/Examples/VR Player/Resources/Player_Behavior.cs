@@ -106,6 +106,14 @@ public class Player_Behavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (gameManager.GetComponent<GameManagerLogic>().isPlayersConnectedAndTeamsAssigned)
+        {
+            chooseTeamObjects.SetActive(false);
+        } else
+        {
+            //chooseTeamObjects.SetActive(true);
+        }
+
         if (GetComponent<RealtimeTransform>().isOwnedLocallySelf && dead)
         {
             //set text to dis
@@ -288,7 +296,7 @@ public class Player_Behavior : MonoBehaviour
                 if (GetComponent<RealtimeTransform>().isOwnedLocallySelf)
                 {
                     //other.GetComponentInParent<GameObject>().SetActive(false);
-                    chooseTeamObjects.SetActive(false);
+                    
                 }
                 
                 print("team1 chosen - Player behavior");
@@ -299,7 +307,7 @@ public class Player_Behavior : MonoBehaviour
                 if (GetComponent<RealtimeTransform>().isOwnedLocallySelf)
                 {
                     //other.GetComponentInParent<GameObject>().SetActive(false);
-                    chooseTeamObjects.SetActive(false);
+                    //chooseTeamObjects.SetActive(false);
             }
             //Destroy(other.GetComponentInParent<GameObject>());
             print("team2 chosen - Player behavior");
