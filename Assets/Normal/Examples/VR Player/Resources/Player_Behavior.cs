@@ -191,12 +191,17 @@ public class Player_Behavior : MonoBehaviour
         if (playerStats._team == 1)
         {
             //defaultMaterial.color = Color.blue;
-            skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material = blueTeamMaterial;
+            if (skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material != blueTeamMaterial) {
+                skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material = blueTeamMaterial;
+            }
         }
         else if (playerStats._team == 2)
         {
             //defaultMaterial.color = Color.red;
-            skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material = redTeamMaterial;
+            if (skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material != redTeamMaterial)
+            {
+                skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material = redTeamMaterial;
+            }
         }
 
         if (GetComponent<RealtimeTransform>().isOwnedLocallySelf)
