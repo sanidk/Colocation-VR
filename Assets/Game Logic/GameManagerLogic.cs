@@ -83,6 +83,8 @@ public class GameManagerLogic : MonoBehaviour
 
     public bool isServer = false;
 
+    int loopStart = 0;
+
 
 
 
@@ -355,7 +357,7 @@ public class GameManagerLogic : MonoBehaviour
 
     bool CheckIfPlayersConnectedAndTeamsAssigned()
     {
-        if (avatars.Count < (teamSize * 2)+1) return false;
+        if (avatars.Count < (teamSize * 2)+ loopStart) return false;
 
         bool isTeamsSet = true;
         team1Players.Clear();
@@ -405,7 +407,7 @@ public class GameManagerLogic : MonoBehaviour
         team1Players.Clear();
         team2Players.Clear();
 
-        for (int i = 1; i < avatars.Count; i++)
+        for (int i = loopStart; i < avatars.Count; i++)
         {
             try
             {
@@ -429,14 +431,14 @@ public class GameManagerLogic : MonoBehaviour
 
     bool CheckIfAllPlayersReady()
     {
-        if (avatars.Count < (teamSize * 2)+1)
+        if (avatars.Count < (teamSize * 2)+ loopStart)
         {
             return false;
         }
 
         bool isTeamsReady = true;
 
-        for (int i = 1; i < avatars.Count; i++)
+        for (int i = loopStart; i < avatars.Count; i++)
         {
             RealtimeAvatar player = avatars[i];
 
