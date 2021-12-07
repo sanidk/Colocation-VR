@@ -323,6 +323,19 @@ public class GameManagerLogic : MonoBehaviour
                     gunsList.Add(gun);
 
                 }
+                else if (childTransform.gameObject.name == "Magazine")
+                {
+                    GameObject gun = Realtime.Instantiate("Mag", childTransform.position, childTransform.rotation, new Realtime.InstantiateOptions
+                    {
+                        ownedByClient = false,
+                        preventOwnershipTakeover = false,
+                        destroyWhenOwnerLeaves = false,
+                        destroyWhenLastClientLeaves = true,
+                        //useInstance = _realtime,
+                    });
+                    gunsList.Add(gun);
+
+                }
 
 
             }
