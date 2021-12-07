@@ -185,6 +185,17 @@ public class Player_Behavior : MonoBehaviour
             
         }
 
+        if (playerStats._team == 1)
+        {
+            defaultMaterial.color = Color.blue;
+            skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material = defaultMaterial;
+        }
+        else if (playerStats._team == 2)
+        {
+            defaultMaterial.color = Color.red;
+            skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material = defaultMaterial;
+        }
+
         if (GetComponent<RealtimeTransform>().isOwnedLocallySelf)
         {
             if (playerStats._health != oldHealth)
@@ -199,21 +210,6 @@ public class Player_Behavior : MonoBehaviour
 
 
         }
-
-        if (GetComponent<RealtimeTransform>().isOwnedLocallySelf)
-        {
-            if (playerStats._team == 1)
-            {
-                defaultMaterial.color = Color.blue;
-                skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material = defaultMaterial;
-            }
-            else if (playerStats._team == 2)
-            {
-                defaultMaterial.color = Color.red;
-                skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material = defaultMaterial;
-            }
-        }
-
 
             if (playerStats._health <= 0 && !dead)//&& !skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material == ghostMaterial) // need logic to check for revive or new round
         {
