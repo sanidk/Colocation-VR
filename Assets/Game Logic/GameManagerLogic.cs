@@ -13,7 +13,7 @@ public class GameManagerLogic : MonoBehaviour
     [Header("Game Mode: 1: Most Kills, 2: Rounds")]
     int gameMode = 2; //if 1 kills, if 2 rounds
 
-    public static int teamSize = 1;
+    public static int teamSize = 2;
 
     int loopStart = 1;
 
@@ -101,7 +101,7 @@ public class GameManagerLogic : MonoBehaviour
 
     private void Awake()
     {
-        //LogStartOfDataCollection();
+        LogStartOfDataCollection();
     }
 
     // Update is called once per frame
@@ -134,7 +134,7 @@ public class GameManagerLogic : MonoBehaviour
         }
 
         if (!isServer) { return; }
-        //LogDataCollection();
+        LogDataCollection();
 
 
         if (CheckForGameReset())
