@@ -110,13 +110,12 @@ public class Player_Behavior : MonoBehaviour
             TextFeedbackManager.feedbackText = "YOU DIED" + "\n" + "RETURN TO SPAWN";
 
             //disable guns
-            foreach (GameObject gun in gameManager.GetComponent<GameManagerLogic>().gunsList)
-            {
-                gun.SetActive(false);
-            }
-            disableGunsOnce = true;
+            //foreach (GameObject gun in gameManager.GetComponent<GameManagerLogic>().gunsList)
+            //{
+            //    gun.SetActive(false);
+            //}
 
-
+            gameManager.GetComponent<GameManagerLogic>().DisableGunsIfDead();
 
         }
         else if (GetComponent<RealtimeTransform>().isOwnedLocallySelf && disableGunsOnce && !dead)
@@ -282,7 +281,8 @@ public class Player_Behavior : MonoBehaviour
                 playerStats._team = 1;
                 if (GetComponent<RealtimeTransform>().isOwnedLocallySelf)
                 {
-                    other.GetComponentInParent<GameObject>().SetActive(false);
+                    //other.GetComponentInParent<GameObject>().SetActive(false);
+                    chooseTeamObjects.SetActive(false);
                 }
                 
                 print("team1 chosen - Player behavior");
@@ -292,8 +292,9 @@ public class Player_Behavior : MonoBehaviour
                 playerStats._team = 2;
                 if (GetComponent<RealtimeTransform>().isOwnedLocallySelf)
                 {
-                    other.GetComponentInParent<GameObject>().SetActive(false);
-                }
+                    //other.GetComponentInParent<GameObject>().SetActive(false);
+                    chooseTeamObjects.SetActive(false);
+            }
             //Destroy(other.GetComponentInParent<GameObject>());
             print("team2 chosen - Player behavior");
             }

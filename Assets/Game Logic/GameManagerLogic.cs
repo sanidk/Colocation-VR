@@ -169,6 +169,8 @@ public class GameManagerLogic : MonoBehaviour
 
         if (!isPlayersConnectedAndTeamsAssigned)
         {
+            //chooseTeamObjects.SetActive(true);
+
             if (CheckIfPlayersConnectedAndTeamsAssigned())
             {
                 isPlayersConnectedAndTeamsAssigned = true;
@@ -292,6 +294,14 @@ public class GameManagerLogic : MonoBehaviour
             //roundText.GetComponent<TextMesh>().text = gameWinner.ToString();
         }
 
+    }
+
+    public void DisableGunsIfDead()
+    {
+        foreach (Transform childTransform in gunSpawnLocationsObject.GetComponentsInChildren<Transform>())
+        {
+            childTransform.gameObject.SetActive(false);
+        }
     }
 
     void SpawnGuns()
