@@ -118,7 +118,8 @@ public class Player_Behavior : MonoBehaviour
 
 
 
-        } else if (GetComponent<RealtimeTransform>().isOwnedLocallySelf && disableGunsOnce && !dead)
+        }
+        else if (GetComponent<RealtimeTransform>().isOwnedLocallySelf && disableGunsOnce && !dead)
         {
             foreach(GameObject gun in gameManager.GetComponent<GameManagerLogic>().gunsList)
             {
@@ -215,11 +216,9 @@ public class Player_Behavior : MonoBehaviour
             {
                 skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().enabled = false;
             }
-
-
         }
 
-            if (playerStats._health <= 0 && !dead)//&& !skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material == ghostMaterial) // need logic to check for revive or new round
+        if (playerStats._health <= 0 && !dead)//&& !skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material == ghostMaterial) // need logic to check for revive or new round
         {
             dead = true;
             skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material = ghostMaterial;
@@ -234,12 +233,11 @@ public class Player_Behavior : MonoBehaviour
                 deadPostFX.SetActive(true);
                 //rightHand.SetActive(false);
                 //leftHand.SetActive(false);
-            
-                
             }
             
 
         }
+
         if (playerStats._health > 0 && dead)
         {
             skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material = defaultMaterial;
@@ -260,7 +258,7 @@ public class Player_Behavior : MonoBehaviour
                 
             }
         }
-            textMesh.text = "HP: " + playerStats._health; // change dis
+        textMesh.text = "HP: " + playerStats._health; // change dis
 
             //if (!GetComponent<RealtimeTransform>().isOwnedLocallySelf)
             //{
@@ -272,7 +270,7 @@ public class Player_Behavior : MonoBehaviour
 
 
     private void OnTriggerEnter(Collider other)
-        {
+    {
             if (other.CompareTag("ReviveCapsule") && dead) // Create spawn area tag or something else to check on.
             {
                 resetHp();
