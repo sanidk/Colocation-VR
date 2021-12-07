@@ -292,7 +292,7 @@ public class SimpleShoot : MonoBehaviour
             Reload();
             Mag = collision.gameObject;
             Mag.transform.position = MagLocation.transform.position;
-            Destroy(Mag);
+            Realtime.Destroy(Mag);
             Mag = null;
         }
 
