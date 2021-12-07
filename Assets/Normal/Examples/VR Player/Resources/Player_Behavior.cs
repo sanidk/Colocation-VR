@@ -52,6 +52,9 @@ public class Player_Behavior : MonoBehaviour
     public GameObject deadPostFX;
     public GameObject damagePostFX;
     public VignetteControl vignetteControl;
+    public Material blueTeamMaterial;
+    public Material redTeamMaterial;
+
 
     public GameObject[] colliderObjects;
     float oldHealth = 100;
@@ -188,12 +191,12 @@ public class Player_Behavior : MonoBehaviour
         if (playerStats._team == 1)
         {
             defaultMaterial.color = Color.blue;
-            skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material = defaultMaterial;
+            skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material = blueTeamMaterial;
         }
         else if (playerStats._team == 2)
         {
             defaultMaterial.color = Color.red;
-            skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material = defaultMaterial;
+            skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material = redTeamMaterial;
         }
 
         if (GetComponent<RealtimeTransform>().isOwnedLocallySelf)

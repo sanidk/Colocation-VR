@@ -294,7 +294,6 @@ GameObject:
   - component: {fileID: 63484684034565116}
   - component: {fileID: -3078369984816020322}
   - component: {fileID: 5680419806792718050}
-  - component: {fileID: 2044766923174584979}
   - component: {fileID: 7520261360897799386}
   - component: {fileID: 6996332365183606194}
   m_Layer: 0
@@ -437,6 +436,8 @@ MonoBehaviour:
   deadPostFX: {fileID: 0}
   damagePostFX: {fileID: 0}
   vignetteControl: {fileID: 0}
+  blueTeamMaterial: {fileID: 2100000, guid: bc059417d4b09425bab85451c8cd5f01, type: 2}
+  redTeamMaterial: {fileID: 2100000, guid: ebb0589210a804b4eb0794afeac87de8, type: 2}
   colliderObjects:
   - {fileID: 0}
   - {fileID: 6822099320902657682}
@@ -486,20 +487,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 212bc0f5015c1094e8797a2e64a112b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2044766923174584979
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1435502846325602}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0dc0c3c3010eb61439cf966bedebf294, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  previousPos: {x: 0, y: 0, z: 0}
-  velocity: 0
 --- !u!82 &7520261360897799386
 AudioSource:
   m_ObjectHideFlags: 0
