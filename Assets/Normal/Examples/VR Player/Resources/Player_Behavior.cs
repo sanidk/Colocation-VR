@@ -107,6 +107,28 @@ public class Player_Behavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (playerStats._team == 1 && !dead)
+        {
+            //defaultMaterial.color = Color.blue;
+            if (skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material != blueTeamMaterial)
+            {
+                skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material = blueTeamMaterial;
+                LHandSkinnedMeshObj.GetComponent<SkinnedMeshRenderer>().material = blueHandsMaterial;
+                RHandSkinnedMeshObj.GetComponent<SkinnedMeshRenderer>().material = blueHandsMaterial;
+            }
+        }
+        else if (playerStats._team == 2 && !dead)
+        {
+            //defaultMaterial.color = Color.red;
+            if (skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material != redTeamMaterial)
+            {
+                skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material = redTeamMaterial;
+                LHandSkinnedMeshObj.GetComponent<SkinnedMeshRenderer>().material = redHandsMaterial;
+                RHandSkinnedMeshObj.GetComponent<SkinnedMeshRenderer>().material = redHandsMaterial;
+            }
+        }
+
         if (gameManager.GetComponent<GameLogic>()._isPlayersConnectedAndTeamsAssigned)
         {
             chooseTeamObjects.SetActive(false);
@@ -199,26 +221,6 @@ public class Player_Behavior : MonoBehaviour
             
         }
 
-        if (playerStats._team == 1 && !dead)
-        {
-            //defaultMaterial.color = Color.blue;
-            if (skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material != blueTeamMaterial) {
-                skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material = blueTeamMaterial;
-                LHandSkinnedMeshObj.GetComponent<SkinnedMeshRenderer>().material = blueHandsMaterial;
-                RHandSkinnedMeshObj.GetComponent<SkinnedMeshRenderer>().material = blueHandsMaterial;
-            }
-        }
-        else if (playerStats._team == 2 && !dead)
-        {
-            //defaultMaterial.color = Color.red;
-            if (skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material != redTeamMaterial)
-            {
-                skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material = redTeamMaterial;
-                LHandSkinnedMeshObj.GetComponent<SkinnedMeshRenderer>().material = redHandsMaterial;
-                RHandSkinnedMeshObj.GetComponent<SkinnedMeshRenderer>().material = redHandsMaterial;
-            }
-        }
-
         if (GetComponent<RealtimeTransform>().isOwnedLocallySelf)
         {
             if (playerStats._health != oldHealth)
@@ -279,7 +281,7 @@ public class Player_Behavior : MonoBehaviour
             //TextFeedbackManager.feedbackText = "";
             //}
 
-        }
+    }
 
 
 
