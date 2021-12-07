@@ -167,8 +167,6 @@ public class PlayerStats : MonoBehaviour
         
         ContactPoint cp = collision.GetContact(0); // ??
 
-        if (GetComponent<RealtimeTransform>().isOwnedLocallySelf)
-        {
             if (cp.thisCollider.name == "HeadCollider" && collision.collider.CompareTag("Bullet"))
             {
                 hp -= 20;
@@ -211,6 +209,8 @@ public class PlayerStats : MonoBehaviour
                 _playerStatsSync.SetHealth(_health - 10);
             }
 
+        if (GetComponent<RealtimeTransform>().isOwnedLocallySelf)
+        {
             if (collision.collider.CompareTag("Bullet"))
             {
                 var rot = Quaternion.FromToRotation(Vector3.up, cp.normal);
