@@ -107,7 +107,7 @@ public class Player_Behavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameManager.GetComponent<GameManagerLogic>().isPlayersConnectedAndTeamsAssigned)
+        if (gameManager.GetComponent<GameLogic>()._isPlayersConnectedAndTeamsAssigned)
         {
             chooseTeamObjects.SetActive(false);
         } else
