@@ -101,6 +101,8 @@ public class SimpleShoot : MonoBehaviour
         */
         if (isPistol)
         {
+            bulletsInMagTextMesh.text = GetComponent<AmmoStats>()._ammo + "/" + maxBulletsInMag;
+            previousBulletsInMag = GetComponent<AmmoStats>()._ammo;
             return;
         }
 
