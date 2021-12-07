@@ -98,7 +98,7 @@ public class GameManagerLogic : MonoBehaviour
 
     private void Awake()
     {
-        LogStartOfDataCollection();
+        //LogStartOfDataCollection();
     }
 
     // Update is called once per frame
@@ -131,7 +131,7 @@ public class GameManagerLogic : MonoBehaviour
         }
 
         if (!isServer) { return; }
-        LogDataCollection();
+        //LogDataCollection();
 
 
         if (CheckForGameReset())
