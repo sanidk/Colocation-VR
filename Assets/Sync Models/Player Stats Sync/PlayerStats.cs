@@ -161,22 +161,11 @@ public class PlayerStats : MonoBehaviour
 
         foreach (ContactPoint contact in collision.contacts) // Use contact.GetContacts() instead, No garbage
         {
-            print(contact.thisCollider.name + " hit " + contact.otherCollider.name);
+            //print(contact.thisCollider.name + " hit " + contact.otherCollider.name);
             //Debug.DrawRay(contact.point, contact.normal, Color.white);
         }
         
         ContactPoint cp = collision.GetContact(0); // ??
-
-        if (collision.collider.CompareTag("Bullet"))
-        {
-            if (GetComponent<RealtimeTransform>().isOwnedLocallySelf)
-            {
-                var rot = Quaternion.FromToRotation(Vector3.up, cp.normal);
-                GameObject blood = Realtime.Instantiate("BloodParticle", cp.point, rot);
-            
-                GameObject hitMarkerAudio = Realtime.Instantiate("HitMarkerSound", cp.point, rot);//ownedLocallySelf?
-            }
-        }
 
         if (GetComponent<RealtimeTransform>().isOwnedLocallySelf)
         {
@@ -185,6 +174,7 @@ public class PlayerStats : MonoBehaviour
                 hp -= 20;
                 //_playerStatsSync.SetHealth(hp);
                 _playerStatsSync.SetHealth(_health - 20);
+                //Destroy(collision.collider.gameObject);
                 //collision.collider.gameObject.GetComponentInParent<BulletCollision>().isActive = false;
             }
             if (cp.thisCollider.name == "TorsoCollider" && collision.collider.CompareTag("Bullet"))
@@ -194,10 +184,10 @@ public class PlayerStats : MonoBehaviour
                 //_health -= 10;
                 //_playerStatsSync.SetHealth(_health);
                 //_health -= 10;
-
                 hp -= 10;
                 //_playerStatsSync.SetHealth(hp);
                 _playerStatsSync.SetHealth(_health - 10);
+                //Realtime.Destroy(collision.collider.gameObject.GetComponent<RealtimeView>());
                 //collision.collider.gameObject.GetComponentInParent<BulletCollision>().isActive = false;
 
             }
@@ -232,7 +222,18 @@ public class PlayerStats : MonoBehaviour
                 hp -= 10;
                 //_playerStatsSync.SetHealth(hp);
                 _playerStatsSync.SetHealth(_health - 10);
+                //Realtime.Destroy(collision.collider.gameObject);
                 //collision.collider.gameObject.GetComponentInParent<BulletCollision>().isActive = false;
+            }
+            if (collision.collider.CompareTag("Bullet"))
+            {
+                if (GetComponent<RealtimeTransform>().isOwnedLocallySelf)
+                {
+                    var rot = Quaternion.FromToRotation(Vector3.up, cp.normal);
+                    GameObject blood = Realtime.Instantiate("BloodParticle", cp.point, rot);
+
+                    GameObject hitMarkerAudio = Realtime.Instantiate("HitMarkerSound", cp.point, rot);//ownedLocallySelf?
+                }
             }
         }
     }

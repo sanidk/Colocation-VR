@@ -11,7 +11,7 @@ public class BulletCollision : MonoBehaviour
     private GameObject gameManager;
 
     float spawnTime;
-    public float lifeTime = 5f;
+    public float lifeTime = 3f;
     public bool isActive;
 
     void Start()
@@ -33,6 +33,14 @@ public class BulletCollision : MonoBehaviour
         {
             //Realtime.Destroy(gameObject);
             Destroy(gameObject);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("AvatarHitbox"))
+        {
+            lifeTime = 0.1f;
         }
     }
 

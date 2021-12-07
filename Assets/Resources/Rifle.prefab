@@ -2293,7 +2293,7 @@ MonoBehaviour:
   barrelLocation: {fileID: 8113118124255220677}
   casingExitLocation: {fileID: 0}
   destroyTimer: 2
-  shotPower: 500
+  shotPower: 10
   ejectPower: 150
   audioSource: {fileID: 0}
   fireSoundSingle: {fileID: 0}
@@ -2301,11 +2301,12 @@ MonoBehaviour:
   reload: {fileID: 8300000, guid: f15e12c3740a7462783839ebe79c9441, type: 3}
   noAmmo: {fileID: 8300000, guid: 841197a85068d42bf9c5db364dcc230b, type: 3}
   magazine: {fileID: 0}
+  Mag: {fileID: 0}
+  MagLocation: {fileID: 0}
   socketInteractor: {fileID: 0}
   isShooting: 0
   fireSoundMinimumDuration: 0.11
   maxBulletsInMag: 64
-  bulletsInMag: 64
   isPistol: 0
   isRifle: 0
 --- !u!82 &-3470362343676981398

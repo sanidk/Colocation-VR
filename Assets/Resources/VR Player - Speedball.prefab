@@ -2643,7 +2643,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6186481666444209669}
-  m_LocalRotation: {x: 7.362072e-14, y: 0.00000076275586, z: -0.2750057, w: 0.96144265}
+  m_LocalRotation: {x: 7.362072e-14, y: 0.00000076275586, z: -0.27784607, w: 0.9606256}
   m_LocalPosition: {x: -0.17826325, y: 0.015100421, z: 0.000000006465125}
   m_LocalScale: {x: 0.99999994, y: 1, z: 1}
   m_Children:
@@ -4672,7 +4672,7 @@ GameObject:
   - component: {fileID: 6727222359400965820}
   m_Layer: 2
   m_Name: LeftLowerArmCollider
-  m_TagString: Untagged
+  m_TagString: AvatarHitbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7058,7 +7058,7 @@ GameObject:
   - component: {fileID: 6879560045473183130}
   m_Layer: 2
   m_Name: RightLowerArmCollider
-  m_TagString: Untagged
+  m_TagString: AvatarHitbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7345,7 +7345,7 @@ GameObject:
   - component: {fileID: 7925800963420104099}
   m_Layer: 2
   m_Name: RightUpperArmCollider
-  m_TagString: Untagged
+  m_TagString: AvatarHitbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7536,7 +7536,7 @@ GameObject:
   - component: {fileID: 6373449367591341561}
   m_Layer: 2
   m_Name: LeftUpperArmCollider
-  m_TagString: Untagged
+  m_TagString: AvatarHitbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
