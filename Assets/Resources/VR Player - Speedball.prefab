@@ -427,6 +427,8 @@ MonoBehaviour:
   meshObject: {fileID: 0}
   textMeshObject: {fileID: 8442229361831297434}
   skinnedMeshObject: {fileID: 6186481666444210141}
+  RHandSkinnedMeshObj: {fileID: 7389741250353220513}
+  LHandSkinnedMeshObj: {fileID: 7226548697808085794}
   rightHand: {fileID: 1315796314851182}
   leftHand: {fileID: 1677690864260768}
   ghostMaterial: {fileID: 2100000, guid: 5c62ae78922114589bdcdff259a423fb, type: 2}

@@ -43,6 +43,8 @@ public class Player_Behavior : MonoBehaviour
     Vector3 arrowStartScale;
 
     public GameObject skinnedMeshObject;
+    public GameObject RHandSkinnedMeshObj;
+    public GameObject LHandSkinnedMeshObj;
     public GameObject rightHand;
     public GameObject leftHand;
 
@@ -193,6 +195,8 @@ public class Player_Behavior : MonoBehaviour
             //defaultMaterial.color = Color.blue;
             if (skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material != blueTeamMaterial) {
                 skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material = blueTeamMaterial;
+                LHandSkinnedMeshObj.GetComponent<SkinnedMeshRenderer>().material = blueTeamMaterial;
+                RHandSkinnedMeshObj.GetComponent<SkinnedMeshRenderer>().material = blueTeamMaterial;
             }
         }
         else if (playerStats._team == 2 && !dead)
@@ -201,6 +205,8 @@ public class Player_Behavior : MonoBehaviour
             if (skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material != redTeamMaterial)
             {
                 skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material = redTeamMaterial;
+                LHandSkinnedMeshObj.GetComponent<SkinnedMeshRenderer>().material = redTeamMaterial;
+                RHandSkinnedMeshObj.GetComponent<SkinnedMeshRenderer>().material = redTeamMaterial;
             }
         }
 
