@@ -166,8 +166,17 @@ public class PlayerStats : MonoBehaviour
         }*/
         
         ContactPoint cp = collision.GetContact(0); // ??
+        if (GetComponent<RealtimeTransform>().isOwnedLocallySelf)
+        {
+            if (collision.collider.CompareTag("Bullet"))
+            {
+                var rot = Quaternion.FromToRotation(Vector3.up, cp.normal);
+                GameObject blood = Realtime.Instantiate("BloodParticle", cp.point, rot);
+                GameObject hitMarkerAudio = Realtime.Instantiate("HitMarkerSound", cp.point, rot);//ownedLocallySelf?
+            }
+        }
 
-            if (cp.thisCollider.name == "HeadCollider" && collision.collider.CompareTag("Bullet"))
+        if (cp.thisCollider.name == "HeadCollider" && collision.collider.CompareTag("Bullet"))
             {
                 hp -= 20;
                 //_playerStatsSync.SetHealth(hp);
@@ -208,19 +217,6 @@ public class PlayerStats : MonoBehaviour
                 hp -= 10;
                 _playerStatsSync.SetHealth(_health - 10);
             }
-
-        if (GetComponent<RealtimeTransform>().isOwnedLocallySelf)
-        {
-            if (collision.collider.CompareTag("Bullet"))
-            {
-                var rot = Quaternion.FromToRotation(Vector3.up, cp.normal);
-                GameObject blood = Realtime.Instantiate("BloodParticle", cp.point, rot);
-
-                GameObject hitMarkerAudio = Realtime.Instantiate("HitMarkerSound", cp.point, rot);//ownedLocallySelf?
-            }
-
-
-        }
         
     }
 
