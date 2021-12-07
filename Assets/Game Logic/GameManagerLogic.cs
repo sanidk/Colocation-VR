@@ -126,7 +126,7 @@ public class GameManagerLogic : MonoBehaviour
 
         if (!isServer)
         {
-            avatars[0].gameObject.SetActive(false);
+            //avatars[0].gameObject.SetActive(false);
             return;
         }
 
@@ -363,7 +363,7 @@ public class GameManagerLogic : MonoBehaviour
         team1Players.Clear();
         team2Players.Clear();
 
-        for (int i = 1; i < avatars.Count; i++) // i = 1 . skip 1st player because its server.
+        for (int i = loopStart; i < avatars.Count; i++) // i = 1 . skip 1st player because its server.
         {
             try
             {
