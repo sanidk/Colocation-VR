@@ -188,14 +188,14 @@ public class Player_Behavior : MonoBehaviour
             
         }
 
-        if (playerStats._team == 1)
+        if (playerStats._team == 1 && !dead)
         {
             //defaultMaterial.color = Color.blue;
             if (skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material != blueTeamMaterial) {
                 skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material = blueTeamMaterial;
             }
         }
-        else if (playerStats._team == 2)
+        else if (playerStats._team == 2 && !dead)
         {
             //defaultMaterial.color = Color.red;
             if (skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material != redTeamMaterial)
