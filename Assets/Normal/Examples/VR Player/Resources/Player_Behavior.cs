@@ -56,7 +56,8 @@ public class Player_Behavior : MonoBehaviour
     public VignetteControl vignetteControl;
     public Material blueTeamMaterial;
     public Material redTeamMaterial;
-
+    public Material blueHandsMaterial;
+    public Material redHandsMaterial;
 
     public GameObject[] colliderObjects;
     float oldHealth = 100;
@@ -203,8 +204,8 @@ public class Player_Behavior : MonoBehaviour
             //defaultMaterial.color = Color.blue;
             if (skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material != blueTeamMaterial) {
                 skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material = blueTeamMaterial;
-                LHandSkinnedMeshObj.GetComponent<SkinnedMeshRenderer>().material = blueTeamMaterial;
-                RHandSkinnedMeshObj.GetComponent<SkinnedMeshRenderer>().material = blueTeamMaterial;
+                LHandSkinnedMeshObj.GetComponent<SkinnedMeshRenderer>().material = blueHandsMaterial;
+                RHandSkinnedMeshObj.GetComponent<SkinnedMeshRenderer>().material = blueHandsMaterial;
             }
         }
         else if (playerStats._team == 2 && !dead)
@@ -213,8 +214,8 @@ public class Player_Behavior : MonoBehaviour
             if (skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material != redTeamMaterial)
             {
                 skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material = redTeamMaterial;
-                LHandSkinnedMeshObj.GetComponent<SkinnedMeshRenderer>().material = redTeamMaterial;
-                RHandSkinnedMeshObj.GetComponent<SkinnedMeshRenderer>().material = redTeamMaterial;
+                LHandSkinnedMeshObj.GetComponent<SkinnedMeshRenderer>().material = redHandsMaterial;
+                RHandSkinnedMeshObj.GetComponent<SkinnedMeshRenderer>().material = redHandsMaterial;
             }
         }
 

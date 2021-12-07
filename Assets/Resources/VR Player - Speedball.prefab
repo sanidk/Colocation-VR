@@ -438,6 +438,8 @@ MonoBehaviour:
   vignetteControl: {fileID: 0}
   blueTeamMaterial: {fileID: 2100000, guid: bc059417d4b09425bab85451c8cd5f01, type: 2}
   redTeamMaterial: {fileID: 2100000, guid: ebb0589210a804b4eb0794afeac87de8, type: 2}
+  blueHandsMaterial: {fileID: 2100000, guid: 3cfda36e18140493dabb44c407ac3e4e, type: 2}
+  redHandsMaterial: {fileID: 2100000, guid: 3a899fbb9e3074730b83b572dff5c5e4, type: 2}
   colliderObjects:
   - {fileID: 2110284411998516392}
   - {fileID: 6822099320902657682}
