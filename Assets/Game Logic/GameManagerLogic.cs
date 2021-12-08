@@ -13,7 +13,7 @@ public class GameManagerLogic : MonoBehaviour
     [Header("Game Mode: 1: Most Kills, 2: Rounds")]
     int gameMode = 2; //if 1 kills, if 2 rounds
 
-    public static int teamSize = 2;
+    public static int teamSize = 1;
 
     int loopStart = 0; //set to 1 for computer to join as server
     int loopEnd = 0; //set to 1 for computer to join as client
