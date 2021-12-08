@@ -658,8 +658,7 @@ public class GameManagerLogic : MonoBehaviour
         if (locomotionToggleObject.GetComponent<UnityEngine.UI.Toggle>().isOn)
         {
             isLocomotionEnabled = true;
-        }
-        else
+        } else
         {
             isLocomotionEnabled = false;
         }
