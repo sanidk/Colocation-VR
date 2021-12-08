@@ -73,6 +73,7 @@ public class GameManagerLogic : MonoBehaviour
     int team1TotalKills;
     int team2TotalKills;
 
+    float checkLocomotionChangeStartTime;
 
     public float countdownTime = 5f;
 
@@ -81,7 +82,7 @@ public class GameManagerLogic : MonoBehaviour
     float roundDelayStartTime;
     float roundDelayLifeTime = 2;
 
-
+    float checkGameResetStartTime;
 
     //public GameObject debugText;
 
@@ -159,8 +160,17 @@ public class GameManagerLogic : MonoBehaviour
 
         if (CheckForGameReset())
         {
-            ResetGame();
+            if (Time.time > checkGameResetStartTime + 5)
+            {
+                ResetGame();
+            }
+            
+        } else
+        {
+            checkGameResetStartTime = Time.time;
         }
+
+        
 
         
         
@@ -635,6 +645,8 @@ public class GameManagerLogic : MonoBehaviour
             return false;
         }
     }
+
+    
 
     void ResetGame()
     {

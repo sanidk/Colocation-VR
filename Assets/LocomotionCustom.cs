@@ -11,6 +11,11 @@ public class LocomotionCustom : MonoBehaviour
     Vector3 headRotationVerticalVector;
     Vector3 headRotationHorizontalVector;
 
+    float checkLocomotionChangeStartTime;
+    bool isLocomotionEnabled;
+
+    bool runOnce;
+
     void Start()
     {
         
@@ -19,7 +24,85 @@ public class LocomotionCustom : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        LocomotionControl();
+        if (isLocomotionEnabled)
+        {
+            LocomotionControl();
+        }
+        
+    }
+
+    private void Update()
+    {
+        if (CheckForLocomotionChange())
+        {
+            if (Time.time > checkLocomotionChangeStartTime + 5)
+            {
+                if (!runOnce)
+                {
+                    isLocomotionEnabled = !isLocomotionEnabled;
+                    runOnce = true;
+                }
+                
+            }
+        }
+        else
+        {
+            checkLocomotionChangeStartTime = Time.time;
+            runOnce = false;
+        }
+
+        DebuggerVR.debuggingString = CheckForLocomotionChange().ToString();
+    }
+
+    bool CheckForLocomotionChange()
+    {
+        bool isLeftPressed = false;
+        bool isRightPressed = false;
+
+        var leftHandDevices = new List<UnityEngine.XR.InputDevice>();
+        UnityEngine.XR.InputDevices.GetDevicesAtXRNode(UnityEngine.XR.XRNode.LeftHand, leftHandDevices);
+
+        var rightHandDevices = new List<UnityEngine.XR.InputDevice>();
+        UnityEngine.XR.InputDevices.GetDevicesAtXRNode(UnityEngine.XR.XRNode.RightHand, rightHandDevices);
+
+        if (leftHandDevices.Count == 1)
+        {
+            UnityEngine.XR.InputDevice device = leftHandDevices[0];
+
+            bool triggerValue;
+            if (device.TryGetFeatureValue(UnityEngine.XR.CommonUsages.secondaryButton, out triggerValue) && triggerValue)
+            {
+                isLeftPressed = true;
+            }
+            else
+            {
+                isLeftPressed = false;
+            }
+        }
+
+        if (rightHandDevices.Count == 1)
+        {
+            UnityEngine.XR.InputDevice device = rightHandDevices[0];
+
+            bool triggerValue;
+            if (device.TryGetFeatureValue(UnityEngine.XR.CommonUsages.secondaryButton, out triggerValue) && triggerValue)
+            {
+                isRightPressed = true;
+            }
+            else
+            {
+                isRightPressed = false;
+            }
+        }
+
+        if (isLeftPressed && isRightPressed)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     void LocomotionControl()
