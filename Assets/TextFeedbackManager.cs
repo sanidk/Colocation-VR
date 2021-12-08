@@ -37,11 +37,12 @@ public class TextFeedbackManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!GetComponentInParent<RealtimeView>().isOwnedLocallySelf)
-        {
+        //if (!GetComponentInParent<GameObject>().GetComponentInParent<RealtimeView>().isOwnedLocallySelf)
+        //{
             
-            return;
-        }
+        //    return;
+        //}
+        textMesh.text = "hej";
         
         if (gameLogic._team1Score != previousScoreBlue)
         {
