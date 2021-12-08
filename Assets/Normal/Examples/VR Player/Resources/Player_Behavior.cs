@@ -135,7 +135,7 @@ public class Player_Behavior : MonoBehaviour
             chooseTeamObjects.SetActive(false);
         } else
         {
-            //chooseTeamObjects.SetActive(true);
+            chooseTeamObjects.SetActive(true);
         }
 
         if (GetComponent<RealtimeTransform>().isOwnedLocallySelf && dead)
