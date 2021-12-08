@@ -366,31 +366,17 @@ public class Player_Behavior : MonoBehaviour
                 //GetComponent<GameModeLogic>().debugText.GetComponent<TextMesh>().text = "is ready set to true";
                 playerStats._isReady = true;
             }
-            //else
-            //{
-            //    playerStats._isReady = false;
-            //}
-
-         }
-        
-        private void OnCollisionStay(Collision collision)
-        {
-            if (GetComponent<RealtimeTransform>().isOwnedLocallySelf)
+            if (other.CompareTag("Gun") && playerStats._health > 0 && !other.gameObject.GetComponent<XRGrabInteractable>().enabled)
             {
-                if (collision.collider.CompareTag("Gun") && playerStats._health > 0
-                && !collision.collider.gameObject.GetComponent<XRGrabInteractable>().enabled)
-                {
-                    collision.collider.gameObject.GetComponent<XRGrabInteractable>().enabled = true;
-                }
-                if(collision.collider.CompareTag("Gun") && playerStats._health <= 0
-                && collision.collider.gameObject.GetComponent<XRGrabInteractable>().enabled)
-                {
-                    collision.collider.gameObject.GetComponent<XRGrabInteractable>().enabled = false;
-                }
+                other.gameObject.GetComponent<XRGrabInteractable>().enabled = true;
             }
-        }
+            if (other.CompareTag("Gun") && playerStats._health <= 0 && other.gameObject.GetComponent<XRGrabInteractable>().enabled)
+            {
+                other.gameObject.GetComponent<XRGrabInteractable>().enabled = false;
+            }
+         }
 
-    public void resetHp()
+        public void resetHp()
         {
             //currentHp_Local = 100;
             dead = false;
