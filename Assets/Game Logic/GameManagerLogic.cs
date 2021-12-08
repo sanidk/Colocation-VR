@@ -15,7 +15,8 @@ public class GameManagerLogic : MonoBehaviour
 
     public static int teamSize = 2;
 
-    int loopStart = 1;
+    int loopStart = 0;
+    int loopEnd = 1;
 
 
     //Game Mode 1: 2v2
@@ -101,7 +102,10 @@ public class GameManagerLogic : MonoBehaviour
 
     private void Awake()
     {
-        LogStartOfDataCollection();
+        if (Application.platform != RuntimePlatform.Android)
+        {
+            LogStartOfDataCollection();
+        }
     }
 
     // Update is called once per frame
@@ -127,6 +131,21 @@ public class GameManagerLogic : MonoBehaviour
             
         }
 
+        if (Application.platform != RuntimePlatform.Android)
+        {
+            LogDataCollection();
+        }
+
+        //if (Application.platform != RuntimePlatform.Android)
+        //{
+        //    if (manager.localAvatar.gameObject != null)
+        //    {
+        //        Realtime.Destroy(manager.localAvatar.gameObject);
+        //    }
+
+        //}
+
+
         if (!isServer)
         {
             //avatars[0].gameObject.SetActive(false);
@@ -134,15 +153,17 @@ public class GameManagerLogic : MonoBehaviour
         }
 
         if (!isServer) { return; }
-        LogDataCollection();
+        
+            
 
 
         if (CheckForGameReset())
         {
             ResetGame();
         }
-        
 
+        
+        
 
         gameLogic._gameMode = gameMode;
         gameLogic._isPlayersConnectedAndTeamsAssigned = isPlayersConnectedAndTeamsAssigned;
@@ -370,13 +391,13 @@ public class GameManagerLogic : MonoBehaviour
 
     bool CheckIfPlayersConnectedAndTeamsAssigned()
     {
-        if (avatars.Count < (teamSize * 2)+ loopStart) return false;
+        if (avatars.Count < (teamSize * 2) + loopStart + loopEnd) return false;
 
         bool isTeamsSet = true;
         team1Players.Clear();
         team2Players.Clear();
 
-        for (int i = loopStart; i < avatars.Count; i++) // i = 1 . skip 1st player because its server.
+        for (int i = loopStart; i < avatars.Count - loopEnd; i++) // i = 1 . skip 1st player because its server.
         {
             try
             {
@@ -420,7 +441,7 @@ public class GameManagerLogic : MonoBehaviour
         team1Players.Clear();
         team2Players.Clear();
 
-        for (int i = loopStart; i < avatars.Count; i++)
+        for (int i = loopStart; i < avatars.Count - loopEnd; i++)
         {
             try
             {
@@ -444,14 +465,14 @@ public class GameManagerLogic : MonoBehaviour
 
     bool CheckIfAllPlayersReady()
     {
-        if (avatars.Count < (teamSize * 2)+ loopStart)
+        if (avatars.Count < (teamSize * 2) + loopStart + loopEnd)
         {
             return false;
         }
 
         bool isTeamsReady = true;
 
-        for (int i = loopStart; i < avatars.Count; i++)
+        for (int i = loopStart; i < avatars.Count - loopEnd; i++)
         {
             RealtimeAvatar player = avatars[i];
 
@@ -653,7 +674,7 @@ public class GameManagerLogic : MonoBehaviour
 
     void LogDataCollection()
     {
-        for (int i = loopStart; i<avatars.Count; i++)
+        for (int i = loopStart; i<avatars.Count - loopEnd; i++)
         {
             File.AppendAllText(userPositionPath, Time.time.ToString() + " : " + i + " : " + avatars[i].gameObject.transform.position.x.ToString() + " : " + avatars[i].gameObject.transform.position.y.ToString() + " : " + avatars[i].gameObject.transform.position.z.ToString() + "\n");
         }
