@@ -27,8 +27,6 @@ public class Player_Behavior : MonoBehaviour
     private float _redAmount = 0;
 
     //private HpFloatSync _hp; // ADD COMPONENT TO PLAYER
-    public GameObject feedbackText;
-    public TextMesh feedbackTextField;
     public GameObject meshObject;
     Collider coll;
     //public GameObject Hitbox_Head;
@@ -78,7 +76,6 @@ public class Player_Behavior : MonoBehaviour
         playerStats = GetComponent<PlayerStats>();
         playerStatsSync = GetComponent<PlayerStatsSync>();
         skinnedMeshObject.GetComponent<SkinnedMeshRenderer>().material = defaultMaterial;
-        feedbackTextField = feedbackText.GetComponent<TextMesh>();
         //deadPostFX = GameObject.Find("PostFXDead");
 
         deadPostFX = GameObject.Find("PostFXDead");
