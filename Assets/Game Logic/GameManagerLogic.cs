@@ -35,10 +35,6 @@ public class GameManagerLogic : MonoBehaviour
 
     //Go back to spawn on death - respawn at new round.
 
-    public GameObject gameControlsCanvas;
-    public GameObject locomotionToggleObject;
-    bool isLocomotionEnabled;
-
     public GameObject networkManager;
     static RealtimeAvatarManager manager;
     public Dictionary<int, RealtimeAvatar> avatars;
@@ -105,7 +101,6 @@ public class GameManagerLogic : MonoBehaviour
 
     private void Awake()
     {
-        gameControlsCanvas.SetActive(false);
         LogStartOfDataCollection();
     }
 
@@ -134,14 +129,13 @@ public class GameManagerLogic : MonoBehaviour
 
         if (!isServer)
         {
-            
             //avatars[0].gameObject.SetActive(false);
             return;
         }
 
         if (!isServer) { return; }
         LogDataCollection();
-        gameControlsCanvas.SetActive(true);
+
 
         if (CheckForGameReset())
         {
@@ -621,7 +615,7 @@ public class GameManagerLogic : MonoBehaviour
         }
     }
 
-    public void ResetGame()
+    void ResetGame()
     {
         DestroyGuns();
         ResetTeams();
@@ -649,19 +643,6 @@ public class GameManagerLogic : MonoBehaviour
         //team1Players.Count;
         //team2Players.Count;
 
-
-    }
-
-    public void ToggleLocomotionControl()
-    {
-
-        if (locomotionToggleObject.GetComponent<UnityEngine.UI.Toggle>().isOn)
-        {
-            isLocomotionEnabled = true;
-        } else
-        {
-            isLocomotionEnabled = false;
-        }
 
     }
 
