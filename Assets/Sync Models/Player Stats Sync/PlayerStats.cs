@@ -165,7 +165,7 @@ public class PlayerStats : MonoBehaviour
             if (cp.thisCollider.name == "HeadCollider" && collision.collider.CompareTag("Bullet"))
             {
                 hp -= 20;
-                _playerStatsSync.SetHealth(_health - 20);
+                _playerStatsSync.SetHealth(_health - 30);
                 var rot = Quaternion.FromToRotation(Vector3.up, cp.normal);
                 GameObject blood = Realtime.Instantiate("BloodParticle", cp.point, rot);
                 GameObject hitMarkerAudio = Realtime.Instantiate("HitMarkerSound", cp.point, rot);//ownedLocallySelf?
@@ -174,7 +174,7 @@ public class PlayerStats : MonoBehaviour
             {
 
                 hp -= 10;
-                _playerStatsSync.SetHealth(_health - 10);
+                _playerStatsSync.SetHealth(_health - 20);
                 var rot = Quaternion.FromToRotation(Vector3.up, cp.normal);
                 GameObject blood = Realtime.Instantiate("BloodParticle", cp.point, rot);
                 GameObject hitMarkerAudio = Realtime.Instantiate("HitMarkerSound", cp.point, rot);//ownedLocallySelf?
