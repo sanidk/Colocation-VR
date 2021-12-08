@@ -16,7 +16,7 @@ public class GameManagerLogic : MonoBehaviour
     public static int teamSize = 1;
 
     int loopStart = 0;
-    int loopEnd = 1;
+    int loopEnd = 0;
 
 
     //Game Mode 1: 2v2
