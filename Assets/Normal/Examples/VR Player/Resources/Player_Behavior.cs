@@ -57,6 +57,10 @@ public class Player_Behavior : MonoBehaviour
     public Material redTeamMaterial;
     public Material blueHandsMaterial;
     public Material redHandsMaterial;
+    private int blueTeamScorePrevious;
+    private int redTeamScorePrevious;
+    public AudioClip winningSound;
+
 
     public GameObject[] colliderObjects;
     float oldHealth = 100;
@@ -105,6 +109,22 @@ public class Player_Behavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (GetComponent<RealtimeTransform>().isOwnedLocallySelf)
+        {
+            if (gameManager.GetComponent<GameLogic>()._team1Score != blueTeamScorePrevious
+            && playerStats._team == 1)
+            {
+                GetComponent<AudioSource>().PlayOneShot(winningSound);
+                blueTeamScorePrevious = gameManager.GetComponent<GameLogic>()._team1Score;
+            }
+            else if (gameManager.GetComponent<GameLogic>()._team2Score != redTeamScorePrevious
+                && playerStats._team == 2)
+                 {
+                    GetComponent<AudioSource>().PlayOneShot(winningSound);
+                    blueTeamScorePrevious = gameManager.GetComponent<GameLogic>()._team2Score;
+                 }
+        }
 
         if (playerStats._team == 1 && !dead)
         {
