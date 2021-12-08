@@ -17,6 +17,7 @@ public class TextFeedbackManager : MonoBehaviour
     public GameObject gameManager;
     GameLogic gameLogic;
     public GameObject parentObj;
+    public static Color textColor;
 
     int previousScoreBlue = 0;
     int previousScoreRed = 0;
@@ -45,29 +46,35 @@ public class TextFeedbackManager : MonoBehaviour
 
         if (gameLogic._team1Score != previousScoreBlue)
         {
-            feedbackText = "Blue Team Won Round";
+            feedbackText = "Blue Team" + "\n" + "Won Round" + (gameLogic._roundCurrent-1).ToString();
             previousScoreBlue = gameLogic._team1Score;
+            textColor = Color.blue;
         }
 
         if (gameLogic._team2Score != previousScoreRed)
         {
-            feedbackText = "Red Team Won Round";
+            feedbackText = "Red Team" + "\n" + "Won Round" + (gameLogic._roundCurrent - 1).ToString();
             previousScoreRed = gameLogic._team2Score;
+            textColor = Color.red;
         }
 
         if (gameLogic._roundCurrent != previousRoundCurrent)
         {
             feedbackText = "Round Started";
             previousRoundCurrent = gameLogic._roundCurrent;
+            textColor = Color.white;
         }
 
         if (gameLogic._team1Score > 1)
         {
-            feedbackText = "Blue Won the Game. Congratulations!";
+            feedbackText = "Blue Won the Game"  + "\n" +  "Congratulations!";
+            textColor = Color.blue;
+
         }
         if (gameLogic._team2Score > 1)
         {
-            feedbackText = "Red Won the Game. Congratulations!";
+            feedbackText = "Red Won the Game" + "\n" + "Congratulations!";
+            textColor = Color.red;
         }
         
         if (feedbackText != previousFeedbackText)
@@ -80,6 +87,9 @@ public class TextFeedbackManager : MonoBehaviour
         if (Time.time < startTime + textLifeTime)
         {
             textMesh.text = feedbackText;
+            textMesh.color = textColor;
+
+
         } else
         {
             textMesh.text = "";

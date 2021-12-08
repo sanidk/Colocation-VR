@@ -158,7 +158,8 @@ public class Player_Behavior : MonoBehaviour
         if (GetComponent<RealtimeTransform>().isOwnedLocallySelf && dead)
         {
             //set text to dis
-            TextFeedbackManager.feedbackText = "YOU DIED" + "\n" + "RETURN TO SPAWN";
+            TextFeedbackManager.feedbackText = "You Died" + "\n" + "Return to Spawn";
+            TextFeedbackManager.textColor = Color.white;
 
             //disable guns
             //foreach (GameObject gun in gameManager.GetComponent<GameManagerLogic>().gunsList)
@@ -202,6 +203,7 @@ public class Player_Behavior : MonoBehaviour
             if (GetComponent<RealtimeTransform>().isOwnedLocallySelf)
             {
                 TextFeedbackManager.feedbackText = "CHOOSE YOUR TEAM";
+                TextFeedbackManager.textColor = Color.white;
                 arrowTarget = chooseTeamObjects.transform.position;
                 spawnArrowNeutral.SetActive(true);
                 Vector3 lookVector = arrowTarget - spawnArrowNeutral.transform.position;
