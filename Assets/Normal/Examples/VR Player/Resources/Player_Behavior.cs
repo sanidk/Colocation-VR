@@ -353,7 +353,7 @@ public class Player_Behavior : MonoBehaviour
             //}
 
          }
-        /*
+        
         private void OnCollisionStay(Collision collision)
         {
             if (GetComponent<RealtimeTransform>().isOwnedLocallySelf)
@@ -370,7 +370,7 @@ public class Player_Behavior : MonoBehaviour
 
                 }
             }
-        }*/
+        }
 
     public void resetHp()
         {
