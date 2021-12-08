@@ -157,39 +157,27 @@ public class PlayerStats : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision) // Works. NOtice that the object needs Bullet tag AND collider AND probably both realtimeview and transform.
     {
-        //if (!GetComponent<RealtimeTransform>().isOwnedLocallySelf) { return; }
-        /*
-        foreach (ContactPoint contact in collision.contacts) // Use contact.GetContacts() instead, No garbage
-        {
-            //print(contact.thisCollider.name + " hit " + contact.otherCollider.name);
-            //Debug.DrawRay(contact.point, contact.normal, Color.white);
-        }*/
         
-        ContactPoint cp = collision.GetContact(0); // ??
+        //ContactPoint cp = collision.GetContact(0); // ??
         if (GetComponent<RealtimeTransform>().isOwnedLocallySelf)
         {
-            if (collision.collider.CompareTag("Bullet"))
+            ContactPoint cp = collision.GetContact(0);
+            if (cp.thisCollider.name == "HeadCollider" && collision.collider.CompareTag("Bullet"))
             {
+                hp -= 20;
+                _playerStatsSync.SetHealth(_health - 20);
                 var rot = Quaternion.FromToRotation(Vector3.up, cp.normal);
                 GameObject blood = Realtime.Instantiate("BloodParticle", cp.point, rot);
                 GameObject hitMarkerAudio = Realtime.Instantiate("HitMarkerSound", cp.point, rot);//ownedLocallySelf?
             }
-        }
-
-        if (cp.thisCollider.name == "HeadCollider" && collision.collider.CompareTag("Bullet"))
-            {
-                hp -= 20;
-                //_playerStatsSync.SetHealth(hp);
-                _playerStatsSync.SetHealth(_health - 20);
-                //Destroy(collision.collider.gameObject);
-                //collision.collider.gameObject.GetComponentInParent<BulletCollision>().isActive = false;
-            }
             if (cp.thisCollider.name == "TorsoCollider" && collision.collider.CompareTag("Bullet"))
             {
-                
+
                 hp -= 10;
                 _playerStatsSync.SetHealth(_health - 10);
-                //Realtime.Destroy(collision.collider.gameObject.GetComponent<RealtimeView>());
+                var rot = Quaternion.FromToRotation(Vector3.up, cp.normal);
+                GameObject blood = Realtime.Instantiate("BloodParticle", cp.point, rot);
+                GameObject hitMarkerAudio = Realtime.Instantiate("HitMarkerSound", cp.point, rot);//ownedLocallySelf?
 
             }
             if (cp.thisCollider.name == "RightThighCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftThighCollider"
@@ -197,18 +185,27 @@ public class PlayerStats : MonoBehaviour
             {
                 hp -= 10;
                 _playerStatsSync.SetHealth(_health - 10);
+                var rot = Quaternion.FromToRotation(Vector3.up, cp.normal);
+                GameObject blood = Realtime.Instantiate("BloodParticle", cp.point, rot);
+                GameObject hitMarkerAudio = Realtime.Instantiate("HitMarkerSound", cp.point, rot);//ownedLocallySelf?
             }
             if (cp.thisCollider.name == "RightShinCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftShinCollider"
                 && collision.collider.CompareTag("Bullet"))
             {
                 hp -= 10;
                 _playerStatsSync.SetHealth(_health - 10);
+                var rot = Quaternion.FromToRotation(Vector3.up, cp.normal);
+                GameObject blood = Realtime.Instantiate("BloodParticle", cp.point, rot);
+                GameObject hitMarkerAudio = Realtime.Instantiate("HitMarkerSound", cp.point, rot);//ownedLocallySelf?
             }
             if (cp.thisCollider.name == "RightUpperArmCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftUpperArmCollider"
                 && collision.collider.CompareTag("Bullet"))
             {
                 hp -= 10;
                 _playerStatsSync.SetHealth(_health - 10);
+                var rot = Quaternion.FromToRotation(Vector3.up, cp.normal);
+                GameObject blood = Realtime.Instantiate("BloodParticle", cp.point, rot);
+                GameObject hitMarkerAudio = Realtime.Instantiate("HitMarkerSound", cp.point, rot);//ownedLocallySelf?
             }
 
             if (cp.thisCollider.name == "RightLowerArmCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftLowerArmCollider"
@@ -216,7 +213,12 @@ public class PlayerStats : MonoBehaviour
             {
                 hp -= 10;
                 _playerStatsSync.SetHealth(_health - 10);
+                var rot = Quaternion.FromToRotation(Vector3.up, cp.normal);
+                GameObject blood = Realtime.Instantiate("BloodParticle", cp.point, rot);
+                GameObject hitMarkerAudio = Realtime.Instantiate("HitMarkerSound", cp.point, rot);//ownedLocallySelf?
             }
+
+        }
         
     }
 
