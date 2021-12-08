@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Normal.Realtime;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class Player_Behavior : MonoBehaviour
 {
@@ -352,7 +353,26 @@ public class Player_Behavior : MonoBehaviour
             //}
 
          }
-        public void resetHp()
+
+        private void OnCollisionStay(Collision collision)
+        {
+            if (GetComponent<RealtimeTransform>().isOwnedLocallySelf)
+            {
+                if (collision.collider.CompareTag("Gun") && playerStats._health > 0
+                && !collision.collider.gameObject.GetComponent<XRGrabInteractable>().enabled)
+                {
+                    collision.collider.gameObject.GetComponent<XRGrabInteractable>().enabled = true;
+                }
+                else if (collision.collider.CompareTag("Gun") && playerStats._health <= 0
+                && collision.collider.gameObject.GetComponent<XRGrabInteractable>().enabled)
+                {
+                    collision.collider.gameObject.GetComponent<XRGrabInteractable>().enabled = false;
+
+                }
+            }
+        }
+
+    public void resetHp()
         {
             //currentHp_Local = 100;
             dead = false;
