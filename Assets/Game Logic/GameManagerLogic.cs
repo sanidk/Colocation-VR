@@ -16,7 +16,7 @@ public class GameManagerLogic : MonoBehaviour
     public static int teamSize = 2;
 
     int loopStart = 0; //set to 1 for computer to join as server
-    int loopEnd = 1; //set to 1 for computer to join as client
+    int loopEnd = 0; //set to 1 for computer to join as client
 
 
     //Game Mode 1: 2v2
