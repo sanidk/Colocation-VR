@@ -16,6 +16,7 @@ public class TextFeedbackManager : MonoBehaviour
 
     public GameObject gameManager;
     GameLogic gameLogic;
+    public GameObject parentObj;
 
     int previousScoreBlue = 0;
     int previousScoreRed = 0;
@@ -37,13 +38,11 @@ public class TextFeedbackManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (!GetComponentInParent<GameObject>().GetComponentInParent<RealtimeView>().isOwnedLocallySelf)
-        //{
-            
-        //    return;
-        //}
-        textMesh.text = "hej";
-        
+        if (!parentObj.GetComponentInParent<RealtimeView>().isOwnedLocallySelf)
+        {
+            return;
+        }
+
         if (gameLogic._team1Score != previousScoreBlue)
         {
             feedbackText = "Blue Team Won Round";
