@@ -166,7 +166,7 @@ public class GameManagerLogic : MonoBehaviour
             }
             
         } else
-        {
+        {   
             checkGameResetStartTime = Time.time;
         }
 

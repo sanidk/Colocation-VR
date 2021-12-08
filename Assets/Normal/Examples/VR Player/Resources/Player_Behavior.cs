@@ -149,7 +149,7 @@ public class Player_Behavior : MonoBehaviour
             //    gun.SetActive(false);
             //}
 
-            gameManager.GetComponent<GameManagerLogic>().DisableGunsIfDead();
+            //gameManager.GetComponent<GameManagerLogic>().DisableGunsIfDead();
 
         }
         else if (GetComponent<RealtimeTransform>().isOwnedLocallySelf && disableGunsOnce && !dead)
