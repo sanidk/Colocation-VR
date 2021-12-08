@@ -363,11 +363,10 @@ public class Player_Behavior : MonoBehaviour
                 {
                     collision.collider.gameObject.GetComponent<XRGrabInteractable>().enabled = true;
                 }
-                else if (collision.collider.CompareTag("Gun") && playerStats._health <= 0
+                if(collision.collider.CompareTag("Gun") && playerStats._health <= 0
                 && collision.collider.gameObject.GetComponent<XRGrabInteractable>().enabled)
                 {
                     collision.collider.gameObject.GetComponent<XRGrabInteractable>().enabled = false;
-
                 }
             }
         }
