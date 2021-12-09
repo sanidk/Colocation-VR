@@ -282,6 +282,7 @@ public class SimpleShoot : MonoBehaviour
     void Reload()
     {
         GetComponent<AmmoStats>()._ammo = 8;
+        audioSource.PlayOneShot(reload);
     }
 
     private void OnCollisionEnter(Collision collision)
