@@ -35,6 +35,7 @@ public class PlayerStats : MonoBehaviour
     private float convertedHealth;
     private float convertedHealthColor;
     public GameObject watch;
+    public Vest vest;
 
     int currentRound;
     int oldRound;
@@ -44,6 +45,7 @@ public class PlayerStats : MonoBehaviour
     private void Awake()
     {
         gameManager = GameObject.Find("GameManager");
+        
         // Get a reference to the color sync component
         _playerStatsSync = GetComponent<PlayerStatsSync>();
         
@@ -51,8 +53,7 @@ public class PlayerStats : MonoBehaviour
         healthShaderMat = watch.GetComponent<MeshRenderer>().material;
         gameLogic = gameManager.GetComponent<GameLogic>();
         gameManagerLogic = gameManager.GetComponent<GameManagerLogic>();
-        
-
+        vest = GetComponent<Vest>();
         _health = 100;
         hp = 100;
         
@@ -162,6 +163,7 @@ public class PlayerStats : MonoBehaviour
         if (GetComponent<RealtimeTransform>().isOwnedLocallySelf)
         {
             ContactPoint cp = collision.GetContact(0);
+            
             if (cp.thisCollider.name == "HeadCollider" && collision.collider.CompareTag("Bullet"))
             {
                 hp -= 20;
@@ -172,7 +174,26 @@ public class PlayerStats : MonoBehaviour
             }
             if (cp.thisCollider.name == "TorsoCollider" && collision.collider.CompareTag("Bullet"))
             {
+                if (gameManagerLogic.isServer)
+                {
+                    if (cp.point.x < cp.thisCollider.transform.position.x)
+                    {
+                        //ACTIVATE LEFT VIBRATOR
+                        vest._actuator = 2;
 
+                    }
+                    else if (cp.point.x > cp.thisCollider.transform.position.x)
+                    {
+                        //ACTIVATE LEFT VIBRATOR
+                        vest._actuator = 3;
+                    }
+                    else if (cp.point.x == cp.thisCollider.transform.position.x)
+                    {
+                        vest._actuator = 23;
+                    }
+                }
+
+                
                 hp -= 10;
                 _playerStatsSync.SetHealth(_health - 20);
                 var rot = Quaternion.FromToRotation(Vector3.up, cp.normal);

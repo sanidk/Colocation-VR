@@ -295,6 +295,8 @@ GameObject:
   - component: {fileID: -3078369984816020322}
   - component: {fileID: 5680419806792718050}
   - component: {fileID: 1319998519379683835}
+  - component: {fileID: 6387737944310465302}
+  - component: {fileID: 3885920330826018610}
   m_Layer: 0
   m_Name: VR Player - Speedball
   m_TagString: Untagged
@@ -346,6 +348,8 @@ MonoBehaviour:
     component: {fileID: 114272718057082298}
   - componentID: 3
     component: {fileID: 5680419806792718050}
+  - componentID: 4
+    component: {fileID: 3885920330826018610}
   _childViews:
   - viewID: 1
     view: {fileID: 114142483780946230}
@@ -584,6 +588,34 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6387737944310465302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1435502846325602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbddc9d83d4b5144886a0082eca486dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _actuator: 0
+  _time: 0
+  _previousActuator: 0
+  _previousTime: 0
+--- !u!114 &3885920330826018610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1435502846325602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59cd7bf066829ae408fecc1d93578056, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1573471737031190
 GameObject:
   m_ObjectHideFlags: 0
@@ -8170,14 +8202,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50cff2be1c49d2849847717bf4d6b1d4, type: 3}
---- !u!1 &738366655711902612 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2327234068396551453, guid: 50cff2be1c49d2849847717bf4d6b1d4, type: 3}
-  m_PrefabInstance: {fileID: 3059293804491560585}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &224318890204697963 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2983699994613793762, guid: 50cff2be1c49d2849847717bf4d6b1d4, type: 3}
+  m_PrefabInstance: {fileID: 3059293804491560585}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &738366655711902612 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2327234068396551453, guid: 50cff2be1c49d2849847717bf4d6b1d4, type: 3}
   m_PrefabInstance: {fileID: 3059293804491560585}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5277539009823233697
