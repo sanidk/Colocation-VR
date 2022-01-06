@@ -27,8 +27,11 @@ public class VestSync : RealtimeComponent<VestSyncModel>
         {
             // If this is a model that has no data set on it, populate it with the current mesh renderer color.
             if (currentModel.isFreshModel)
+            {
                 currentModel.actuator = _vest._actuator;
                 currentModel.time = _vest._time;
+            }
+                
 
 
             // Update the mesh render to match the new model

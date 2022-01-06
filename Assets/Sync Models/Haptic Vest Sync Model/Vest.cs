@@ -5,6 +5,7 @@ using UnityEngine;
 public class Vest : MonoBehaviour
 {
     public LedOnOffManager bluetoothManager;
+
     [SerializeField]
     public int _actuator;
     public int _time;

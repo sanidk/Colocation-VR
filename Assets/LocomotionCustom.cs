@@ -51,7 +51,7 @@ public class LocomotionCustom : MonoBehaviour
             runOnce = false;
         }
 
-        DebuggerVR.debuggingString = CheckForLocomotionChange().ToString();
+        //DebuggerVR.debuggingString = CheckForLocomotionChange().ToString();
     }
 
     bool CheckForLocomotionChange()
