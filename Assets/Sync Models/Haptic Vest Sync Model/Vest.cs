@@ -37,12 +37,13 @@ public class Vest : MonoBehaviour
             _vestSync.SetTime(_time);
             _previousTime = _time;
         }
-
+        /*
         if (_actuator != 0)
         {
             _actuator = 0;
             _vestSync.SetActuator(_actuator);
             _previousActuator = _actuator;
         }
+        */
     }
 }
