@@ -26,6 +26,7 @@ public class Vest : MonoBehaviour
         
         if (_actuator != _previousActuator)
         {
+            print(_actuator.ToString());
             bluetoothManager.sendData(_actuator.ToString());
             _vestSync.SetActuator(_actuator);
             _previousActuator = _actuator;
