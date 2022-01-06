@@ -204,11 +204,7 @@ public class PlayerStats : MonoBehaviour
                         vestSync.SetActuator(34);
                     }
                     
-                } else
-                {
-                    //vest._actuator = 0;
-                    vestSync.SetActuator(0);
-                }
+                } 
                 DebuggerVR.debuggingString = vest._actuator.ToString();
 
                 hp -= 10;
@@ -218,6 +214,7 @@ public class PlayerStats : MonoBehaviour
                 GameObject hitMarkerAudio = Realtime.Instantiate("HitMarkerSound", cp.point, rot);//ownedLocallySelf?
 
             }
+            
             if (cp.thisCollider.name == "RightThighCollider" && collision.collider.CompareTag("Bullet") || cp.thisCollider.name == "LeftThighCollider"
                 && collision.collider.CompareTag("Bullet"))
             {
@@ -258,6 +255,7 @@ public class PlayerStats : MonoBehaviour
 
         }
         
+
     }
 
 }
