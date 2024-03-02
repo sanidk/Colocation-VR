@@ -103,7 +103,7 @@ public class GameManagerLogic : MonoBehaviour
 
     private void Awake()
     {
-
+        Application.targetFrameRate = 120;
     }
 
     // Update is called once per frame
@@ -122,7 +122,7 @@ public class GameManagerLogic : MonoBehaviour
 
         gameLogic = GetComponent<GameLogic>();
 
-        if (avatars.Count == 1)
+        if (avatars==networkManager.GetComponent<RealtimeAvatarManager>().avatars && avatars.Count == 1)
         {
             isServer = true;
             avatars[0].GetComponent<PlayerStats>()._isServer = true;

@@ -35,8 +35,6 @@ public class PlayerStats : MonoBehaviour
     private float convertedHealth;
     private float convertedHealthColor;
     public GameObject watch;
-    public Vest vest;
-    public VestSync vestSync;
 
     int currentRound;
     int oldRound;
@@ -54,10 +52,10 @@ public class PlayerStats : MonoBehaviour
         healthShaderMat = watch.GetComponent<MeshRenderer>().material;
         gameLogic = gameManager.GetComponent<GameLogic>();
         gameManagerLogic = gameManager.GetComponent<GameManagerLogic>();
-        vest = gameObject.GetComponent<Vest>();
+
         _health = 100;
         hp = 100;
-        vestSync = gameObject.GetComponent<VestSync>();
+
 
         //_health = 100; this works and sets _health to 100 on connection/spawn
 
@@ -175,37 +173,7 @@ public class PlayerStats : MonoBehaviour
             }
             if (cp.thisCollider.name == "TorsoCollider" && collision.collider.CompareTag("Bullet"))
             {
-                if (gameManagerLogic.isServer)
-                {
-                    if (cp.point.x < cp.thisCollider.transform.position.x)
-                    {
-                        //Vector3 size = cp.thisCollider.GetComponent<BoxCollider>().size;
-                        //DebuggerVR.debuggingString = "Bullet x: " + cp.point.x.ToString() + " Torso x: " + cp.thisCollider.transform.position.x.ToString();// + "Size: "+size.ToString();
-                        
-                        //ACTIVATE LEFT VIBRATOR
-                        //vest._actuator = 3;
-                        vestSync.SetActuator(3);
-                        
-
-                    }
-                    else if (cp.point.x > cp.thisCollider.transform.position.x)
-                    {
-                        //DebuggerVR.debuggingString = "Bullet x: " + cp.point.x.ToString() + " Torso x: " + cp.thisCollider.transform.position.x.ToString();
-                        //ACTIVATE LEFT VIBRATOR
-                        //vest._actuator = 4;
-                        vestSync.SetActuator(4);
-
-                    }
-                    else if (cp.point.x == cp.thisCollider.transform.position.x)
-                    {
-                        //DebuggerVR.debuggingString = "Bullet x: " + cp.point.x.ToString() + " Torso x: " + cp.thisCollider.transform.position.x.ToString();
-
-                        //vest._actuator = 34;
-                        vestSync.SetActuator(34);
-                    }
-                    
-                } 
-                DebuggerVR.debuggingString = vest._actuator.ToString();
+       
 
                 hp -= 10;
                 _playerStatsSync.SetHealth(_health - 20);
