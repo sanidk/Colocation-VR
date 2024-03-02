@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8159561212003757769}
   - component: {fileID: 8144557700722063979}
+  - component: {fileID: 2960610447464213296}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -44,18 +45,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   networkManager: {fileID: 0}
+  isPlayersConnectedAndTeamsAssigned: 0
   team1Players: []
   team2Players: []
   team1Score: 0
   team2Score: 0
   roundCurrent: 0
-  roundText: {fileID: 0}
-  team1countText: {fileID: 0}
-  team2countText: {fileID: 0}
-  team1scoreText: {fileID: 0}
-  team2scoreText: {fileID: 0}
-  team1killsText: {fileID: 0}
-  team2killsText: {fileID: 0}
-  timeText: {fileID: 0}
-  winnerText: {fileID: 0}
-  debugText: {fileID: 0}
+  countdownTime: 5
+  isServer: 0
+  gunSpawnLocationsObject: {fileID: 0}
+  gunsList: []
+--- !u!114 &2960610447464213296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8159561212003757775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26ffb4f60a252e249b472e115054aa6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

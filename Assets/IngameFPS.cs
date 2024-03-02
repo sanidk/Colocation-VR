@@ -5,22 +5,29 @@ using UnityEngine.UI;
 
 public class IngameFPS : MonoBehaviour
 {
-    public float timer, refresh, avgFramerate;
-    public string display = "{0} FPS";
     public Text m_Text;
+    private float count;
 
-    // Start is called before the first frame update
-    void Start()
+    private IEnumerator Start()
     {
-        
+        GUI.depth = 2;
+        while (true)
+        {
+            count = 1f / Time.unscaledDeltaTime;
+            yield return new WaitForSeconds(0.1f);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnGUI()
     {
-        float timelapse = Time.smoothDeltaTime;
-        timer = timer <= 0 ? refresh : timer -= timelapse;
-        if (timer < 0) avgFramerate = (int)(1f / timelapse);
-        m_Text.text = string.Format(display, avgFramerate.ToString());
+        GUI.Label(new Rect(5, 40, 100, 25), "FPS: " + Mathf.Round(count));
     }
+
+    private void Update()
+    {
+        m_Text.text = "FPS: " + Mathf.Round(count);
+        StartCoroutine(Start());
+    }
+
+
 }
