@@ -103,10 +103,7 @@ public class GameManagerLogic : MonoBehaviour
 
     private void Awake()
     {
-        if (Application.platform != RuntimePlatform.Android)
-        {
-            LogStartOfDataCollection();
-        }
+
     }
 
     // Update is called once per frame
@@ -130,11 +127,6 @@ public class GameManagerLogic : MonoBehaviour
             isServer = true;
             avatars[0].GetComponent<PlayerStats>()._isServer = true;
             
-        }
-
-        if (Application.platform != RuntimePlatform.Android)
-        {
-            LogDataCollection();
         }
 
         //if (Application.platform != RuntimePlatform.Android)
@@ -677,20 +669,6 @@ public class GameManagerLogic : MonoBehaviour
         //team2Players.Count;
 
 
-    }
-
-    void LogStartOfDataCollection()
-    {
-        File.AppendAllText(userPositionPath, "COLLECTION STARTED: " + System.DateTime.Now.ToString() + "\n");
-    }
-
-    void LogDataCollection()
-    {
-        for (int i = loopStart; i<avatars.Count - loopEnd; i++)
-        {
-            File.AppendAllText(userPositionPath, Time.time.ToString() + " : " + i + " : " + avatars[i].gameObject.transform.position.x.ToString() + " : " + avatars[i].gameObject.transform.position.y.ToString() + " : " + avatars[i].gameObject.transform.position.z.ToString() + "\n");
-        }
-        
     }
 }
 

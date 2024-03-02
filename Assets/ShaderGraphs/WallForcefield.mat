@@ -120,7 +120,7 @@ Material:
     - _impactRippleMaxRadius: 0.1
     - _impactRippleSpeed: 0
     - _intersectionMultiplier: 1
-    - _intersectionOffset: 0.539
+    - _intersectionOffset: 0.588
     - _rimGlowNoiseDensity: 20
     - _rimGlowNoiseSpeed: 1
     - _rimPulseSpeed: 4
@@ -133,7 +133,7 @@ Material:
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _baseColor: {r: 0, g: 1, b: 0.17014933, a: 1}
     - _fillOffset: {r: 0, g: 0, b: 0, a: 0}
-    - _fillTiling: {r: 20, g: 5, b: 0, a: 0}
+    - _fillTiling: {r: 20, g: 4.52, b: 0, a: 0}
     - _impactPoint: {r: 0, g: 0, b: 0, a: 0}
     - _impactRippleDirection: {r: 0, g: 0, b: 1, a: 0}
     - _rimColor: {r: 0.096084446, g: 2.0458105, b: 2.9955802, a: 0}
